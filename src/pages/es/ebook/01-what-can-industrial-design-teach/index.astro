@@ -1,0 +1,437 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+---
+<Layout title="¿Qué le puede enseñar el diseño industrial a los líderes de producto digital? — Thinking in Products, Building Systems">
+  <style is:inline>
+    
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+.eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--ink2);margin-top:10px;max-width:60ch}
+.placeholder{background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px;text-align:center;padding:1rem}
+
+/* ===== top bar + progress (shell) ===== */
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px;flex:0 0 auto}
+.topbar .crumb{font-size:13px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+.topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:7px 16px;cursor:pointer;flex:0 0 auto}
+.progress{height:2px;background:var(--grid-blue)}
+.progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
+
+/* ===== CHAPTER OPENER ===== */
+.opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden;min-height:46svh;display:flex;align-items:flex-end}
+.opener .num{position:absolute;left:calc(var(--margin) * -0.15);bottom:-6%;font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(120px,18vw,300px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;user-select:none}
+.opener .wrap{position:relative;z-index:1;padding-block:40px 44px}
+.opener .eyebrow{color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
+.opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(54px,7.5vw,132px);line-height:.98;letter-spacing:-.035em;max-width:16ch;margin-bottom:16px}
+.opener .dek{font-size:clamp(17px,1.5vw,21px);max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:22px}
+.opener .meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:rgba(255,255,255,.78)}
+
+/* ===== INTRO (multi-column short intro) ===== */
+.intro{background:var(--white)}
+.intro .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+.intro p{font-size:1em;line-height:1.6;color:#242A31}
+@media (max-width:800px){.intro .wrap{grid-template-columns:1fr}}
+
+/* ===== FACTS & FIGURES ===== */
+.facts{background:var(--paper);border-block:1px solid var(--line)}
+.facts .wrap{padding-block:clamp(36px,6vh,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+.facts div{border-left:1px solid var(--line);padding-left:20px}
+.facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;margin-bottom:8px}
+.facts span{font-size:13px;color:var(--ink2)}
+@media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+/* ===== VISUAL RIBBON ===== */
+.ribbon{background:var(--white);padding-block:0}
+.ribbon .track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:2px;overflow-x:auto;scroll-snap-type:x proximity}
+.ribbon .track figure{scroll-snap-align:start}
+.ribbon .placeholder{height:clamp(220px,26vw,360px)}
+.ribbon figcaption{padding:10px var(--margin) 0}
+@media (max-width:700px){.ribbon .track{grid-auto-columns:82vw}}
+
+/* ===== LONGFORM HEADLINE + FIGURE + COLUMNS ===== */
+.longform{background:var(--white)}
+.longform .wrap{padding-block:clamp(48px,8vh,80px)}
+.longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(36px,4.8vw,78px);line-height:1.02;letter-spacing:-.03em;max-width:16ch;margin-bottom:clamp(28px,5vh,48px)}
+.longform .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+.longform .figcol .placeholder{aspect-ratio:4/5}
+.longform .textcol p{max-width:34ch;margin-bottom:1.2em;font-size:1em}
+.longform .textcol{columns:1}
+@media (min-width:900px){.longform .textcol{columns:2;column-gap:var(--gutter)}}
+@media (max-width:860px){.longform .grid{grid-template-columns:1fr}}
+
+/* ===== PULL QUOTE + ESSAY ===== */
+.quote-essay{background:var(--paper);border-block:1px solid var(--line)}
+.quote-essay .wrap{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:5fr 7fr;gap:var(--gutter);align-items:start}
+.pullquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.28;letter-spacing:-.01em;color:var(--cobalt-deep)}
+.pullquote cite{display:block;margin-top:20px;font-family:var(--grot);font-style:normal;font-size:13px;font-weight:600;color:var(--ink2)}
+.essay{columns:1}
+@media (min-width:700px){.essay{columns:2;column-gap:var(--gutter)}}
+.essay p{margin-bottom:1.1em;max-width:34ch;font-size:1em}
+@media (max-width:860px){.quote-essay .wrap{grid-template-columns:1fr}}
+
+/* ===== FRAMEWORK / PROCESS DIAGRAM ===== */
+.framework{background:var(--white)}
+.framework .wrap{padding-block:clamp(48px,8vh,80px)}
+.framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:12px;max-width:18ch}
+.framework .dek{color:var(--ink2);max-width:60ch;margin-bottom:clamp(32px,5vh,48px)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.steps li{list-style:none;padding:24px 20px 24px 0;border-right:1px solid var(--line);position:relative}
+.steps li:last-child{border-right:0}
+.steps .ic{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--cobalt);color:var(--cobalt);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;margin-bottom:16px}
+.steps h3{font-size:16px;font-weight:600;margin-bottom:8px;max-width:16ch}
+.steps p{font-size:14px;color:var(--ink2);max-width:20ch}
+.steps li:not(:last-child)::after{content:"";position:absolute;right:-1px;top:44px;width:8px;height:8px;border-top:1.5px solid var(--cobalt);border-right:1.5px solid var(--cobalt);transform:translate(50%,-50%) rotate(45deg);background:var(--white)}
+@media (max-width:860px){.steps{grid-template-columns:1fr;border-top:0}.steps li{border-right:0;border-top:1px solid var(--line);padding:20px 0}.steps li::after{display:none}}
+
+/* ===== VISUAL CATALOG (image grid) ===== */
+.catalog{background:var(--paper);border-top:1px solid var(--line)}
+.catalog .wrap{padding-block:clamp(48px,8vh,80px)}
+.catalog h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:clamp(28px,5vh,44px)}
+.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+.catgrid figure:nth-child(1){grid-column:span 2}
+.catgrid .placeholder{aspect-ratio:3/2}
+.catgrid figure:nth-child(1) .placeholder{aspect-ratio:16/9}
+.catgrid figure:nth-child(4) .placeholder{aspect-ratio:1/1}
+@media (max-width:860px){.catgrid{grid-template-columns:1fr 1fr}.catgrid figure:nth-child(1){grid-column:span 2}}
+@media (max-width:560px){.catgrid{grid-template-columns:1fr}.catgrid figure:nth-child(1){grid-column:span 1}}
+
+/* ===== TECHNICAL DIAGRAM (contain, never cropped) ===== */
+.diagram{background:var(--white)}
+.diagram .wrap{padding-block:clamp(48px,8vh,80px)}
+.diagram h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:20px}
+.diagram .frame{background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px)}
+.diagram .frame svg{width:100%;max-height:80svh;height:auto}
+
+/* ===== TRANSPARENT OBJECT (contain, never forced cover) ===== */
+.object-figure{background:var(--paper);border-top:1px solid var(--line)}
+.object-figure .wrap{padding-block:clamp(40px,7vh,64px)}
+.object-figure .frame{background:repeating-conic-gradient(#fff 0 25%, var(--white) 0 50%) 0 0/24px 24px, var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:280px;padding:32px}
+.object-figure .frame img{max-height:340px;object-fit:contain}
+
+/* ===== REFERENCES ===== */
+.refs{background:var(--paper)}
+.refs .wrap{padding-block:clamp(36px,6vh,56px)}
+.refs h2{font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:16px;color:var(--ink2)}
+.refs ol{margin:0;padding-left:1.2em;font-size:14px;color:var(--ink2);display:grid;gap:8px}
+
+/* ===== NEXT CHAPTER / NAV ===== */
+.chapternav{background:var(--cobalt);color:#fff}
+.chapternav .wrap{padding-block:clamp(40px,7vh,64px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.chapternav .side{display:flex;flex-direction:column;gap:6px}
+.chapternav .side.next{text-align:right;margin-left:auto}
+.chapternav .lbl{font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+.chapternav a{text-decoration:none}
+.chapternav .title{font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:500;max-width:22ch}
+.chapternav a[aria-disabled="true"]{pointer-events:none;opacity:.4}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+
+/* ===== TOC slide-over (shared shell pattern) ===== */
+.toc-overlay{position:fixed;inset:0;background:rgba(17,20,24,.4);opacity:0;pointer-events:none;transition:opacity .3s var(--ease);z-index:30}
+.toc-overlay.open{opacity:1;pointer-events:auto}
+.toc-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,88vw);background:var(--white);transform:translateX(100%);transition:transform .35s var(--ease);z-index:31;overflow-y:auto;padding:24px}
+.toc-panel.open{transform:translateX(0)}
+.toc-panel .close{font:inherit;font-size:14px;background:none;border:none;cursor:pointer;color:var(--ink2)}
+.toc-panel ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:2px}
+.toc-panel li{display:grid;grid-template-columns:2rem 1fr;gap:10px;padding:9px 8px;border-radius:6px;font-size:14px}
+.toc-panel li a{display:contents;text-decoration:none}
+.toc-panel .n{font-family:var(--serif);color:var(--ink2)}
+.toc-panel li:has(a):hover{background:var(--paper)}
+
+/* ===== LIGHTBOX (interaction reference) ===== */
+.lightbox{position:fixed;inset:0;background:rgba(10,12,15,.92);display:none;align-items:center;justify-content:center;z-index:40;padding:5vw}
+.lightbox.open{display:flex}
+.lightbox .box{max-width:1100px;width:100%;color:#fff}
+.lightbox .placeholder{aspect-ratio:16/9;background:rgba(255,255,255,.06);color:#cfe0ff}
+.lightbox figcaption{color:rgba(255,255,255,.7)}
+.lightbox .close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:15px;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){.toc-overlay,.toc-panel{transition:none}}
+
+  </style>
+
+  
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/es/">JAS</a>
+    <nav aria-label="Libro">
+      <a href="/es/">Sitio</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="/ebook/01-what-can-industrial-design-teach/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/01-what-can-industrial-design-teach/" aria-current="page">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+<!-- ===== CHAPTER OPENER ===== -->
+<header class="opener">
+  <span class="num" aria-hidden="true">01</span>
+  <div class="wrap">
+    <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · CAPÍTULO 01</p>
+    <h1>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</h1>
+    <p class="dek">Los materiales, las herramientas, el costo y el mantenimiento definen todo objeto físico mucho antes de llegar a un usuario — y la misma disciplina aplica, casi siempre invisible, a los productos digitales.</p>
+    <p class="meta">
+      <span>Publicado el 18 sep 2026</span>
+      <span>8 min de lectura</span>
+      <span>Edición 0.1</span>
+      <span>Estado: Publicado</span>
+    </p>
+  </div>
+</header>
+
+<!-- ===== INTRO (short, multi-column) ===== -->
+<section class="intro">
+  <div class="wrap">
+    <p>Todo objeto físico carga restricciones que se notan en el momento en que lo tomas en las manos: la tolerancia de una unión, el costo de un material, cómo se desgasta una bisagra después de mil usos. Los productos digitales esconden esas restricciones detrás de una pantalla, pero nunca desaparecen.</p>
+    <p>Este capítulo abre el libro con una idea que atraviesa todo lo que sigue: las preguntas que un buen diseñador industrial hace sobre producción — qué podemos construir realmente, a qué costo, mantenido por quién — son las mismas preguntas que un líder de tecnología debería hacerse sobre arquitectura, datos y operación.</p>
+    <p>Lo que sigue no es una metáfora forzada. Es un método de trabajo, ilustrado con los datos, marcos y casos del resto de este capítulo.</p>
+  </div>
+</section>
+
+<!-- ===== FACTS & FIGURES (number : label >= 4:1) ===== -->
+<section class="facts" aria-label="Chapter facts and figures">
+  <div class="wrap">
+    <div><b>3</b><span>DECISIONES QUE TODO PRODUCTO<br>FÍSICO OBLIGA A TOMAR TEMPRANO</span></div>
+    <div><b>1:1</b><span>CORRESPONDENCIA ENTRE TOLERANCIA<br>DE MATERIAL Y CONTRATO DE API</span></div>
+    <div><b>18</b><span>MESES — BRECHA TÍPICA ENTRE<br>UN ATAJO Y SU COSTO</span></div>
+  </div>
+</section>
+
+<!-- ===== VISUAL RIBBON ===== -->
+<section class="ribbon" aria-label="Image ribbon">
+  <div class="track">
+    <figure>
+      <div class="placeholder">[ imagen editorial 3:2<br>focal_x/y configurable ]</div>
+      <figcaption>Una línea de producción revela sus restricciones como pocas veces lo hace un roadmap.</figcaption>
+    </figure>
+    <figure>
+      <div class="placeholder">[ imagen editorial 3:2 ]</div>
+      <figcaption>El costo de las herramientas es una decisión que se toma una vez y se paga en cada unidad después.</figcaption>
+    </figure>
+    <figure>
+      <div class="placeholder">[ imagen editorial 3:2 ]</div>
+      <figcaption>Una bisagra bajo carga se comporta como una API bajo tráfico.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== LONGFORM: headline + portrait + balanced columns ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>La tolerancia que no ves es la que se rompe primero</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <div class="placeholder">[ retrato 4:5<br>cover o contain según metadatos ]</div>
+          <figcaption>Los primeros bocetos de un diseñador codifican restricciones mucho antes que la manufactura.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>En manufactura física, la tolerancia es un número marcado en un plano: cuánto puede desviarse una pieza antes de que falle el ensamble. Todos los que tocan el producto están de acuerdo en ese número antes de fabricar la primera unidad.</p>
+        <p>Los equipos digitales casi nunca nombran sus tolerancias de forma explícita. Un tiempo de respuesta de "normalmente menos de 300ms" es una tolerancia. Un "eso lo limpiamos después" es una tolerancia que nadie escribió — y por eso suele fallar primero, en el peor momento posible, en producción.</p>
+        <p>Nombrar la tolerancia no es proceso de más. Es la forma más rápida de saber, antes de construir, si lo que propones se puede producir y mantener de verdad a la escala que buscas.</p>
+        <p>El resto de este libro regresa a esta idea desde distintos ángulos: como pregunta de arquitectura de plataforma, como pregunta de gobernanza de portafolio, y como pregunta sobre lo que un equipo le debe a lo que entrega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PULL QUOTE + ESSAY ===== -->
+<section class="quote-essay">
+  <div class="wrap">
+    <blockquote class="pullquote">
+      “Un producto que ignora sus propias tolerancias no falla con elegancia. Falla exactamente una vez, en público, a escala.”
+      <cite>— J. A. Sosa</cite>
+    </blockquote>
+    <div class="essay">
+      <p>Esto no es un argumento para ir más despacio. Los diseñadores industriales trabajan con fechas límite y presión de costo reales — muchas veces más estrictas que las de un equipo de software. La diferencia está en dónde aparece esa presión.</p>
+      <p>Una tolerancia no cumplida en una línea de producción detiene la línea de inmediato: todos lo ven, y el costo de ignorarla es visible el mismo día. Una tolerancia no cumplida en software casi siempre se lanza igual. Queda ahí, en silencio, hasta que el tráfico, la escala o el tiempo la exponen, casi siempre lejos del equipo que tomó la decisión original.</p>
+      <p>Tratar la arquitectura, los contratos de datos y los límites operativos como tolerancias — escritas, con dueño, y verificadas antes de lanzar — regresa ese costo a donde es más barato pagarlo: antes del lanzamiento, no después.</p>
+      <p>Los capítulos de la Parte II llevan esto más lejos, mapeando hábitos específicos del diseño físico a decisiones de producto digital, uno por uno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FRAMEWORK / PROCESS ===== -->
+<section class="framework">
+  <div class="wrap">
+    <h2>Una forma de cuatro pasos para nombrar una tolerancia</h2>
+    <p class="dek">Un método de trabajo breve, usado a lo largo de este libro, aplicado aquí por primera vez a una sola decisión de producto.</p>
+    <ol class="steps">
+      <li><div class="ic">1</div><h3>Nombra la restricción</h3><p>Enuncia el límite real — costo, latencia, personal — en una frase.</p></li>
+      <li><div class="ic">2</div><h3>Escribe el número</h3><p>Asígnale un valor medible, aunque sea aproximado, no un adjetivo.</p></li>
+      <li><div class="ic">3</div><h3>Asigna un responsable</h3><p>Una persona o equipo que responda cuando se exceda.</p></li>
+      <li><div class="ic">4</div><h3>Verifica antes de lanzar</h3><p>Compara contra el número, no contra cómo se sintió la demo.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== VISUAL CATALOG ===== -->
+<section class="catalog">
+  <div class="wrap">
+    <h2>Referencias seleccionadas</h2>
+    <div class="catgrid">
+      <figure><div class="placeholder">[ imagen 16:9 ]</div><figcaption>Línea de ensamble, marcadores de tolerancia visibles en la plantilla.</figcaption></figure>
+      <figure><div class="placeholder">[ imagen 3:2 ]</div><figcaption>Prototipo temprano, sustitución de material a medio desarrollo.</figcaption></figure>
+      <figure><div class="placeholder">[ imagen 3:2 ]</div><figcaption>Muestra de falla conservada como estándar de referencia.</figcaption></figure>
+      <figure><div class="placeholder">[ imagen 1:1 ]</div><figcaption>Detalle de unión moldeada por inyección.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECHNICAL DIAGRAM (contain, never cropped) ===== -->
+<section class="diagram">
+  <div class="wrap">
+    <h2>De la tolerancia física al contrato digital</h2>
+    <div class="frame">
+      <svg viewBox="0 0 900 260" role="img" aria-label="Diagrama que relaciona conceptos de tolerancia física con conceptos de producto digital">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0057D9"/></marker></defs>
+        <g font-family="Archivo, sans-serif" font-size="15" fill="#111418">
+          <rect x="20" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="120" y="80" text-anchor="middle">Tolerancia de material</text>
+          <rect x="350" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="450" y="80" text-anchor="middle">Contrato de API</text>
+          <rect x="680" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="780" y="80" text-anchor="middle">SLA / SLO</text>
+          <rect x="20" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="120" y="200" text-anchor="middle">Plan de mantenimiento</text>
+          <rect x="350" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="450" y="200" text-anchor="middle">Runbook</text>
+          <rect x="680" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="780" y="200" text-anchor="middle">Guardia de operación</text>
+        </g>
+        <path d="M220 75 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M550 75 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M220 195 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M550 195 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M120 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M450 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M780 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSPARENT OBJECT (contain, never forced cover) ===== -->
+<section class="object-figure">
+  <div class="wrap">
+    <figure>
+      <div class="frame">
+        <img src="../assets/chair-blueprint.png" alt="Plano técnico de una silla con dimensiones y radios, fondo transparente, contenido sin recortar" loading="lazy">
+      </div>
+      <figcaption>Espacio de objeto transparente: contain, nunca cover — el diagrama completo permanece visible sin importar el ancho del contenedor.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== REFERENCES ===== -->
+<section class="refs">
+  <div class="wrap">
+    <h2>REFERENCIAS</h2>
+    <ol>
+      <li>Notas de campo del autor en gestión de programas, POS de retail y portafolios empresariales, 2016–2026.</li>
+      <li>Material de casos interno, anonimizado donde aplica confidencialidad.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== NEXT CHAPTER / NAV ===== -->
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <div class="side prev">
+      <span class="lbl">← ANTERIOR</span>
+      <span class="title" aria-disabled="true" style="opacity:.5">Este es el primer capítulo</span>
+    </div>
+    <div class="side next">
+      <span class="lbl">SIGUIENTE →</span>
+      <a class="title" href="/es/ebook/02-materials-tolerances/">Materiales, tolerancias y el costo de una decisión</a>
+    </div>
+  </div>
+</nav>
+
+<footer>
+  <div class="wrap">
+    <span>Parte I · Entender el Producto — Capítulo 01</span>
+    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="/downloads/thinking-in-products-building-systems-actual.pdf">Descargar PDF</a></span>
+  </div>
+</footer>
+
+<!-- ===== TOC SLIDE-OVER ===== -->
+<div class="toc-overlay" id="tocOverlay"></div>
+<aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Table of contents">
+  <button class="close" id="tocClose">Cerrar ✕</button>
+  <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PARTE I — ENTENDER EL PRODUCTO</p>
+  <ul>
+    <li><a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span></a></li>
+    <li><a href="/es/ebook/02-materials-tolerances/"><span class="n">02</span><span>Materiales, tolerancias y el costo de una decisión</span></a></li>
+    <li><a href="#"><span class="n">03</span><span>Lo que una línea de producción enseña sobre arquitectura</span></a></li>
+    <li><a href="#"><span class="n">04</span><span>El producto nunca es solo el objeto</span></a></li>
+  </ul>
+</aside>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="close" id="lightboxClose">Cerrar ✕</button>
+  <figure class="box">
+    <div class="placeholder">[ imagen ampliada ]</div>
+    <figcaption>Referencia de visor: atrapa el foco, se cierra con Escape o el control de cierre, el pie de foto permanece visible.</figcaption>
+  </figure>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
+      overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
+  function open(){ panel.classList.add('open'); overlay.classList.add('open'); close.focus(); document.addEventListener('keydown', onKey); }
+  function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
+  function onKey(e){
+    if(e.key==='Escape'){ shut(); lightboxShut(); }
+    if(e.key==='ArrowRight') window.location.href='#';
+    if(e.key==='ArrowLeft'){ /* no previous chapter */ }
+  }
+  btn.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  overlay.addEventListener('click', shut);
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+
+  var lb=document.getElementById('lightbox'), lbClose=document.getElementById('lightboxClose');
+  function lightboxShut(){ lb.classList.remove('open'); }
+  lbClose.addEventListener('click', lightboxShut);
+  document.querySelectorAll('.catalog figure, .ribbon figure').forEach(function(f){
+    f.style.cursor='zoom-in';
+    f.addEventListener('click', function(){ lb.classList.add('open'); lbClose.focus(); });
+  });
+
+  var bar=document.getElementById('progressBar');
+  function onScroll(){
+    var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.setProperty('--p', p+'%');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+})();
+</script>
+
+
+</Layout>
