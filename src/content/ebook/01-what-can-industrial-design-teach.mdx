@@ -1,0 +1,241 @@
+---
+chapter: 1
+title: "What Can Industrial Design Teach Digital Product Leaders?"
+status: "published"
+published_at: 2026-09-18
+summary: "Materials, tooling, cost and maintenance shape every physical object long before it reaches a user — and the same discipline applies, mostly unseen, to digital products."
+---
+
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="../home_prototype_v12.html">JAS</a>
+    <span class="crumb">Part I · Understanding the Product — Chapter 1</span>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="ebook-chapter-01.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-ebook-chapter-01.html">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+{/* ===== CHAPTER OPENER ===== */}
+<header class="opener">
+  <span class="num" aria-hidden="true">01</span>
+  <div class="wrap">
+    <p class="eyebrow">PART I — UNDERSTANDING THE PRODUCT · CHAPTER 01</p>
+    <h1>What Can Industrial Design Teach Digital Product Leaders?</h1>
+    <p class="dek">Materials, tooling, cost and maintenance shape every physical object long before it reaches a user — and the same discipline applies, mostly unseen, to digital products.</p>
+    <p class="meta">
+      <span>Published 18 Sep 2026</span>
+      <span>8 min read</span>
+      <span>Edition 0.1</span>
+      <span>Status: Published</span>
+    </p>
+  </div>
+</header>
+
+{/* ===== INTRO (short, multi-column) ===== */}
+<section class="intro">
+  <div class="wrap">
+    <p>Every physical object carries constraints that are visible the moment you hold it: the tolerance of a joint, the cost of a material, the way a hinge wears after a thousand uses. Digital products hide those constraints behind a screen, but they never disappear.</p>
+    <p>This chapter opens the book with a claim that runs through everything after it: the questions a good industrial designer asks about production — what can we actually build, at what cost, maintained by whom — are the same questions a technology leader should ask about architecture, data and operations.</p>
+    <p>What follows is not a metaphor stretched thin. It is a working method, illustrated with the facts, frameworks and cases in the rest of this chapter.</p>
+  </div>
+</section>
+
+{/* ===== FACTS & FIGURES (number : label >= 4:1) ===== */}
+<section class="facts" aria-label="Chapter facts and figures">
+  <div class="wrap">
+    <div><b>3</b><span>DECISIONS EVERY PHYSICAL<br/>PRODUCT FORCES EARLY</span></div>
+    <div><b>1:1</b><span>MAPPING BETWEEN MATERIAL<br/>TOLERANCE AND API CONTRACT</span></div>
+    <div><b>18</b><span>MONTHS — TYPICAL GAP BETWEEN<br/>A SHORTCUT AND ITS COST</span></div>
+  </div>
+</section>
+
+{/* ===== VISUAL RIBBON ===== */}
+<section class="ribbon" aria-label="Image ribbon">
+  <div class="track">
+    <figure>
+      <div class="placeholder">[ 3:2 editorial image<br/>focal_x/y configurable ]</div>
+      <figcaption>A production line reveals its constraints in a way a roadmap rarely does.</figcaption>
+    </figure>
+    <figure>
+      <div class="placeholder">[ 3:2 editorial image ]</div>
+      <figcaption>Tooling cost is a decision made once and paid for every unit after.</figcaption>
+    </figure>
+    <figure>
+      <div class="placeholder">[ 3:2 editorial image ]</div>
+      <figcaption>A hinge under load behaves like an API under traffic.</figcaption>
+    </figure>
+  </div>
+</section>
+
+{/* ===== LONGFORM: headline + portrait + balanced columns ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The tolerance you can't see is the one that breaks first</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <div class="placeholder">[ 4:5 portrait<br/>cover or contain per metadata ]</div>
+          <figcaption>A designer's early sketches encode constraints long before manufacturing does.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>In physical manufacturing, tolerance is a number stamped on a drawing: how far a part can deviate before the assembly fails. Everyone touching the product agrees on it before a single unit is built.</p>
+        <p>Digital teams rarely name their tolerances explicitly. A response time of "usually under 300ms" is a tolerance. A "we'll clean that up later" is a tolerance nobody wrote down — which is exactly why it tends to fail first, at the worst possible moment, in production.</p>
+        <p>Naming the tolerance is not extra process. It is the fastest way to know, before you build, whether the thing you are proposing can actually be produced and maintained at the scale you intend.</p>
+        <p>The rest of this book returns to this idea from different angles: as a question of platform architecture, as a question of portfolio governance, and as a question of what a team owes the thing it ships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== PULL QUOTE + ESSAY ===== */}
+<section class="quote-essay">
+  <div class="wrap">
+    <blockquote class="pullquote">
+      “A product that ignores its own tolerances doesn't fail gracefully. It fails exactly once, in public, at scale.”
+      <cite>— J. A. Sosa</cite>
+    </blockquote>
+    <div class="essay">
+      <p>This is not an argument for slowing down. Industrial designers work under real deadlines and real cost pressure — often tighter than a software team's. The difference is where the pressure surfaces.</p>
+      <p>A missed tolerance on a production line stops the line immediately: everyone sees it, and the cost of ignoring it is visible the same day. A missed tolerance in software often ships. It sits quietly until traffic, scale or time exposes it, usually far from the team that made the original call.</p>
+      <p>Treating architecture, data contracts and operational limits as tolerances — written down, owned, and checked before shipping — moves that cost back to where it's cheapest to pay: before launch, not after.</p>
+      <p>The chapters in Part II take this further, mapping specific physical-design habits onto digital-product decisions one at a time.</p>
+    </div>
+  </div>
+</section>
+
+{/* ===== FRAMEWORK / PROCESS ===== */}
+<section class="framework">
+  <div class="wrap">
+    <h2>A four-step way to name a tolerance</h2>
+    <p class="dek">A short working method used throughout this book, first applied here to a single product decision.</p>
+    <ol class="steps">
+      <li><div class="ic">1</div><h3>Name the constraint</h3><p>State the real limit — cost, latency, headcount — in one sentence.</p></li>
+      <li><div class="ic">2</div><h3>Write the number</h3><p>Attach a measurable value, even a rough one, not an adjective.</p></li>
+      <li><div class="ic">3</div><h3>Assign the owner</h3><p>One person or team who is accountable when it's exceeded.</p></li>
+      <li><div class="ic">4</div><h3>Check before ship</h3><p>Verify against the number, not against how the demo felt.</p></li>
+    </ol>
+  </div>
+</section>
+
+{/* ===== VISUAL CATALOG ===== */}
+<section class="catalog">
+  <div class="wrap">
+    <h2>Selected references</h2>
+    <div class="catgrid">
+      <figure><div class="placeholder">[ 16:9 image ]</div><figcaption>Assembly line, tolerance markers visible on the jig.</figcaption></figure>
+      <figure><div class="placeholder">[ 3:2 image ]</div><figcaption>Early prototype, material substitution mid-development.</figcaption></figure>
+      <figure><div class="placeholder">[ 3:2 image ]</div><figcaption>Failure sample kept as a reference standard.</figcaption></figure>
+      <figure><div class="placeholder">[ 1:1 image ]</div><figcaption>Detail, injection-molded joint.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+{/* ===== TECHNICAL DIAGRAM (contain, never cropped) ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>From physical tolerance to digital contract</h2>
+    <div class="frame">
+      <svg viewBox="0 0 900 260" role="img" aria-label="Diagram mapping physical tolerance concepts to digital product concepts">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0057D9"/></marker></defs>
+        <g font-family="Archivo, sans-serif" font-size="15" fill="#111418">
+          <rect x="20" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="120" y="80" text-anchor="middle">Material tolerance</text>
+          <rect x="350" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="450" y="80" text-anchor="middle">API contract</text>
+          <rect x="680" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="780" y="80" text-anchor="middle">SLA / SLO</text>
+          <rect x="20" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="120" y="200" text-anchor="middle">Maintenance plan</text>
+          <rect x="350" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="450" y="200" text-anchor="middle">Runbook</text>
+          <rect x="680" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
+          <text x="780" y="200" text-anchor="middle">On-call ownership</text>
+        </g>
+        <path d="M220 75 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M550 75 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M220 195 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M550 195 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M120 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M450 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M780 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{/* ===== TRANSPARENT OBJECT (contain, never forced cover) ===== */}
+<section class="object-figure">
+  <div class="wrap">
+    <figure>
+      <div class="frame">
+        <img src="../assets/chair-blueprint.png" alt="Technical blueprint of a chair with dimensions and radii, transparent background, contained without cropping" loading="lazy"/>
+      </div>
+      <figcaption>Transparent-object slot: contain, never cover — the full diagram stays visible regardless of container width.</figcaption>
+    </figure>
+  </div>
+</section>
+
+{/* ===== REFERENCES ===== */}
+<section class="refs">
+  <div class="wrap">
+    <h2>REFERENCES</h2>
+    <ol>
+      <li>Author's program-management field notes, retail POS and enterprise portfolio engagements, 2016–2026.</li>
+      <li>Internal case material, anonymized where confidentiality applies.</li>
+    </ol>
+  </div>
+</section>
+
+{/* ===== NEXT CHAPTER / NAV ===== */}
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <div class="side prev">
+      <span class="lbl">← PREVIOUS</span>
+      <span class="title" aria-disabled="true" style="opacity:.5">This is the first chapter</span>
+    </div>
+    <div class="side next">
+      <span class="lbl">NEXT →</span>
+      <a class="title" href="ebook-chapter-02.html">Materials, Tolerances and the Cost of a Decision</a>
+    </div>
+  </div>
+</nav>
+
+<footer>
+  <div class="wrap">
+    <span>Part I · Understanding the Product — Chapter 01</span>
+    <span><a href="ebook.html">All chapters</a> · <a href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF</a></span>
+  </div>
+</footer>
+
+{/* ===== TOC SLIDE-OVER ===== */}
+<div class="toc-overlay" id="tocOverlay"></div>
+<aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Table of contents">
+  <button class="close" id="tocClose">Close ✕</button>
+  <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PART I — UNDERSTANDING THE PRODUCT</p>
+  <ul>
+    <li><a href="ebook-chapter-01.html"><span class="n">01</span><span>What Can Industrial Design Teach Digital Product Leaders?</span></a></li>
+    <li><a href="ebook-chapter-02.html"><span class="n">02</span><span>Materials, Tolerances and the Cost of a Decision</span></a></li>
+    <li><a href="ebook-chapter-03.html"><span class="n">03</span><span>What a Production Line Teaches About Architecture</span></a></li>
+    <li><a href="ebook-chapter-04.html"><span class="n">04</span><span>The Product Is Never Just the Object</span></a></li>
+  </ul>
+</aside>
+
+{/* ===== LIGHTBOX ===== */}
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="close" id="lightboxClose">Close ✕</button>
+  <figure class="box">
+    <div class="placeholder">[ enlarged image ]</div>
+    <figcaption>Lightbox reference: traps focus, closes on Escape or the close control, caption remains visible.</figcaption>
+  </figure>
+</div>
+
+
+
+
+
+

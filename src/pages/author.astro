@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Author — J. Angel Sosa</title>
+<meta name="description" content="Background and selected experience of José Ángel Sosa López — physical product design, digital products, and IT portfolio leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0} a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+
+.hero{background:var(--cobalt);color:#fff}
+.hero .wrap{padding-block:clamp(56px,10vh,100px)}
+.hero .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.hero .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
+.hero h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,6vw,88px);line-height:1;letter-spacing:-.03em;margin-bottom:20px;max-width:14ch}
+.hero p{font-size:clamp(17px,1.5vw,21px);max-width:52ch;color:rgba(255,255,255,.88)}
+
+.bio{background:var(--white)}
+.bio .wrap{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:5fr 7fr;gap:var(--gutter);align-items:start}
+.bio .portrait{aspect-ratio:4/5;overflow:hidden;background:var(--paper);margin-bottom:24px}
+.bio .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+.bio h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;max-width:11ch}
+.bio .copy{max-width:66ch;color:#242A31}
+.bio .copy p{margin-bottom:1.1em}
+@media (max-width:860px){.bio .wrap{grid-template-columns:1fr;gap:20px}}
+
+.facts{background:var(--paper);border-block:1px solid var(--line)}
+.facts .wrap{padding-block:clamp(36px,6vh,56px);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter)}
+.facts div{border-left:1px solid var(--line);padding-left:20px}
+.facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,3vw,4.4rem);line-height:.95;margin-bottom:8px}
+.facts span{font-size:13px;color:var(--ink2)}
+@media (max-width:800px){.facts .wrap{grid-template-columns:1fr 1fr}}
+
+.experience{background:var(--white)}
+.experience .wrap{padding-block:clamp(48px,8vh,80px)}
+.experience h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;margin-bottom:32px}
+.role{display:grid;grid-template-columns:9rem 1fr 8rem;gap:20px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
+.role:last-child{border-bottom:1px solid var(--line)}
+.role .period{font-size:13px;color:var(--ink2)}
+.role .org{font-weight:700;font-size:17px;margin-bottom:4px}
+.role .what{color:var(--ink2);font-size:15px;max-width:56ch}
+.role .place{font-size:13px;color:var(--ink2);text-align:right}
+@media (max-width:760px){.role{grid-template-columns:1fr;gap:6px}.role .place{text-align:left}}
+.earlier{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink2)}
+
+.principles{background:var(--paper);border-top:1px solid var(--line)}
+.principles .wrap{padding-block:clamp(48px,8vh,80px)}
+.principles h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;margin-bottom:28px}
+.plist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+.plist li{border-left:2px solid var(--cobalt);padding-left:18px}
+.plist b{display:block;font-size:16px;margin-bottom:6px}
+.plist span{font-size:14px;color:var(--ink2)}
+@media (max-width:760px){.plist{grid-template-columns:1fr}}
+
+.links{background:var(--white)}
+.links .wrap{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+.links h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;margin-bottom:18px}
+.linklist{list-style:none;margin:0;padding:0;font-size:15px;display:grid;gap:10px}
+.linklist a{text-decoration:none;color:var(--cobalt);font-weight:600}
+.record{border:1px solid var(--line);padding:28px}
+.record b{display:block;margin-bottom:6px;font-size:15px}
+.record span{display:block;font-size:13px;color:var(--ink2);margin-bottom:16px}
+.record a{font-size:14px;font-weight:600;color:var(--cobalt);text-decoration:none}
+@media (max-width:760px){.links .wrap{grid-template-columns:1fr}}
+
+.contact{background:var(--cobalt);color:#fff}
+.contact .wrap{padding-block:clamp(48px,8vh,80px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,40px);max-width:20ch;line-height:1.2}
+.contact a.btn{background:#fff;color:var(--cobalt-deep);text-decoration:none;font-weight:600;padding:14px 24px;border-radius:999px;font-size:15px}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <nav aria-label="Site">
+      <a href="/">Home</a>
+      <a href="ebook.html">Book</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="author.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-author.html">ES</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">AUTHOR</p>
+    <h1>José Ángel Sosa López</h1>
+    <p>Technology, product and portfolio leader working at the intersection of physical product design and enterprise digital transformation — based in Mexico City, with project exposure across 10+ countries.</p>
+  </div>
+</header>
+
+<section class="bio">
+  <div class="wrap">
+    <div>
+      <figure class="portrait"><img src="/assets/jas-portrait.jpg" alt="Portrait of José Ángel Sosa López" loading="lazy"></figure>
+      <h2>Background</h2>
+    </div>
+    <div class="copy">
+      <p>My work started in industrial design — physical objects, materials, production constraints — before moving into retail POS and EPOS product management, and from there into IT program and portfolio leadership across financial services, banking, retail, SaaS and consumer goods.</p>
+      <p>That origin shapes how I approach digital products and technology portfolios today: as things with materials, tolerances and maintenance costs, whether they're built from plastic or from code. I call this way of working DTL — Digital Transformation Leadership — and it operates at program and portfolio scale, across distributed, cross-functional teams.</p>
+      <p><em>Thinking in Products, Building Systems</em>, the living book on this site, is where I write that argument out in full, one chapter a week.</p>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="In brief">
+  <div class="wrap">
+    <div><b>18+</b><span>YEARS OF<br>EXPERIENCE</span></div>
+    <div><b>10+</b><span>COUNTRIES WITH<br>PROJECT EXPOSURE</span></div>
+    <div><b>12+</b><span>INDUSTRIES —<br>BANKING TO RETAIL</span></div>
+    <div><b>DTL</b><span>DIGITAL TRANSFORMATION<br>LEADERSHIP</span></div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="wrap">
+    <h2>Selected experience</h2>
+
+    <div class="role">
+      <span class="period">May 2025 — Present</span>
+      <div><span class="org">American Express, via Infosys</span><span class="what">Product Manager for the Global Accounts Receivable BPM tool, managing distributed teams across India and Manila, with AI agent-based automation in scope.</span></div>
+      <span class="place">Global</span>
+    </div>
+    <div class="role">
+      <span class="period">Oct 2023 — Jan 2025</span>
+      <div><span class="org">PPG Industries</span><span class="what">IT portfolio and PMO leadership across LATAM programs for industrial coatings.</span></div>
+      <span class="place">LATAM</span>
+    </div>
+    <div class="role">
+      <span class="period">Jan 2023 — Jul 2023</span>
+      <div><span class="org">The Coca-Cola Company</span><span class="what">Program management for transformation initiatives within a high-volume consumer goods environment.</span></div>
+      <span class="place">Mexico</span>
+    </div>
+    <div class="role">
+      <span class="period">2018 — 2023</span>
+      <div><span class="org">Epicor, Skydropx, Coppel</span><span class="what">Product and program leadership spanning enterprise software, logistics platforms, and large-scale retail.</span></div>
+      <span class="place">Mexico</span>
+    </div>
+    <div class="role">
+      <span class="period">2010 — 2020</span>
+      <div><span class="org">Deloitte, Grupo Elektra, and earlier</span><span class="what">Program and project management roles across banking, telecom apps, and financial services, including Actinver, HSBC, Gentera and América Móvil.</span></div>
+      <span class="place">Mexico</span>
+    </div>
+    <p class="earlier">Full chronological detail, industry-specific case material and references are available in the professional record below.</p>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap">
+    <h2>How I work</h2>
+    <ul class="plist">
+      <li><b>Materials before roadmaps</b><span>Naming real constraints — cost, latency, headcount — before committing to a plan.</span></li>
+      <li><b>Product and project, not product versus project</b><span>Portfolio leadership works when both disciplines share the same evidence.</span></li>
+      <li><b>Evidence over narrative</b><span>Case work and shipped systems, not slide decks, are what should carry an argument.</span></li>
+      <li><b>Governance without bureaucracy</b><span>Enough process to make good decisions repeatable — no more than that.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="links">
+  <div class="wrap">
+    <div>
+      <h2>Elsewhere</h2>
+      <ul class="linklist">
+        <li><a href="https://www.linkedin.com/" rel="me">LinkedIn — professional updates and writing</a></li>
+        <li><a href="https://github.com/" rel="me">GitHub — technical work and experiments</a></li>
+        <li><a href="ebook.html">The living book — full argument, one chapter a week</a></li>
+      </ul>
+    </div>
+    <div class="record">
+      <b>Professional record</b>
+      <span>A conventional chronological CV, for recruiters and formal processes. It exists for whoever needs it — it isn't the point of this site.</span>
+      <a href="/downloads/jose-angel-sosa-professional-record.pdf">Professional record ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>One line is usually enough to start a conversation.</h2>
+    <a class="btn" href="mailto:hello@josangelsosa.com">Write ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>José Ángel Sosa López — Author</span>
+    <span><a href="/">Home</a> · <a href="ebook.html">The living book</a> · <a href="#privacy">Privacy</a></span>
+  </div>
+</footer>
+</body>
+</html>

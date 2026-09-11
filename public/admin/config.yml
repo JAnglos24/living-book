@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "ebook"
+    label: "Living Book Chapters"
+    folder: "src/content/ebook"
+    create: true
+    slug: "{{chapter}}-{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - {label: "Chapter Number", name: "chapter", widget: "number"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Status", name: "status", widget: "select", options: ["draft", "published", "revised", "canonical"], default: "draft"}
+      - {label: "Published At", name: "published_at", widget: "date"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}

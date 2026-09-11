@@ -1,0 +1,26 @@
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --black:#070809;
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+  --m:clamp(32px,4vw,72px);
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--white);
+  color:var(--graphite);
+  font-family:var(--grot);
+  font-size:clamp(16px,.35vw + 14px,20px);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased
+}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+/* Shared utility for sr-only */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

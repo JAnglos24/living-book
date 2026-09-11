@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thinking in Products, Building Systems — The Living Book</title>
+<meta name="description" content="A living digital book on physical design, digital products, projects and enterprise portfolios, published one chapter a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+.eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600}
+
+/* ===== top bar ===== */
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+.topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:8px 18px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+.topbar button.toc-btn:hover{background:var(--cobalt);color:#fff}
+.progress{height:2px;background:var(--grid-blue)}
+.progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt);transition:width .1s linear}
+
+/* ===== cover ===== */
+.cover{position:relative;background:var(--cobalt);color:#fff;overflow:hidden;min-height:78svh;display:flex;align-items:flex-end}
+.cover .num{position:absolute;right:calc(var(--margin) * -0.4);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(220px,34vw,560px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;pointer-events:none;user-select:none}
+.cover .wrap{position:relative;z-index:1;padding-block:56px clamp(48px,8vh,88px)}
+.cover .eyebrow{color:#fff;display:flex;align-items:center;gap:14px}
+.cover .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.55)}
+.cover h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(64px,10vw,170px);line-height:.94;letter-spacing:-.04em;margin:24px 0 20px;max-width:13ch}
+.cover .sub{font-size:clamp(17px,1.6vw,22px);line-height:1.4;max-width:44ch;color:rgba(255,255,255,.86);margin-bottom:36px}
+.cover .meta{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:28px}
+.cover .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.btn{font:inherit;font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:999px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:10px;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.btn.solid{background:#fff;color:var(--cobalt-deep)}
+.btn.solid:hover{background:var(--paper)}
+.btn.outline{border-color:rgba(255,255,255,.6);color:#fff}
+.btn.outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ===== about (white info field) ===== */
+.about{background:var(--white)}
+.about .wrap{padding-block:clamp(56px,9vh,96px);display:grid;grid-template-columns:5fr 7fr;gap:var(--gutter)}
+.about h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(36px,4.8vw,78px);line-height:1.02;letter-spacing:-.03em;max-width:11ch}
+.about .copy{max-width:66ch;font-size:1em;line-height:1.6;color:#242A31}
+.about .copy p{margin-bottom:1.1em}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:20px}}
+
+/* ===== facts ===== */
+.facts{background:var(--white);border-top:1px solid var(--line)}
+.facts .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+.facts div{border-left:1px solid var(--line);padding-left:20px}
+.facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;letter-spacing:-.01em;margin-bottom:10px}
+.facts span{font-size:13px;letter-spacing:.04em;color:var(--ink2);line-height:1.5}
+@media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+/* ===== continue reading ===== */
+.continue{background:var(--paper);border-top:1px solid var(--line)}
+.continue .wrap{padding-block:clamp(48px,8vh,80px)}
+.continue .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:28px;flex-wrap:wrap}
+.continue h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em}
+.continue .head a{font-size:14px;font-weight:600;color:var(--cobalt);text-decoration:none}
+.chapcard{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--gutter);background:var(--white);border:1px solid var(--line);align-items:stretch}
+.chapcard .img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px}
+.chapcard .body{padding:clamp(20px,3vw,40px) clamp(20px,3vw,40px) clamp(20px,3vw,40px) 0}
+.chapcard .kicker{font-size:13px;color:var(--ink2);margin-bottom:10px}
+.chapcard h3{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(24px,2.6vw,36px);line-height:1.08;letter-spacing:-.02em;margin-bottom:12px;max-width:20ch}
+.chapcard h3 a{text-decoration:none}
+.chapcard p{color:var(--ink2);max-width:50ch;margin-bottom:16px}
+.chapcard .link{font-size:14px;font-weight:600;color:var(--cobalt);text-decoration:none}
+@media (max-width:760px){.chapcard{grid-template-columns:1fr}.chapcard .body{padding:20px}}
+
+/* ===== table of contents by part ===== */
+.toc-section{background:var(--white);border-top:1px solid var(--line)}
+.toc-section .wrap{padding-block:clamp(48px,8vh,80px)}
+.toc-section h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;margin-bottom:32px}
+.part{border-top:1px solid var(--line);padding-block:26px}
+.part:last-child{border-bottom:1px solid var(--line)}
+.part .partmeta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px}
+.part .partmeta b{font-family:var(--serif);font-weight:500;font-size:20px}
+.part .partmeta span{font-size:13px;color:var(--ink2)}
+.chlist{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.chlist li{display:grid;grid-template-columns:2.6rem 1fr auto;gap:14px;align-items:baseline;padding:10px 8px;border-radius:6px}
+.chlist li.published{cursor:default}
+.chlist li a{text-decoration:none;display:contents}
+.chlist .n{font-family:var(--serif);color:var(--ink2);font-size:15px}
+.chlist .t{font-size:15px}
+.chlist .t.locked{color:var(--ink2)}
+.chlist .st{font-size:12px;color:var(--ink2);white-space:nowrap}
+.chlist li:has(a):hover{background:var(--paper)}
+
+/* ===== edition / changelog ===== */
+.edition{background:var(--paper);border-top:1px solid var(--line)}
+.edition .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+.edition h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;margin-bottom:18px}
+.edition ul{list-style:none;margin:0;padding:0;font-size:14px;color:var(--ink2)}
+.edition li{display:flex;gap:14px;padding:10px 0;border-top:1px solid var(--line)}
+.edition li b{color:var(--graphite);font-weight:600;min-width:5.5rem}
+.pdfcard{border:1px solid var(--line);background:var(--white);padding:28px;align-self:start}
+.pdfcard b{display:block;font-size:15px;margin-bottom:6px}
+.pdfcard span{display:block;font-size:13px;color:var(--ink2);margin-bottom:18px}
+@media (max-width:760px){.edition .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+
+/* ===== TOC slide-over ===== */
+.toc-overlay{position:fixed;inset:0;background:rgba(17,20,24,.4);opacity:0;pointer-events:none;transition:opacity .3s var(--ease);z-index:30}
+.toc-overlay.open{opacity:1;pointer-events:auto}
+.toc-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,88vw);background:var(--white);transform:translateX(100%);transition:transform .35s var(--ease);z-index:31;overflow-y:auto;padding:24px}
+.toc-panel.open{transform:translateX(0)}
+.toc-panel .close{font:inherit;font-size:14px;background:none;border:none;cursor:pointer;color:var(--ink2);padding:8px}
+@media (prefers-reduced-motion:reduce){.toc-overlay,.toc-panel{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <nav aria-label="Book">
+      <a href="/">Site</a>
+      <a href="/author">Author</a>
+      <a href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="ebook.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-ebook.html">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+<!-- ===== COVER ===== -->
+<header class="cover">
+  <span class="num" aria-hidden="true">0.1</span>
+  <div class="wrap">
+    <p class="eyebrow">THE LIVING BOOK</p>
+    <h1>Thinking in Products, Building Systems</h1>
+    <p class="sub">From physical design to digital products, projects and enterprise portfolios.</p>
+    <p class="meta">Living edition 0.1 — 1 of ~20 chapters published — updated weekly</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#continue">Continue reading</a>
+      <a class="btn outline" href="/downloads/thinking-in-products-building-systems-current.pdf">Download current PDF</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section class="about">
+  <div class="wrap">
+    <h2>A book that grows one chapter a week</h2>
+    <div class="copy">
+      <p>Ideas, frameworks and field experience at the intersection of physical products, digital platforms, projects and enterprise portfolios — connecting an origin in industrial design to the discipline of building and running technology at scale.</p>
+      <p>Each chapter is published once, then revised in public as the argument develops. The living edition number reflects how much of the book exists today, not a final, closed work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACTS ===== -->
+<section class="facts" aria-label="In brief">
+  <div class="wrap">
+    <div><b>5</b><span>PARTS PLANNED<br>ACROSS THE BOOK</span></div>
+    <div><b>1</b><span>CHAPTERS PUBLISHED<br>AS OF THIS EDITION</span></div>
+    <div><b>Weekly</b><span>PUBLISHING CADENCE<br>EVERY THURSDAY</span></div>
+  </div>
+</section>
+
+<!-- ===== CONTINUE READING ===== -->
+<section class="continue" id="continue">
+  <div class="wrap">
+    <div class="head">
+      <h2>Continue reading</h2>
+      <a href="ebook-chapter-01.html">Chapter 1 of 20 (planned) →</a>
+    </div>
+    <article class="chapcard">
+      <div class="img" role="img" aria-label="Hero image placeholder, 16 by 9">[ 16:9 hero image ]</div>
+      <div class="body">
+        <p class="kicker">Part I · Understanding the Product — Chapter 1</p>
+        <h3><a href="ebook-chapter-01.html">What Can Industrial Design Teach Digital Product Leaders?</a></h3>
+        <p>Materials, tooling, cost and maintenance shape every physical object before it reaches a user. This opening chapter argues that leaders who learned to design for production ask better questions about architecture, data and operation.</p>
+        <a class="link" href="ebook-chapter-01.html">Read chapter 1 →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== TABLE OF CONTENTS BY PART ===== -->
+<section class="toc-section" id="toc">
+  <div class="wrap">
+    <h2>Table of contents</h2>
+
+    <div class="part">
+      <div class="partmeta"><b>Part I — Understanding the Product</b><span>1 of 4 published</span></div>
+      <ul class="chlist">
+        <li class="published"><a href="ebook-chapter-01.html"><span class="n">01</span><span class="t">What Can Industrial Design Teach Digital Product Leaders?</span><span class="st">Published</span></a></li>
+        <li><span class="n">02</span><span class="t locked">Materials, Tolerances and the Cost of a Decision</span><span class="st">In development</span></li>
+        <li><span class="n">03</span><span class="t locked">What a Production Line Teaches About Architecture</span><span class="st">Upcoming</span></li>
+        <li><span class="n">04</span><span class="t locked">The Product Is Never Just the Object</span><span class="st">Upcoming</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="partmeta"><b>Part II — From Physical to Digital</b><span>0 of 4 published</span></div>
+      <ul class="chlist">
+        <li><span class="n">05</span><span class="t locked">Digital Materials: APIs, Data and Constraints</span><span class="st">Upcoming</span></li>
+        <li><span class="n">06</span><span class="t locked">Designing for Maintenance, Not Just Launch</span><span class="st">Upcoming</span></li>
+        <li><span class="n">07</span><span class="t locked">Interfaces as Tolerances</span><span class="st">Upcoming</span></li>
+        <li><span class="n">08</span><span class="t locked">What Breaks When You Scale a Product</span><span class="st">Upcoming</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="partmeta"><b>Part III — Building Digital Products</b><span>0 of 4 published</span></div>
+      <ul class="chlist">
+        <li><span class="n">09</span><span class="t locked">Engineering Excellence as a Product Decision</span><span class="st">Upcoming</span></li>
+        <li><span class="n">10</span><span class="t locked">Agents, Automation and the New Production Line</span><span class="st">Upcoming</span></li>
+        <li><span class="n">11</span><span class="t locked">UX as a Load-Bearing Discipline</span><span class="st">Upcoming</span></li>
+        <li><span class="n">12</span><span class="t locked">Shipping Without Losing the Argument</span><span class="st">Upcoming</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="partmeta"><b>Part IV — Products, Projects and Portfolios</b><span>0 of 4 published</span></div>
+      <ul class="chlist">
+        <li><span class="n">13</span><span class="t locked">Product and Project Are Not Enemies</span><span class="st">Upcoming</span></li>
+        <li><span class="n">14</span><span class="t locked">When a Project Becomes a Product</span><span class="st">Upcoming</span></li>
+        <li><span class="n">15</span><span class="t locked">Prioritizing When Everything Is Urgent</span><span class="st">Upcoming</span></li>
+        <li><span class="n">16</span><span class="t locked">From the PMO to a Value-Creation System</span><span class="st">Upcoming</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="partmeta"><b>Part V — Transforming the Organization</b><span>0 of 4 published</span></div>
+      <ul class="chlist">
+        <li><span class="n">17</span><span class="t locked">Governance Without Bureaucracy</span><span class="st">Upcoming</span></li>
+        <li><span class="n">18</span><span class="t locked">Culture Is a System, Not a Slide</span><span class="st">Upcoming</span></li>
+        <li><span class="n">19</span><span class="t locked">Leading Transformation from the Middle</span><span class="st">Upcoming</span></li>
+        <li><span class="n">20</span><span class="t locked">A Better Tomorrow, Built on Purpose</span><span class="st">Upcoming</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDITION / CHANGELOG ===== -->
+<section class="edition">
+  <div class="wrap">
+    <div>
+      <h2>Edition history</h2>
+      <ul>
+        <li><b>Edition 0.1</b> Chapter 1 published — 18 Sep 2026</li>
+        <li><b>Edition 0.0</b> Book announced, structure defined — 04 Sep 2026</li>
+      </ul>
+    </div>
+    <div class="pdfcard">
+      <b>Download the current edition</b>
+      <span>A single PDF snapshot of every chapter published so far, generated at build time from the same source as the web edition.</span>
+      <a class="btn solid" style="background:var(--cobalt);color:#fff" href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF — Edition 0.1</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>J. Angel Sosa — Thinking in Products, Building Systems</span>
+    <span><a href="ebook-editions.html">All editions</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+<!-- ===== TOC SLIDE-OVER (interaction reference) ===== -->
+<div class="toc-overlay" id="tocOverlay"></div>
+<aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Table of contents">
+  <button class="close" id="tocClose">Close ✕</button>
+  <div style="margin-top:20px">
+    <p class="eyebrow" style="color:var(--cobalt)">JUMP TO A PART</p>
+    <ul class="chlist" style="margin-top:16px">
+      <li><a href="#toc"><span class="n">I</span><span class="t">Understanding the Product</span><span class="st">1/4</span></a></li>
+      <li><a href="#toc"><span class="n">II</span><span class="t">From Physical to Digital</span><span class="st">0/4</span></a></li>
+      <li><a href="#toc"><span class="n">III</span><span class="t">Building Digital Products</span><span class="st">0/4</span></a></li>
+      <li><a href="#toc"><span class="n">IV</span><span class="t">Products, Projects and Portfolios</span><span class="st">0/4</span></a></li>
+      <li><a href="#toc"><span class="n">V</span><span class="t">Transforming the Organization</span><span class="st">0/4</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+(function(){
+  var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
+      overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
+  function open(){ panel.classList.add('open'); overlay.classList.add('open'); close.focus(); document.addEventListener('keydown', onKey); }
+  function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
+  function onKey(e){ if(e.key==='Escape') shut(); }
+  btn.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  overlay.addEventListener('click', shut);
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+
+  var bar=document.getElementById('progressBar');
+  function onScroll(){
+    var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.setProperty('--p', p+'%');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>

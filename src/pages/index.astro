@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>J. Angel Sosa — Transformation Portfolio / Product & Project Management</title>
+<meta name="description" content="IT Portfolio Leadership — Product & Project Perspective. Ideas, frameworks and field experience at the intersection of physical products, digital platforms, projects and enterprise portfolios.">
+<link rel="preload" as="image" href="assets/jas-warm.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#070809; --graphite:#111418; --paper:#F7F8FA; --gray:#C9D0D8; --line:#AEB8C4; --ink2:#5C6673;
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --grot:"Archivo",Helvetica,Arial,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --m:clamp(32px,4vw,72px);
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--grot);font-size:clamp(15px,.9rem+.25vw,18px);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalt-light);outline-offset:4px}
+h1,h2,h3,p{margin:0}
+.eyebrow{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:1rem}
+.eyebrow::after{content:"";width:2.5rem;height:1px;background:currentColor;opacity:.6}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:800px){:root{--m:22px}}
+
+/* ============ SCENE 00 — HERO ============ */
+.hero{position:relative;height:190svh;background:var(--black)}
+.hero .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--black)}
+.hero .stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,8,9,.42),rgba(7,8,9,0) 30%,rgba(7,8,9,0) 66%,rgba(7,8,9,.6))}
+/* photo: taller than the stage so translating it actually pans across new pixels */
+.hero .photo{position:absolute;left:0;right:0;top:-2svh;height:118svh;z-index:0;overflow:hidden;will-change:transform}
+.hero .photo img{width:100%;height:100%;object-fit:cover;object-position:68% 24%;transform:scale(1.10);transform-origin:center center}
+/* typographic knockout mask — black plane, transparent letters revealing the moving wallpaper */
+.hero .maskwrap{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform,opacity;opacity:0;transform:scale(.985);animation:reveal 1.15s var(--ease) .2s forwards}
+.hero .name-mask{width:100%;height:100%;display:block}
+.hero .name-mask.mobile{display:none}
+.hero .name-mask text{font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.025em}
+@keyframes reveal{to{opacity:1;transform:scale(1)}}
+.hero .ui{position:absolute;inset:0;z-index:3;pointer-events:none;color:var(--paper)}
+.hero .ui>*{pointer-events:auto}
+.hero .mark{position:absolute;top:1.4rem;left:var(--m);font-weight:600;letter-spacing:.06em;font-size:1.05rem;text-decoration:none;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
+.hero .topright{position:absolute;top:1.5rem;right:var(--m);display:flex;align-items:center;gap:1.6rem;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
+.hero .topright .lang{display:flex;align-items:center;gap:6px;font-size:.68rem;letter-spacing:.16em}
+.hero .topright .lang a{text-decoration:none;color:rgba(247,248,250,.6)}
+.hero .topright .lang a[aria-current]{color:var(--paper);font-weight:700}
+.hero .menu{display:flex;align-items:center;gap:.9rem;font-size:.68rem;letter-spacing:.24em;text-decoration:none}
+.hero .menu i{width:36px;height:10px;border-top:1px solid;border-bottom:1px solid}
+.hero .role{position:absolute;left:var(--m);bottom:2.2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;opacity:0;animation:fade .9s var(--ease) 1.2s forwards}
+.hero .quote{position:absolute;right:var(--m);bottom:6.5rem;font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.4vw,1.4rem);line-height:1.35;max-width:16ch;text-align:right;opacity:0;animation:fade .9s var(--ease) 1.7s forwards}
+.hero .quote::after{content:"";display:block;width:2.4rem;height:1px;background:var(--paper);margin-top:1rem;opacity:.7;margin-left:auto}
+.hero .cue{position:absolute;left:50%;bottom:1.6rem;width:1px;height:2.6rem;background:linear-gradient(var(--paper),transparent);opacity:0;animation:fade .8s var(--ease) 1.9s forwards}
+@keyframes fade{to{opacity:1}}
+@media (max-width:800px){
+  .hero .photo{top:-10svh;height:126svh}
+  .hero .photo img{object-position:64% 20%}
+  .hero .quote{display:none}
+  .hero .role{bottom:3rem;max-width:22ch;line-height:1.6}
+  .hero .name-mask.desktop{display:none}
+  .hero .name-mask.mobile{display:block}
+}
+/* ============ SCENE 01 — LIVING BOOK ============ */
+.book{position:relative;z-index:2;background:var(--paper);display:grid;grid-template-columns:55% 45%;min-height:100svh;align-items:stretch;box-shadow:0 -40px 90px rgba(0,0,0,.28)}
+.book .text{padding:clamp(4.2rem,8vh,7rem) clamp(2rem,3vw,4rem) clamp(3rem,6vh,4.5rem) var(--m);display:flex;flex-direction:column;justify-content:center}
+.book .eyebrow{color:var(--graphite)}
+.book h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(58px,6.9vw,128px);line-height:.86;letter-spacing:-.058em;margin:1.8rem 0 1.4rem;max-width:8.6ch}
+.book .sub{font-size:clamp(19px,1.55vw,28px);line-height:1.25;color:var(--ink2);font-weight:400;letter-spacing:-.015em;max-width:31ch;margin-bottom:1.25rem}
+.book .sum{font-size:clamp(15px,.55vw + .8rem,18px);line-height:1.5;max-width:42ch;margin-bottom:2rem;color:#2B323A}
+.book .cta-row{display:flex;flex-wrap:wrap;gap:1rem}
+.book .cta{display:inline-flex;align-items:center;gap:1.2rem;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:500;padding:1.05rem 1.45rem;font-size:.92rem;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);border:1.5px solid var(--cobalt)}
+.book .cta.ghost{background:transparent;color:var(--graphite);border-color:var(--line)}
+.book .cta.ghost:hover,.book .cta.ghost:focus-visible{border-color:var(--graphite);background:transparent;color:var(--graphite)}
+.book .cta svg{width:22px;height:12px;transition:transform .35s var(--ease)}
+.book .cta:hover,.book .cta:focus-visible{background:var(--cobalt-deep)}
+.book .cta:hover svg,.book .cta:focus-visible svg{transform:translateX(10px)}
+.book .object{position:relative;align-self:stretch;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:linear-gradient(90deg,#F7F8FA 0%,#F2F4F7 100%)}
+.book .object .layer{position:absolute;left:50%;top:50%;will-change:transform}
+.book .object .blueprint{width:92%;max-width:720px;opacity:.70;z-index:1;mix-blend-mode:multiply}
+.book .object .chair{width:68%;max-width:560px;z-index:2;filter:drop-shadow(0 28px 38px rgba(17,20,24,.12))}
+.book .object img{width:100%;height:auto;display:block}
+.book .note{position:absolute;z-index:3;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;line-height:1.9;color:var(--ink2)}
+.book .note::after{content:"";display:block;width:1.8rem;height:1px;background:var(--line);margin-top:.5rem}
+.book .n1{top:clamp(2rem,7vh,4.5rem);left:8%}.book .n2{top:clamp(2rem,7vh,4.5rem);right:var(--m);text-align:right}.book .n3{bottom:clamp(2rem,7vh,4.5rem);right:var(--m);text-align:right}
+
+/* metrics live inside the book teaser, as in the approved visual */
+.book-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,1.8vw,2.2rem);margin-top:clamp(3.1rem,6vh,4.8rem);padding-top:clamp(1.7rem,3vh,2.4rem);border-top:1px solid var(--line);max-width:1320px}
+.book-metrics .metric{position:relative;padding-right:1.1rem;min-width:0;display:flex;flex-direction:column;justify-content:flex-start}
+.book-metrics .metric:not(:last-child)::after{content:"";position:absolute;right:0;top:8%;height:78%;width:1px;background:var(--line)}
+.book-metrics b{display:block;font-family:var(--grot);font-style:normal;font-weight:800;font-variation-settings:"wdth" 110;font-size:clamp(55px,5vw,85px);line-height:.78;letter-spacing:-.07em;color:var(--graphite);margin-bottom:.32rem}
+.book-metrics .label{display:block;font-size:clamp(11px,.22vw + 9px,15px);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);line-height:1.08;font-weight:500;max-width:14ch}
+.book-metrics .metric:first-child b{font-size:clamp(59px,5.5vw,89px)}
+.book-metrics .clip{display:block;font-size:inherit;line-height:inherit;letter-spacing:inherit;font-weight:inherit;color:inherit;transform:translateY(115%);transition:transform .85s var(--ease)}
+.book-metrics .metric.infinity b{font-size:clamp(64px,5.75vw,94px);line-height:.72}
+.book-metrics.in .clip{transform:none}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:1100px){
+  .book h2{font-size:clamp(54px,7.8vw,92px)}
+  .book-metrics b{font-size:clamp(46px,4.5vw,69px)}
+  .book-metrics .metric.infinity b{font-size:clamp(52px,5vw,75px)}
+}
+@media (max-width:900px){
+  .book{grid-template-columns:1fr;min-height:0}
+  .book .text{padding:clamp(3.5rem,8vh,5rem) var(--m) 2.5rem}
+  .book .object{min-height:72svh}
+  .book .note{display:none}
+  .book .object .blueprint{width:96%}.book .object .chair{width:72%}
+  .book-metrics{margin-top:3rem}
+}
+@media (max-width:620px){
+  .book h2{font-size:clamp(50px,15vw,74px);max-width:9ch}
+  .book-metrics{grid-template-columns:repeat(2,1fr);gap:1rem 1.1rem}
+  .book-metrics .metric{padding-right:.7rem}
+  .book-metrics b{font-size:clamp(36px,9.5vw,54px)}
+  .book-metrics .metric.infinity b{font-size:clamp(41px,10.5vw,59px)}
+  .book-metrics .label{font-size:.62rem;letter-spacing:.11em;line-height:1.35}
+}
+
+/* ============ SCENE 02 — CINEMATIC STRIP ============ */
+.strip{position:relative;z-index:2;height:135svh;background:var(--black)}
+.strip .scene{position:sticky;top:calc((100svh - 86svh)/2);height:86svh;overflow:hidden}
+.strip .bg{position:absolute;inset:-6%;z-index:0;will-change:transform}
+.strip .bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.strip .fig{position:absolute;left:60%;bottom:11%;height:54%;z-index:2;will-change:transform}
+.strip .fig img{height:100%;width:auto;display:block}
+.strip .shadow{position:absolute;left:60%;bottom:11%;z-index:1;width:clamp(120px,12vw,220px);height:12px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),transparent 70%);transform-origin:50% 0;translate:-50% 0;will-change:transform,opacity}
+.strip .say{position:absolute;z-index:3;left:var(--m);top:50%;transform:translateY(-50%);color:var(--paper);font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,1rem+1.7vw,2.6rem);line-height:1.28;max-width:14ch;letter-spacing:-.01em;will-change:transform}
+.strip .say small{display:block;font-family:var(--grot);font-style:normal;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;margin-top:1.6rem}
+.strip .say small::after{content:"";display:inline-block;width:2.4rem;height:1px;background:var(--paper);vertical-align:middle;margin-left:1rem}
+@media (max-width:800px){
+  .strip{height:120svh}.strip .scene{height:80svh;top:10svh}
+  .strip .fig{left:74%;bottom:8%;height:44%}.strip .shadow{left:74%;bottom:8%}
+  .strip .say{max-width:11ch;font-size:clamp(1.2rem,5vw,1.7rem);top:32%}
+}
+/* ============ SCENE 04 — NAV ============ */
+.nav{position:relative;z-index:2;background:var(--paper);display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
+.nav a{display:block;padding:clamp(2rem,4vh,3.2rem) var(--m) clamp(2rem,4vh,3.2rem) 1.6rem;text-decoration:none;border-right:1px solid var(--line);position:relative;overflow:hidden;transition:background .35s var(--ease)}
+.nav a:first-child{padding-left:var(--m)}
+.nav a:last-child{border-right:0}
+.nav b{display:block;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin-bottom:.4rem;transition:transform .35s var(--ease)}
+.nav span{display:block;font-size:.9rem;color:var(--ink2);line-height:1.4;transition:transform .35s var(--ease)}
+.nav i{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--cobalt);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.nav em{position:absolute;right:1.4rem;top:50%;font-style:normal;color:var(--cobalt);transform:translate(-8px,-50%);opacity:0;transition:transform .35s var(--ease),opacity .35s}
+.nav a:hover,.nav a:focus-visible{background:#EEF1F5}
+.nav a:hover i,.nav a:focus-visible i{transform:scaleX(1)}
+.nav a:hover b,.nav a:focus-visible b{transform:translateX(3px)}
+.nav a:hover em,.nav a:focus-visible em{transform:translate(0,-50%);opacity:1}
+@media (max-width:900px){.nav{grid-template-columns:1fr}.nav a{border-right:0;border-bottom:1px solid var(--line);padding:1.5rem var(--m)}.nav a:last-child{border-bottom:0}}
+
+footer{position:relative;z-index:2;background:var(--paper);padding:1.6rem var(--m) 2.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 2rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+footer a{text-decoration:none}
+footer nav{display:flex;gap:2rem}
+
+@media (prefers-reduced-motion:reduce){
+  .hero{height:100svh}.hero .stage{position:relative}
+  .hero .maskwrap{animation:none;opacity:1;transform:none}
+  .hero .mark,.hero .menu,.hero .role,.hero .quote,.hero .cue{animation:none;opacity:1}
+  .reveal{opacity:1;transform:none;transition:none}
+  .strip{height:auto}.strip .scene{position:relative;top:0;height:86svh}
+  .book .object .layer{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== 00 HERO ========== -->
+<section class="hero" id="hero" aria-label="Introduction">
+  <div class="stage" id="stage">
+    <div class="photo" id="photo"><img src="assets/jas-warm.jpg" alt="José Ángel Sosa seated on an illuminated cube in a dark interior" fetchpriority="high"></div>
+    <div class="maskwrap" id="maskwrap" aria-hidden="true">
+      <svg class="name-mask desktop" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <mask id="heroMaskDesktop" maskUnits="userSpaceOnUse">
+            <rect width="1600" height="900" fill="#fff"/>
+            <text id="heroL1D" x="808" y="408" text-anchor="middle" font-size="338" textLength="1430" lengthAdjust="spacingAndGlyphs" fill="#000">J.ANGEL</text>
+            <text id="heroL2D" x="675" y="726" text-anchor="middle" font-size="372" textLength="1245" lengthAdjust="spacingAndGlyphs" fill="#000">SOSA</text>
+          </mask>
+        </defs>
+        <rect width="1600" height="900" fill="#070809" mask="url(#heroMaskDesktop)"/>
+      </svg>
+      <svg class="name-mask mobile" viewBox="0 0 420 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <mask id="heroMaskMobile" maskUnits="userSpaceOnUse">
+            <rect width="420" height="800" fill="#fff"/>
+            <text id="heroL1M" x="210" y="325" text-anchor="middle" font-size="145" textLength="400" lengthAdjust="spacingAndGlyphs" fill="#000">J.ANGEL</text>
+            <text id="heroL2M" x="210" y="505" text-anchor="middle" font-size="190" textLength="400" lengthAdjust="spacingAndGlyphs" fill="#000">SOSA</text>
+          </mask>
+        </defs>
+        <rect width="420" height="800" fill="#070809" mask="url(#heroMaskMobile)"/>
+      </svg>
+    </div>
+    <div class="ui">
+      <h1 class="sr">J. Angel Sosa — Transformation Portfolio / Product & Project Management</h1>
+      <a class="mark" href="home.html">JAS</a>
+      <div class="topright">
+        <div class="lang" role="group" aria-label="Language"><a href="home.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-home.html">ES</a></div>
+        <a class="menu" href="#nav">MENU <i></i></a>
+      </div>
+      <p class="role">Transformation Portfolio / Product & Project Management</p>
+      <p class="quote">“Products become meaningful when they fit both your needs and your spirit.”</p>
+      <div class="cue"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 01 LIVING BOOK TEASER ========== -->
+<section class="book" id="book" aria-labelledby="bt">
+  <div class="text">
+    <p class="eyebrow reveal">The living book</p>
+    <h2 id="bt" class="reveal" style="transition-delay:.08s">Thinking in Products, Building Systems</h2>
+    <p class="sub reveal" style="transition-delay:.16s">From physical design to digital products, projects and enterprise portfolios.</p>
+    <p class="sum reveal" style="transition-delay:.22s">Ideas, frameworks and field experience connecting physical products, digital platforms, projects and enterprise portfolios.</p>
+    <div class="cta-row reveal" style="transition-delay:.3s">
+      <a class="cta" href="ebook.html">Explore the living book <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+      <a class="cta ghost" href="ebook-chapter-01.html">Read the latest chapter <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+    </div>
+    <div class="book-metrics" id="bookMetrics" aria-label="In brief">
+      <div class="metric"><b><span class="clip">16+</span></b><span class="label">Years of<br>experience</span></div>
+      <div class="metric"><b><span class="clip" style="transition-delay:.08s">50+</span></b><span class="label">Projects across<br>industries</span></div>
+      <div class="metric infinity"><b><span class="clip" style="transition-delay:.16s">∞</span></b><span class="label">Ideas still<br>in progress</span></div>
+      <div class="metric"><b><span class="clip" style="transition-delay:.24s">10+</span></b><span class="label">Worldwide<br>products</span></div>
+    </div>
+  </div>
+  <div class="object" id="object">
+    <p class="note n1">Idea<br>Design<br>Develop<br>Scale</p>
+    <p class="note n2">People<br>Products<br>Projects<br>Systems</p>
+    <p class="note n3">Function<br>Impact<br>People</p>
+    <div class="layer blueprint" id="bp"><img src="assets/chair-blueprint.png" alt="Technical drawing of a moulded chair with dimensions and radii" loading="lazy"></div>
+    <div class="layer chair" id="chair"><img src="assets/chair-render.png" alt="Sculptural white chair on a pedestal" loading="lazy"></div>
+  </div>
+</section>
+
+
+<!-- ========== 02 CINEMATIC STRIP ========== -->
+<section class="strip" id="strip" aria-label="Editorial statement">
+  <div class="scene">
+    <div class="bg" id="sbg"><img src="assets/cinematic-bg.jpg" alt="" loading="lazy"></div>
+    <div class="shadow" id="sshadow"></div>
+    <div class="fig" id="sfig"><img src="assets/jas-figure.png" alt="Graphic illustration of a standing figure seen from behind" loading="lazy"></div>
+    <p class="say reveal" id="ssay">“A more human and thoughtful built world is possible.”<small>J. A. Sosa</small></p>
+  </div>
+</section>
+
+<!-- ========== 04 NAVIGATION ========== -->
+<nav class="nav" id="nav" aria-label="Sections">
+  <a href="ebook.html"><b>Book</b><span>Thinking in Products, Building Systems</span><em>→</em><i></i></a>
+  <a href="#ideas"><b>Ideas</b><span>Concepts, experiments and reusable models</span><em>→</em><i></i></a>
+  <a href="articles.html"><b>Articles</b><span>Long-form thinking</span><em>→</em><i></i></a>
+  <a href="author.html"><b>Author</b><span>Background, selected experience and links</span><em>→</em><i></i></a>
+  <a href="author.html#contact"><b>Contact</b><span>LinkedIn, GitHub and professional contact</span><em>→</em><i></i></a>
+</nav>
+
+<footer>
+  <span>J. Angel Sosa — Mexico, 2026</span>
+  <nav aria-label="Links"><a href="https://www.linkedin.com/" rel="me">LinkedIn</a><a href="https://github.com/" rel="me">GitHub</a><a href="/privacy/">Privacy</a></nav>
+</footer>
+
+<script>
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var E = function(id){ return document.getElementById(id); };
+
+  /* enter states only */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.25});
+  document.querySelectorAll('.reveal, .book-metrics').forEach(function(el){ io.observe(el); });
+  if(RM) return;
+
+  var hero=E('hero'), photo=E('photo'), maskwrap=E('maskwrap');
+  var heroL1D=E('heroL1D'), heroL2D=E('heroL2D'), heroL1M=E('heroL1M'), heroL2M=E('heroL2M');
+  var book=E('book'), obj=E('object'), bp=E('bp'), chair=E('chair');
+  var strip=E('strip'), sbg=E('sbg'), sfig=E('sfig'), ssay=E('ssay'), sshadow=E('sshadow');
+  var pointer={x:0,y:0}, fine=matchMedia('(pointer:fine)').matches, ticking=false;
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function clamp01(v){ return v<0?0:v>1?1:v; }
+  /* progress of an element through the viewport: 0 entering, 1 leaving */
+  function through(el){
+    var r=el.getBoundingClientRect();
+    return clamp01((innerHeight-r.top)/(innerHeight+r.height));
+  }
+
+  function frame(){
+    ticking=false;
+
+    /* ---------- 00 HERO ---------- */
+    var p=clamp01(scrollY/(hero.offsetHeight-innerHeight));
+    photo.style.transform='translate3d(0,'+lerp(0,-9,p)+'svh,0) scale('+lerp(1.10,1.035,p)+')';
+    var drift=clamp01((p-.28)/.52);
+    if(heroL1D) heroL1D.setAttribute('transform','translate('+lerp(0,-34,drift)+' 0)');
+    if(heroL2D) heroL2D.setAttribute('transform','translate('+lerp(0,34,drift)+' 0)');
+    if(heroL1M) heroL1M.setAttribute('transform','translate('+lerp(0,-10,drift)+' 0)');
+    if(heroL2M) heroL2M.setAttribute('transform','translate('+lerp(0,10,drift)+' 0)');
+    if(maskwrap) maskwrap.style.transform='translate3d(0,'+lerp(0,-10,clamp01((p-.78)/.22))+'svh,0)';
+
+    /* ---------- 01 BOOK OBJECT ---------- */
+    var q=(through(book)-.5)*2;                       /* -1 .. 1 */
+    if(bp) bp.style.transform='translate3d(calc(-50% + '+(pointer.x*-18)+'px), calc(-50% + '+lerp(-24,32,(q+1)/2)+'px + '+(pointer.y*-14)+'px), 0)';
+    if(chair) chair.style.transform='translate3d(calc(-50% + '+(pointer.x*10)+'px), calc(-50% + '+lerp(34,-22,(q+1)/2)+'px + '+(pointer.y*8)+'px), 0)';
+
+    /* ---------- 02 CINEMATIC ---------- */
+    var t=through(strip);
+    sbg.style.transform='translate3d(0,'+lerp(25,-25,t)+'px,0) scale('+lerp(1.035,1,t)+')';
+    sfig.style.transform='translate3d('+lerp(-12,10,t)+'px,'+lerp(70,-55,t)+'px,0)';
+    ssay.style.transform='translate3d(0,calc(-50% + '+lerp(25,-18,t)+'px),0)';
+    sshadow.style.transform='translate(-50%,0) scaleX('+lerp(.85,1.18,t)+')';
+    sshadow.style.opacity=lerp(.32,.16,t);
+  }
+
+  addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(frame); ticking=true; } },{passive:true});
+  addEventListener('resize',function(){ if(!ticking){ requestAnimationFrame(frame); ticking=true; } },{passive:true});
+
+  if(fine){
+    obj.addEventListener('pointermove',function(e){
+      var b=obj.getBoundingClientRect();
+      pointer.x=(e.clientX-b.left)/b.width-.5;
+      pointer.y=(e.clientY-b.top)/b.height-.5;
+      if(!ticking){ requestAnimationFrame(frame); ticking=true; }
+    });
+    obj.addEventListener('pointerleave',function(){ pointer.x=0; pointer.y=0; frame(); });
+  }
+  frame();
+})();
+</script>
+</body>
+</html>

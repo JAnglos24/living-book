@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles — J. Angel Sosa</title>
+<meta name="description" content="Articles by José Ángel Sosa López, mirrored from LinkedIn — product prioritization, PMO practice, management and hiring.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0} a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+
+.hero{background:var(--cobalt);color:#fff}
+.hero .wrap{padding-block:clamp(56px,10vh,96px)}
+.hero .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.hero .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
+.hero h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,6vw,84px);line-height:1;letter-spacing:-.03em;margin-bottom:20px;max-width:14ch}
+.hero p{font-size:clamp(17px,1.5vw,21px);max-width:56ch;color:rgba(255,255,255,.88)}
+.hero .src{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5)}
+
+.list{background:var(--white)}
+.list .wrap{padding-block:clamp(8px,2vh,16px) clamp(48px,8vh,80px)}
+.article{display:grid;grid-template-columns:8rem 1fr auto;gap:24px;padding:28px 0;border-top:1px solid var(--line);align-items:baseline}
+.article:last-child{border-bottom:1px solid var(--line)}
+.article .date{font-size:13px;color:var(--ink2)}
+.article h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(19px,1.8vw,26px);line-height:1.2;letter-spacing:-.01em;margin-bottom:10px;max-width:34ch}
+.article h2 a{text-decoration:none}
+.article h2 a:hover{color:var(--cobalt)}
+.article p{color:var(--ink2);font-size:15px;max-width:60ch;margin-bottom:0}
+.article .go{white-space:nowrap;font-size:13px;font-weight:600;color:var(--cobalt);text-decoration:none}
+@media (max-width:800px){.article{grid-template-columns:1fr}.article .go{justify-self:start}}
+
+.note{background:var(--paper);border-top:1px solid var(--line)}
+.note .wrap{padding-block:clamp(32px,6vh,48px)}
+.note p{color:var(--ink2);font-size:14px;max-width:70ch}
+.note a{color:var(--cobalt);font-weight:600;text-decoration:none}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <nav aria-label="Site">
+      <a href="/">Home</a>
+      <a href="ebook.html">Book</a>
+      <a href="author.html">Author</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="articles.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-articles.html">ES</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">ARTICLES</p>
+    <h1>Long-form thinking</h1>
+    <p>Six articles published on LinkedIn between 2022 and 2023, on product prioritization, PMO practice, hiring and management. This page mirrors them — the full text lives on LinkedIn.</p>
+    <a class="src" href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">View all activity on LinkedIn ↗</a>
+  </div>
+</header>
+
+<section class="list">
+  <div class="wrap">
+
+    <article class="article">
+      <span class="date">Jun 7, 2023</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/building-pmo-agile-practices-5-key-recommendations-sosa-l%C3%B3pez">Building a PMO with Agile Practices: 5 Key Recommendations</a></h2>
+        <p>Why a modern PMO needs an open framework rather than a single fixed workflow — letting teams design their own phases and tracking while the portfolio still holds together.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/building-pmo-agile-practices-5-key-recommendations-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+    <article class="article">
+      <span class="date">May 23, 2023</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/destructive-impact-gaslighting-workplace-jos%C3%A9-angel-sosa-l%C3%B3pez">The Destructive Impact of Gaslighting in the Workplace</a></h2>
+        <p>How a manipulative pattern that distorts a person's sense of reality shows up on teams, what it costs in productivity and mental health, and how to recognize the language behind it.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/destructive-impact-gaslighting-workplace-jos%C3%A9-angel-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+    <article class="article">
+      <span class="date">Apr 21, 2023</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/human-centric-management-jos%C3%A9-angel-sosa-l%C3%B3pez">Human Centric Management</a></h2>
+        <p>Moving on from "resource management" language from the 1990s toward treating people as more than an interchangeable input to a project plan.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/human-centric-management-jos%C3%A9-angel-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+    <article class="article">
+      <span class="date">Aug 11, 2022</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/inputs-product-priorization-jos%C3%A9-angel-sosa-l%C3%B3pez">Inputs for Product Prioritization</a></h2>
+        <p>A portfolio manager's job includes giving senior leadership the missing pieces — dependencies, business impact — they need to prioritize a backlog with real certainty, not guesswork.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/inputs-product-priorization-jos%C3%A9-angel-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+    <article class="article">
+      <span class="date">Jul 29, 2022</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/good-practice-have-blacklist-candidates-jos%C3%A9-angel-sosa-l%C3%B3pez">Is It a Good Practice to Have a Blacklist of Candidates?</a></h2>
+        <p>A reflection sparked by an interview question about tool choice and process — and what it reveals about how a candidate is really being evaluated.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/good-practice-have-blacklist-candidates-jos%C3%A9-angel-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+    <article class="article">
+      <span class="date">Jun 22, 2022</span>
+      <div>
+        <h2><a href="https://www.linkedin.com/pulse/how-does-your-shopping-car-its-behavior-impact-churn-rate-sosa-l%C3%B3pez">How Does Your Shopping Cart and Its Behavior Impact Your Churn Rate?</a></h2>
+        <p>What happens to customer trust when a shopping cart shows items the order-management system or a third-party vendor can no longer fulfill.</p>
+      </div>
+      <a class="go" href="https://www.linkedin.com/pulse/how-does-your-shopping-car-its-behavior-impact-churn-rate-sosa-l%C3%B3pez">Read on LinkedIn ↗</a>
+    </article>
+
+  </div>
+</section>
+
+<section class="note">
+  <div class="wrap">
+    <p>This page is a mirror, not a copy — titles, dates and a short summary in my own words, each linking back to the original on LinkedIn where the full article lives. New pieces get added here after they're published there.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>J. Angel Sosa — Articles</span>
+    <span><a href="/">Home</a> · <a href="ebook.html">The living book</a> · <a href="author.html">Author</a></span>
+  </div>
+</footer>
+</body>
+</html>
