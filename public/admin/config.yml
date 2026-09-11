@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: jasosal/living-book # REEMPLAZA ESTO CON TU USUARIO/REPO
-  branch: main # Branch to update
+  repo: JAnglos24/living-book
+  branch: master
 
 media_folder: "public/assets"
 public_folder: "/assets"
