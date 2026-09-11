@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  name: github
+  repo: jasosal/living-book # REEMPLAZA ESTO CON TU USUARIO/REPO
+  branch: main # Branch to update
 
 media_folder: "public/assets"
 public_folder: "/assets"
