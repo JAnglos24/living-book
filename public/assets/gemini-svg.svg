@@ -1,0 +1,97 @@
+<svg viewBox="0 0 920 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <!-- Definitions -->
+  <defs>
+    <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#F0F2F5" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0057D9"/>
+    </marker>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5C6673"/>
+    </marker>
+  </defs>
+
+  <!-- Section 1: The Physical Line -->
+  <g transform="translate(30, 20)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#0057D9" letter-spacing="1.2">SYSTEM A: DETERMINISTIC PHYSICAL CAPACITY (GOLDRATT TOC)</text>
+    
+    <!-- Station 1 -->
+    <rect x="24" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5"/>
+    <text x="38" y="70" font-size="12" font-weight="700" fill="#111418">FEED INTAKE</text>
+    <text x="38" y="88" font-size="18" font-weight="800" fill="#111418">120 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr</tspan></text>
+    <rect x="38" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="38" y="105" width="115" height="6" rx="3" fill="#0057D9"/>
+
+    <!-- WIP Queue Buffer (accumulation) -->
+    <g transform="translate(195, 70)">
+      <line x1="0" y1="18" x2="70" y2="18" stroke="#0057D9" stroke-width="1.5" stroke-dasharray="2 3" marker-end="url(#arrow-cobalt)"/>
+      <!-- Buffer tokens -->
+      <rect x="18" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="27" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="36" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="45" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <text x="35" y="-3" font-size="9" font-weight="700" fill="#0057D9" text-anchor="middle">WIP SPIKE (+420%)</text>
+    </g>
+
+    <!-- Bottleneck Station (The Chokepoint) -->
+    <rect x="275" y="40" width="180" height="95" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="2.5"/>
+    <rect x="275" y="40" width="180" height="22" rx="2" fill="#0057D9"/>
+    <text x="365" y="55" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CRITICAL CONSTRAINT</text>
+    <text x="290" y="82" font-size="13" font-weight="800" fill="#111418">MILLING / CNC</text>
+    <text x="290" y="104" font-size="22" font-weight="800" fill="#0057D9">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr (Active Max)</tspan></text>
+    <text x="290" y="122" font-size="10" font-family="'Source Serif 4', serif" font-style="italic" fill="#5C6673">Cycle-time cannot be negotiated</text>
+
+    <!-- Starvation line -->
+    <g transform="translate(465, 70)">
+      <line x1="0" y1="18" x2="65" y2="18" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+      <text x="32" y="-3" font-size="9" font-weight="600" fill="#5C6673" text-anchor="middle">STARVATION</text>
+    </g>
+
+    <!-- Downstream Idle Station -->
+    <rect x="540" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="554" y="70" font-size="12" font-weight="700" fill="#5C6673">ASSEMBLY</text>
+    <text x="554" y="88" font-size="18" font-weight="800" fill="#5C6673">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr actual</tspan></text>
+    <rect x="554" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="554" y="105" width="30" height="6" rx="3" fill="#5C6673"/>
+    <text x="554" y="124" font-size="9.5" font-weight="600" fill="#5C6673">Capacity Wasted: 72%</text>
+
+    <!-- Final Output -->
+    <g transform="translate(710, 70)">
+      <line x1="0" y1="18" x2="45" y2="18" stroke="#111418" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+    </g>
+    <rect x="765" y="55" width="75" height="65" rx="3" fill="#111418"/>
+    <text x="802" y="83" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">NET OUT</text>
+    <text x="802" y="104" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle">28/h</text>
+  </g>
+
+  <!-- Section 2: The Abstract Roadmap (Linear Delusion) -->
+  <g transform="translate(30, 195)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1.2">SYSTEM B: ROADMAP ABSTRACTION (GANTT FALLACY)</text>
+    
+    <!-- Timeline Grid lines -->
+    <line x1="200" y1="40" x2="200" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="400" y1="40" x2="400" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="600" y1="40" x2="600" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="800" y1="40" x2="800" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    
+    <!-- Bar 1 -->
+    <rect x="40" y="50" width="340" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="50" y="65" font-size="10.5" font-weight="600" fill="#111418">Feature Epics A &amp; B (Assumed Parallel Flow)</text>
+    
+    <!-- Bar 2: Bottleneck masked -->
+    <rect x="260" y="80" width="400" height="22" rx="2" fill="#2E7CFF" opacity="0.35"/>
+    <text x="270" y="95" font-size="10.5" font-weight="600" fill="#003F9E">Shared Architecture Migration (Hidden Capacity Collision)</text>
+    
+    <!-- Bar 3 -->
+    <rect x="520" y="110" width="300" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="530" y="125" font-size="10.5" font-weight="600" fill="#5C6673">Downstream Go-To-Market Delivery (Speculative)</text>
+
+    <!-- Overlay callout -->
+    <rect x="620" y="44" width="220" height="42" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+    <text x="630" y="60" font-size="9.5" font-weight="700" fill="#0057D9">ROADMAP BLIND SPOT:</text>
+    <text x="630" y="75" font-size="9" font-family="'Source Serif 4', serif" fill="#5C6673">Queues, handoffs &amp; variance are hidden</text>
+  </g>
+</svg>

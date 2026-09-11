@@ -1,0 +1,53 @@
+<svg viewBox="0 0 920 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="nre-area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0057D9" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0057D9" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Grid lines -->
+  <g stroke="#F0F2F5" stroke-width="1">
+    <line x1="100" y1="70" x2="860" y2="70"/>
+    <line x1="100" y1="140" x2="860" y2="140"/>
+    <line x1="100" y1="210" x2="860" y2="210"/>
+    <line x1="100" y1="280" x2="860" y2="280"/>
+  </g>
+
+  <!-- Axes -->
+  <line x1="100" y1="40" x2="100" y2="330" stroke="#111418" stroke-width="1.5"/>
+  <line x1="100" y1="330" x2="860" y2="330" stroke="#111418" stroke-width="1.5"/>
+
+  <!-- Axis Labels -->
+  <text x="40" y="45" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" transform="rotate(-90 40,45)">UNIT COST ($ / UNIT)</text>
+  <text x="860" y="360" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" text-anchor="end">CUMULATIVE PRODUCTION VOLUME (UNITS)</text>
+
+  <!-- Y ticks -->
+  <text x="85" y="74" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$120</text>
+  <text x="85" y="144" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$60</text>
+  <text x="85" y="214" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$20</text>
+  <text x="85" y="284" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$4 (Floor)</text>
+
+  <!-- Tooling Decision Point (NRE upfront) -->
+  <rect x="110" y="45" width="180" height="70" rx="3" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+  <text x="122" y="66" font-size="10" font-weight="800" fill="#0057D9">UPFRONT TOOLING (CAPEX)</text>
+  <text x="122" y="82" font-size="12" font-weight="700" fill="#111418">Fixed Tooling Incurred: $250k</text>
+  <text x="122" y="100" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Steel Cavities, Hardened Dies, NRE</text>
+
+  <!-- Curves -->
+  <!-- Amortization Area & Curve -->
+  <path d="M 120 70 Q 200 240 850 270 L 850 280 L 120 280 Z" fill="url(#nre-area)"/>
+  <path d="M 120 70 Q 200 240 850 270" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+
+  <!-- Asymptotic Floor Line (Marginal cost) -->
+  <line x1="100" y1="280" x2="860" y2="280" stroke="#111418" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="850" y="300" font-size="11" font-weight="700" fill="#111418" text-anchor="end">PERPETUAL PER-UNIT RUN FLOOR ($4.20 / unit)</text>
+  <text x="850" y="316" font-size="9.5" font-family="'Source Serif 4', serif" fill="#5C6673" text-anchor="end">Raw resin, cycle time, machine tonnage &amp; QA reject scrap rate</text>
+
+  <!-- Callout indicator on curve -->
+  <circle cx="300" cy="245" r="5" fill="#0057D9"/>
+  <line x1="300" y1="245" x2="360" y2="180" stroke="#0057D9" stroke-width="1"/>
+  <rect x="360" y="155" width="260" height="50" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+  <text x="372" y="174" font-size="10.5" font-weight="700" fill="#0057D9">AMORTIZED UNIT IMPACT</text>
+  <text x="372" y="192" font-size="10" font-family="'Source Serif 4', serif" fill="#111418">Tooling defects lock in cycle-time overhead forever</text>
+</svg>

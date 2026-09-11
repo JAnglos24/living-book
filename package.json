@@ -23,6 +23,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "puppeteer": "^25.10.0",
     "wrangler": "^4.131.1"
   }
 }
