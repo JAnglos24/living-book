@@ -37,19 +37,32 @@ h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
 .progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt);transition:width .1s linear}
 
 /* ===== cover ===== */
-.cover{position:relative;background:var(--cobalt);color:#fff;overflow:hidden;min-height:78svh;display:flex;align-items:flex-end}
-.cover .num{position:absolute;right:calc(var(--margin) * -0.4);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(220px,34vw,560px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;pointer-events:none;user-select:none}
+
+.cover{position:relative;background:var(--paper);color:var(--graphite);overflow:hidden;min-height:78svh;display:flex;align-items:center}
+.cover .bg-img{position:absolute;top:0;right:0;width:55%;height:100%;object-fit:cover;object-position:center;z-index:0;mask-image:linear-gradient(to right, transparent, black 15%)}
+@media (max-width: 900px) { .cover .bg-img { width: 100%; mask-image: linear-gradient(to top, transparent, black 40%); opacity: 0.3; } }
+.cover .num { color:var(--cobalt); opacity:0.04; }
+.cover .eyebrow{color:var(--cobalt);}
+.cover .eyebrow::after{background:var(--cobalt);opacity:.3}
+.cover .sub{color:var(--ink2);}
+.cover .meta{color:var(--ink2);}
+.cover .btn.solid{background:var(--cobalt);color:#fff;}
+.cover .btn.solid:hover{background:var(--cobalt-deep);}
+.cover .btn.outline{border-color:var(--cobalt);color:var(--cobalt);}
+.cover .btn.outline:hover{background:var(--grid-blue);}
+
+.cover .num{position:absolute;right:calc(var(--margin) * -0.4);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(220px,34vw,560px);line-height:1;letter-spacing:-.04em;pointer-events:none;user-select:none}
 .cover .wrap{position:relative;z-index:1;padding-block:56px clamp(48px,8vh,88px)}
-.cover .eyebrow{color:#fff;display:flex;align-items:center;gap:14px}
-.cover .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.55)}
+.cover .eyebrow{display:flex;align-items:center;gap:14px}
+.cover .eyebrow::after{content:"";flex:0 0 40px;height:1px;}
 .cover h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(64px,10vw,170px);line-height:.94;letter-spacing:-.04em;margin:24px 0 20px;max-width:13ch}
-.cover .sub{font-size:clamp(17px,1.6vw,22px);line-height:1.4;max-width:44ch;color:rgba(255,255,255,.86);margin-bottom:36px}
-.cover .meta{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:28px}
+.cover .sub{font-size:clamp(17px,1.6vw,22px);line-height:1.4;max-width:44ch;margin-bottom:36px}
+.cover .meta{font-size:14px;margin-bottom:28px}
 .cover .cta-row{display:flex;flex-wrap:wrap;gap:14px}
 .btn{font:inherit;font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:999px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:10px;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
 .btn.solid{background:#fff;color:var(--cobalt-deep)}
 .btn.solid:hover{background:var(--paper)}
-.btn.outline{border-color:rgba(255,255,255,.6);color:#fff}
+.btn.outline{}
 .btn.outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
 /* ===== about (white info field) ===== */
@@ -148,6 +161,7 @@ footer a{text-decoration:none}
 
 <!-- ===== COVER ===== -->
 <header class="cover">
+  <img class="bg-img" src="/assets/ebook-hero.png" alt="Chair rendering process" fetchpriority="high">
   <span class="num" aria-hidden="true">0.1</span>
   <div class="wrap">
     <p class="eyebrow">THE LIVING BOOK</p>
@@ -186,15 +200,15 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="head">
       <h2>Continue reading</h2>
-      <a href="ebook-chapter-01.html">Chapter 1 of 20 (planned) →</a>
+      <a href="/ebook/01-what-can-industrial-design-teach/">Chapter 1 of 20 (planned) →</a>
     </div>
     <article class="chapcard">
       <div class="img" role="img" aria-label="Hero image placeholder, 16 by 9">[ 16:9 hero image ]</div>
       <div class="body">
         <p class="kicker">Part I · Understanding the Product — Chapter 1</p>
-        <h3><a href="ebook-chapter-01.html">What Can Industrial Design Teach Digital Product Leaders?</a></h3>
+        <h3><a href="/ebook/01-what-can-industrial-design-teach/">What Can Industrial Design Teach Digital Product Leaders?</a></h3>
         <p>Materials, tooling, cost and maintenance shape every physical object before it reaches a user. This opening chapter argues that leaders who learned to design for production ask better questions about architecture, data and operation.</p>
-        <a class="link" href="ebook-chapter-01.html">Read chapter 1 →</a>
+        <a class="link" href="/ebook/01-what-can-industrial-design-teach/">Read chapter 1 →</a>
       </div>
     </article>
   </div>
@@ -208,7 +222,7 @@ footer a{text-decoration:none}
     <div class="part">
       <div class="partmeta"><b>Part I — Understanding the Product</b><span>1 of 4 published</span></div>
       <ul class="chlist">
-        <li class="published"><a href="ebook-chapter-01.html"><span class="n">01</span><span class="t">What Can Industrial Design Teach Digital Product Leaders?</span><span class="st">Published</span></a></li>
+        <li class="published"><a href="/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span class="t">What Can Industrial Design Teach Digital Product Leaders?</span><span class="st">Published</span></a></li>
         <li><span class="n">02</span><span class="t locked">Materials, Tolerances and the Cost of a Decision</span><span class="st">In development</span></li>
         <li><span class="n">03</span><span class="t locked">What a Production Line Teaches About Architecture</span><span class="st">Upcoming</span></li>
         <li><span class="n">04</span><span class="t locked">The Product Is Never Just the Object</span><span class="st">Upcoming</span></li>
@@ -278,7 +292,7 @@ footer a{text-decoration:none}
 <footer>
   <div class="wrap">
     <span>J. Angel Sosa — Thinking in Products, Building Systems</span>
-    <span><a href="ebook-editions.html">All editions</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy/">Privacy</a></span>
+    <span><a href="/ebook/editions/">All editions</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy/">Privacy</a></span>
   </div>
 </footer>
 
