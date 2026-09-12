@@ -2,183 +2,14 @@
 import Layout from '../../../../layouts/Layout.astro';
 ---
 <Layout title="¿Qué le puede enseñar el diseño industrial a los líderes de producto digital? — Thinking in Products, Building Systems">
-  <style is:inline>
-    
-:root{
-  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
-  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
-  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
-  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
-  --ease:cubic-bezier(.65,0,.35,1);
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
-:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
-.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
-.eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600}
-figure{margin:0}
-figcaption{font-size:13px;color:var(--ink2);margin-top:10px;max-width:60ch}
-.placeholder{background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px;text-align:center;padding:1rem}
-
-/* ===== top bar + progress (shell) ===== */
-.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
-.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:16px}
-.topbar a.home{font-weight:700;text-decoration:none;font-size:15px;flex:0 0 auto}
-.topbar .crumb{font-size:13px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
-.topbar .lang a{text-decoration:none;color:var(--ink2)}
-.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
-.topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:7px 16px;cursor:pointer;flex:0 0 auto}
-.progress{height:2px;background:var(--grid-blue)}
-.progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
-
-/* ===== CHAPTER OPENER ===== */
-.opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden;min-height:46svh;display:flex;align-items:flex-end}
-.opener .num{position:absolute;left:calc(var(--margin) * -0.15);bottom:-6%;font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(120px,18vw,300px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;user-select:none}
-.opener .wrap{position:relative;z-index:1;padding-block:40px 44px}
-.opener .eyebrow{color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
-.opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(54px,7.5vw,132px);line-height:.98;letter-spacing:-.035em;max-width:16ch;margin-bottom:16px}
-.opener .dek{font-size:clamp(17px,1.5vw,21px);max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:22px}
-.opener .meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:rgba(255,255,255,.78)}
-
-/* ===== INTRO (multi-column short intro) ===== */
-.intro{background:var(--white)}
-.intro .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
-.intro p{font-size:1em;line-height:1.6;color:#242A31}
-@media (max-width:800px){.intro .wrap{grid-template-columns:1fr}}
-
-/* ===== FACTS & FIGURES ===== */
-.facts{background:var(--paper);border-block:1px solid var(--line)}
-.facts .wrap{padding-block:clamp(36px,6vh,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
-.facts div{border-left:1px solid var(--line);padding-left:20px}
-.facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;margin-bottom:8px}
-.facts span{font-size:13px;color:var(--ink2)}
-@media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
-
-/* ===== VISUAL RIBBON ===== */
-.ribbon{background:var(--white);padding-block:0}
-.ribbon .track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:2px;overflow-x:auto;scroll-snap-type:x proximity}
-.ribbon .track figure{scroll-snap-align:start}
-.ribbon .placeholder{height:clamp(220px,26vw,360px)}
-.ribbon figcaption{padding:10px var(--margin) 0}
-@media (max-width:700px){.ribbon .track{grid-auto-columns:82vw}}
-
-/* ===== LONGFORM HEADLINE + FIGURE + COLUMNS ===== */
-.longform{background:var(--white)}
-.longform .wrap{padding-block:clamp(48px,8vh,80px)}
-.longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(36px,4.8vw,78px);line-height:1.02;letter-spacing:-.03em;max-width:16ch;margin-bottom:clamp(28px,5vh,48px)}
-.longform .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
-.longform .figcol .placeholder{aspect-ratio:4/5}
-.longform .textcol p{max-width:34ch;margin-bottom:1.2em;font-size:1em}
-.longform .textcol{columns:1}
-@media (min-width:900px){.longform .textcol{columns:2;column-gap:var(--gutter)}}
-@media (max-width:860px){.longform .grid{grid-template-columns:1fr}}
-
-/* ===== PULL QUOTE + ESSAY ===== */
-.quote-essay{background:var(--paper);border-block:1px solid var(--line)}
-.quote-essay .wrap{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:5fr 7fr;gap:var(--gutter);align-items:start}
-.pullquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.28;letter-spacing:-.01em;color:var(--cobalt-deep)}
-.pullquote cite{display:block;margin-top:20px;font-family:var(--grot);font-style:normal;font-size:13px;font-weight:600;color:var(--ink2)}
-.essay{columns:1}
-@media (min-width:700px){.essay{columns:2;column-gap:var(--gutter)}}
-.essay p{margin-bottom:1.1em;max-width:34ch;font-size:1em}
-@media (max-width:860px){.quote-essay .wrap{grid-template-columns:1fr}}
-
-/* ===== FRAMEWORK / PROCESS DIAGRAM ===== */
-.framework{background:var(--white)}
-.framework .wrap{padding-block:clamp(48px,8vh,80px)}
-.framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:12px;max-width:18ch}
-.framework .dek{color:var(--ink2);max-width:60ch;margin-bottom:clamp(32px,5vh,48px)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
-.steps li{list-style:none;padding:24px 20px 24px 0;border-right:1px solid var(--line);position:relative}
-.steps li:last-child{border-right:0}
-.steps .ic{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--cobalt);color:var(--cobalt);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;margin-bottom:16px}
-.steps h3{font-size:16px;font-weight:600;margin-bottom:8px;max-width:16ch}
-.steps p{font-size:14px;color:var(--ink2);max-width:20ch}
-.steps li:not(:last-child)::after{content:"";position:absolute;right:-1px;top:44px;width:8px;height:8px;border-top:1.5px solid var(--cobalt);border-right:1.5px solid var(--cobalt);transform:translate(50%,-50%) rotate(45deg);background:var(--white)}
-@media (max-width:860px){.steps{grid-template-columns:1fr;border-top:0}.steps li{border-right:0;border-top:1px solid var(--line);padding:20px 0}.steps li::after{display:none}}
-
-/* ===== VISUAL CATALOG (image grid) ===== */
-.catalog{background:var(--paper);border-top:1px solid var(--line)}
-.catalog .wrap{padding-block:clamp(48px,8vh,80px)}
-.catalog h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:clamp(28px,5vh,44px)}
-.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
-.catgrid figure:nth-child(1){grid-column:span 2}
-.catgrid .placeholder{aspect-ratio:3/2}
-.catgrid figure:nth-child(1) .placeholder{aspect-ratio:16/9}
-.catgrid figure:nth-child(4) .placeholder{aspect-ratio:1/1}
-@media (max-width:860px){.catgrid{grid-template-columns:1fr 1fr}.catgrid figure:nth-child(1){grid-column:span 2}}
-@media (max-width:560px){.catgrid{grid-template-columns:1fr}.catgrid figure:nth-child(1){grid-column:span 1}}
-
-/* ===== TECHNICAL DIAGRAM (contain, never cropped) ===== */
-.diagram{background:var(--white)}
-.diagram .wrap{padding-block:clamp(48px,8vh,80px)}
-.diagram h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:20px}
-.diagram .frame{background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px)}
-.diagram .frame svg{width:100%;max-height:80svh;height:auto}
-
-/* ===== TRANSPARENT OBJECT (contain, never forced cover) ===== */
-.object-figure{background:var(--paper);border-top:1px solid var(--line)}
-.object-figure .wrap{padding-block:clamp(40px,7vh,64px)}
-.object-figure .frame{background:repeating-conic-gradient(#fff 0 25%, var(--white) 0 50%) 0 0/24px 24px, var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:280px;padding:32px}
-.object-figure .frame img{max-height:340px;object-fit:contain}
-
-/* ===== REFERENCES ===== */
-.refs{background:var(--paper)}
-.refs .wrap{padding-block:clamp(36px,6vh,56px)}
-.refs h2{font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:16px;color:var(--ink2)}
-.refs ol{margin:0;padding-left:1.2em;font-size:14px;color:var(--ink2);display:grid;gap:8px}
-
-/* ===== NEXT CHAPTER / NAV ===== */
-.chapternav{background:var(--cobalt);color:#fff}
-.chapternav .wrap{padding-block:clamp(40px,7vh,64px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.chapternav .side{display:flex;flex-direction:column;gap:6px}
-.chapternav .side.next{text-align:right;margin-left:auto}
-.chapternav .lbl{font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.7)}
-.chapternav a{text-decoration:none}
-.chapternav .title{font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:500;max-width:22ch}
-.chapternav a[aria-disabled="true"]{pointer-events:none;opacity:.4}
-
-footer{background:var(--white);border-top:1px solid var(--line)}
-footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
-footer a{text-decoration:none}
-
-/* ===== TOC slide-over (shared shell pattern) ===== */
-.toc-overlay{position:fixed;inset:0;background:rgba(17,20,24,.4);opacity:0;pointer-events:none;transition:opacity .3s var(--ease);z-index:30}
-.toc-overlay.open{opacity:1;pointer-events:auto}
-.toc-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,88vw);background:var(--white);transform:translateX(100%);transition:transform .35s var(--ease);z-index:31;overflow-y:auto;padding:24px}
-.toc-panel.open{transform:translateX(0)}
-.toc-panel .close{font:inherit;font-size:14px;background:none;border:none;cursor:pointer;color:var(--ink2)}
-.toc-panel ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:2px}
-.toc-panel li{display:grid;grid-template-columns:2rem 1fr;gap:10px;padding:9px 8px;border-radius:6px;font-size:14px}
-.toc-panel li a{display:contents;text-decoration:none}
-.toc-panel .n{font-family:var(--serif);color:var(--ink2)}
-.toc-panel li:has(a):hover{background:var(--paper)}
-
-/* ===== LIGHTBOX (interaction reference) ===== */
-.lightbox{position:fixed;inset:0;background:rgba(10,12,15,.92);display:none;align-items:center;justify-content:center;z-index:40;padding:5vw}
-.lightbox.open{display:flex}
-.lightbox .box{max-width:1100px;width:100%;color:#fff}
-.lightbox .placeholder{aspect-ratio:16/9;background:rgba(255,255,255,.06);color:#cfe0ff}
-.lightbox figcaption{color:rgba(255,255,255,.7)}
-.lightbox .close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:15px;cursor:pointer}
-
-@media (prefers-reduced-motion:reduce){.toc-overlay,.toc-panel{transition:none}}
-
-  </style>
-
-  
-
 <div class="topbar">
   <div class="wrap row">
-    <a class="home" href="/es/">JAS</a>
+    <a class="home" href="es-home.html">JAS</a>
     <nav aria-label="Libro">
-      <a href="/es/">Sitio</a>
+      <a href="es-home.html">Sitio</a>
     </nav>
     <div class="lang" role="group" aria-label="Idioma">
-      <a href="/ebook/01-what-can-industrial-design-teach/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/01-what-can-industrial-design-teach/" aria-current="page">ES</a>
+      <a href="/ebook/01-what-can-industrial-design-teach/">EN</a><span aria-hidden="true">/</span><a href="es-ebook-chapter-01.html" aria-current="page">ES</a>
     </div>
     <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
   </div>
@@ -191,10 +22,10 @@ footer a{text-decoration:none}
   <div class="wrap">
     <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · CAPÍTULO 01</p>
     <h1>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</h1>
-    <p class="dek">Los materiales, las herramientas, el costo y el mantenimiento definen todo objeto físico mucho antes de llegar a un usuario — y la misma disciplina aplica, casi siempre invisible, a los productos digitales.</p>
+    <p class="dek">Materiales, tolerancias, costo y mantenimiento definen todo objeto físico mucho antes de llegar a un usuario. Este capítulo argumenta que un producto es 10% idea y 90% esfuerzo por demostrar que esa idea puede sobrevivir a la realidad — en madera o en software.</p>
     <p class="meta">
       <span>Publicado el 18 sep 2026</span>
-      <span>8 min de lectura</span>
+      <span>18 min de lectura</span>
       <span>Edición 0.1</span>
       <span>Estado: Publicado</span>
     </p>
@@ -204,18 +35,9 @@ footer a{text-decoration:none}
 <!-- ===== INTRO (short, multi-column) ===== -->
 <section class="intro">
   <div class="wrap">
-    <p>Todo objeto físico carga restricciones que se notan en el momento en que lo tomas en las manos: la tolerancia de una unión, el costo de un material, cómo se desgasta una bisagra después de mil usos. Los productos digitales esconden esas restricciones detrás de una pantalla, pero nunca desaparecen.</p>
-    <p>Este capítulo abre el libro con una idea que atraviesa todo lo que sigue: las preguntas que un buen diseñador industrial hace sobre producción — qué podemos construir realmente, a qué costo, mantenido por quién — son las mismas preguntas que un líder de tecnología debería hacerse sobre arquitectura, datos y operación.</p>
-    <p>Lo que sigue no es una metáfora forzada. Es un método de trabajo, ilustrado con los datos, marcos y casos del resto de este capítulo.</p>
-  </div>
-</section>
-
-<!-- ===== FACTS & FIGURES (number : label >= 4:1) ===== -->
-<section class="facts" aria-label="Chapter facts and figures">
-  <div class="wrap">
-    <div><b>3</b><span>DECISIONES QUE TODO PRODUCTO<br>FÍSICO OBLIGA A TOMAR TEMPRANO</span></div>
-    <div><b>1:1</b><span>CORRESPONDENCIA ENTRE TOLERANCIA<br>DE MATERIAL Y CONTRATO DE API</span></div>
-    <div><b>18</b><span>MESES — BRECHA TÍPICA ENTRE<br>UN ATAJO Y SU COSTO</span></div>
+    <p>Hay una parte del diseño de producto que ocurre mucho antes de que exista algo que podamos tocar, descargar o poner frente a un usuario — menos vistosa que el render o la primera pantalla funcional, pero probablemente donde se decide gran parte de lo que el producto llegará a ser: costo, fabricación, mantenimiento, vigencia.</p>
+    <p>Cuando estudiaba diseño industrial aprendí a convivir con esas preguntas antes de acostumbrarme a llamarlas estrategia de producto. Años después, trabajando con productos digitales, plataformas y portafolios empresariales, las mismas preguntas volvieron a aparecer con otros nombres. Cambiaron los materiales; no cambió demasiado el problema.</p>
+    <p>Si tuviera que reducirlo a una proporción deliberadamente imperfecta: un producto es 10% idea y 90% esfuerzo por demostrar que esa idea puede sobrevivir a la realidad. No es una estadística — es una forma de ordenar la experiencia que este capítulo despliega a través de una silla de 1859, algunas hipótesis incómodas y el argumento de que la arquitectura digital es, ella misma, un material de diseño.</p>
   </div>
 </section>
 
@@ -223,53 +45,484 @@ footer a{text-decoration:none}
 <section class="ribbon" aria-label="Image ribbon">
   <div class="track">
     <figure>
-      <div class="placeholder">[ imagen editorial 3:2<br>focal_x/y configurable ]</div>
-      <figcaption>Una línea de producción revela sus restricciones como pocas veces lo hace un roadmap.</figcaption>
+      <img src="/assets/chapter-01-ribbon-thonet-tools.jpg" alt="Piezas de madera curvada, tornillos y tuercas de la silla Thonet No. 14 dispuestas sobre una mesa de estudio" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>Seis piezas, diez tornillos, dos tuercas: la arquitectura que Thonet resolvió en 1859.</figcaption>
     </figure>
     <figure>
-      <div class="placeholder">[ imagen editorial 3:2 ]</div>
+      <img src="/assets/chapter-01-ribbon-tooling-cost.jpg" alt="Molde de inyección industrial junto a una pieza plástica recién producida, mostrando el costo fijo de herramental" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
       <figcaption>El costo de las herramientas es una decisión que se toma una vez y se paga en cada unidad después.</figcaption>
     </figure>
     <figure>
-      <div class="placeholder">[ imagen editorial 3:2 ]</div>
-      <figcaption>Una bisagra bajo carga se comporta como una API bajo tráfico.</figcaption>
+      <img src="/assets/chapter-01-ribbon-hinge-api.jpg" alt="Bisagra mecánica bajo prueba de carga junto a un panel de monitoreo de tráfico de servidor" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>Una bisagra bajo carga se comporta como una API bajo tráfico: ambas tienen un punto de fluencia.</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- ===== LONGFORM: headline + portrait + balanced columns ===== -->
+<!-- ===== LONGFORM 1: La idea es apenas una hipótesis ===== -->
 <section class="longform">
   <div class="wrap">
-    <h2>La tolerancia que no ves es la que se rompe primero</h2>
+    <h2>La idea es apenas una hipótesis</h2>
     <div class="grid">
       <div class="figcol">
         <figure>
-          <div class="placeholder">[ retrato 4:5<br>cover o contain según metadatos ]</div>
-          <figcaption>Los primeros bocetos de un diseñador codifican restricciones mucho antes que la manufactura.</figcaption>
+          <img src="/assets/bocetos-restricciones-mouse.jpg" alt="Bocetos técnicos de diseño industrial de un mouse de computadora, con notas de tolerancias mecánicas, ángulos de desmolde y espesor de pared, en estilo de plano de ingeniería" loading="lazy" />
+          <figcaption>Los primeros bocetos de un diseñador codifican restricciones mucho antes que la manufactura: tolerancias, ángulos de desmolde, espesores de pared.</figcaption>
         </figure>
       </div>
       <div class="textcol">
-        <p>En manufactura física, la tolerancia es un número marcado en un plano: cuánto puede desviarse una pieza antes de que falle el ensamble. Todos los que tocan el producto están de acuerdo en ese número antes de fabricar la primera unidad.</p>
-        <p>Los equipos digitales casi nunca nombran sus tolerancias de forma explícita. Un tiempo de respuesta de "normalmente menos de 300ms" es una tolerancia. Un "eso lo limpiamos después" es una tolerancia que nadie escribió — y por eso suele fallar primero, en el peor momento posible, en producción.</p>
-        <p>Nombrar la tolerancia no es proceso de más. Es la forma más rápida de saber, antes de construir, si lo que propones se puede producir y mantener de verdad a la escala que buscas.</p>
-        <p>El resto de este libro regresa a esta idea desde distintos ángulos: como pregunta de arquitectura de plataforma, como pregunta de gobernanza de portafolio, y como pregunta sobre lo que un equipo le debe a lo que entrega.</p>
+        <p>Porque una idea no tiene todavía costo unitario, ni arquitectura, ni proveedores, ni canales, ni riesgo, ni retorno esperado. Tampoco tiene soporte, capacidad de producción, backlog, métricas de adopción o un modelo claro para capturar valor. Todo eso aparece cuando dejamos de enamorarnos de la posibilidad y comenzamos a diseñar el producto. En ese sentido, el desarrollo físico y el digital parten de una condición parecida: antes de construir hay que convertir incertidumbre en decisiones.</p>
+        <p>Existe una tentación frecuente en producto: confundir la claridad de una idea con su viabilidad. En diseño industrial el error se descubre rápido porque la materia opone resistencia. Una forma puede ser atractiva y al mismo tiempo imposible de fabricar con el proceso elegido; puede requerir un molde demasiado costoso para el volumen esperado; puede pesar demasiado para el canal logístico; puede usar una unión elegante que vuelve prohibitiva la reparación.</p>
+        <p>El objeto obliga a negociar.</p>
+        <p>El software concede un poco más de tiempo antes de cobrar la cuenta. Podemos construir una experiencia que funcione durante una demostración y todavía no tener un producto capaz de operar: faltan procesos de identidad, permisos, manejo de excepciones, telemetría, facturación o soporte. La ausencia de material físico no elimina las restricciones; simplemente las vuelve menos visibles.</p>
+        <p>Ulrich, Eppinger y Yang estructuran el desarrollo como una disciplina interdisciplinaria en la que conviven oportunidad, planeación, necesidades del cliente, especificaciones, conceptos, arquitectura, diseño industrial, manufactura y cadena de suministro, prototipado, economía del producto y administración del proyecto. Robert Cooper, desde Stage-Gate, coloca antes del desarrollo a escala una investigación inicial de mercado y factibilidad y, después, un business case donde se cruzan atractivo comercial, factibilidad técnica, riesgo y retorno financiero.</p>
+        <p>Me interesa menos defender un método específico que señalar algo que ambos modelos dejan claro: el desarrollo de producto empieza bastante antes del desarrollo técnico. ¿Existe realmente una necesidad o solamente tenemos una buena historia para contarla? ¿El problema es suficientemente frecuente o costoso para que alguien cambie de comportamiento? ¿Cuánto tendríamos que invertir antes de aprender si estábamos equivocados?</p>
+        <p>En diseño industrial esas preguntas desembocan en materiales, proveedores, herramental, volúmenes y precio. En un producto digital se convierten en estimaciones de desarrollo, nube, licenciamiento, datos, adquisición de usuarios y evolución tecnológica. Las hojas de cálculo cambian. La decisión económica sigue siendo esencialmente la misma.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PULL QUOTE + ESSAY ===== -->
+<!-- ===== QUOTE-ESSAY 1 ===== -->
 <section class="quote-essay">
   <div class="wrap">
     <blockquote class="pullquote">
-      “Un producto que ignora sus propias tolerancias no falla con elegancia. Falla exactamente una vez, en público, a escala.”
-      <cite>— J. A. Sosa</cite>
+      “La monetización modifica el producto.”
     </blockquote>
     <div class="essay">
-      <p>Esto no es un argumento para ir más despacio. Los diseñadores industriales trabajan con fechas límite y presión de costo reales — muchas veces más estrictas que las de un equipo de software. La diferencia está en dónde aparece esa presión.</p>
-      <p>Una tolerancia no cumplida en una línea de producción detiene la línea de inmediato: todos lo ven, y el costo de ignorarla es visible el mismo día. Una tolerancia no cumplida en software casi siempre se lanza igual. Queda ahí, en silencio, hasta que el tráfico, la escala o el tiempo la exponen, casi siempre lejos del equipo que tomó la decisión original.</p>
-      <p>Tratar la arquitectura, los contratos de datos y los límites operativos como tolerancias — escritas, con dueño, y verificadas antes de lanzar — regresa ese costo a donde es más barato pagarlo: antes del lanzamiento, no después.</p>
-      <p>Los capítulos de la Parte II llevan esto más lejos, mapeando hábitos específicos del diseño físico a decisiones de producto digital, uno por uno.</p>
+      <p>Un producto no existe porque pueda construirse. Existe cuando encontramos una forma razonable de crear valor, entregarlo y capturar suficiente valor para sostener el sistema que lo produce. David Teece define el modelo de negocio como la arquitectura mediante la cual una empresa crea, entrega y captura valor — una definición que devuelve la monetización al lugar donde debería estar: dentro del diseño del producto, no como una conversación tardía.</p>
+      <p>No es lo mismo diseñar algo que se vende una sola vez que algo que deberá justificar una suscripción cada mes. No es igual vender una máquina que vender el servicio que esa máquina produce. Tampoco es igual ofrecer software por licencia, por consumo, por asiento, por transacción o mediante un esquema combinado. Cada decisión termina afectando arquitectura, experiencia, métricas, operación y relación con el cliente.</p>
+      <p>En un objeto físico es más fácil verlo porque el costo de cada unidad está frente a nosotros. En digital existe la tentación de pensar que, como copiar software cuesta muy poco, la economía es trivial. Pero el costo marginal bajo no significa costo total bajo: disponibilidad, almacenamiento, procesamiento de transacciones, modelos de inteligencia artificial, infraestructura, incidencias y adquisición de usuarios también forman parte del producto.</p>
+      <p>Ahí comienza a romperse otra falsa frontera: la que separa demasiado pronto diseño, tecnología y negocio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIAGRAM 1: el costo que se congela antes de vender la primera unidad ===== -->
+<section class="diagram">
+  <div class="wrap">
+    <h2>El costo que se congela antes de vender la primera unidad</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="nre-area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0057D9" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0057D9" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Grid lines -->
+  <g stroke="#F0F2F5" stroke-width="1">
+    <line x1="100" y1="70" x2="860" y2="70"/>
+    <line x1="100" y1="140" x2="860" y2="140"/>
+    <line x1="100" y1="210" x2="860" y2="210"/>
+    <line x1="100" y1="280" x2="860" y2="280"/>
+  </g>
+
+  <!-- Axes -->
+  <line x1="100" y1="40" x2="100" y2="330" stroke="#111418" stroke-width="1.5"/>
+  <line x1="100" y1="330" x2="860" y2="330" stroke="#111418" stroke-width="1.5"/>
+
+  <!-- Axis Labels -->
+  <text x="40" y="45" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" transform="rotate(-90 40,45)">UNIT COST ($ / UNIT)</text>
+  <text x="860" y="360" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" text-anchor="end">CUMULATIVE PRODUCTION VOLUME (UNITS)</text>
+
+  <!-- Y ticks -->
+  <text x="85" y="74" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$120</text>
+  <text x="85" y="144" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$60</text>
+  <text x="85" y="214" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$20</text>
+  <text x="85" y="284" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$4 (Floor)</text>
+
+  <!-- Tooling Decision Point (NRE upfront) -->
+  <rect x="110" y="45" width="180" height="70" rx="3" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+  <text x="122" y="66" font-size="10" font-weight="800" fill="#0057D9">UPFRONT TOOLING (CAPEX)</text>
+  <text x="122" y="82" font-size="12" font-weight="700" fill="#111418">Fixed Tooling Incurred: $250k</text>
+  <text x="122" y="100" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Steel Cavities, Hardened Dies, NRE</text>
+
+  <!-- Curves -->
+  <!-- Amortization Area & Curve -->
+  <path d="M 120 70 Q 200 240 850 270 L 850 280 L 120 280 Z" fill="url(#nre-area)"/>
+  <path d="M 120 70 Q 200 240 850 270" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+
+  <!-- Asymptotic Floor Line (Marginal cost) -->
+  <line x1="100" y1="280" x2="860" y2="280" stroke="#111418" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="850" y="300" font-size="11" font-weight="700" fill="#111418" text-anchor="end">PERPETUAL PER-UNIT RUN FLOOR ($4.20 / unit)</text>
+  <text x="850" y="316" font-size="9.5" font-family="'Source Serif 4', serif" fill="#5C6673" text-anchor="end">Raw resin, cycle time, machine tonnage &amp; QA reject scrap rate</text>
+
+  <!-- Callout indicator on curve -->
+  <circle cx="300" cy="245" r="5" fill="#0057D9"/>
+  <line x1="300" y1="245" x2="360" y2="180" stroke="#0057D9" stroke-width="1"/>
+  <rect x="360" y="155" width="260" height="50" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+  <text x="372" y="174" font-size="10.5" font-weight="700" fill="#0057D9">AMORTIZED UNIT IMPACT</text>
+  <text x="372" y="192" font-size="10" font-family="'Source Serif 4', serif" fill="#111418">Tooling defects lock in cycle-time overhead forever</text>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 2: Diseñar es decidir bajo restricciones ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Diseñar es decidir bajo restricciones</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-material-constraint-portrait.jpg" alt="Muestras de materiales industriales y notas de tolerancia sobre una mesa de diseño" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>El material es una restricción entre muchas — costo, escala, tiempo, regulación, canal.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>En la escuela uno puede enamorarse de la forma. Es natural. Pero llega un punto en que el producto deja de ser únicamente aquello que queremos que sea y empieza a convertirse en aquello que puede ser dentro de un conjunto de restricciones. El material es una de ellas, no la única: también lo son el costo, el proceso, la escala, el tiempo, la regulación, la capacidad del proveedor, el empaque, el canal y la expectativa del usuario. Esas restricciones no llegan al final para corregir el diseño. Participan de su definición.</p>
+        <p>En producto digital sucede lo mismo. Arquitectura, datos, identidad, seguridad, interoperabilidad, latencia, disponibilidad, privacidad o capacidad de integración no deberían ser una lista de problemas que tecnología resuelve después de que producto terminó de imaginar la experiencia. Son materiales de diseño.</p>
+        <p>Cuando digo que la arquitectura digital es un material no lo digo como metáfora estética. Tiene propiedades y límites. Una API puede soportar cierto patrón de uso y no otro. Un modelo de datos puede hacer sencilla una clase de evolución y convertir otra en una migración costosa. Una decisión de identidad puede permitir compartir capacidades entre productos o encerrarlos en dominios separados.</p>
+        <p>El diseñador industrial aprende a preguntar qué permite hacer el material. El product manager debería hacer una pregunta parecida sobre el sistema sobre el que está construyendo. Y esto importa porque el producto que llega al mercado no es solamente la suma de funcionalidades visibles. Es el resultado acumulado de decisiones previas. Algunas abren posibilidades. Otras las cierran.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACTS & FIGURES: Thonet ===== -->
+<section class="facts" aria-label="Chapter facts and figures">
+  <div class="wrap">
+    <div><b>6</b><span>PIEZAS PRINCIPALES — MÁS<br />10 TORNILLOS Y 2 TUERCAS</span></div>
+    <div><b>36</b><span>SILLAS DESARMADAS POR<br />METRO CÚBICO EMPACADO</span></div>
+    <div><b>50M+</b><span>UNIDADES PRODUCIDAS<br />PARA 1930</span></div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 3: Una silla que en realidad era un sistema ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Una silla que en realidad era un sistema</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-thonet-chair-214.jpg" alt="Silla Thonet No. 14, hoy modelo 214, de madera curvada, fotografiada de perfil sobre fondo neutro" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>La silla No. 14 de Thonet, comercializada hoy como modelo 214.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Hay una silla que resume gran parte de este argumento mejor que cualquier diagrama contemporáneo. Michael Thonet desarrolló durante la primera mitad del siglo XIX técnicas para curvar madera y terminó perfeccionando durante la década de 1850 un proceso de doblado de madera maciza que hizo posible producir mobiliario en serie. En 1859 apareció la silla que entonces se conoció como No. 14 y que hoy Thonet comercializa como modelo 214.</p>
+        <p>A primera vista su éxito podría atribuirse a la forma: ligera, reconocible, suficientemente neutral para existir durante décadas en cafés, restaurantes y hogares. Pero concentrarse únicamente en la silueta pierde la parte más interesante. La silla era un sistema de decisiones.</p>
+        <p>El modelo podía resolverse con seis piezas principales, diez tornillos y dos tuercas. Esa reducción no era únicamente formal. Permitía separar fabricación y ensamblaje, estandarizar componentes, reducir trabajo artesanal y transportar la silla desmontada. Thonet documenta que 36 sillas desarmadas podían empacarse en una caja de un metro cúbico y ensamblarse en destino. Para 1930 se habían producido más de 50 millones de unidades.</p>
+        <p>En otras palabras: la silla no fue diseñada solamente para sentarse. Fue diseñada para producirse, repetirse, empacarse, viajar y ensamblarse. Eso cambia completamente la lectura del objeto.</p>
+        <p>Hay una decisión tecnológica —el doblado de madera—, una decisión de componentes —pocas piezas estandarizadas—, una decisión de unión —tornillos y tuercas—, una decisión de manufactura —producción repetible— y una decisión logística —transportar volumen desarmado para ensamblar al final—. Todas terminan expresándose en la misma silla.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISUAL CATALOG: la silla como arquitectura ===== -->
+<section class="catalog">
+  <div class="wrap">
+    <h2>Seis piezas, un sistema</h2>
+    <div class="catgrid">
+      <figure><img src="/assets/chapter-01-chair-exploded-view.jpg" alt="Vista explosionada técnica de la silla Thonet No. 14 mostrando sus seis piezas de madera curvada y el herraje" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" /><figcaption>Vista explosionada: seis piezas de madera curvada más el herraje que las une.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-shipping-crate-36-chairs.jpg" alt="Caja de embalaje de un metro cúbico en corte, mostrando piezas de silla desarmadas empacadas de forma eficiente" loading="lazy" style="aspect-ratio:3/2;object-fit:cover;width:100%" /><figcaption>Caja de embalaje de un metro cúbico: 36 sillas desmontadas listas para ensamblar en destino.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-bentwood-detail.jpg" alt="Detalle macro de una pieza de madera curvada mostrando la fibra doblada del proceso de bentwood" loading="lazy" style="aspect-ratio:3/2;object-fit:cover;width:100%" /><figcaption>Detalle del doblado de madera maciza que Thonet perfeccionó en la década de 1850.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-screw-nut-joint.jpg" alt="Primer plano de un tornillo y una tuerca de latón uniendo dos piezas de madera curvada" loading="lazy" style="aspect-ratio:1/1;object-fit:cover;width:100%" /><figcaption>Tornillo y tuerca: la unión que hace reparable — y repetible — al sistema completo.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 4: Arquitectura que se puede repetir ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Arquitectura que se puede repetir</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-platform-family-portrait.jpg" alt="Tres variantes de un mismo objeto compartiendo un núcleo estructural común" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Una plataforma es una colección de activos compartidos por un conjunto de productos.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Esa es una de las razones por las que me parece un antecedente tan útil para entender el producto digital. No porque una API sea equivalente a una pata de madera, sino porque el principio de diseño es reconocible: si una arquitectura permite reutilizar componentes, entonces la siguiente variante cuesta menos que inventar nuevamente el sistema completo.</p>
+        <p>La investigación contemporánea sobre arquitectura modular describe justamente ese problema. Dahmus, Gonzalez-Zugasti y Otto analizan familias de producto construidas con módulos compartidos e intercambiables, buscando reutilizar funciones entre variantes. Robertson y Ulrich describen una plataforma como una colección de activos —componentes, procesos, conocimiento, personas y relaciones— compartidos por un conjunto de productos.</p>
+        <p>Si uno elimina por un momento el vocabulario industrial, es difícil no reconocer una conversación moderna de plataformas digitales. Una capacidad de identidad común puede alimentar varias experiencias. Un servicio de pagos puede utilizarse en diferentes productos. Un catálogo, una capa de datos o una librería de componentes pueden convertirse en activos compartidos. Lo importante no es reutilizar por reutilizar; es que la arquitectura permita producir variedad sin multiplicar proporcionalmente el costo y la complejidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE-ESSAY 2 ===== -->
+<section class="quote-essay">
+  <div class="wrap">
+    <blockquote class="pullquote">
+      “Thonet entendió esto en madera. Muchas compañías todavía están intentando entenderlo en software.”
+    </blockquote>
+    <div class="essay">
+      <p>Otro aprendizaje del producto físico es que una versión no necesita contener todo lo que el producto podría llegar a ser. La industria ha trabajado durante mucho tiempo con generaciones, variantes, plataformas y mejoras incrementales. A veces olvidamos esto cuando contamos la historia del producto digital como si el concepto de iteración hubiera nacido con Agile. No fue así.</p>
+      <p>Un estudio de la U.S. Government Accountability Office sobre prácticas de desarrollo encontró que las compañías comerciales analizadas reducían riesgo utilizando desarrollo evolutivo: limitaban la cantidad de contenido nuevo en una generación y trasladaban capacidades aún inmaduras a generaciones posteriores, porque los cambios se vuelven más costosos conforme el programa avanza.</p>
+      <p>La iteración no debería ser excusa para comenzar sin criterio; debería ser una estrategia para decidir qué necesitamos aprender ahora y qué puede esperar hasta que tengamos evidencia. El objetivo de una primera versión no es fabricar una versión pobre de la visión completa. Es construir una versión suficientemente coherente para probar las hipótesis que más podrían destruir el caso si resultaran falsas.</p>
+      <p>¿La gente entiende el valor? ¿Puede completar la tarea? ¿Regresa? ¿Paga? ¿La arquitectura soporta el patrón real de uso? Cada producto debería tener sus propias preguntas. Ahí es donde incremental no significa pequeño. Significa controlado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 5: El ciclo de vida tampoco empieza en el lanzamiento ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>El ciclo de vida no empieza en el lanzamiento</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-lifecycle-curve-portrait.jpg" alt="Ilustración editorial abstracta de una curva de ciclo de vida de producto trazada a mano sobre papel técnico" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>El lanzamiento no inaugura el producto. Lo expone.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Durante mucho tiempo, el gráfico clásico del ciclo de vida del producto se representó como una curva que atraviesa introducción, crecimiento, madurez y declive. Theodore Levitt convirtió esa idea en herramienta de estrategia en 1965. La curva es útil, pero puede crear una interpretación demasiado cómoda si pensamos que el trabajo de producto comienza en la izquierda del gráfico, justo en el lanzamiento.</p>
+        <p>Para cuando un producto llega ahí ya se tomaron muchas de las decisiones que limitarán su trayectoria: estructura de costos, cadena de suministro, arquitectura de componentes en lo físico; infraestructura, modelo de datos, adquisición, pricing en lo digital.</p>
+        <p>El lanzamiento no inaugura el producto. Lo expone. Es el momento en que las hipótesis acumuladas se encuentran simultáneamente con usuarios, operación y economía real. Stage-Gate describe el lanzamiento como el paso hacia operaciones o producción a escala; en el modelo de Ulrich y Eppinger, el desarrollo físico tampoco termina en el diseño detallado, sino que incluye pruebas, refinamiento y production ramp-up.</p>
+        <p>El equivalente digital es evidente. Un producto que funciona con cien usuarios puede no funcionar con cien mil. Una operación que soporta manualmente diez excepciones puede colapsar con diez mil. Antes del lanzamiento intentamos responder si debemos y podemos construir. Después intentamos descubrir si podemos sostener, escalar y evolucionar lo construido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 6: Rentabilidad ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>La rentabilidad que diseño no debería delegar</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-cost-sheet-portrait.jpg" alt="Hoja de cálculo de costos y calculadora sobre una mesa de trabajo, con notas manuscritas" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>El diseño es una negociación entre variables — también las económicas.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Uno de los puntos de encuentro que más me interesan entre diseño industrial y producto digital es la economía. Mi experiencia es que la economía es parte del material de diseño: si un producto requiere una inversión alta de tooling, necesitamos un volumen capaz de amortizarla; si una pieza compleja puede convertirse en tres piezas sencillas, quizá aumentemos el ensamblaje pero reduzcamos desperdicio o mantenimiento.</p>
+        <p>En digital pasa igual. Podemos ofrecer una capa gratuita para adquirir usuarios y cobrar por capacidades avanzadas; podemos cobrar por asiento y descubrir después que el valor depende de volumen transaccionado; podemos combinar suscripción y consumo. No existe un modelo universal. Lo que sí existe es una relación inevitable entre cómo capturamos valor y qué producto terminamos construyendo.</p>
+        <p>Por eso un plan de monetización no debería ser una lámina para inversionistas. Debería convertirse en hipótesis explícitas: quién paga, por qué paga, cuándo paga, por qué seguiría pagando y qué costos crecen cuando crece el uso.</p>
+        <p>En el producto físico la venta hace visible de inmediato el intercambio económico. En digital podemos acumular uso durante meses antes de descubrir si el comportamiento se traduce en ingresos suficientes. Un usuario no es todavía un modelo de negocio. Una descarga tampoco. Y una idea viral puede seguir siendo una mala empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIAGRAM 2: fluencia física, saturación digital ===== -->
+<section class="diagram">
+  <div class="wrap">
+    <h2>Fluencia física, saturación digital</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="danger-zone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0057D9" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Subpanel A: Mechanical Hinge (Stress/Strain Curve) -->
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="415" height="340" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="32" font-size="11" font-weight="800" fill="#0057D9" letter-spacing="1">PHYSICAL: MECHANICAL HINGE PINION</text>
+    <text x="24" y="48" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Stress (σ) vs. Strain (ε) under continuous moment</text>
+
+    <!-- Axes -->
+    <line x1="50" y1="70" x2="50" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <line x1="50" y1="280" x2="380" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <text x="45" y="65" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">STRESS (LOAD)</text>
+    <text x="380" y="300" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">DEFLECTION / STRAIN</text>
+
+    <!-- Linear Elastic Zone -->
+    <line x1="50" y1="280" x2="210" y2="150" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="75" y="195" font-size="9" font-weight="700" fill="#0057D9">ELASTIC ZONE</text>
+    <text x="75" y="210" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Reversible flexure (Hooke's Law)</text>
+
+    <!-- Yield Point Callout -->
+    <circle cx="210" cy="150" r="4.5" fill="#111418"/>
+    <line x1="210" y1="150" x2="210" y2="280" stroke="#C9D0D8" stroke-dasharray="3 3"/>
+    <text x="215" y="142" font-size="9" font-weight="800" fill="#111418">YIELD POINT (σ_y)</text>
+
+    <!-- Plastic Failure Curve -->
+    <path d="M 210 150 Q 280 120 360 160" fill="none" stroke="#0057D9" stroke-width="2.5" stroke-dasharray="4 2"/>
+    <text x="250" y="235" font-size="9" font-weight="700" fill="#0057D9">PLASTIC DEFORMATION</text>
+    <text x="250" y="250" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Irreversible structural buckling</text>
+  </g>
+
+  <!-- Subpanel B: Digital API (Throughput vs. Latency) -->
+  <g transform="translate(475, 25)">
+    <rect x="0" y="0" width="415" height="340" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="32" font-size="11" font-weight="800" fill="#0057D9" letter-spacing="1">DIGITAL: BACKEND API SERVICE</text>
+    <text x="24" y="48" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Latency (p99) vs. Concurrency Throughput</text>
+
+    <!-- Axes -->
+    <line x1="50" y1="70" x2="50" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <line x1="50" y1="280" x2="380" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <text x="45" y="65" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">LATENCY (MS)</text>
+    <text x="380" y="300" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">CONCURRENT REQ/SEC</text>
+
+    <!-- Stable Latency Zone -->
+    <path d="M 50 260 L 220 250" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="75" y="235" font-size="9" font-weight="700" fill="#0057D9">NOMINAL BAND</text>
+    <text x="75" y="250" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Predictable response (p50: 18ms)</text>
+
+    <!-- Knee of the Curve / Saturation -->
+    <circle cx="220" cy="250" r="4.5" fill="#111418"/>
+    <line x1="220" y1="70" x2="220" y2="280" stroke="#C9D0D8" stroke-dasharray="3 3"/>
+    <text x="225" y="180" font-size="9" font-weight="800" fill="#111418">SATURATION KNEE</text>
+    <text x="225" y="195" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">DB Pool exhausted</text>
+
+    <!-- Hockey stick exponential explosion -->
+    <path d="M 220 250 Q 240 240 280 80" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="290" y="95" font-size="9" font-weight="800" fill="#0057D9">EXPONENTIAL SPIKE</text>
+    <text x="290" y="110" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Cascade timeouts &amp; 504 drops</text>
+  </g>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 7: Producto y proyecto ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Producto y proyecto: familiares, no idénticos</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-dependency-diagram-portrait.jpg" alt="Pizarra con notas adhesivas y líneas de dependencia entre tareas de un proyecto" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Gestionar producto es saber dónde necesitamos control y dónde necesitamos aprendizaje.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Un proyecto existe para producir un resultado dentro de una combinación particular de alcance, tiempo, recursos, dependencias y riesgo. El producto, en cambio, puede atravesar decenas de proyectos durante su vida: lanzarlo puede requerir uno, migrar su arquitectura otro, entrar a un mercado distinto un tercero.</p>
+        <p>La investigación de Jetter, Albar y Sperry para PMI estudió cómo se complementan las prácticas de project management y desarrollo de producto en entornos tecnológicos. Su conclusión no fue que el control tradicional deba imponerse a la innovación, sino que los mecanismos de gestión necesitan adaptarse al nivel de incertidumbre — una distinción más útil que la vieja discusión entre "Agile" y "Waterfall".</p>
+        <p>No todos los elementos de un producto tienen el mismo nivel de incertidumbre. Puedo tener una fecha contractual completamente determinista y una solución técnica todavía abierta; una arquitectura madura y una nueva regulación que cambia la economía. Gestionar producto consiste también en saber dónde necesitamos control y dónde necesitamos aprendizaje.</p>
+        <p>En diseño industrial esto se vuelve evidente hacia producción: hay elementos que deben quedar congelados antes de invertir en herramental o escala. En software tenemos mayor libertad para cambiar después del lanzamiento, pero esa libertad no es infinita — migrar datos, romper compatibilidad o reemplazar componentes centrales también puede ser extraordinariamente caro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIAGRAM 3: la restricción visible contra el roadmap que la esconde ===== -->
+<section class="diagram">
+  <div class="wrap">
+    <h2>La restricción visible, el roadmap que la esconde</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <!-- Definitions -->
+  <defs>
+    <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#F0F2F5" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0057D9"/>
+    </marker>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5C6673"/>
+    </marker>
+  </defs>
+
+  <!-- Section 1: The Physical Line -->
+  <g transform="translate(30, 20)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#0057D9" letter-spacing="1.2">SYSTEM A: DETERMINISTIC PHYSICAL CAPACITY (GOLDRATT TOC)</text>
+    
+    <!-- Station 1 -->
+    <rect x="24" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5"/>
+    <text x="38" y="70" font-size="12" font-weight="700" fill="#111418">FEED INTAKE</text>
+    <text x="38" y="88" font-size="18" font-weight="800" fill="#111418">120 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr</tspan></text>
+    <rect x="38" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="38" y="105" width="115" height="6" rx="3" fill="#0057D9"/>
+
+    <!-- WIP Queue Buffer (accumulation) -->
+    <g transform="translate(195, 70)">
+      <line x1="0" y1="18" x2="70" y2="18" stroke="#0057D9" stroke-width="1.5" stroke-dasharray="2 3" marker-end="url(#arrow-cobalt)"/>
+      <!-- Buffer tokens -->
+      <rect x="18" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="27" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="36" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="45" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <text x="35" y="-3" font-size="9" font-weight="700" fill="#0057D9" text-anchor="middle">WIP SPIKE (+420%)</text>
+    </g>
+
+    <!-- Bottleneck Station (The Chokepoint) -->
+    <rect x="275" y="40" width="180" height="95" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="2.5"/>
+    <rect x="275" y="40" width="180" height="22" rx="2" fill="#0057D9"/>
+    <text x="365" y="55" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CRITICAL CONSTRAINT</text>
+    <text x="290" y="82" font-size="13" font-weight="800" fill="#111418">MILLING / CNC</text>
+    <text x="290" y="104" font-size="22" font-weight="800" fill="#0057D9">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr (Active Max)</tspan></text>
+    <text x="290" y="122" font-size="10" font-family="'Source Serif 4', serif" font-style="italic" fill="#5C6673">Cycle-time cannot be negotiated</text>
+
+    <!-- Starvation line -->
+    <g transform="translate(465, 70)">
+      <line x1="0" y1="18" x2="65" y2="18" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+      <text x="32" y="-3" font-size="9" font-weight="600" fill="#5C6673" text-anchor="middle">STARVATION</text>
+    </g>
+
+    <!-- Downstream Idle Station -->
+    <rect x="540" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="554" y="70" font-size="12" font-weight="700" fill="#5C6673">ASSEMBLY</text>
+    <text x="554" y="88" font-size="18" font-weight="800" fill="#5C6673">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr actual</tspan></text>
+    <rect x="554" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="554" y="105" width="30" height="6" rx="3" fill="#5C6673"/>
+    <text x="554" y="124" font-size="9.5" font-weight="600" fill="#5C6673">Capacity Wasted: 72%</text>
+
+    <!-- Final Output -->
+    <g transform="translate(710, 70)">
+      <line x1="0" y1="18" x2="45" y2="18" stroke="#111418" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+    </g>
+    <rect x="765" y="55" width="75" height="65" rx="3" fill="#111418"/>
+    <text x="802" y="83" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">NET OUT</text>
+    <text x="802" y="104" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle">28/h</text>
+  </g>
+
+  <!-- Section 2: The Abstract Roadmap (Linear Delusion) -->
+  <g transform="translate(30, 195)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1.2">SYSTEM B: ROADMAP ABSTRACTION (GANTT FALLACY)</text>
+    
+    <!-- Timeline Grid lines -->
+    <line x1="200" y1="40" x2="200" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="400" y1="40" x2="400" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="600" y1="40" x2="600" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="800" y1="40" x2="800" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    
+    <!-- Bar 1 -->
+    <rect x="40" y="50" width="340" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="50" y="65" font-size="10.5" font-weight="600" fill="#111418">Feature Epics A &amp; B (Assumed Parallel Flow)</text>
+    
+    <!-- Bar 2: Bottleneck masked -->
+    <rect x="260" y="80" width="400" height="22" rx="2" fill="#2E7CFF" opacity="0.35"/>
+    <text x="270" y="95" font-size="10.5" font-weight="600" fill="#003F9E">Shared Architecture Migration (Hidden Capacity Collision)</text>
+    
+    <!-- Bar 3 -->
+    <rect x="520" y="110" width="300" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="530" y="125" font-size="10.5" font-weight="600" fill="#5C6673">Downstream Go-To-Market Delivery (Speculative)</text>
+
+    <!-- Overlay callout -->
+    <rect x="620" y="44" width="220" height="42" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+    <text x="630" y="60" font-size="9.5" font-weight="700" fill="#0057D9">ROADMAP BLIND SPOT:</text>
+    <text x="630" y="75" font-size="9" font-family="'Source Serif 4', serif" fill="#5C6673">Queues, handoffs &amp; variance are hidden</text>
+  </g>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== LONGFORM 8: Lo que una silla de 1859 todavía puede enseñar ===== -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Lo que una silla de 1859 aún enseña</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-chair-digital-fusion-portrait.jpg" alt="Silla de madera curvada que se transforma gradualmente en un componente digital modular" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Su valor no estaba solamente en el objeto terminado sino en el sistema capaz de repetirlo.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>La silla de Thonet condensa casi todo el capítulo. No comenzó siendo únicamente una forma atractiva: necesitó una tecnología de fabricación madura, una arquitectura de pocas piezas, un método de unión, repetibilidad, una estrategia logística. Y después necesitó la capacidad de usar principios y componentes comunes para producir variaciones sin comenzar de cero.</p>
+        <p>En producto digital nos obsesionamos con frecuencia con el lanzamiento visible: la aplicación, la pantalla, la nueva funcionalidad. Pero los productos capaces de sobrevivir suelen depender de algo menos visible: una arquitectura que pueda evolucionar, una economía que pueda sostenerse, una operación que pueda repetirse y una organización que pueda aprender más rápido de lo que acumula complejidad.</p>
+        <p>Ambos parten de necesidades imperfectamente conocidas. Ambos convierten ideas en especificaciones. Ambos deciden una arquitectura. Ambos enfrentan restricciones técnicas y económicas. Ambos necesitan prototipos, resolver producción u operación, y llegan a un mercado que puede ignorarlos. Ambos terminan desapareciendo si el valor que producen deja de justificar el costo de mantenerlos.</p>
+        <p>La diferencia más grande probablemente no está en la naturaleza del producto sino en la velocidad y el costo con que podemos corregir ciertas decisiones. El software nos permite modificar muchas cosas después de lanzar — esa ventaja también puede volvernos descuidados, hasta que descubrimos que también existe tooling digital: contratos, datos, integraciones, procesos y dependencias difíciles de cambiar. El producto físico nos obliga a respetar esas consecuencias antes. Tal vez por eso todavía tenga mucho que enseñarnos.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -277,8 +530,8 @@ footer a{text-decoration:none}
 <!-- ===== FRAMEWORK / PROCESS ===== -->
 <section class="framework">
   <div class="wrap">
-    <h2>Una forma de cuatro pasos para nombrar una tolerancia</h2>
-    <p class="dek">Un método de trabajo breve, usado a lo largo de este libro, aplicado aquí por primera vez a una sola decisión de producto.</p>
+    <h2>Cuatro pasos para nombrar una tolerancia</h2>
+    <p class="dek">Un método breve, usado a lo largo de este libro, aplicado aquí por primera vez a una sola decisión de producto.</p>
     <ol class="steps">
       <li><div class="ic">1</div><h3>Nombra la restricción</h3><p>Enuncia el límite real — costo, latencia, personal — en una frase.</p></li>
       <li><div class="ic">2</div><h3>Escribe el número</h3><p>Asígnale un valor medible, aunque sea aproximado, no un adjetivo.</p></li>
@@ -288,48 +541,18 @@ footer a{text-decoration:none}
   </div>
 </section>
 
-<!-- ===== VISUAL CATALOG ===== -->
-<section class="catalog">
+<!-- ===== QUOTE-ESSAY FINAL: El producto es la consecuencia de sus decisiones ===== -->
+<section class="quote-essay">
   <div class="wrap">
-    <h2>Referencias seleccionadas</h2>
-    <div class="catgrid">
-      <figure><div class="placeholder">[ imagen 16:9 ]</div><figcaption>Línea de ensamble, marcadores de tolerancia visibles en la plantilla.</figcaption></figure>
-      <figure><div class="placeholder">[ imagen 3:2 ]</div><figcaption>Prototipo temprano, sustitución de material a medio desarrollo.</figcaption></figure>
-      <figure><div class="placeholder">[ imagen 3:2 ]</div><figcaption>Muestra de falla conservada como estándar de referencia.</figcaption></figure>
-      <figure><div class="placeholder">[ imagen 1:1 ]</div><figcaption>Detalle de unión moldeada por inyección.</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TECHNICAL DIAGRAM (contain, never cropped) ===== -->
-<section class="diagram">
-  <div class="wrap">
-    <h2>De la tolerancia física al contrato digital</h2>
-    <div class="frame">
-      <svg viewBox="0 0 900 260" role="img" aria-label="Diagrama que relaciona conceptos de tolerancia física con conceptos de producto digital">
-        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0057D9"/></marker></defs>
-        <g font-family="Archivo, sans-serif" font-size="15" fill="#111418">
-          <rect x="20" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="120" y="80" text-anchor="middle">Tolerancia de material</text>
-          <rect x="350" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="450" y="80" text-anchor="middle">Contrato de API</text>
-          <rect x="680" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="780" y="80" text-anchor="middle">SLA / SLO</text>
-          <rect x="20" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="120" y="200" text-anchor="middle">Plan de mantenimiento</text>
-          <rect x="350" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="450" y="200" text-anchor="middle">Runbook</text>
-          <rect x="680" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="780" y="200" text-anchor="middle">Guardia de operación</text>
-        </g>
-        <path d="M220 75 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M550 75 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M220 195 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M550 195 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M120 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <path d="M450 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <path d="M780 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-      </svg>
+    <blockquote class="pullquote">
+      “Hacer que una idea pueda existir más de una vez.”
+      <cite>— J. A. Sosa</cite>
+    </blockquote>
+    <div class="essay">
+      <p>Cuando pienso en los productos que he visto construirse durante los últimos años —físicos, digitales, plataformas, capacidades empresariales— cada vez me interesa menos la idea inicial y más la cadena de decisiones que consiguió convertirla en algo sostenible. La idea importa. Sin ella no comienza nada. Pero rara vez es la parte escasa.</p>
+      <p>Lo escaso es encontrar una necesidad suficientemente importante, traducirla en una propuesta clara, demostrar que podemos construirla, diseñar una arquitectura que no nos condene demasiado pronto, encontrar una economía capaz de sostenerla, coordinar a las personas necesarias para llevarla al mercado y conservar suficiente flexibilidad para aceptar que alguna de nuestras primeras suposiciones será incorrecta. Ahí aparece mi 10/90: no como fórmula académica sino como recordatorio de que el entusiasmo inicial representa una fracción muy pequeña del camino.</p>
+      <p>El diseñador industrial hace esa negociación con materiales, procesos, proveedores, costos y manufactura. El líder de producto digital la hace con tecnología, datos, comportamiento, operación y economía. Los dos están intentando resolver el mismo problema fundamental.</p>
+      <p>Un prototipo demuestra que algo puede existir una vez. Un producto demuestra que podemos repetir el valor. Y un sistema bien diseñado permite que ese producto cambie sin tener que volver a inventarlo completo. Ahí comienza el siguiente capítulo.</p>
     </div>
   </div>
 </section>
@@ -339,7 +562,7 @@ footer a{text-decoration:none}
   <div class="wrap">
     <figure>
       <div class="frame">
-        <img src="/assets/chair-blueprint.png" alt="Plano técnico de una silla con dimensiones y radios, fondo transparente, contenido sin recortar" loading="lazy">
+        <img src="/assets/chapter-01-chair-blueprint-transparent.png" alt="Plano técnico de una silla con dimensiones y radios, fondo transparente, contenido sin recortar" loading="lazy" />
       </div>
       <figcaption>Espacio de objeto transparente: contain, nunca cover — el diagrama completo permanece visible sin importar el ancho del contenedor.</figcaption>
     </figure>
@@ -351,8 +574,16 @@ footer a{text-decoration:none}
   <div class="wrap">
     <h2>REFERENCIAS</h2>
     <ol>
+      <li>Ulrich, K., Eppinger, S., Yang, M. — <em>Product Design and Development</em>.</li>
+      <li>Cooper, R. — Stage-Gate: prácticas de desarrollo de nuevos productos.</li>
+      <li>Teece, D. — Definición del modelo de negocio como arquitectura de creación, entrega y captura de valor.</li>
+      <li>Thonet — Documentación histórica de la silla No. 14 / modelo 214, técnicas de doblado de madera y embalaje.</li>
+      <li>Dahmus, J., Gonzalez-Zugasti, J., Otto, K. — Investigación sobre arquitectura de plataformas y familias de producto modulares.</li>
+      <li>Robertson, D., Ulrich, K. — Planning for Product Platforms.</li>
+      <li>U.S. Government Accountability Office — Prácticas comerciales de desarrollo evolutivo y reducción de riesgo.</li>
+      <li>Levitt, T. (1965) — Exploit the Product Life Cycle.</li>
+      <li>Jetter, A., Albar, F., Sperry, R. — Investigación PMI sobre project management y desarrollo de producto en entornos tecnológicos.</li>
       <li>Notas de campo del autor en gestión de programas, POS de retail y portafolios empresariales, 2016–2026.</li>
-      <li>Material de casos interno, anonimizado donde aplica confidencialidad.</li>
     </ol>
   </div>
 </section>
@@ -366,7 +597,7 @@ footer a{text-decoration:none}
     </div>
     <div class="side next">
       <span class="lbl">SIGUIENTE →</span>
-      <a class="title" href="/es/ebook/02-materials-tolerances/">Materiales, tolerancias y el costo de una decisión</a>
+      <a class="title" href="es-ebook-chapter-02.html">Materiales, tolerancias y el costo de una decisión</a>
     </div>
   </div>
 </nav>
@@ -374,7 +605,7 @@ footer a{text-decoration:none}
 <footer>
   <div class="wrap">
     <span>Parte I · Entender el Producto — Capítulo 01</span>
-    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="/downloads/pensar-en-productos-construir-sistemas-actual.pdf">Descargar PDF</a></span>
+    <span><a href="es-ebook.html">Todos los capítulos</a> · <a href="/downloads/thinking-in-products-building-systems-actual.pdf">Descargar PDF</a></span>
   </div>
 </footer>
 
@@ -384,10 +615,10 @@ footer a{text-decoration:none}
   <button class="close" id="tocClose">Cerrar ✕</button>
   <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PARTE I — ENTENDER EL PRODUCTO</p>
   <ul>
-    <li><a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span></a></li>
-    <li><a href="/es/ebook/02-materials-tolerances/"><span class="n">02</span><span>Materiales, tolerancias y el costo de una decisión</span></a></li>
-    <li><a href="#"><span class="n">03</span><span>Lo que una línea de producción enseña sobre arquitectura</span></a></li>
-    <li><a href="#"><span class="n">04</span><span>El producto nunca es solo el objeto</span></a></li>
+    <li><a href="es-ebook-chapter-01.html"><span class="n">01</span><span>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span></a></li>
+    <li><a href="es-ebook-chapter-02.html"><span class="n">02</span><span>Materiales, tolerancias y el costo de una decisión</span></a></li>
+    <li><a href="es-ebook-chapter-03.html"><span class="n">03</span><span>Lo que una línea de producción enseña sobre arquitectura</span></a></li>
+    <li><a href="es-ebook-chapter-04.html"><span class="n">04</span><span>El producto nunca es solo el objeto</span></a></li>
   </ul>
 </aside>
 
@@ -399,39 +630,4 @@ footer a{text-decoration:none}
     <figcaption>Referencia de visor: atrapa el foco, se cierra con Escape o el control de cierre, el pie de foto permanece visible.</figcaption>
   </figure>
 </div>
-
-<script>
-(function(){
-  var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
-      overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
-  function open(){ panel.classList.add('open'); overlay.classList.add('open'); close.focus(); document.addEventListener('keydown', onKey); }
-  function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
-  function onKey(e){
-    if(e.key==='Escape'){ shut(); lightboxShut(); }
-    if(e.key==='ArrowRight') window.location.href='#';
-    if(e.key==='ArrowLeft'){ /* no previous chapter */ }
-  }
-  btn.addEventListener('click', open);
-  close.addEventListener('click', shut);
-  overlay.addEventListener('click', shut);
-  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
-
-  var lb=document.getElementById('lightbox'), lbClose=document.getElementById('lightboxClose');
-  function lightboxShut(){ lb.classList.remove('open'); }
-  lbClose.addEventListener('click', lightboxShut);
-  document.querySelectorAll('.catalog figure, .ribbon figure').forEach(function(f){
-    f.style.cursor='zoom-in';
-    f.addEventListener('click', function(){ lb.classList.add('open'); lbClose.focus(); });
-  });
-
-  var bar=document.getElementById('progressBar');
-  function onScroll(){
-    var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-    bar.style.setProperty('--p', p+'%');
-  }
-  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-})();
-</script>
-
-
 </Layout>

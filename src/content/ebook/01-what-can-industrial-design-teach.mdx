@@ -6,13 +6,12 @@ published_at: 2026-09-18
 summary: "Materials, tooling, cost and maintenance shape every physical object long before it reaches a user — and the same discipline applies, mostly unseen, to digital products."
 ---
 
-
 <div class="topbar">
   <div class="wrap row">
     <a class="home" href="../home_prototype_v12.html">JAS</a>
     <span class="crumb">Part I · Understanding the Product — Chapter 1</span>
     <div class="lang" role="group" aria-label="Language">
-      <a href="/ebook/01-what-can-industrial-design-teach/" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/01-what-can-industrial-design-teach/">ES</a>
+      <a href="ebook-chapter-01.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-ebook-chapter-01.html">ES</a>
     </div>
     <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
   </div>
@@ -25,10 +24,10 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
   <div class="wrap">
     <p class="eyebrow">PART I — UNDERSTANDING THE PRODUCT · CHAPTER 01</p>
     <h1>What Can Industrial Design Teach Digital Product Leaders?</h1>
-    <p class="dek">Materials, tooling, cost and maintenance shape every physical object long before it reaches a user — and the same discipline applies, mostly unseen, to digital products.</p>
+    <p class="dek">Materials, tooling, cost and maintenance shape every physical object long before it reaches a user. This chapter argues that a product is 10% idea and 90% effort to prove that idea can survive reality — in wood or in software.</p>
     <p class="meta">
-      <span>Published 18 Sep 2026</span>
-      <span>8 min read</span>
+      <span>Published Sep 18, 2026</span>
+      <span>18 min read</span>
       <span>Edition 0.1</span>
       <span>Status: Published</span>
     </p>
@@ -38,18 +37,9 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
 {/* ===== INTRO (short, multi-column) ===== */}
 <section class="intro">
   <div class="wrap">
-    <p>Every physical object carries constraints that are visible the moment you hold it: the tolerance of a joint, the cost of a material, the way a hinge wears after a thousand uses. Digital products hide those constraints behind a screen, but they never disappear.</p>
-    <p>This chapter opens the book with a claim that runs through everything after it: the questions a good industrial designer asks about production — what can we actually build, at what cost, maintained by whom — are the same questions a technology leader should ask about architecture, data and operations.</p>
-    <p>What follows is not a metaphor stretched thin. It is a working method, illustrated with the facts, frameworks and cases in the rest of this chapter.</p>
-  </div>
-</section>
-
-{/* ===== FACTS & FIGURES (number : label >= 4:1) ===== */}
-<section class="facts" aria-label="Chapter facts and figures">
-  <div class="wrap">
-    <div><b>3</b><span>DECISIONS EVERY PHYSICAL<br/>PRODUCT FORCES EARLY</span></div>
-    <div><b>1:1</b><span>MAPPING BETWEEN MATERIAL<br/>TOLERANCE AND API CONTRACT</span></div>
-    <div><b>18</b><span>MONTHS — TYPICAL GAP BETWEEN<br/>A SHORTCUT AND ITS COST</span></div>
+    <p>There is a part of product design that happens long before anything exists that we can touch, download, or put in front of a user — less visible than the render or the first working screen, but probably where much of what the product will become gets decided: cost, manufacturability, maintenance, how long it stays relevant.</p>
+    <p>When I studied industrial design I learned to live with those questions before I got used to calling them product strategy. Years later, working with digital products, platforms and enterprise portfolios, the same questions came back under different names. The materials changed; the problem didn't change much.</p>
+    <p>If I had to reduce it to a deliberately imperfect ratio: a product is 10% idea and 90% effort to prove that idea can survive reality. It isn't a statistic — it's a way of ordering the experience this chapter unpacks through an 1859 chair, a few uncomfortable hypotheses, and the argument that digital architecture is itself a design material.</p>
   </div>
 </section>
 
@@ -57,53 +47,484 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
 <section class="ribbon" aria-label="Image ribbon">
   <div class="track">
     <figure>
-      <div class="placeholder">[ 3:2 editorial image<br/>focal_x/y configurable ]</div>
-      <figcaption>A production line reveals its constraints in a way a roadmap rarely does.</figcaption>
+      <img src="/assets/chapter-01-ribbon-thonet-tools.jpg" alt="Bentwood chair parts, screws and nuts from the Thonet No. 14 laid out on a studio table" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>Six pieces, ten screws, two nuts: the architecture Thonet solved in 1859.</figcaption>
     </figure>
     <figure>
-      <div class="placeholder">[ 3:2 editorial image ]</div>
-      <figcaption>Tooling cost is a decision made once and paid for every unit after.</figcaption>
+      <img src="/assets/chapter-01-ribbon-tooling-cost.jpg" alt="Injection-molding tool beside a freshly molded plastic part, showing the fixed cost of tooling" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>Tooling cost is a decision made once and paid for in every unit after.</figcaption>
     </figure>
     <figure>
-      <div class="placeholder">[ 3:2 editorial image ]</div>
-      <figcaption>A hinge under load behaves like an API under traffic.</figcaption>
+      <img src="/assets/chapter-01-ribbon-hinge-api.jpg" alt="A mechanical hinge under load-testing beside a server traffic monitor" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>A hinge under load behaves like an API under traffic: both have a yield point.</figcaption>
     </figure>
   </div>
 </section>
 
-{/* ===== LONGFORM: headline + portrait + balanced columns ===== */}
+{/* ===== LONGFORM 1: The idea is only a hypothesis ===== */}
 <section class="longform">
   <div class="wrap">
-    <h2>The tolerance you can't see is the one that breaks first</h2>
+    <h2>The idea is only a hypothesis</h2>
     <div class="grid">
       <div class="figcol">
         <figure>
-          <div class="placeholder">[ 4:5 portrait<br/>cover or contain per metadata ]</div>
-          <figcaption>A designer's early sketches encode constraints long before manufacturing does.</figcaption>
+          <img src="/assets/bocetos-restricciones-mouse.jpg" alt="Industrial-design technical sketches of a computer mouse, with mechanical tolerance notes, draft angles and wall thickness, in engineering-drawing style" loading="lazy" />
+          <figcaption>A designer's early sketches encode constraints long before manufacturing does — tolerances, draft angles, wall thickness.</figcaption>
         </figure>
       </div>
       <div class="textcol">
-        <p>In physical manufacturing, tolerance is a number stamped on a drawing: how far a part can deviate before the assembly fails. Everyone touching the product agrees on it before a single unit is built.</p>
-        <p>Digital teams rarely name their tolerances explicitly. A response time of "usually under 300ms" is a tolerance. A "we'll clean that up later" is a tolerance nobody wrote down — which is exactly why it tends to fail first, at the worst possible moment, in production.</p>
-        <p>Naming the tolerance is not extra process. It is the fastest way to know, before you build, whether the thing you are proposing can actually be produced and maintained at the scale you intend.</p>
-        <p>The rest of this book returns to this idea from different angles: as a question of platform architecture, as a question of portfolio governance, and as a question of what a team owes the thing it ships.</p>
+        <p>Because an idea doesn't yet have a unit cost, an architecture, suppliers, channels, risk, or an expected return. It doesn't have support, production capacity, a backlog, adoption metrics, or a clear model for capturing value. All of that shows up once we stop falling in love with the possibility and start designing the product. In that sense, physical and digital development start from a similar condition: before you can build, you have to turn uncertainty into decisions.</p>
+        <p>There's a common temptation in product work: confusing the clarity of an idea with its viability. In industrial design the mistake surfaces fast because matter pushes back. A shape can be attractive and still impossible to manufacture with the chosen process; it can require a mold too expensive for the expected volume; it can be too heavy for the logistics channel; it can use an elegant joint that makes repair prohibitive.</p>
+        <p>The object forces you to negotiate.</p>
+        <p>Software buys a bit more time before the bill comes due. We can build an experience that works in a demo and still not have a product capable of operating: identity flows, permissions, exception handling, telemetry, billing or support are still missing behind the interface. The absence of physical material doesn't remove the constraints; it just makes them less visible.</p>
+        <p>Ulrich, Eppinger and Yang frame development as an interdisciplinary discipline where opportunity, planning, customer needs, specifications, concepts, architecture, industrial design, manufacturing and supply chain, prototyping, product economics and project management all coexist. Robert Cooper, from Stage-Gate, places an initial market and feasibility investigation before scaled development, followed by a business case where commercial attractiveness, technical feasibility, risk and financial return intersect.</p>
+        <p>I'm less interested in defending one method than in pointing out something both models make clear: product development starts well before technical development. Is there really a need, or do we just have a good story to tell about one? Is the problem frequent or costly enough that someone would change behavior? How much would we have to invest before learning we were wrong?</p>
+        <p>In industrial design those questions lead to materials, suppliers, tooling costs, volumes and price. In a digital product they become estimates for development, cloud, licensing, data, user acquisition and technology evolution. The spreadsheets change. The economic decision stays essentially the same.</p>
       </div>
     </div>
   </div>
 </section>
 
-{/* ===== PULL QUOTE + ESSAY ===== */}
+{/* ===== QUOTE-ESSAY 1 ===== */}
 <section class="quote-essay">
   <div class="wrap">
     <blockquote class="pullquote">
-      “A product that ignores its own tolerances doesn't fail gracefully. It fails exactly once, in public, at scale.”
-      <cite>— J. A. Sosa</cite>
+      “Monetization reshapes the product.”
     </blockquote>
     <div class="essay">
-      <p>This is not an argument for slowing down. Industrial designers work under real deadlines and real cost pressure — often tighter than a software team's. The difference is where the pressure surfaces.</p>
-      <p>A missed tolerance on a production line stops the line immediately: everyone sees it, and the cost of ignoring it is visible the same day. A missed tolerance in software often ships. It sits quietly until traffic, scale or time exposes it, usually far from the team that made the original call.</p>
-      <p>Treating architecture, data contracts and operational limits as tolerances — written down, owned, and checked before shipping — moves that cost back to where it's cheapest to pay: before launch, not after.</p>
-      <p>The chapters in Part II take this further, mapping specific physical-design habits onto digital-product decisions one at a time.</p>
+      <p>A product doesn't exist because it can be built. It exists when we find a reasonable way to create value, deliver it, and capture enough value to sustain the system that produces it. David Teece defines the business model as the architecture through which a company creates, delivers and captures value — a definition I like because it puts monetization back where it belongs: inside product design, not as a conversation that arrives late.</p>
+      <p>Designing something sold once is not the same as designing something that has to justify a subscription every month. Selling a machine is not the same as selling the service that machine produces. Offering software by license, by consumption, by seat, by transaction, or through a combined scheme isn't the same either. Every choice ends up shaping architecture, experience, metrics, operations and the customer relationship.</p>
+      <p>In a physical object this is easier to see because the cost of each unit sits right in front of us. In digital there's a temptation to think that because copying software costs almost nothing, the economics are trivial. But low marginal cost doesn't mean low total cost: keeping systems available, storing data, processing transactions, paying for AI models, running infrastructure, handling incidents and acquiring users are all part of the product too.</p>
+      <p>That's where another false boundary starts to break down: the one that separates design, technology and business too early.</p>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM 1: the cost that freezes before the first unit sells ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>The cost that freezes before the first sale</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="nre-area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0057D9" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0057D9" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  {/* Grid lines */}
+  <g stroke="#F0F2F5" stroke-width="1">
+    <line x1="100" y1="70" x2="860" y2="70"/>
+    <line x1="100" y1="140" x2="860" y2="140"/>
+    <line x1="100" y1="210" x2="860" y2="210"/>
+    <line x1="100" y1="280" x2="860" y2="280"/>
+  </g>
+
+  {/* Axes */}
+  <line x1="100" y1="40" x2="100" y2="330" stroke="#111418" stroke-width="1.5"/>
+  <line x1="100" y1="330" x2="860" y2="330" stroke="#111418" stroke-width="1.5"/>
+
+  {/* Axis Labels */}
+  <text x="40" y="45" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" transform="rotate(-90 40,45)">UNIT COST ($ / UNIT)</text>
+  <text x="860" y="360" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1" text-anchor="end">CUMULATIVE PRODUCTION VOLUME (UNITS)</text>
+
+  {/* Y ticks */}
+  <text x="85" y="74" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$120</text>
+  <text x="85" y="144" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$60</text>
+  <text x="85" y="214" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$20</text>
+  <text x="85" y="284" font-size="10" font-weight="600" fill="#5C6673" text-anchor="end">$4 (Floor)</text>
+
+  {/* Tooling Decision Point (NRE upfront) */}
+  <rect x="110" y="45" width="180" height="70" rx="3" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+  <text x="122" y="66" font-size="10" font-weight="800" fill="#0057D9">UPFRONT TOOLING (CAPEX)</text>
+  <text x="122" y="82" font-size="12" font-weight="700" fill="#111418">Fixed Tooling Incurred: $250k</text>
+  <text x="122" y="100" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Steel Cavities, Hardened Dies, NRE</text>
+
+  {/* Curves */}
+  {/* Amortization Area & Curve */}
+  <path d="M 120 70 Q 200 240 850 270 L 850 280 L 120 280 Z" fill="url(#nre-area)"/>
+  <path d="M 120 70 Q 200 240 850 270" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+
+  {/* Asymptotic Floor Line (Marginal cost) */}
+  <line x1="100" y1="280" x2="860" y2="280" stroke="#111418" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="850" y="300" font-size="11" font-weight="700" fill="#111418" text-anchor="end">PERPETUAL PER-UNIT RUN FLOOR ($4.20 / unit)</text>
+  <text x="850" y="316" font-size="9.5" font-family="'Source Serif 4', serif" fill="#5C6673" text-anchor="end">Raw resin, cycle time, machine tonnage &amp; QA reject scrap rate</text>
+
+  {/* Callout indicator on curve */}
+  <circle cx="300" cy="245" r="5" fill="#0057D9"/>
+  <line x1="300" y1="245" x2="360" y2="180" stroke="#0057D9" stroke-width="1"/>
+  <rect x="360" y="155" width="260" height="50" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+  <text x="372" y="174" font-size="10.5" font-weight="700" fill="#0057D9">AMORTIZED UNIT IMPACT</text>
+  <text x="372" y="192" font-size="10" font-family="'Source Serif 4', serif" fill="#111418">Tooling defects lock in cycle-time overhead forever</text>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 2: Designing means deciding under constraints ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Designing is deciding under constraints</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-material-constraint-portrait.jpg" alt="Industrial material swatches and handwritten tolerance notes on a design desk" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Material is one constraint among many — cost, scale, time, regulation, channel.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>In school you can fall in love with form. It's natural. But at some point the product stops being only what we want it to be and starts becoming what it can be within a set of constraints. Material is one of them, not the only one: so are cost, process, scale, time, regulation, supplier capacity, packaging, channel and user expectation. Those constraints don't arrive at the end to correct the design. They participate in defining it.</p>
+        <p>The same is true in digital product. Architecture, data, identity, security, interoperability, latency, availability, privacy or integration capacity shouldn't be a list of problems technology solves after product has finished imagining the experience. They are design materials.</p>
+        <p>When I say digital architecture is a material, I don't mean it as an aesthetic metaphor. It has properties and limits. An API can support one usage pattern and not another. A data model can make one kind of evolution easy and turn another into a costly migration. An identity decision can let capabilities be shared across products or lock them into separate domains.</p>
+        <p>The industrial designer learns to ask what the material allows. A product manager should ask a similar question about the system they're building on. This matters because the product that reaches the market isn't just the sum of visible features. It's the accumulated result of prior decisions. Some open possibilities. Others close them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== FACTS & FIGURES: Thonet ===== */}
+<section class="facts" aria-label="Chapter facts and figures">
+  <div class="wrap">
+    <div><b>6</b><span>MAIN COMPONENTS — PLUS<br />10 SCREWS AND 2 NUTS</span></div>
+    <div><b>36</b><span>DISASSEMBLED CHAIRS PER<br />CUBIC METER SHIPPED</span></div>
+    <div><b>50M+</b><span>UNITS PRODUCED<br />BY 1930</span></div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 3: A chair that was actually a system ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>A chair that was actually a system</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-thonet-chair-214.jpg" alt="Thonet No. 14 chair, sold today as model 214, photographed in profile" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>The Thonet No. 14 chair, sold today as model 214.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>There's a chair that sums up much of this argument better than any contemporary diagram. Michael Thonet spent the first half of the nineteenth century developing techniques for bending wood, and by the 1850s had perfected a solid-wood bending process that made serial furniture production possible. In 1859 the chair known then as No. 14 appeared — the same one Thonet sells today as model 214.</p>
+        <p>At first glance its success might be attributed to its form: light, recognizable, neutral enough to exist for decades in cafés, restaurants and homes without depending too much on a specific trend. But focusing only on the silhouette misses the more interesting part. The chair was a system of decisions.</p>
+        <p>The model could be resolved with six main pieces, ten screws and two nuts. That reduction wasn't just formal. It let manufacturing and assembly be separated, standardized components, reduced craft labor, and made it possible to ship the chair disassembled. Thonet documents that 36 disassembled chairs could be packed into a one-cubic-meter crate and assembled at the destination. By 1930, more than 50 million units had been produced.</p>
+        <p>In other words: the chair wasn't designed only to be sat on. It was designed to be produced, repeated, packed, shipped and assembled. That completely changes how you read the object.</p>
+        <p>There's a technology decision — bent wood; a component decision — few standardized pieces; a joining decision — screws and nuts; a manufacturing decision — repeatable production; and a logistics decision — shipping volume disassembled to be assembled at the end. All of them end up expressed in the same chair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== VISUAL CATALOG: the chair as architecture ===== */}
+<section class="catalog">
+  <div class="wrap">
+    <h2>Six pieces, one system</h2>
+    <div class="catgrid">
+      <figure><img src="/assets/chapter-01-chair-exploded-view.jpg" alt="Technical exploded view of the Thonet No. 14 chair showing its six bentwood pieces and hardware" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" /><figcaption>Exploded view: six bentwood pieces plus the hardware that joins them.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-shipping-crate-36-chairs.jpg" alt="One-cubic-meter shipping crate in cutaway, showing disassembled chair parts packed efficiently" loading="lazy" style="aspect-ratio:3/2;object-fit:cover;width:100%" /><figcaption>A one-cubic-meter crate: 36 disassembled chairs ready to be assembled at destination.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-bentwood-detail.jpg" alt="Macro detail of a curved wood chair component showing the bent-wood grain" loading="lazy" style="aspect-ratio:3/2;object-fit:cover;width:100%" /><figcaption>Detail of the solid-wood bending process Thonet perfected in the 1850s.</figcaption></figure>
+      <figure><img src="/assets/chapter-01-screw-nut-joint.jpg" alt="Close-up of a brass screw and nut joining two curved wood pieces" loading="lazy" style="aspect-ratio:1/1;object-fit:cover;width:100%" /><figcaption>Screw and nut: the joint that makes the whole system repairable — and repeatable.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 4: Architecture built to repeat ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Architecture built to repeat</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-platform-family-portrait.jpg" alt="Three product variants sharing one common structural core" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A platform is a collection of assets shared across a family of products.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>This is one of the reasons I find it such a useful precedent for understanding digital product. Not because an API is equivalent to a wooden leg, but because the design principle is recognizable: if an architecture lets you reuse components, the next variant costs less than reinventing the whole system from scratch.</p>
+        <p>Contemporary research on modular architecture describes exactly this problem. Dahmus, Gonzalez-Zugasti and Otto study product families built from shared, interchangeable modules, aiming to reuse functions across variants. Robertson and Ulrich describe a platform as a collection of assets — components, processes, knowledge, people and relationships — shared across a set of products.</p>
+        <p>Strip away the industrial vocabulary for a moment and it's hard not to recognize a modern conversation about digital platforms. A shared identity capability can power several experiences. A payments service can be used across different products. A catalog, a data layer, or a component library can become a shared asset. The point isn't reuse for its own sake; it's that the architecture lets you produce variety without proportionally multiplying cost and complexity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== QUOTE-ESSAY 2 ===== */}
+<section class="quote-essay">
+  <div class="wrap">
+    <blockquote class="pullquote">
+      “Thonet figured this out in wood. Plenty of companies are still trying to figure it out in software.”
+    </blockquote>
+    <div class="essay">
+      <p>Another lesson from physical product is that a version doesn't need to contain everything the product could eventually become. The industry has worked for a long time with generations, variants, platforms and incremental improvements. We sometimes forget this when we tell the story of digital product as if iteration were invented by Agile. It wasn't.</p>
+      <p>A U.S. Government Accountability Office study of development practices found that the commercial companies it analyzed reduced risk through evolutionary development: they limited how much new content went into a given generation and pushed capabilities that weren't yet mature enough into later generations, because changes get more expensive as a program advances.</p>
+      <p>Iteration shouldn't be an excuse to start without judgment; it should be a strategy for deciding what we need to learn now and what can wait until we have evidence. The point of a first version isn't to ship a weaker version of the full vision. It's to build something coherent enough to test the hypotheses most capable of sinking the case if they turn out to be false.</p>
+      <p>Do people understand the value? Can they complete the task? Do they come back? Do they pay? Does the architecture hold up under real usage patterns? Every product should have its own questions. That's where incremental doesn't mean small. It means controlled.</p>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 5: The lifecycle doesn't start at launch ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The lifecycle doesn't start at launch</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-lifecycle-curve-portrait.jpg" alt="Abstract editorial illustration of a product lifecycle curve drawn on technical graph paper" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Launch doesn't open the product. It exposes it.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>For a long time, the classic product-lifecycle chart was drawn as a curve running through introduction, growth, maturity and decline. Theodore Levitt turned that idea into a strategy tool in 1965. The curve is useful, but it can create a too-comfortable interpretation if we think product work begins at the left edge of the chart, right at launch.</p>
+        <p>By the time a product gets there, many of the decisions that will limit its trajectory have already been made: cost structure, supply chain, component architecture in the physical world; infrastructure, data model, acquisition, pricing in the digital one.</p>
+        <p>Launch doesn't open the product. It exposes it. It's the moment when accumulated hypotheses meet users, operations and real economics all at once. Stage-Gate describes launch as the step into operations or full-scale production; in Ulrich and Eppinger's model, physical development doesn't end at detailed design either — it includes testing, refinement, and production ramp-up.</p>
+        <p>The digital equivalent is obvious. A product that works with a hundred users may not work with a hundred thousand. An operation that manually handles ten exceptions can collapse under ten thousand. Before launch we try to answer whether we should and can build. Afterward we try to discover whether we can sustain, scale and evolve what we built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 6: Profitability ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The profitability design shouldn't outsource</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-cost-sheet-portrait.jpg" alt="A cost worksheet and calculator on a white desk with handwritten margin notes" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Design is a negotiation between variables — including the economic ones.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>One of the intersections I find most interesting between industrial design and digital product is economics. My experience is that economics is part of the design material: if a product requires a heavy tooling investment, we need a volume capable of amortizing it; if a complex part can become three simple parts, we might increase assembly work but reduce waste or maintenance.</p>
+        <p>The same is true in digital. We can offer a free tier to acquire users and charge for advanced capabilities; we can charge per seat and later discover value actually depends on transaction volume; we can combine subscription and consumption. There's no universal model. What does exist is an unavoidable relationship between how we capture value and what product we end up building.</p>
+        <p>That's why a monetization plan shouldn't be a slide for investors. It should become a set of explicit hypotheses: who pays, why they pay, when they pay, why they'd keep paying, and which costs grow as usage grows.</p>
+        <p>In a physical product, the sale makes the economic exchange visible immediately. In digital, we can accumulate usage for months before discovering whether behavior translates into sufficient revenue. A user is not yet a business model. Neither is a download. And a viral idea can still be a bad business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM 2: physical yield, digital saturation ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Physical yield, digital saturation</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="danger-zone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0057D9" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+
+  {/* Subpanel A: Mechanical Hinge (Stress/Strain Curve) */}
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="415" height="340" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="32" font-size="11" font-weight="800" fill="#0057D9" letter-spacing="1">PHYSICAL: MECHANICAL HINGE PINION</text>
+    <text x="24" y="48" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Stress (σ) vs. Strain (ε) under continuous moment</text>
+
+    {/* Axes */}
+    <line x1="50" y1="70" x2="50" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <line x1="50" y1="280" x2="380" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <text x="45" y="65" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">STRESS (LOAD)</text>
+    <text x="380" y="300" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">DEFLECTION / STRAIN</text>
+
+    {/* Linear Elastic Zone */}
+    <line x1="50" y1="280" x2="210" y2="150" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="75" y="195" font-size="9" font-weight="700" fill="#0057D9">ELASTIC ZONE</text>
+    <text x="75" y="210" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Reversible flexure (Hooke's Law)</text>
+
+    {/* Yield Point Callout */}
+    <circle cx="210" cy="150" r="4.5" fill="#111418"/>
+    <line x1="210" y1="150" x2="210" y2="280" stroke="#C9D0D8" stroke-dasharray="3 3"/>
+    <text x="215" y="142" font-size="9" font-weight="800" fill="#111418">YIELD POINT (σ_y)</text>
+
+    {/* Plastic Failure Curve */}
+    <path d="M 210 150 Q 280 120 360 160" fill="none" stroke="#0057D9" stroke-width="2.5" stroke-dasharray="4 2"/>
+    <text x="250" y="235" font-size="9" font-weight="700" fill="#0057D9">PLASTIC DEFORMATION</text>
+    <text x="250" y="250" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Irreversible structural buckling</text>
+  </g>
+
+  {/* Subpanel B: Digital API (Throughput vs. Latency) */}
+  <g transform="translate(475, 25)">
+    <rect x="0" y="0" width="415" height="340" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="32" font-size="11" font-weight="800" fill="#0057D9" letter-spacing="1">DIGITAL: BACKEND API SERVICE</text>
+    <text x="24" y="48" font-size="10" font-family="'Source Serif 4', serif" fill="#5C6673">Latency (p99) vs. Concurrency Throughput</text>
+
+    {/* Axes */}
+    <line x1="50" y1="70" x2="50" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <line x1="50" y1="280" x2="380" y2="280" stroke="#111418" stroke-width="1.2"/>
+    <text x="45" y="65" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">LATENCY (MS)</text>
+    <text x="380" y="300" font-size="9" font-weight="700" fill="#5C6673" text-anchor="end">CONCURRENT REQ/SEC</text>
+
+    {/* Stable Latency Zone */}
+    <path d="M 50 260 L 220 250" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="75" y="235" font-size="9" font-weight="700" fill="#0057D9">NOMINAL BAND</text>
+    <text x="75" y="250" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Predictable response (p50: 18ms)</text>
+
+    {/* Knee of the Curve / Saturation */}
+    <circle cx="220" cy="250" r="4.5" fill="#111418"/>
+    <line x1="220" y1="70" x2="220" y2="280" stroke="#C9D0D8" stroke-dasharray="3 3"/>
+    <text x="225" y="180" font-size="9" font-weight="800" fill="#111418">SATURATION KNEE</text>
+    <text x="225" y="195" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">DB Pool exhausted</text>
+
+    {/* Hockey stick exponential explosion */}
+    <path d="M 220 250 Q 240 240 280 80" fill="none" stroke="#0057D9" stroke-width="2.5"/>
+    <text x="290" y="95" font-size="9" font-weight="800" fill="#0057D9">EXPONENTIAL SPIKE</text>
+    <text x="290" y="110" font-size="8.5" font-family="'Source Serif 4', serif" fill="#5C6673">Cascade timeouts &amp; 504 drops</text>
+  </g>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 7: Product and project ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Product and project: related, not identical</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-dependency-diagram-portrait.jpg" alt="A whiteboard with sticky notes connected by lines showing task dependencies" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Managing product means knowing where you need control and where you need to learn.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A project exists to produce a result within a specific combination of scope, time, resources, dependencies and risk. A product, by contrast, can move through dozens of projects over its life: launching it might take one, migrating its architecture another, entering a different market a third.</p>
+        <p>Research by Jetter, Albar and Sperry for PMI studied how project-management practices and product development complement each other in technology environments. Their conclusion wasn't that traditional control should be imposed on innovation, but that management mechanisms need to adapt to the level of uncertainty — a distinction far more useful than the old Agile-versus-Waterfall debate.</p>
+        <p>Not every element of a product carries the same level of uncertainty. I can have a fully deterministic contractual deadline and a technical solution that's still open. I can know the technology but have no certainty about adoption. Managing product also means knowing where you need control and where you need to learn.</p>
+        <p>In industrial design this becomes obvious on the path to production: some elements have to be frozen before investing in tooling or scale. In software we have more freedom to change after launch, but that freedom isn't infinite — migrating data, breaking compatibility, or replacing core components can also be extraordinarily expensive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM 3: the visible constraint, the roadmap that hides it ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>The visible constraint, the roadmap that hides it</h2>
+    <div class="frame">
+      <svg viewBox="0 0 920 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+  {/* Definitions */}
+  <defs>
+    <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#F0F2F5" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-cobalt" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0057D9"/>
+    </marker>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5C6673"/>
+    </marker>
+  </defs>
+
+  {/* Section 1: The Physical Line */}
+  <g transform="translate(30, 20)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#0057D9" letter-spacing="1.2">SYSTEM A: DETERMINISTIC PHYSICAL CAPACITY (GOLDRATT TOC)</text>
+    
+    {/* Station 1 */}
+    <rect x="24" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5"/>
+    <text x="38" y="70" font-size="12" font-weight="700" fill="#111418">FEED INTAKE</text>
+    <text x="38" y="88" font-size="18" font-weight="800" fill="#111418">120 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr</tspan></text>
+    <rect x="38" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="38" y="105" width="115" height="6" rx="3" fill="#0057D9"/>
+
+    {/* WIP Queue Buffer (accumulation) */}
+    <g transform="translate(195, 70)">
+      <line x1="0" y1="18" x2="70" y2="18" stroke="#0057D9" stroke-width="1.5" stroke-dasharray="2 3" marker-end="url(#arrow-cobalt)"/>
+      {/* Buffer tokens */}
+      <rect x="18" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="27" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="36" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <rect x="45" y="2" width="6" height="12" rx="1" fill="#0057D9"/>
+      <text x="35" y="-3" font-size="9" font-weight="700" fill="#0057D9" text-anchor="middle">WIP SPIKE (+420%)</text>
+    </g>
+
+    {/* Bottleneck Station (The Chokepoint) */}
+    <rect x="275" y="40" width="180" height="95" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="2.5"/>
+    <rect x="275" y="40" width="180" height="22" rx="2" fill="#0057D9"/>
+    <text x="365" y="55" font-size="9" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CRITICAL CONSTRAINT</text>
+    <text x="290" y="82" font-size="13" font-weight="800" fill="#111418">MILLING / CNC</text>
+    <text x="290" y="104" font-size="22" font-weight="800" fill="#0057D9">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr (Active Max)</tspan></text>
+    <text x="290" y="122" font-size="10" font-family="'Source Serif 4', serif" font-style="italic" fill="#5C6673">Cycle-time cannot be negotiated</text>
+
+    {/* Starvation line */}
+    <g transform="translate(465, 70)">
+      <line x1="0" y1="18" x2="65" y2="18" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+      <text x="32" y="-3" font-size="9" font-weight="600" fill="#5C6673" text-anchor="middle">STARVATION</text>
+    </g>
+
+    {/* Downstream Idle Station */}
+    <rect x="540" y="45" width="160" height="85" rx="3" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="554" y="70" font-size="12" font-weight="700" fill="#5C6673">ASSEMBLY</text>
+    <text x="554" y="88" font-size="18" font-weight="800" fill="#5C6673">28 <tspan font-size="11" font-weight="500" fill="#5C6673">u/hr actual</tspan></text>
+    <rect x="554" y="105" width="130" height="6" rx="3" fill="#E2E7ED"/>
+    <rect x="554" y="105" width="30" height="6" rx="3" fill="#5C6673"/>
+    <text x="554" y="124" font-size="9.5" font-weight="600" fill="#5C6673">Capacity Wasted: 72%</text>
+
+    {/* Final Output */}
+    <g transform="translate(710, 70)">
+      <line x1="0" y1="18" x2="45" y2="18" stroke="#111418" stroke-width="1.5" marker-end="url(#arrow-ink)"/>
+    </g>
+    <rect x="765" y="55" width="75" height="65" rx="3" fill="#111418"/>
+    <text x="802" y="83" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">NET OUT</text>
+    <text x="802" y="104" font-size="16" font-weight="800" fill="#FFFFFF" text-anchor="middle">28/h</text>
+  </g>
+
+  {/* Section 2: The Abstract Roadmap (Linear Delusion) */}
+  <g transform="translate(30, 195)">
+    <rect x="0" y="0" width="860" height="155" rx="4" fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1"/>
+    <text x="24" y="28" font-size="10" font-weight="800" fill="#5C6673" letter-spacing="1.2">SYSTEM B: ROADMAP ABSTRACTION (GANTT FALLACY)</text>
+    
+    {/* Timeline Grid lines */}
+    <line x1="200" y1="40" x2="200" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="400" y1="40" x2="400" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="600" y1="40" x2="600" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    <line x1="800" y1="40" x2="800" y2="140" stroke="#F0F2F5" stroke-width="1"/>
+    
+    {/* Bar 1 */}
+    <rect x="40" y="50" width="340" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="50" y="65" font-size="10.5" font-weight="600" fill="#111418">Feature Epics A &amp; B (Assumed Parallel Flow)</text>
+    
+    {/* Bar 2: Bottleneck masked */}
+    <rect x="260" y="80" width="400" height="22" rx="2" fill="#2E7CFF" opacity="0.35"/>
+    <text x="270" y="95" font-size="10.5" font-weight="600" fill="#003F9E">Shared Architecture Migration (Hidden Capacity Collision)</text>
+    
+    {/* Bar 3 */}
+    <rect x="520" y="110" width="300" height="22" rx="2" fill="#E2E7ED"/>
+    <text x="530" y="125" font-size="10.5" font-weight="600" fill="#5C6673">Downstream Go-To-Market Delivery (Speculative)</text>
+
+    {/* Overlay callout */}
+    <rect x="620" y="44" width="220" height="42" rx="3" fill="#FFFFFF" stroke="#0057D9" stroke-width="1"/>
+    <text x="630" y="60" font-size="9.5" font-weight="700" fill="#0057D9">ROADMAP BLIND SPOT:</text>
+    <text x="630" y="75" font-size="9" font-family="'Source Serif 4', serif" fill="#5C6673">Queues, handoffs &amp; variance are hidden</text>
+  </g>
+</svg>
+
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM 8: What an 1859 chair still teaches ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>What an 1859 chair still teaches</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-01-chair-digital-fusion-portrait.jpg" alt="A bentwood chair gradually transforming into a modular digital-product artifact" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Its value wasn't only in the finished object, but in the system able to repeat it.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>The Thonet chair condenses nearly the entire chapter. It didn't begin as just an attractive shape: it needed a mature manufacturing technology, an architecture of few pieces, a joining method, repeatability, a logistics strategy. And afterward it needed the ability to use shared principles and components to produce variations without starting from zero.</p>
+        <p>In digital product we often obsess over the visible launch: the app, the screen, the new feature. But the products capable of surviving usually depend on something less visible: an architecture that can evolve, an economy that can sustain itself, an operation that can repeat, and an organization that can learn faster than it accumulates complexity.</p>
+        <p>Both start from imperfectly known needs. Both turn ideas into specifications. Both decide on an architecture. Both face technical and economic constraints. Both need prototypes, need to solve production or operations, and reach a market that might ignore them. Both eventually disappear if the value they produce stops justifying the cost of maintaining them.</p>
+        <p>The biggest difference probably isn't in the nature of the product but in the speed and cost with which we can correct certain decisions. Software lets us modify a lot of things after launch — that advantage is huge. It can also make us careless. When change looks cheap, we postpone structural decisions and pile up temporary fixes, until we discover that digital tooling exists too: contracts, data, integrations, processes and dependencies that make an old decision harder to change than it looked. Physical product forces us to respect those consequences earlier. Maybe that's why it still has so much to teach us.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -111,59 +532,29 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
 {/* ===== FRAMEWORK / PROCESS ===== */}
 <section class="framework">
   <div class="wrap">
-    <h2>A four-step way to name a tolerance</h2>
-    <p class="dek">A short working method used throughout this book, first applied here to a single product decision.</p>
+    <h2>Four steps to name a tolerance</h2>
+    <p class="dek">A short method, used throughout this book, applied here for the first time to a single product decision.</p>
     <ol class="steps">
       <li><div class="ic">1</div><h3>Name the constraint</h3><p>State the real limit — cost, latency, headcount — in one sentence.</p></li>
-      <li><div class="ic">2</div><h3>Write the number</h3><p>Attach a measurable value, even a rough one, not an adjective.</p></li>
-      <li><div class="ic">3</div><h3>Assign the owner</h3><p>One person or team who is accountable when it's exceeded.</p></li>
-      <li><div class="ic">4</div><h3>Check before ship</h3><p>Verify against the number, not against how the demo felt.</p></li>
+      <li><div class="ic">2</div><h3>Write the number</h3><p>Assign a measurable value, even a rough one, not an adjective.</p></li>
+      <li><div class="ic">3</div><h3>Assign an owner</h3><p>A person or team who answers when it's exceeded.</p></li>
+      <li><div class="ic">4</div><h3>Verify before launch</h3><p>Check against the number, not against how the demo felt.</p></li>
     </ol>
   </div>
 </section>
 
-{/* ===== VISUAL CATALOG ===== */}
-<section class="catalog">
+{/* ===== QUOTE-ESSAY FINAL: The product is the consequence of its decisions ===== */}
+<section class="quote-essay">
   <div class="wrap">
-    <h2>Selected references</h2>
-    <div class="catgrid">
-      <figure><div class="placeholder">[ 16:9 image ]</div><figcaption>Assembly line, tolerance markers visible on the jig.</figcaption></figure>
-      <figure><div class="placeholder">[ 3:2 image ]</div><figcaption>Early prototype, material substitution mid-development.</figcaption></figure>
-      <figure><div class="placeholder">[ 3:2 image ]</div><figcaption>Failure sample kept as a reference standard.</figcaption></figure>
-      <figure><div class="placeholder">[ 1:1 image ]</div><figcaption>Detail, injection-molded joint.</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-{/* ===== TECHNICAL DIAGRAM (contain, never cropped) ===== */}
-<section class="diagram">
-  <div class="wrap">
-    <h2>From physical tolerance to digital contract</h2>
-    <div class="frame">
-      <svg viewBox="0 0 900 260" role="img" aria-label="Diagram mapping physical tolerance concepts to digital product concepts">
-        <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0057D9"/></marker></defs>
-        <g font-family="Archivo, sans-serif" font-size="15" fill="#111418">
-          <rect x="20" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="120" y="80" text-anchor="middle">Material tolerance</text>
-          <rect x="350" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="450" y="80" text-anchor="middle">API contract</text>
-          <rect x="680" y="40" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="780" y="80" text-anchor="middle">SLA / SLO</text>
-          <rect x="20" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="120" y="200" text-anchor="middle">Maintenance plan</text>
-          <rect x="350" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="450" y="200" text-anchor="middle">Runbook</text>
-          <rect x="680" y="160" width="200" height="70" rx="6" fill="#F7F8FA" stroke="#C9D0D8"/>
-          <text x="780" y="200" text-anchor="middle">On-call ownership</text>
-        </g>
-        <path d="M220 75 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M550 75 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M220 195 H350" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M550 195 H680" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <path d="M120 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <path d="M450 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <path d="M780 110 V160" stroke="#C9D0D8" stroke-width="1.5" stroke-dasharray="3 4"/>
-      </svg>
+    <blockquote class="pullquote">
+      “Making an idea able to exist more than once.”
+      <cite>— J. A. Sosa</cite>
+    </blockquote>
+    <div class="essay">
+      <p>When I think about the products I've watched get built over the past several years — physical, digital, platforms, enterprise capabilities — I find myself caring less and less about the original idea and more about the chain of decisions that turned it into something sustainable. The idea matters. Nothing starts without it. But it's rarely the scarce part.</p>
+      <p>What's scarce is finding a need important enough, translating it into a clear proposal, proving we can build it, designing an architecture that doesn't condemn us too soon, finding an economy capable of sustaining it, coordinating the people needed to bring it to market, and keeping enough flexibility to accept that some of our first assumptions will be wrong. That's where my 10/90 comes from — not as an academic formula but as a personal reminder that initial enthusiasm is a very small fraction of the road.</p>
+      <p>The industrial designer runs that negotiation with materials, processes, suppliers, cost and manufacturing. The digital product leader runs it with technology, data, behavior, operations and economics. Both are trying to solve the same fundamental problem.</p>
+      <p>A prototype proves something can exist once. A product proves we can repeat the value. And a well-designed system lets that product change without having to be reinvented whole. That's where the next chapter begins.</p>
     </div>
   </div>
 </section>
@@ -173,9 +564,9 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
   <div class="wrap">
     <figure>
       <div class="frame">
-        <img src="/assets/chair-blueprint.png" alt="Technical blueprint of a chair with dimensions and radii, transparent background, contained without cropping" loading="lazy"/>
+        <img src="/assets/chapter-01-chair-blueprint-transparent.png" alt="Technical blueprint of a chair with dimensions and radii, transparent background, fully visible without cropping" loading="lazy" />
       </div>
-      <figcaption>Transparent-object slot: contain, never cover — the full diagram stays visible regardless of container width.</figcaption>
+      <figcaption>Transparent object space: contain, never cover — the full diagram stays visible regardless of container width.</figcaption>
     </figure>
   </div>
 </section>
@@ -185,8 +576,16 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
   <div class="wrap">
     <h2>REFERENCES</h2>
     <ol>
-      <li>Author's program-management field notes, retail POS and enterprise portfolio engagements, 2016–2026.</li>
-      <li>Internal case material, anonymized where confidentiality applies.</li>
+      <li>Ulrich, K., Eppinger, S., Yang, M. — <em>Product Design and Development</em>.</li>
+      <li>Cooper, R. — Stage-Gate new-product development practices.</li>
+      <li>Teece, D. — Definition of the business model as the architecture of value creation, delivery and capture.</li>
+      <li>Thonet — Historical documentation of the No. 14 / model 214 chair, bentwood technique and packing method.</li>
+      <li>Dahmus, J., Gonzalez-Zugasti, J., Otto, K. — Research on platform architecture and modular product families.</li>
+      <li>Robertson, D., Ulrich, K. — Planning for Product Platforms.</li>
+      <li>U.S. Government Accountability Office — Commercial evolutionary-development and risk-reduction practices.</li>
+      <li>Levitt, T. (1965) — Exploit the Product Life Cycle.</li>
+      <li>Jetter, A., Albar, F., Sperry, R. — PMI research on project management and product development in technology environments.</li>
+      <li>Author's field notes on program management, retail POS and enterprise portfolios, 2016–2026.</li>
     </ol>
   </div>
 </section>
@@ -208,7 +607,7 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
 <footer>
   <div class="wrap">
     <span>Part I · Understanding the Product — Chapter 01</span>
-    <span><a href="/ebook/">All chapters</a> · <a href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF</a></span>
+    <span><a href="ebook.html">All chapters</a> · <a href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF</a></span>
   </div>
 </footer>
 
@@ -218,7 +617,7 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
   <button class="close" id="tocClose">Close ✕</button>
   <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PART I — UNDERSTANDING THE PRODUCT</p>
   <ul>
-    <li><a href="/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span>What Can Industrial Design Teach Digital Product Leaders?</span></a></li>
+    <li><a href="ebook-chapter-01.html"><span class="n">01</span><span>What Can Industrial Design Teach Digital Product Leaders?</span></a></li>
     <li><a href="ebook-chapter-02.html"><span class="n">02</span><span>Materials, Tolerances and the Cost of a Decision</span></a></li>
     <li><a href="ebook-chapter-03.html"><span class="n">03</span><span>What a Production Line Teaches About Architecture</span></a></li>
     <li><a href="ebook-chapter-04.html"><span class="n">04</span><span>The Product Is Never Just the Object</span></a></li>
@@ -233,9 +632,3 @@ summary: "Materials, tooling, cost and maintenance shape every physical object l
     <figcaption>Lightbox reference: traps focus, closes on Escape or the close control, caption remains visible.</figcaption>
   </figure>
 </div>
-
-
-
-
-
-
