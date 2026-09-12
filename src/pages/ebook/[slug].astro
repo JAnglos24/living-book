@@ -162,7 +162,7 @@ const { Content } = await render(entry);
     function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
     function onKey(e){
       if(e.key==='Escape'){ shut(); lightboxShut(); }
-      if(e.key==='ArrowRight') window.location.href='ebook-chapter-02.html';
+      if(e.key==='ArrowRight'){ /* no next chapter yet */ }
       if(e.key==='ArrowLeft'){ /* no previous chapter */ }
     }
     if(btn) btn.addEventListener('click', open);
