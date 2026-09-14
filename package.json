@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/generate-pdf.mjs",
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
@@ -23,6 +24,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "pdf-lib": "^1.17.1",
     "puppeteer": "^25.10.0",
     "wrangler": "^4.131.1"
   }

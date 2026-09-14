@@ -1,0 +1,250 @@
+---
+// PortfolioHealthCalculator.astro
+---
+
+<div class="calculator-wrapper" id="phc-root">
+  <div class="phc-header">
+    <h3>Portfolio Health Diagnostic</h3>
+    <p>¿Qué tan robusta es la arquitectura operativa de tu portafolio de producto? Responde 3 preguntas rápidas para descubrir tu nivel de madurez (Spore Seed diagnostic).</p>
+  </div>
+  
+  <div class="phc-steps" id="phc-steps">
+    <!-- Question 1 -->
+    <div class="phc-step active" data-step="1">
+      <h4>1. Asignación de Capacidad (Capacity Allocation)</h4>
+      <p class="phc-q">¿Cómo decide tu equipo en qué proyectos trabajar el próximo trimestre?</p>
+      <div class="phc-options">
+        <label><input type="radio" name="q1" value="1"> <span>Por urgencia (quien grite más fuerte o el cliente más enojado).</span></label>
+        <label><input type="radio" name="q1" value="5"> <span>Por ROI estimado en hojas de cálculo que rara vez se cumplen.</span></label>
+        <label><input type="radio" name="q1" value="10"> <span>Por cubetas estratégicas (Strategic Buckets) alineadas a los OKRs de la empresa.</span></label>
+      </div>
+      <button class="phc-btn next-btn">Siguiente</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="phc-step" data-step="2">
+      <h4>2. Deuda Técnica y Mantenimiento</h4>
+      <p class="phc-q">¿Qué porcentaje de la capacidad del equipo de ingeniería se destina a mantenimiento vs innovación?</p>
+      <div class="phc-options">
+        <label><input type="radio" name="q2" value="1"> <span>90% apagar incendios, 10% innovación (o menos).</span></label>
+        <label><input type="radio" name="q2" value="5"> <span>No lo medimos formalmente, depende del sprint.</span></label>
+        <label><input type="radio" name="q2" value="10"> <span>Medido y protegido: la arquitectura (tooling) tiene un presupuesto intencional.</span></label>
+      </div>
+      <button class="phc-btn next-btn">Siguiente</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="phc-step" data-step="3">
+      <h4>3. Dependencias del Ecosistema</h4>
+      <p class="phc-q">Si un producto central cambia su API, ¿qué pasa con el resto del portafolio?</p>
+      <div class="phc-options">
+        <label><input type="radio" name="q3" value="1"> <span>Todo se rompe; descubrimos las dependencias en producción.</span></label>
+        <label><input type="radio" name="q3" value="5"> <span>Tenemos un excel de dependencias y rezamos para que esté actualizado.</span></label>
+        <label><input type="radio" name="q3" value="10"> <span>Arquitectura modular y versionada; los cambios son asíncronos y seguros.</span></label>
+      </div>
+      <button class="phc-btn calc-btn">Obtener Diagnóstico</button>
+    </div>
+
+    <!-- Results -->
+    <div class="phc-step phc-result" data-step="4">
+      <h4 id="phc-score-title">Tu Nivel: Calculando...</h4>
+      <p id="phc-score-desc">...</p>
+      <div class="phc-share-box">
+        <button id="phc-copy-btn" class="phc-btn share-btn">Copiar Resultados (Share)</button>
+        <span id="phc-copy-msg" class="phc-msg"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .calculator-wrapper {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 32px;
+    margin: 48px 0;
+    border-radius: 8px;
+    font-family: var(--grot);
+  }
+  .phc-header h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--cobalt-deep);
+  }
+  .phc-header p {
+    font-size: 15px;
+    color: var(--ink2);
+    margin-bottom: 24px;
+  }
+  .phc-step {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
+  .phc-step.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .phc-step h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--graphite);
+  }
+  .phc-q {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .phc-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  .phc-options label:hover {
+    border-color: var(--cobalt);
+    background: #f7fafe;
+  }
+  .phc-options input[type="radio"] {
+    margin-top: 4px;
+    accent-color: var(--cobalt);
+  }
+  .phc-options span {
+    font-size: 14px;
+    color: var(--graphite);
+  }
+  .phc-btn {
+    background: var(--cobalt);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  .phc-btn:hover {
+    background: var(--cobalt-deep);
+  }
+  .phc-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  .share-btn {
+    background: #111418;
+  }
+  .share-btn:hover {
+    background: #000;
+  }
+  .phc-result {
+    text-align: center;
+    padding: 24px 0;
+  }
+  .phc-result h4 {
+    font-size: 32px;
+    color: var(--cobalt);
+    margin-bottom: 16px;
+  }
+  .phc-result p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 24px;
+    color: var(--ink2);
+    line-height: 1.6;
+  }
+  .phc-msg {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 14px;
+    color: #2e7d32;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.getElementById('phc-root');
+    if (!root) return;
+
+    let currentStep = 1;
+    let score = 0;
+
+    const steps = root.querySelectorAll('.phc-step');
+    const nextBtns = root.querySelectorAll('.next-btn');
+    const calcBtn = root.querySelector('.calc-btn');
+    const copyBtn = document.getElementById('phc-copy-btn');
+    const copyMsg = document.getElementById('phc-copy-msg');
+
+    function goToStep(stepIndex) {
+      steps.forEach(s => s.classList.remove('active'));
+      const target = root.querySelector(`.phc-step[data-step="${stepIndex}"]`);
+      if (target) target.classList.add('active');
+    }
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const stepDiv = e.target.closest('.phc-step');
+        const selected = stepDiv.querySelector('input[type="radio"]:checked');
+        if (!selected) {
+          alert('Por favor selecciona una opción antes de continuar.');
+          return;
+        }
+        score += parseInt(selected.value);
+        currentStep++;
+        goToStep(currentStep);
+      });
+    });
+
+    calcBtn.addEventListener('click', (e) => {
+      const stepDiv = e.target.closest('.phc-step');
+      const selected = stepDiv.querySelector('input[type="radio"]:checked');
+      if (!selected) {
+        alert('Por favor selecciona una opción antes de continuar.');
+        return;
+      }
+      score += parseInt(selected.value);
+      
+      const titleEl = document.getElementById('phc-score-title');
+      const descEl = document.getElementById('phc-score-desc');
+      
+      let level = "";
+      if (score <= 10) {
+        level = "Nivel 1: Caos Operativo (Startup Mode)";
+        descEl.innerText = "Tu portafolio está reaccionando al entorno, no dirigiéndolo. La deuda técnica domina y la escalabilidad está en riesgo severo.";
+      } else if (score <= 20) {
+        level = "Nivel 2: Transición Funcional";
+        descEl.innerText = "Estás empezando a introducir procesos, pero el sistema aún depende del heroísmo individual en lugar de la arquitectura.";
+      } else {
+        level = "Nivel 3: Excelencia en Portfolio Management";
+        descEl.innerText = "Tienes un sistema predecible, escalable y arquitectónicamente sólido. Eres un verdadero líder de producto.";
+      }
+      
+      titleEl.innerText = level;
+      currentStep++;
+      goToStep(currentStep);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const titleEl = document.getElementById('phc-score-title');
+      const textToCopy = `Acabo de evaluar la arquitectura de mi portafolio de producto y obtuve: ${titleEl.innerText}.\n\nSi quieres descubrir si tu equipo está operando en caos o con estrategia C-Level, haz el test gratis en el Capítulo 1 del 'Living Book' de Angel Sosa:\n\nhttps://[TU-DOMINIO]/es/estrategia/portfolio-saas`;
+      
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        copyMsg.innerText = "¡Copiado al portapapeles! Listo para pegar en LinkedIn o Slack.";
+        setTimeout(() => copyMsg.innerText = "", 4000);
+      } catch (err) {
+        copyMsg.innerText = "Error al copiar. Selecciona el texto manualmente.";
+      }
+    });
+  });
+</script>

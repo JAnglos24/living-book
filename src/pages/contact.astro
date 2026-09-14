@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — J. Angel Sosa</title>
+<meta name="description" content="Get in touch with José Ángel Sosa López by email or WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8;
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --max:1600px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,p{margin:0} a{color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+
+.banner{width:100%;aspect-ratio:21/8;overflow:hidden;background:var(--paper)}
+.banner img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+@media (max-width:700px){.banner{aspect-ratio:4/3}}
+
+.intro{background:var(--white)}
+.intro .wrap{padding-block:clamp(40px,7vh,72px);max-width:900px}
+.intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,52px);letter-spacing:-.01em;margin-bottom:16px}
+.intro p{color:var(--ink2);font-size:clamp(16px,1.3vw,19px);max-width:56ch}
+
+.channels{background:var(--paper);border-block:1px solid var(--line)}
+.channels .wrap{padding-block:clamp(40px,7vh,72px);display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.channel{background:var(--white);border:1px solid var(--line);padding:32px;display:flex;flex-direction:column;gap:14px}
+.channel b{font-size:19px}
+.channel span{color:var(--ink2);font-size:14px}
+.channel a.action{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;font-size:15px;width:fit-content}
+.channel.whatsapp a.action{background:#25D366;color:#06340f}
+.channel .copy-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2)}
+.channel button.copy{background:none;border:1px solid var(--line);color:var(--graphite);font-size:12px;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:var(--grot)}
+.channel button.copy[data-copied="true"]{border-color:var(--cobalt);color:var(--cobalt)}
+@media (max-width:700px){.channels .wrap{grid-template-columns:1fr}}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <nav aria-label="Site">
+      <a href="/">Home</a>
+      <a href="/ebook/">Book</a>
+      <a href="/author/">Author</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="/contact/" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/contacto/">ES</a>
+    </div>
+  </div>
+</div>
+
+<figure class="banner"><img src="/assets/jas-warm.jpg" alt="José Ángel Sosa López at home" loading="eager"></figure>
+
+<section class="intro">
+  <div class="wrap">
+    <h1>Let's talk.</h1>
+    <p>Whether it's about the book, a portfolio leadership role, or just a good conversation about products and systems — pick whichever channel is easiest for you.</p>
+  </div>
+</section>
+
+<section class="channels">
+  <div class="wrap">
+    <div class="channel">
+      <b>Email</b>
+      <span>Usually the fastest way to reach me for anything formal — recruiting, speaking, collaboration.</span>
+      <a class="action" href="mailto:jasosalopez@outlook.com">Write an email ↗</a>
+      <div class="copy-row">
+        <span id="emailText">jasosalopez@outlook.com</span>
+        <button class="copy" type="button" data-copy="jasosalopez@outlook.com" data-target="emailCopyBtn" id="emailCopyBtn">Copy</button>
+      </div>
+    </div>
+    <div class="channel whatsapp">
+      <b>WhatsApp</b>
+      <span>For a quicker, more direct conversation.</span>
+      <a class="action" href="https://wa.me/525527733205" target="_blank" rel="noopener">Open WhatsApp ↗</a>
+      <div class="copy-row">
+        <span id="phoneText">+52 55 2773 3205</span>
+        <button class="copy" type="button" data-copy="+525527733205" data-target="phoneCopyBtn" id="phoneCopyBtn">Copy</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>José Ángel Sosa López — Contact · <span style="opacity:.7">Design by Tecronomic, SAPI de CV</span></span>
+    <span><a href="/">Home</a> · <a href="/ebook/">The living book</a> · <a href="/author/">Author</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('button.copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.getAttribute('data-copy') || '';
+      try {
+        await navigator.clipboard.writeText(value);
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.setAttribute('data-copied', 'true');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.removeAttribute('data-copied');
+        }, 1800);
+      } catch (err) {
+        btn.textContent = 'Select & copy manually';
+      }
+    });
+  });
+</script>
+</body>
+</html>

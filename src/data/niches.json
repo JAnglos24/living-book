@@ -1,0 +1,32 @@
+[
+  {
+    "id": "saas",
+    "name": "SaaS",
+    "title": "Estrategia de Portafolio para B2B SaaS",
+    "meta_desc": "Descubre cómo escalar operaciones de producto y alinear OKRs en empresas B2B SaaS con este capítulo de Portfolio Management."
+  },
+  {
+    "id": "fintech",
+    "name": "Fintech",
+    "title": "Gestión de Portafolio de Producto en Fintech",
+    "meta_desc": "Estrategias ejecutivas para priorizar productos financieros, gestionar riesgos y alinear stakeholders en la industria Fintech."
+  },
+  {
+    "id": "healthtech",
+    "name": "Healthtech",
+    "title": "Product Leadership en Healthtech",
+    "meta_desc": "Cómo los líderes C-level en Healthtech pueden optimizar su portafolio de productos y cumplir con regulaciones sin perder agilidad."
+  },
+  {
+    "id": "enterprise",
+    "name": "Enterprise Software",
+    "title": "Portfolio Management para Enterprise Software",
+    "meta_desc": "Moderniza tu suite de productos Enterprise. Guía estratégica de Portfolio Management para VPs y CPOs."
+  },
+  {
+    "id": "banking",
+    "name": "Banca Digital",
+    "title": "Transformación Digital y Portafolio en Banca",
+    "meta_desc": "La guía definitiva de Product Portfolio Management para escalar canales digitales en el sector bancario."
+  }
+]

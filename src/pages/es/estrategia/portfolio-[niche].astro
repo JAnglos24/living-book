@@ -1,8 +1,21 @@
 ---
-import Layout from '../../../../layouts/Layout.astro';
-import PortfolioHealthCalculator from '../../../../components/PortfolioHealthCalculator.astro';
+import Layout from '../../../layouts/Layout.astro';
+import niches from '../../../data/niches.json';
+import PortfolioHealthCalculator from '../../../components/PortfolioHealthCalculator.astro';
+
+export async function getStaticPaths() {
+  return niches.map((niche) => {
+    return {
+      params: { niche: niche.id },
+      props: { nicheData: niche },
+    };
+  });
+}
+
+const { niche } = Astro.params;
+const { nicheData } = Astro.props;
 ---
-<Layout title="¿Qué le puede enseñar el diseño industrial a los líderes de producto digital? — Thinking in Products, Building Systems">
+<Layout title={`${nicheData.title} — Thinking in Products, Building Systems`}>
   <style is:inline>
     /* Copied from original chapter head */
     figure{margin:0}
@@ -165,9 +178,9 @@ import PortfolioHealthCalculator from '../../../../components/PortfolioHealthCal
 <header class="opener">
   <span class="num" aria-hidden="true">01</span>
   <div class="wrap">
-    <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · CAPÍTULO 01</p>
-    <h1>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</h1>
-    <p class="dek">Materiales, tolerancias, costo y mantenimiento definen todo objeto físico mucho antes de llegar a un usuario. Este capítulo argumenta que un producto es 10% idea y 90% esfuerzo por demostrar que esa idea puede sobrevivir a la realidad — en madera o en software.</p>
+    <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · ESTRATEGIA {nicheData.name.toUpperCase()}</p>
+    <h1>{nicheData.title}</h1>
+    <p class="dek">{nicheData.meta_desc}</p>
     <p class="meta">
       <span>Publicado el 18 sep 2026</span>
       <span>18 min de lectura</span>

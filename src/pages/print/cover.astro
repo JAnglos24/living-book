@@ -1,0 +1,35 @@
+---
+const generatedAt = new Date().toISOString().slice(0, 10);
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thinking in Products, Building Systems — Cover</title>
+<style>
+  @page{margin:0}
+  *{box-sizing:border-box}
+  body{margin:0;width:1000px;height:1294px;background:#0057D9;color:#fff;font-family:"Archivo",system-ui,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:90px 84px}
+  .eyebrow{font-size:15px;letter-spacing:.16em;font-weight:600;color:rgba(255,255,255,.85)}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:64px;line-height:1.08;letter-spacing:-.01em;margin:26px 0 22px;max-width:16ch}
+  .sub{font-size:20px;color:rgba(255,255,255,.88);max-width:38ch;line-height:1.5}
+  .bottom{display:flex;flex-direction:column;gap:8px}
+  .author{font-size:22px;font-weight:700}
+  .meta{font-size:14px;color:rgba(255,255,255,.75)}
+  .rule{width:64px;height:2px;background:rgba(255,255,255,.5);margin-bottom:22px}
+</style>
+</head>
+<body>
+  <div>
+    <p class="eyebrow">THE LIVING BOOK</p>
+    <h1>Thinking in Products, Building Systems</h1>
+    <p class="sub">From physical design to digital products, projects and enterprise portfolios.</p>
+  </div>
+  <div class="bottom">
+    <div class="rule"></div>
+    <span class="author">José Ángel Sosa López</span>
+    <span class="meta">Living edition 0.1 — 1 of ~20 chapters published — updated weekly</span>
+    <span class="meta">PDF snapshot generated {generatedAt} from the same source as the web edition</span>
+  </div>
+</body>
+</html>

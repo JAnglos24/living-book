@@ -1,0 +1,35 @@
+---
+const generatedAt = new Date().toISOString().slice(0, 10);
+---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Thinking in Products, Building Systems — Portada</title>
+<style>
+  @page{margin:0}
+  *{box-sizing:border-box}
+  body{margin:0;width:1000px;height:1294px;background:#0057D9;color:#fff;font-family:"Archivo",system-ui,sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:90px 84px}
+  .eyebrow{font-size:15px;letter-spacing:.16em;font-weight:600;color:rgba(255,255,255,.85)}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:64px;line-height:1.08;letter-spacing:-.01em;margin:26px 0 22px;max-width:16ch}
+  .sub{font-size:20px;color:rgba(255,255,255,.88);max-width:38ch;line-height:1.5}
+  .bottom{display:flex;flex-direction:column;gap:8px}
+  .author{font-size:22px;font-weight:700}
+  .meta{font-size:14px;color:rgba(255,255,255,.75)}
+  .rule{width:64px;height:2px;background:rgba(255,255,255,.5);margin-bottom:22px}
+</style>
+</head>
+<body>
+  <div>
+    <p class="eyebrow">EL LIBRO VIVO</p>
+    <h1>Thinking in Products, Building Systems</h1>
+    <p class="sub">Del diseño físico a los productos digitales, los proyectos y los portafolios empresariales.</p>
+  </div>
+  <div class="bottom">
+    <div class="rule"></div>
+    <span class="author">José Ángel Sosa López</span>
+    <span class="meta">Edición viva 0.1 — 1 de ~20 capítulos publicados — se actualiza cada semana</span>
+    <span class="meta">Instantánea PDF generada el {generatedAt} desde la misma fuente que la edición web</span>
+  </div>
+</body>
+</html>

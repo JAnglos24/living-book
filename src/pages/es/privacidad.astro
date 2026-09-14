@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad — J. Angel Sosa</title>
+<meta name="description" content="Política de privacidad: cookies, logs de hosting y derechos sobre Thinking in Products, Building Systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8;
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --max:1600px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,p{margin:0} a{color:var(--cobalt)}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+
+.hero{background:var(--cobalt);color:#fff}
+.hero .wrap{padding-block:clamp(48px,8vh,80px)}
+.hero .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.4vw,56px);letter-spacing:-.01em}
+.hero p{margin-top:14px;font-size:15px;color:rgba(255,255,255,.85)}
+
+.content{background:var(--white)}
+.content .wrap{padding-block:clamp(40px,7vh,72px);max-width:760px}
+.content section{margin-bottom:clamp(32px,5vh,48px)}
+.content h2{font-size:19px;font-weight:700;margin-bottom:14px}
+.content p{color:#242A31;margin-bottom:1em;max-width:66ch}
+.content ul{margin:0 0 1em;padding-left:1.2em;color:#242A31}
+.content li{margin-bottom:.5em}
+.content .updated{font-size:13px;color:var(--ink2)}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/es/">JAS</a>
+    <nav aria-label="Sitio">
+      <a href="/es/">Inicio</a>
+      <a href="/es/ebook/">Libro</a>
+      <a href="/es/author/">Autor</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="/privacy/">EN</a><span aria-hidden="true">/</span><a href="/es/privacidad/" aria-current="page">ES</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">PRIVACIDAD</p>
+    <h1>Cookies y derechos sobre el libro</h1>
+    <p>Esta página cubre las dos únicas cosas que hay que cubrir: qué hace este sitio con tus datos, y qué puedes y no puedes hacer con el contenido del libro.</p>
+  </div>
+</header>
+
+<section class="content">
+  <div class="wrap">
+    <section>
+      <h2>Cookies</h2>
+      <p>Este sitio no coloca cookies propias ni usa analítica, rastreadores o scripts de terceros. No hay nada aquí que te siga entre sesiones o entre sitios.</p>
+      <p>El sitio está hospedado en la red de Cloudflare. Como cualquier proveedor de hosting, la infraestructura de Cloudflare guarda logs estándar a nivel de servidor (dirección IP, hora de la solicitud, navegador) por seguridad y prevención de abuso — esto es un registro de infraestructura, no algo que este sitio configure, lea o use para rastrear. Aplica igual que a cualquier sitio web estático.</p>
+    </section>
+    <section>
+      <h2>Derechos sobre el libro</h2>
+      <p>El texto y las ilustraciones de <em>Thinking in Products, Building Systems</em>, publicado capítulo a capítulo en este sitio, son © José Ángel Sosa López. Todos los derechos reservados.</p>
+      <ul>
+        <li>Eres bienvenido a leer, enlazar y citar extractos breves con atribución.</li>
+        <li>Reproducir, redistribuir o republicar capítulos completos en otro lugar — incluyendo la edición descargable en PDF — requiere permiso previo por escrito.</li>
+        <li>El PDF descargable está pensado para lectura personal, no para redistribución.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Preguntas</h2>
+      <p>Para cualquier duda sobre esta política, o para solicitar permiso de reutilizar el contenido del libro, <a href="/es/contacto/">contáctame</a>.</p>
+    </section>
+    <p class="updated">Última actualización: 12 sep 2026.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>José Ángel Sosa López — Privacidad · <span style="opacity:.7">Diseño por Tecronomic, SAPI de CV</span></span>
+    <span><a href="/es/">Inicio</a> · <a href="/es/ebook/">El libro vivo</a> · <a href="/es/author/">Autor</a></span>
+  </div>
+</footer>
+</body>
+</html>

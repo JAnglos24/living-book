@@ -150,6 +150,16 @@ const { Content } = await render(entry);
     .lightbox .close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:15px;cursor:pointer}
 
     @media (prefers-reduced-motion:reduce){.toc-overlay,.toc-panel{transition:none}}
+
+    @media print{
+      .topbar,.progress,.chapternav,footer,.toc-btn,.toc-overlay,.toc-panel,.lightbox{display:none!important}
+      /* .textcol/.essay paragraphs are capped at ~34ch for a two-column
+         desktop layout; once the grid collapses to one column at print
+         width, that cap leaves most of the page blank. */
+      .longform .grid,.quote-essay .wrap{grid-template-columns:1fr!important}
+      .longform .textcol,.essay{columns:1!important}
+      .longform .textcol p,.essay p{max-width:none!important}
+    }
   </style>
 
   <Content />
