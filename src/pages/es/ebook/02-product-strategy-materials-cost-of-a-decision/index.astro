@@ -1,0 +1,996 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+---
+<Layout title="Estrategia de Producto, Materiales y el Costo de una Decisión — Thinking in Products, Building Systems">
+  <style is:inline>
+    /* Copied from original chapter head */
+    figure{margin:0}
+    figcaption{font-size:13px;color:var(--ink2);margin-top:10px;max-width:60ch}
+    .placeholder{background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px;text-align:center;padding:1rem}
+
+    .topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:16px}
+    .topbar a.home{font-weight:700;text-decoration:none;font-size:15px;flex:0 0 auto}
+    .topbar .crumb{font-size:13px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+    .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
+    .topbar .lang a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+    .topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:7px 16px;cursor:pointer;flex:0 0 auto}
+    .progress{height:2px;background:var(--grid-blue)}
+    .progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
+
+    .opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden;min-height:46svh;display:flex;align-items:flex-end}
+    .opener .num{position:absolute;left:calc(var(--margin) * -0.15);bottom:-6%;font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(120px,18vw,300px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;user-select:none}
+    .opener .wrap{position:relative;z-index:1;padding-block:40px 44px}
+    .opener .eyebrow{color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+    .opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
+    .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(54px,7.5vw,132px);line-height:.98;letter-spacing:-.035em;max-width:16ch;margin-bottom:16px}
+    .opener .dek{font-size:clamp(17px,1.5vw,21px);max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:22px}
+    .opener .meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:rgba(255,255,255,.78)}
+
+    .intro{background:var(--white)}
+    .intro .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .intro p{font-size:1em;line-height:1.6;color:#242A31}
+    @media (max-width:800px){.intro .wrap{grid-template-columns:1fr}}
+
+    .facts{background:var(--paper);border-block:1px solid var(--line)}
+    .facts .wrap{padding-block:clamp(36px,6vh,56px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .facts div{border-left:1px solid var(--line);padding-left:20px}
+    .facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;margin-bottom:8px}
+    .facts span{font-size:13px;color:var(--ink2)}
+    @media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+    .ribbon{background:var(--white);padding-block:0}
+    .ribbon .track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:2px;overflow-x:auto;scroll-snap-type:x proximity}
+    .ribbon .track figure{scroll-snap-align:start}
+    .ribbon .placeholder{height:clamp(220px,26vw,360px)}
+    .ribbon figcaption{padding:10px var(--margin) 0}
+    @media (max-width:700px){.ribbon .track{grid-auto-columns:82vw}}
+
+    .longform{background:var(--white)}
+    .longform .wrap{padding-block:clamp(48px,8vh,80px)}
+    .longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(36px,4.8vw,78px);line-height:1.02;letter-spacing:-.03em;max-width:16ch;margin-bottom:clamp(28px,5vh,48px)}
+    .longform .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+    .longform .figcol .placeholder{aspect-ratio:4/5}
+    .longform .textcol p{max-width:34ch;margin-bottom:1.2em;font-size:1em}
+    .longform .textcol{columns:1}
+    @media (min-width:900px){.longform .textcol{columns:2;column-gap:var(--gutter)}}
+    @media (max-width:860px){.longform .grid{grid-template-columns:1fr}}
+
+    .quote-essay{background:var(--paper);border-block:1px solid var(--line)}
+    .quote-essay .wrap{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:5fr 7fr;gap:var(--gutter);align-items:start}
+    .pullquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(28px,3.2vw,44px);line-height:1.28;letter-spacing:-.01em;color:var(--cobalt-deep)}
+    .pullquote cite{display:block;margin-top:20px;font-family:var(--grot);font-style:normal;font-size:13px;font-weight:600;color:var(--ink2)}
+    .essay{columns:1}
+    @media (min-width:700px){.essay{columns:2;column-gap:var(--gutter)}}
+    .essay p{margin-bottom:1.1em;max-width:34ch;font-size:1em}
+    @media (max-width:860px){.quote-essay .wrap{grid-template-columns:1fr}}
+
+    .framework{background:var(--white)}
+    .framework .wrap{padding-block:clamp(48px,8vh,80px)}
+    .framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:12px;max-width:18ch}
+    .framework .dek{color:var(--ink2);max-width:60ch;margin-bottom:clamp(32px,5vh,48px)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+    .steps li{list-style:none;padding:24px 20px 24px 0;border-right:1px solid var(--line);position:relative}
+    .steps li:last-child{border-right:0}
+    .steps .ic{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--cobalt);color:var(--cobalt);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:500;margin-bottom:16px}
+    .steps h3{font-size:16px;font-weight:600;margin-bottom:8px;max-width:16ch}
+    .steps p{font-size:14px;color:var(--ink2);max-width:20ch}
+    .steps li:not(:last-child)::after{content:"";position:absolute;right:-1px;top:44px;width:8px;height:8px;border-top:1.5px solid var(--cobalt);border-right:1.5px solid var(--cobalt);transform:translate(50%,-50%) rotate(45deg);background:var(--white)}
+    @media (max-width:860px){.steps{grid-template-columns:1fr;border-top:0}.steps li{border-right:0;border-top:1px solid var(--line);padding:20px 0}.steps li::after{display:none}}
+
+    .catalog{background:var(--paper);border-top:1px solid var(--line)}
+    .catalog .wrap{padding-block:clamp(48px,8vh,80px)}
+    .catalog h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:clamp(28px,5vh,44px)}
+    .catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .catgrid figure:nth-child(1){grid-column:span 2}
+    .catgrid .placeholder{aspect-ratio:3/2}
+    .catgrid figure:nth-child(1) .placeholder{aspect-ratio:16/9}
+    .catgrid figure:nth-child(4) .placeholder{aspect-ratio:1/1}
+    @media (max-width:860px){.catgrid{grid-template-columns:1fr 1fr}.catgrid figure:nth-child(1){grid-column:span 2}}
+    @media (max-width:560px){.catgrid{grid-template-columns:1fr}.catgrid figure:nth-child(1){grid-column:span 1}}
+
+    .diagram{background:var(--white)}
+    .diagram .wrap{padding-block:clamp(48px,8vh,80px)}
+    .diagram h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.02em;margin-bottom:20px}
+    .diagram .frame{background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px)}
+    .diagram .frame svg{width:100%;max-height:80svh;height:auto}
+
+    .object-figure{background:var(--paper);border-top:1px solid var(--line)}
+    .object-figure .wrap{padding-block:clamp(40px,7vh,64px)}
+    .object-figure .frame{background:repeating-conic-gradient(#fff 0 25%, var(--white) 0 50%) 0 0/24px 24px, var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:280px;padding:32px}
+    .object-figure .frame img{max-height:340px;object-fit:contain}
+
+    .refs{background:var(--paper)}
+    .refs .wrap{padding-block:clamp(36px,6vh,56px)}
+    .refs h2{font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:16px;color:var(--ink2)}
+    .refs ol{margin:0;padding-left:1.2em;font-size:14px;color:var(--ink2);display:grid;gap:8px}
+
+    .chapternav{background:var(--cobalt);color:#fff}
+    .chapternav .wrap{padding-block:clamp(40px,7vh,64px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .chapternav .side{display:flex;flex-direction:column;gap:6px}
+    .chapternav .side.next{text-align:right;margin-left:auto}
+    .chapternav .lbl{font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.7)}
+    .chapternav a{text-decoration:none}
+    .chapternav .title{font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:500;max-width:22ch}
+    .chapternav a[aria-disabled="true"]{pointer-events:none;opacity:.4}
+
+    footer{background:var(--white);border-top:1px solid var(--line)}
+    footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+    footer a{text-decoration:none}
+
+    .toc-overlay{position:fixed;inset:0;background:rgba(17,20,24,.4);opacity:0;pointer-events:none;transition:opacity .3s var(--ease);z-index:30}
+    .toc-overlay.open{opacity:1;pointer-events:auto}
+    .toc-panel{position:fixed;top:0;right:0;height:100%;width:min(420px,88vw);background:var(--white);transform:translateX(100%);transition:transform .35s var(--ease);z-index:31;overflow-y:auto;padding:24px}
+    .toc-panel.open{transform:translateX(0)}
+    .toc-panel .close{font:inherit;font-size:14px;background:none;border:none;cursor:pointer;color:var(--ink2)}
+    .toc-panel ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:2px}
+    .toc-panel li{display:grid;grid-template-columns:2rem 1fr;gap:10px;padding:9px 8px;border-radius:6px;font-size:14px}
+    .toc-panel li a{display:contents;text-decoration:none}
+    .toc-panel .n{font-family:var(--serif);color:var(--ink2)}
+    .toc-panel li:has(a):hover{background:var(--paper)}
+
+    .lightbox{position:fixed;inset:0;background:rgba(10,12,15,.92);display:none;align-items:center;justify-content:center;z-index:40;padding:5vw}
+    .lightbox.open{display:flex}
+    .lightbox .box{max-width:1100px;width:100%;color:#fff}
+    .lightbox .placeholder{aspect-ratio:16/9;background:rgba(255,255,255,.06);color:#cfe0ff}
+    .lightbox figcaption{color:rgba(255,255,255,.7)}
+    .lightbox .close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:15px;cursor:pointer}
+
+    @media (prefers-reduced-motion:reduce){.toc-overlay,.toc-panel{transition:none}}
+
+    @media print{
+      .topbar,.progress,.chapternav,footer,.toc-btn,.toc-overlay,.toc-panel,.lightbox{display:none!important}
+      .longform .grid,.quote-essay .wrap{grid-template-columns:1fr!important}
+      .longform .textcol,.essay{columns:1!important}
+      .longform .textcol p,.essay p{max-width:none!important}
+    }
+  </style>
+
+  <div class="topbar">
+    <div class="wrap row">
+      <a class="home" href="/">JAS</a>
+      <span class="crumb">Parte I · Entender el Producto — Capítulo 2</span>
+      <div class="lang" role="group" aria-label="Idioma">
+        <a href="/ebook/02-product-strategy-materials-cost-of-a-decision/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/" aria-current="page">ES</a>
+      </div>
+      <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+  </div>
+
+  <header class="opener">
+    <span class="num" aria-hidden="true">02</span>
+    <div class="wrap">
+      <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · CAPÍTULO 02</p>
+      <h1>Estrategia de Producto, Materiales y el Costo de una Decisión</h1>
+      <p class="dek">Todo producto comienza como una promesa hecha antes de saber lo suficiente. Este capítulo trata sobre lo que cuesta cumplir esa promesa.</p>
+      <p class="meta">
+        <span>Publicado 16 sep 2026</span>
+        <span>14 min de lectura</span>
+        <span>Edición 0.2</span>
+        <span>Estado: Publicado</span>
+      </p>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="wrap">
+      <p>Un producto físico puede comenzar con un boceto: una superficie, una estructura, una relación propuesta con el cuerpo humano. Un producto digital comienza con una visión de cambio — un cliente que debería poder hacer algo más rápido, más seguro o con menos esfuerzo que antes. Ninguno de los dos comienza con un roadmap. Un roadmap ya es un acto de traducción, y solo aparece después de que la organización ha elegido una dirección.</p>
+      <p>Antes de que pueda existir, la organización debe definir su Visión de Producto, elegir una Estrategia de Producto y decidir cómo se reconocerá el valor entregado. Una North Star Metric le da a ese valor una dirección medible, y solo entonces puede organizarse en el tiempo una secuencia de apuestas de producto. En este punto el producto todavía existe sobre todo como intención — el equipo puede entender el problema sin conocer el costo real de resolverlo.</p>
+      <p>Aquí es donde comienza la factibilidad — no la pregunta estrecha de si algo puede construirse, sino un examen de si puede producirse, operarse, mantenerse y adaptarse bajo condiciones que la organización y el mercado puedan sostener. Una solución técnicamente posible no es automáticamente un producto factible. El resto de este capítulo pregunta qué cuesta realmente esa diferencia.</p>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Datos del capítulo">
+    <div class="wrap">
+      <div><b>4</b><span>LENTES QUE UN PRODUCTO<br />DEBE ATRAVESAR</span></div>
+      <div><b>6</b><span>FAMILIAS DE COSTO<br />DE LA CONSTRUCCIÓN AL RETIRO</span></div>
+      <div><b>80%</b><span>RENDIMIENTO TÍPICO DE MATERIAL<br />EN EL EJEMPLO TRABAJADO</span></div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>La dirección precede a la planeación</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1000 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <defs><marker id="arrow-c2es-1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+          <rect x="20" y="70" width="200" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="120" y="115" font-size="16" font-weight="700" text-anchor="middle" fill="#111418">VISIÓN</text>
+          <line x1="220" y1="110" x2="276" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-1)"/>
+          <rect x="280" y="70" width="200" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="380" y="115" font-size="15" font-weight="700" text-anchor="middle" fill="#111418">ESTRATEGIA</text>
+          <line x1="480" y1="110" x2="536" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-1)"/>
+          <rect x="540" y="70" width="220" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="650" y="109" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">MÉTRICA</text>
+          <text x="650" y="128" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">NORTE</text>
+          <line x1="760" y1="110" x2="816" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-1)"/>
+          <rect x="820" y="70" width="160" height="80" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="900" y="115" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">ROADMAP</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Lo Que una Estrategia de Producto Realmente Decide</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-strategy-regional-bet.png" alt="Una estrategia de streaming regional elegida deliberadamente sobre el alcance global" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Elegir una audiencia regional sobre el alcance global — una estrategia es tanto sobre lo que un producto no hará.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Una Visión de Producto declara una dirección de cambio. Una Estrategia de Producto decide cómo la organización llegará ahí bajo restricciones reales — a qué clientes atenderá primero, qué problemas se negará a resolver, y cómo pretende ganar frente a las alternativas. La visión apunta; la estrategia compromete.</p>
+          <p>Consideremos un producto de streaming ficticio llamado Northline. Su visión es dar a las familias acceso inmediato a historias regionales relevantes en cualquier dispositivo conectado. Esa visión por sí sola no dice nada sobre cómo Northline compite con servicios que ya tienen catálogos y presupuestos más grandes.</p>
+          <p>La estrategia de Northline reduce la visión a una apuesta: atender a una audiencia regional específica mediante un catálogo curado y de producción local, en lugar de competir por el volumen puro de contenido global. Intercambia deliberadamente alcance por relevancia y un menor costo de adquisición de contenido.</p>
+          <p>Una estrategia es, por lo tanto, tanto sobre lo que un producto no hará como sobre lo que hará. Northline no licenciará superproducciones internacionales, no intentará cubrir cada perfil de dispositivo en su primer año, y no perseguirá cada geografía que un competidor global ya domina.</p>
+          <p>Esta es la estrategia que el resto del capítulo pone a prueba contra la realidad — porque una estrategia que no puede producirse, operarse y pagarse todavía no es una estrategia. Es una preferencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>La Ecuación de Valor del Cliente</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-value-equation-wedge.png" alt="El beneficio sube y el precio baja, ampliando el valor que un producto entrega" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>El beneficio sube, el precio baja, el valor crece — la misma cuña que remodeló el mercado de smartphones en 2007.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Las personas compran un producto porque mejora su vida o su negocio más que las alternativas disponibles. Esa comparación nunca se hace en el vacío — siempre se hace frente a lo que el cliente podría elegir en su lugar, incluyendo no elegir nada.</p>
+          <p>Una forma simple de tener esto presente es una ecuación de valor: el valor de un producto equivale a sus beneficios, racionales y emocionales, en relación con su precio, juzgado frente a la competencia. Un producto que mejora esta razón más rápido que sus competidores tiende a conservar a los clientes que tiene y a atraer nuevos.</p>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1.05em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">Valor = (Beneficio racional + Beneficio emocional) ÷ Precio — relativo al conjunto competitivo</p>
+          <p>Para Northline, el beneficio racional es directo: contenido que un hogar no encuentra fácilmente en una plataforma más grande y genérica. El beneficio emocional está más cerca de la identidad — ver las propias historias de una región contadas en sus propios términos. Ninguno de los dos beneficios importa si el precio, en dinero o en fricción, borra la ventaja.</p>
+          <p>Una estrategia de producto tiene entonces dos palancas, no una: hacer crecer los beneficios que los clientes realmente notan, o reducir el costo de entregarlos. Mejorar ambas a la vez — mejor contenido, entrega más barata — es lo que convierte una apuesta regional estrecha en un margen duradero en lugar de una novedad de una sola vez.</p>
+          <p>Esta es la misma cuña de valor que remodeló el mercado de los smartphones en 2007, cuando un nuevo entrante dejó de competir en duración de batería y velocidad de mensajería, y en cambio eliminó la fricción no atendida de usar internet desde un teléfono. La lección nunca fue el dispositivo — fue dónde se estaba escondiendo la brecha de valor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>La cuña de valor</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1040 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <defs><marker id="arrow-c2es-2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+          <rect x="0" y="10" width="230" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="115" y="52" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">CRECER BENEFICIOS</text>
+          <text x="115" y="72" font-size="12" text-anchor="middle" fill="#5C6673">Racional + emocional</text>
+          <rect x="0" y="120" width="230" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="115" y="162" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">REDUCIR COSTO</text>
+          <text x="115" y="182" font-size="12" text-anchor="middle" fill="#5C6673">Precio + fricción</text>
+          <line x1="230" y1="55" x2="284" y2="88" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-2)"/>
+          <line x1="230" y1="165" x2="284" y2="132" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-2)"/>
+          <rect x="290" y="70" width="260" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="420" y="115" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">CUÑA DE VALOR</text>
+          <line x1="550" y1="110" x2="604" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-2)"/>
+          <rect x="610" y="60" width="260" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="740" y="103" font-size="13" font-weight="700" text-anchor="middle" fill="#FFFFFF">EL CLIENTE SIGUE</text>
+          <text x="740" y="123" font-size="13" font-weight="700" text-anchor="middle" fill="#FFFFFF">ELIGIÉNDOLO</text>
+          <line x1="870" y1="110" x2="924" y2="110" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow-c2es-2)"/>
+          <rect x="930" y="70" width="110" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="985" y="115" font-size="11" font-weight="700" text-anchor="middle" fill="#111418">CRECIMIENTO</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Qué Dimensiones Realmente Compiten</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-dimensions-priority.png" alt="Elegir dos dimensiones competitivas en lugar de intentar ganar en ocho" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Elegir dos dimensiones, no ocho — ajustar lo que los clientes apenas notan es sobre-especificación costosa.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Todo producto compite en una lista corta de dimensiones: características, usabilidad, desempeño, durabilidad, confiabilidad, capacidad de servicio, conformidad y estética. No todas las dimensiones importan por igual a todos los clientes, y tratar las ocho como igualmente importantes es en sí mismo un error estratégico.</p>
+          <p>Un producto de streaming regional como Northline gana poco compitiendo con un catálogo global en cantidad bruta de características. Su verdadera contienda está en la usabilidad — qué tan rápido un hogar encuentra algo que vale la pena ver — y en la confiabilidad — si el stream que arranca un martes por la noche sigue reproduciéndose.</p>
+          <p>La durabilidad y la capacidad de servicio, dimensiones que importan enormemente en un producto físico, apenas registran en un servicio de streaming; la conformidad con un sistema regional de clasificación de contenido, en cambio, puede importarle más a la audiencia de Northline que a la de un competidor global.</p>
+          <p>Esta es la misma idea introducida antes como tolerancia, aplicada un nivel más arriba: una estrategia no solo fija una tolerancia para cada dimensión, primero decide qué dimensiones merecen siquiera una tolerancia. Ajustar una dimensión que los clientes apenas notan es el equivalente estratégico de sobre-especificar un tornillo que nadie va a inspeccionar.</p>
+          <p>Decidir en qué dos o tres dimensiones competir — y en cuáles el producto puede darse el lujo de ser simplemente adecuado — es uno de los resultados más claros que puede producir una estrategia de producto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>Fuentes de ventaja competitiva</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1040 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <rect x="0" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="155" y="58" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">VALOR PARA EL CLIENTE</text>
+          <text x="155" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Lealtad de marca,</text>
+          <text x="155" y="96" font-size="12" text-anchor="middle" fill="#5C6673">innovación, efecto de red</text>
+          <rect x="365" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="520" y="58" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">VALOR FINANCIERO</text>
+          <text x="520" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Escala e información</text>
+          <text x="520" y="96" font-size="12" text-anchor="middle" fill="#5C6673">propietaria</text>
+          <rect x="730" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="885" y="58" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">RECURSO LIMITADO</text>
+          <text x="885" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Suministro exclusivo,</text>
+          <text x="885" y="96" font-size="12" text-anchor="middle" fill="#5C6673">licencias, PI</text>
+          <path d="M155,130 C155,175 390,185 460,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <path d="M520,130 C520,165 500,180 500,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <path d="M885,130 C885,175 640,185 570,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="380" y="198" width="280" height="26" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="520" y="215" font-size="11" font-weight="700" text-anchor="middle" fill="#FFFFFF">VENTAJA COMPETITIVA</text>
+        </svg>
+      </div>
+      <figcaption>La ventaja sostenible suele provenir de uno de tres tipos de barrera: lo que valoran los clientes, lo que puede financiar el balance, o lo que un competidor simplemente no puede alcanzar.</figcaption>
+    </div>
+  </section>
+
+  <section class="framework">
+    <div class="wrap">
+      <h2>Cuatro Pasos Hacia un Roadmap de Producto</h2>
+      <p class="dek">Un roadmap no es una lista de deseos en orden de fecha. Es el resultado de un estrechamiento disciplinado, del insight a la secuencia.</p>
+      <ol class="steps">
+        <li><div class="ic">1</div><h3>Generar Insights</h3><p>Señales de producto, mercado y cliente.</p></li>
+        <li><div class="ic">2</div><h3>Desarrollar Oportunidades</h3><p>Casos de uso, características, una ficha.</p></li>
+        <li><div class="ic">3</div><h3>Priorizar</h3><p>Valor contra esfuerzo, en una sola matriz.</p></li>
+        <li><div class="ic">4</div><h3>Construir el Roadmap</h3><p>Secuenciar apuestas como documento vivo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Dos Resultados: el Qué y el Cómo</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-roadmap-and-delivery.png" alt="Un roadmap y un plan de entrega presentados uno junto al otro" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un roadmap y un plan de entrega, uno junto al otro — negociados juntos, no entregados por separado.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Una estrategia de producto produce dos documentos distintos, y confundirlos es una fuente común de confusión. El roadmap es el qué — la secuencia de apuestas de producto que la organización ha decidido hacer. La estrategia de ciclo de vida de desarrollo de producto es el cómo — las metas e iniciativas que determinan si la organización puede realmente entregar esa secuencia.</p>
+          <p>La estrategia de ciclo de vida tiene a su vez tres partes: metas de efectividad, que describen los resultados que el roadmap debería producir; metas de eficiencia, que describen lo que debería costar en tiempo y recursos producirlos; y las iniciativas necesarias para cerrar la brecha entre el desempeño actual y el objetivo en ambas.</p>
+          <p>Para Northline, ya existe una meta de efectividad en este capítulo: horas semanales de contenido reproducidas exitosamente por hogares activos. También existe una meta de eficiencia: el costo por hora exitosamente transmitida. Un roadmap sin ambas es solo una lista de características; las metas sin un roadmap son solo aspiraciones.</p>
+          <p>Por eso una estrategia de producto creíble no puede ser escrita solo por el equipo de producto, sellada, y entregada después a ingeniería y finanzas. El roadmap y la estrategia de ciclo de vida deben negociarse juntos, porque un roadmap que ignora el costo de entrega no es una estrategia — es el cuadrante superior izquierdo del cuadrante de decisión más abajo, sin examinar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Racionalizar, Mejorar o Construir</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-portfolio-editing.png" alt="Un portafolio de producto editado deliberadamente, algunas capacidades conservadas, otras retiradas" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un portafolio, editado a propósito — racionalizar es el menos cómodo de los tres movimientos, y el que más se salta.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Toda decisión de portafolio de producto se reduce a uno de tres movimientos: mejorar lo que ya existe, construir algo nuevo, o racionalizar — retirar lo que ya no justifica su costo.</p>
+          <p>Una mejora debería diferenciar el producto de la competencia, generar mejor valor para el cliente, o abrir un nuevo caso de uso o segmento. Un producto nuevo debería cambiar las reglas del juego, ayudar a vender más del portafolio actual, o llenar un hueco real en el portafolio, no uno hipotético.</p>
+          <p>La racionalización es la menos cómoda de las tres, y la que más se salta. Retirar una característica de bajo valor o un nivel de contenido poco usado libera el presupuesto y la atención que requiere una apuesta genuinamente nueva — la misma trampa de costos hundidos que el cuadrante de decisión más abajo fue construido para exponer.</p>
+          <p>Para Northline, esto podría significar retirar un perfil de dispositivo con uso insignificante, mejorar el descubrimiento de su catálogo regional central en lugar de perseguir el tamaño del catálogo, y construir exactamente una nueva capacidad — recomendaciones localizadas — que a un competidor global no le conviene estratégicamente construir primero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Un Producto Debe Sobrevivir Cuatro Preguntas</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-feasibility-review.png" alt="Una revisión de factibilidad en curso, probando un producto contra deseabilidad, factibilidad, viabilidad y operabilidad" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Una revisión de factibilidad en curso — ninguna lente puede compensar indefinidamente la ausencia de otra.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Un ingeniero puede confirmar que un sillón puede fabricarse a partir de una sección de acero específica. Un arquitecto de software puede demostrar que una plataforma puede procesar las transacciones esperadas. Ninguna respuesta establece si los clientes quieren el producto, si la organización puede producirlo de manera consistente, o si su economía seguirá siendo sostenible después del lanzamiento.</p>
+          <p>El modelo familiar de design thinking evalúa la innovación a través de la deseabilidad, la factibilidad y la viabilidad. La deseabilidad pregunta si la solución le importa a la gente. La factibilidad examina si puede producirse con la tecnología y las capacidades disponibles. La viabilidad considera si puede sobrevivir económicamente.</p>
+          <p>Para productos destinados a vivir más allá de su primer lanzamiento, es necesaria una cuarta lente: la operabilidad. La operabilidad pregunta si el producto puede suministrarse, monitorearse, repararse, soportarse y eventualmente retirarse sin destruir el valor que fue diseñado para crear.</p>
+          <p>Estas preguntas están conectadas. Un producto deseable puede ser imposible de fabricar al precio esperado. Una plataforma técnicamente factible puede requerir costos operativos mayores que el ingreso que genera. Un primer lanzamiento rentable puede acumular obligaciones de mantenimiento que hacen que cada mejora posterior sea más lenta y más cara.</p>
+          <p>La factibilidad, entonces, no es una puerta que se cruza una sola vez. Es una condición que se examina de nuevo conforme el producto, su mercado y su sistema de producción cambian.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>Las cuatro lentes de la factibilidad de producto</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1040 270" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <rect x="0" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <rect x="270" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <rect x="540" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <rect x="810" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="115" y="55" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">DESEABILIDAD</text>
+          <text x="115" y="76" font-size="11" text-anchor="middle" fill="#5C6673">¿La gente la necesita?</text>
+          <text x="385" y="55" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">FACTIBILIDAD</text>
+          <text x="385" y="76" font-size="11" text-anchor="middle" fill="#5C6673">¿Podemos hacerla?</text>
+          <text x="655" y="55" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">VIABILIDAD</text>
+          <text x="655" y="76" font-size="11" text-anchor="middle" fill="#5C6673">¿Sostiene un margen?</text>
+          <text x="925" y="55" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">OPERABILIDAD</text>
+          <text x="925" y="76" font-size="11" text-anchor="middle" fill="#5C6673">¿Sigue funcionando?</text>
+          <path d="M115,108 C115,170 400,170 460,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <path d="M385,108 C385,150 440,170 470,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <path d="M655,108 C655,150 560,170 530,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <path d="M925,108 C925,180 600,180 540,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="380" y="204" width="240" height="56" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="500" y="238" font-size="13" font-weight="700" text-anchor="middle" fill="#FFFFFF">DECISIÓN DE PRODUCTO</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>De la Dirección a una Decisión de Inversión</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-investment-decision.png" alt="Ordenar ideas de producto por valor esperado contra dificultad de entrega" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Ordenar ideas por valor y dificultad — un instrumento de decisión vivo, no un artefacto ceremonial de taller.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Antes de calcular costos detallados, el equipo necesita decidir qué supuestos de producto merecen inversión. Un cuadrante de decisión simple puede comparar el valor esperado con la dificultad total de entrega.</p>
+          <p>El valor esperado incluye el beneficio para el cliente, la contribución estratégica y el potencial económico. La dificultad incluye costo, tiempo, incertidumbre técnica, dependencias y riesgo operativo. El cuadrante no es una prueba matemática de viabilidad — su propósito es exponer la relación entre beneficio y esfuerzo.</p>
+          <p>Una idea en la esquina superior izquierda combina alto valor esperado con baja dificultad y es una fuerte candidata para validación. Una idea en la esquina superior derecha puede seguir siendo valiosa, pero el equipo debería dividirla, investigar sus mayores incertidumbres, o buscar otra forma de producir el resultado.</p>
+          <p>El área inferior derecha merece atención particular. Las organizaciones a menudo siguen financiando características costosas y de bajo valor porque el trabajo ya comenzó; el cuadrante hace visible lo que el razonamiento de costos hundidos intenta ocultar.</p>
+          <p>La posición de una idea cambia conforme aparece evidencia. La investigación puede elevar su valor esperado, un prototipo puede reducir la incertidumbre técnica, y una cotización de proveedor o una prueba de carga puede revelar que el modelo de producción original no es viable. El diagrama es un instrumento de decisión vivo, no un artefacto ceremonial de taller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>Cuadrante de decisión de producto</h2>
+      <div class="frame">
+        <svg viewBox="0 0 900 640" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <text x="450" y="34" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">Cuadrante de Decisión de Producto</text>
+          <text x="225" y="66" font-size="12" text-anchor="middle" fill="#5C6673">Baja dificultad de entrega</text>
+          <text x="675" y="66" font-size="12" text-anchor="middle" fill="#5C6673">Alta dificultad de entrega</text>
+          <g transform="translate(0,80)">
+            <rect x="0" y="0" width="450" height="240" fill="#EAF1FE"/>
+            <rect x="450" y="0" width="450" height="240" fill="#EAF1FE"/>
+            <rect x="0" y="240" width="450" height="240" fill="#F6F9FF"/>
+            <rect x="450" y="240" width="450" height="240" fill="#F6F9FF"/>
+            <line x1="450" y1="0" x2="450" y2="480" stroke="#0057D9" stroke-width="2"/>
+            <line x1="0" y1="240" x2="900" y2="240" stroke="#0057D9" stroke-width="2"/>
+            <text x="225" y="125" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">Construir y validar</text>
+            <text x="675" y="125" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">Investigar y</text>
+            <text x="675" y="150" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">rediseñar</text>
+            <text x="225" y="365" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">Automatizar o posponer</text>
+            <text x="675" y="365" font-size="17" font-weight="700" text-anchor="middle" fill="#111418">Descartar</text>
+          </g>
+          <text x="34" y="330" font-size="12" text-anchor="middle" fill="#5C6673" transform="rotate(-90 34 330)">Alto valor esperado</text>
+          <text x="34" y="570" font-size="12" text-anchor="middle" fill="#5C6673" transform="rotate(-90 34 570)">Bajo valor esperado</text>
+        </svg>
+      </div>
+      <figcaption>Las ideas de alto valor no se aprueban automáticamente; las ideas difíciles requieren evidencia más sólida, descomposición o un modelo de producción distinto.</figcaption>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>La Anatomía del Costo</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-cost-anatomy.png" alt="Seis familias de costo compartiendo un lenguaje entre productos físicos y digitales" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Seis familias, un lenguaje compartido — desarrollo, producción, operación, almacenamiento, mantenimiento, retiro.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Una vez que una hipótesis de producto merece mayor exploración, su costo debe descomponerse. Un primer modelo puede usar seis familias: desarrollo, producción, operación, almacenamiento, mantenimiento y retiro.</p>
+          <p>Estas categorías aplican tanto a productos físicos como digitales. Los objetos dentro de ellas cambian, pero su función económica sigue siendo sorprendentemente similar — un hecho que la tabla a continuación hace explícito.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;overflow-x:auto">
+        <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Tabla 2.1 — Un lenguaje de costo compartido</p>
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="border-bottom:1.5px solid var(--graphite)">
+              <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Familia de costo</th>
+              <th style="text-align:left;padding:10px 14px;font-weight:700;color:var(--graphite)">Producto físico</th>
+              <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Producto o servicio digital</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Desarrollo</b></td><td style="padding:10px 14px;color:#242A31">Investigación, prototipos, ingeniería, herramental</td><td style="padding:10px 0 10px 14px;color:#242A31">Descubrimiento, UX, arquitectura, desarrollo, pruebas</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Producción</b></td><td style="padding:10px 14px;color:#242A31">Materiales, mano de obra, ensamble, control de calidad</td><td style="padding:10px 0 10px 14px;color:#242A31">Cómputo, ejecución de API, procesamiento de datos, inferencia de IA</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Operación</b></td><td style="padding:10px 14px;color:#242A31">Energía, maquinaria, supervisión, distribución</td><td style="padding:10px 0 10px 14px;color:#242A31">Servicios en la nube, seguridad, observabilidad, soporte</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Almacenamiento</b></td><td style="padding:10px 14px;color:#242A31">Materia prima, trabajo en proceso, inventario</td><td style="padding:10px 0 10px 14px;color:#242A31">Medios, bases de datos, logs, respaldos, datos inactivos</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Mantenimiento</b></td><td style="padding:10px 14px;color:#242A31">Reparaciones, refacciones, reemplazo de herramental</td><td style="padding:10px 0 10px 14px;color:#242A31">Trabajo correctivo, actualizaciones, deuda técnica, incidentes</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Retiro</b></td><td style="padding:10px 14px;color:#242A31">Devoluciones, disposición, reciclaje</td><td style="padding:10px 0 10px 14px;color:#242A31">Migración, archivado, eliminación de datos, desmantelamiento</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid" style="margin-top:32px">
+        <div></div>
+        <div class="textcol">
+          <p>Esta descomposición importa porque las estimaciones tempranas frecuentemente incluyen el desarrollo y omiten el resto de la vida del producto. Un prototipo puede demostrar que un concepto funciona; rara vez demuestra lo que costará seguir funcionando durante cinco años.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Los Materiales Son Decisiones Visibles</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-material-yield.png" alt="Retazos y rendimiento mostrando el costo real de una lámina de material tras el desperdicio" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Retazos, rendimiento y el verdadero costo de una lámina de material — el precio de compra es solo el comienzo.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>En un producto físico, el costo del material parece tangible — madera, acero, cuero, adhesivos y acabados pueden medirse, pesarse y cotizarse. Sin embargo, el precio de compra es solo el comienzo.</p>
+          <p>La selección del material también afecta el desperdicio, el tiempo de maquinado, el consumo de energía, las tasas de defectos, el empaque, el transporte y el mantenimiento. Si cien dólares de material producen solo ochenta dólares de salida utilizable después del corte y los defectos, el producto no tiene un costo de material de cien.</p>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1.05em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">C<sub>material utilizable</sub> = C<sub>material comprado</sub> ÷ rendimiento</p>
+          <p>Con un rendimiento del 80%, cien dólares de material comprado se convierten en un costo efectivo de material utilizable de 125 dólares.</p>
+          <p>Un diseñador puede cambiar esta relación antes de que comiencen las negociaciones de compra. Reducir el número de piezas, cambiar un patrón de corte, estandarizar una sección, o diseñar varios componentes a partir del mismo stock puede ahorrar más que un pequeño descuento del proveedor.</p>
+          <p>Los productos digitales también consumen materiales, aunque no permanecen visibles en la interfaz final. La capacidad de cómputo, la transferencia de red, el almacenamiento, los datos licenciados, las APIs de terceros y los tokens de modelos se transforman en un servicio — el material simplemente llega por un medidor en lugar de un camión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>La Tolerancia Es una Variable Económica</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-tolerance-stack.png" alt="Un apilamiento de tolerancias dibujado a escala, mostrando variación acumulada entre piezas" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un apilamiento de tolerancias, dibujado a escala — la precisión crea valor en algunos lugares y solo costo en otros.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Una tolerancia define cuánta variación puede aceptar el producto y aún así cumplir su función prevista. En manufactura puede describir una dimensión, un ángulo, una rugosidad superficial, una variación de color o una resistencia de material.</p>
+          <p>Las tolerancias más estrictas normalmente requieren equipo más preciso, inspección adicional, mejor control de proceso y mayores costos de rechazo. Los productos digitales también tienen tolerancias — tiempo de respuesta máximo, tasa de error aceptable, disponibilidad del servicio, tiempo de recuperación tras una falla, frescura de los datos, retraso de sincronización y precisión del resultado.</p>
+          <p>Un requisito de disponibilidad del 99.99% no es simplemente un decimal puesto en un documento. Puede implicar redundancia, monitoreo, recuperación automatizada, despliegues más complejos y capacidad operativa permanente.</p>
+          <p>Una tolerancia debería derivarse de la consecuencia que experimenta el usuario. Una transacción financiera y una recomendación de película no requieren la misma certeza; un componente médico y una cubierta decorativa no deberían llevar el mismo control dimensional.</p>
+          <p>Aplicar la tolerancia más estricta a cada pieza produce un producto costoso. No aplicar ninguna disciplina produce uno poco confiable. El diseño consiste en parte en saber dónde la precisión crea valor y dónde simplemente crea costo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ribbon" aria-label="Franja de imagen">
+    <div class="track">
+      <figure>
+        <img src="/assets/chapter-02-barcelona-chair-form-production.png" alt="La estructura de acero cruzado del Sillón Barcelona durante su producción, un estudio de forma versus método de manufactura" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+        <figcaption>El Sillón Barcelona: la aparente simplicidad industrial no creó un método de producción de bajo costo.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="quote-essay">
+    <div class="wrap">
+      <blockquote class="pullquote">
+        "Optimizar el costo no siempre significa hacer el producto más barato posible."
+        <cite>— Sobre el Sillón Barcelona</cite>
+      </blockquote>
+      <div class="essay">
+        <p>El Sillón Barcelona suele tratarse como un símbolo de la modernidad industrial — su estructura de acero cruzado parece reducida, racional y lista para reproducirse. Su producción cuenta una historia más complicada.</p>
+        <p>Ludwig Mies van der Rohe y Lilly Reich diseñaron el sillón para el Pabellón Alemán de la Exposición Internacional de Barcelona de 1929, pensado para un entorno representativo donde recibirían a los reyes de España: un sillón importante y monumental, no un asiento económico para un mercado masivo.</p>
+        <p>El sillón combina una estructura metálica curva, correas de soporte y cojines de cuero cuidadosamente tapizados, ensamblados a partir de múltiples secciones tratadas individualmente en lugar de una sola superficie formada mecánicamente.</p>
+        <p>El sillón no podía competir con el mobiliario ordinario mediante precio bajo o eficiencia de alto volumen. Su viabilidad requería una ecuación distinta — una que el marco a continuación hace explícita.</p>
+        <p>Coloca el mismo sillón en una estrategia de bajo costo y alto volumen, y el producto se vuelve económicamente incoherente sin cambiar una sola línea de su forma.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework">
+    <div class="wrap">
+      <h2>Viabilidad Premium, Descompuesta</h2>
+      <p class="dek">En lugar de eliminar cada operación costosa, el modelo de negocio del Sillón Barcelona las preservó y encontró un mercado dispuesto a pagar por el resultado.</p>
+      <ol class="steps">
+        <li><div class="ic">1</div><h3>Valor de Oficio</h3><p>Trabajo que el mercado elige pagar.</p></li>
+        <li><div class="ic">2</div><h3>Autoría</h3><p>Una firma de diseño reconocible.</p></li>
+        <li><div class="ic">3</div><h3>Durabilidad</h3><p>Construido para durar más que una moda.</p></li>
+        <li><div class="ic">4</div><h3>Significado Cultural</h3><p>Un objeto que se elige conservar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>Forma versus producción</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1040 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <rect x="0" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="150" y="145" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">SILLÓN COMPLETO</text>
+          <text x="150" y="165" font-size="12" text-anchor="middle" fill="#5C6673">Cuero negro, acero pulido</text>
+          <line x1="300" y1="130" x2="364" y2="130" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="370" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="520" y="125" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">ESTRUCTURA DESPIEZADA,</text>
+          <text x="520" y="145" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">CORREAS Y TAPIZADO</text>
+          <line x1="670" y1="130" x2="734" y2="130" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="740" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="890" y="115" font-size="12" font-weight="700" text-anchor="middle" fill="#111418">FORMADO MANUAL,</text>
+          <text x="890" y="135" font-size="12" font-weight="700" text-anchor="middle" fill="#111418">PULIDO, COSTURA</text>
+          <text x="890" y="155" font-size="12" font-weight="700" text-anchor="middle" fill="#111418">Y ENSAMBLE</text>
+        </svg>
+      </div>
+      <figcaption>Sillón Barcelona: forma versus producción. La aparente simplicidad industrial no creó un método de producción de bajo costo.</figcaption>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Trabajo y la Ilusión de la Producción Lineal</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-team-not-headcount.png" alt="Un equipo de software trabajando junto, costos de coordinación que no escalan linealmente con el headcount" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un equipo, no un headcount — las horas trabajadas son un insumo, no piezas terminadas.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>El trabajo de manufactura a menudo puede vincularse a operaciones observables — cortar, doblar, soldar, coser, ensamblar, inspeccionar. Incluso ahí la relación no es perfectamente lineal: el tiempo de preparación, el tamaño del lote, el aprendizaje, los defectos y los cambios de modelo afectan el costo por pieza.</p>
+          <p>En los productos digitales, la conexión entre el trabajo y las unidades completadas se vuelve todavía menos directa. Diez desarrolladores trabajando un mes no necesariamente producen el doble de software valioso que cinco — agregar personas también agrega inducción, comunicación, integración, revisión y coordinación.</p>
+          <p>Una característica que parece pequeña en la interfaz puede requerir cambios en la gestión de identidad, los modelos de datos, los controles de ciberseguridad y varias integraciones existentes. Otra puede ensamblarse rápidamente a partir de capacidades que la organización ya posee. Las horas trabajadas son un insumo, no piezas terminadas.</p>
+          <p>La estimación de costos de software, por lo tanto, considera funcionalidad, complejidad, criticidad, condiciones técnicas y riesgo — no solo el headcount. Este es un lugar donde un Product Manager con experiencia crea valor medible: no certeza, sino el reconocimiento de lo que omite un primer cálculo.</p>
+          <p>Restricciones heredadas detrás de la interfaz, datos no disponibles o de mala calidad, aprobaciones externas, trabajo de seguridad y regulatorio, preparación operativa, adopción, migración y el costo del fracaso — el Product Manager conecta la incertidumbre técnica con el valor para el cliente y la consecuencia económica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Northline, en resumen">
+    <div class="wrap">
+      <div><b>100K</b><span>HOGARES ACTIVOS<br />EN EL MODELO</span></div>
+      <div><b>$0.33</b><span>COSTO POR<br />HORA EXITOSA</span></div>
+      <div><b>$140K</b><span>CONTRIBUCIÓN MENSUAL<br />ESTIMADA</span></div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Un Servicio de Streaming y el Costo de una Hora Exitosa</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-northline-streaming.png" alt="Northline, un producto de streaming regional ficticio, puesto a prueba contra una estructura de costos real" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Northline, un producto de streaming regional ficticio — una visión y una estrategia todavía tienen que sobrevivir el contacto con una estructura de costos.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Volvamos a Northline, presentado antes como una apuesta estratégica por la relevancia regional sobre el alcance global. Una visión y una estrategia aún no son un negocio — todavía tienen que sobrevivir el contacto con una estructura de costos, comenzando por la métrica que medirá si la apuesta está funcionando.</p>
+          <p>Su North Star Metric no es el número de registros o descargas — ninguno de los dos garantiza que los clientes reciban valor. Una métrica más útil son las horas semanales de contenido reproducidas exitosamente por hogares activos.</p>
+          <p>Para Northline, "reproducido exitosamente" también requiere una tolerancia: la reproducción debe iniciar dentro del tiempo esperado y continuar sin una falla lo suficientemente grave como para hacer que el espectador abandone. La métrica, entonces, conecta la experiencia del cliente con el desempeño técnico y económico.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;overflow-x:auto">
+        <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Escenario mensual ilustrativo</p>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;max-width:520px">
+          <thead>
+            <tr style="border-bottom:1.5px solid var(--graphite)">
+              <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Variable</th>
+              <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Supuesto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Hogares activos</td><td style="padding:8px 0 8px 14px;color:#242A31">100,000</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Visualización exitosa promedio</td><td style="padding:8px 0 8px 14px;color:#242A31">20 horas</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Horas transmitidas exitosamente</td><td style="padding:8px 0 8px 14px;color:#242A31">2,000,000</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Ingreso de suscripción por hogar</td><td style="padding:8px 0 8px 14px;color:#242A31">$8.00</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Ingreso mensual</td><td style="padding:8px 0 8px 14px;color:#242A31">$800,000</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Costos fijos y semifijos</td><td style="padding:8px 0 8px 14px;color:#242A31">$420,000</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Costo variable por hora transmitida</td><td style="padding:8px 0 8px 14px;color:#242A31">$0.12</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Costo variable total</td><td style="padding:8px 0 8px 14px;color:#242A31">$240,000</td></tr>
+            <tr><td style="padding:8px 14px 8px 0"><b>Contribución estimada</b></td><td style="padding:8px 0 8px 14px"><b>$140,000</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid" style="margin-top:32px">
+        <div></div>
+        <div class="textcol">
+          <p>Estas cifras no representan a Netflix ni a un proveedor de nube en particular — forman un modelo transparente para entender el comportamiento del costo. La contribución mensual estimada es el ingreso menos los costos fijos y variables: 800,000 menos 660,000, es decir, 140,000 dólares. El costo por hora transmitida exitosamente resulta en $0.33.</p>
+          <p>Ahora imaginemos que la visualización sube a treinta horas por hogar sin cambio de precio. El engagement mejora, pero el consumo variable también aumenta: un millón de horas adicionales de visualización cuesta 120,000 dólares más, así que la North Star Metric sube mientras el margen baja. Esto no significa que la métrica esté equivocada — significa que una North Star debe ir acompañada de barandales económicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>Una North Star Metric necesita barandales económicos</h2>
+      <div class="frame">
+        <svg viewBox="0 0 1040 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <rect x="0" y="60" width="210" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="105" y="102" font-size="12" font-weight="700" text-anchor="middle" fill="#FFFFFF">VALOR DEL CLIENTE</text>
+          <text x="105" y="122" font-size="11" text-anchor="middle" fill="rgba(255,255,255,.85)">Horas exitosas</text>
+          <line x1="210" y1="90" x2="264" y2="62" stroke="#5C6673" stroke-width="1.5"/>
+          <line x1="210" y1="130" x2="264" y2="158" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="270" y="10" width="220" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="380" y="48" font-size="12" font-weight="700" text-anchor="middle" fill="#111418">CRECIMIENTO</text>
+          <text x="380" y="68" font-size="11" text-anchor="middle" fill="#5C6673">Retención</text>
+          <rect x="270" y="120" width="220" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="380" y="158" font-size="12" font-weight="700" text-anchor="middle" fill="#111418">USO VARIABLE</text>
+          <text x="380" y="178" font-size="11" text-anchor="middle" fill="#5C6673">Entrega + cómputo</text>
+          <line x1="490" y1="55" x2="544" y2="55" stroke="#5C6673" stroke-width="1.5"/>
+          <line x1="490" y1="165" x2="544" y2="165" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="550" y="10" width="180" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="640" y="60" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">INGRESOS</text>
+          <rect x="550" y="120" width="180" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="640" y="170" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">COSTO</text>
+          <line x1="730" y1="55" x2="784" y2="88" stroke="#5C6673" stroke-width="1.5"/>
+          <line x1="730" y1="165" x2="784" y2="132" stroke="#5C6673" stroke-width="1.5"/>
+          <rect x="790" y="60" width="250" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="915" y="115" font-size="13" font-weight="700" text-anchor="middle" fill="#FFFFFF">MARGEN SOSTENIBLE</text>
+        </svg>
+      </div>
+      <figcaption>Un mayor engagement crea valor, pero también puede aumentar el costo de servir.</figcaption>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>Cuando el Crecimiento Cambia el Producto</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-growth-architecture.png" alt="Una arquitectura de sistema rediseñada en torno a la demanda real en lugar de supuestos iniciales" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un sistema rediseñado en torno a la demanda real — la arquitectura es parte del modelo de negocio.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>La primera arquitectura de Northline podría ser deliberadamente simple — un catálogo limitado alojado en una sola región de nube, codificado en unos pocos formatos de reproducción, entregado mediante servicios externos. Esta puede ser la forma más rápida y económica de probar si la audiencia existe.</p>
+          <p>Si el producto gana tracción, sus condiciones económicas cambian. Más usuarios crean más sesiones concurrentes, un catálogo más grande aumenta el almacenamiento y la codificación, y la expansión a nuevos países agrega derechos de contenido, infraestructura regional, complejidad de soporte y nuevos perfiles de dispositivo.</p>
+          <p>Las grandes plataformas de streaming acercan el contenido a los espectadores porque la entrega repetida a larga distancia es costosa y puede dañar el desempeño. La arquitectura específica no es universal — el principio es que, conforme la demanda se vuelve observable, el sistema de producción puede rediseñarse en torno a patrones reales en lugar de supuestos iniciales.</p>
+          <p>Northline podría precodificar sus títulos más vistos, colocar los activos populares más cerca de audiencias concentradas, cambiar sus niveles de almacenamiento, eliminar formatos poco usados, cachear solicitudes repetidas, o escalar servicios variables según la demanda.</p>
+          <p>El autoescalado en la nube puede alinear la capacidad con el consumo, pero no puede corregir una unidad de trabajo ineficiente. Si cada hora transmitida usa procesamiento innecesario, escalar simplemente automatiza la multiplicación de ese costo. La arquitectura es, por lo tanto, parte del modelo de negocio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagram">
+    <div class="wrap">
+      <h2>El crecimiento del producto cambia la arquitectura de producción</h2>
+      <div class="frame">
+        <svg viewBox="0 0 900 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+          <defs><marker id="arrow-c2es-3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+          <rect x="0" y="0" width="320" height="110" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="160" y="46" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">VALIDACIÓN</text>
+          <text x="160" y="68" font-size="11" text-anchor="middle" fill="rgba(255,255,255,.85)">Hospedaje simple</text>
+          <text x="160" y="86" font-size="11" text-anchor="middle" fill="rgba(255,255,255,.85)">Catálogo pequeño</text>
+          <path d="M160,110 C160,150 60,160 60,186" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-3)"/>
+          <rect x="0" y="200" width="320" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="160" y="246" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">TRACCIÓN</text>
+          <text x="160" y="268" font-size="11" text-anchor="middle" fill="#5C6673">Más formatos</text>
+          <text x="160" y="286" font-size="11" text-anchor="middle" fill="#5C6673">Soporte creciente</text>
+          <rect x="440" y="200" width="320" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+          <text x="600" y="246" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">REFINAMIENTO</text>
+          <text x="600" y="268" font-size="11" text-anchor="middle" fill="#5C6673">Caché + codificación</text>
+          <text x="600" y="286" font-size="11" text-anchor="middle" fill="#5C6673">Rediseño de arquitectura</text>
+          <path d="M270,310 C420,380 480,380 556,394" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-3)"/>
+          <path d="M600,310 C600,350 600,360 600,384" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2es-3)"/>
+          <rect x="430" y="310" width="340" height="110" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+          <text x="600" y="356" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">ESCALA</text>
+          <text x="600" y="378" font-size="11" text-anchor="middle" fill="rgba(255,255,255,.85)">CDN + capacidad regional</text>
+          <text x="600" y="396" font-size="11" text-anchor="middle" fill="rgba(255,255,255,.85)">Asignación de costos</text>
+          <path d="M770,310 C800,270 790,240 764,222" fill="none" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow-c2es-3)"/>
+        </svg>
+      </div>
+      <figcaption>El refinamiento continúa después de la tracción — la escala retroalimenta el refinamiento, no es una línea de meta.</figcaption>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>La IA Cambia la Forma del Trabajo</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-ai-review-cycle.png" alt="Un flujo de trabajo asistido por IA con reintentos y revisión humana, el costo real detrás de una generación más rápida" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Reintentos, revisión y el costo real de la velocidad — generar más rápido no es lo mismo que producir proporcionalmente más barato.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>La inteligencia artificial puede reducir el tiempo requerido para investigación, código, etiquetado de contenido, exploración de interfaz, pruebas y documentación — y permitir que un equipo explore más alternativas antes de elegir una. Pero generar más rápido no es lo mismo que producir proporcionalmente más barato.</p>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">C<sub>flujo de IA</sub> = C<sub>inferencia</sub> + C<sub>recuperación</sub> + C<sub>evaluación</sub> + C<sub>reintentos</sub> + C<sub>revisión humana</sub> + C<sub>operación</sub></p>
+          <p>Un modelo con un precio menor por token puede producir un costo mayor por tarea exitosa si sus salidas requieren más reintentos o corrección manual. Un componente generado puede parecer completo mientras todavía requiere revisión de seguridad, integración, pruebas y propiedad de largo plazo.</p>
+          <p>Por eso las estimaciones asistidas por IA pueden mantenerse lejos de la realidad — la herramienta puede estimar el esfuerzo visible en la solicitud mientras pasa por alto el entorno en el que el trabajo debe sobrevivir.</p>
+          <p>Los proveedores de nube recomiendan medir costos unitarios — costo por inferencia, por dato, por tarea completada — junto con medidas de valor de negocio, y comparar continuamente costos y resultados conforme se afinan el sistema y su asignación de recursos. La IA cambia la velocidad de la producción. No elimina la obligación de entender la producción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>La Estimación Es un Rango, No una Promesa</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-cost-catalogue.png" alt="Un cono de incertidumbre que se estrecha desde una estimación temprana hasta un costo confirmado, con rangos de confianza marcados en el camino" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un pronóstico, no un recibo — una estimación se estrecha conforme los rangos de confianza se acercan a un costo confirmado.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>Una estimación temprana estará equivocada. Eso no la hace inútil — su propósito no es disfrazar la incertidumbre con una cifra precisa, sino revelar qué supuestos podrían cambiar la decisión de inversión.</p>
+          <p>Una estimación creíble comienza con una línea base técnica, descompone el trabajo, registra los supuestos y aplica más de un método de estimación, y luego prueba la sensibilidad y el riesgo antes de comparar el pronóstico con los resultados reales.</p>
+          <p>En lugar de decir que el producto costará $500,000, un equipo puede decir: bajo el catálogo actual, la cobertura de dispositivos y los supuestos de visualización, se espera que el primer lanzamiento cueste entre $450,000 y $650,000, siendo la preparación de contenido y el volumen de entrega la mayor incertidumbre.</p>
+          <p>La segunda afirmación es menos cómoda pero más útil — identifica dónde la investigación, la prototipación o la negociación pueden reducir la incertidumbre. Diferentes métodos pueden combinarse conforme mejora el conocimiento del producto.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px;overflow-x:auto">
+        <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Tabla 2.2 — Los métodos de estimación evolucionan con la madurez del producto</p>
+        <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <thead>
+            <tr style="border-bottom:1.5px solid var(--graphite)">
+              <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Método</th>
+              <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Mejor uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Estimación análoga</td><td style="padding:8px 0 8px 14px;color:#242A31">Comparar con productos similares o iniciativas previas</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Estimación ascendente</td><td style="padding:8px 0 8px 14px;color:#242A31">Costear componentes y actividades conocidas</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Estimación paramétrica</td><td style="padding:8px 0 8px 14px;color:#242A31">Aplicar relaciones como costo por hora, unidad o transacción</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Estimación de tres puntos</td><td style="padding:8px 0 8px 14px;color:#242A31">Modelar escenarios optimista, probable y pesimista</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Costeo basado en actividades</td><td style="padding:8px 0 8px 14px;color:#242A31">Asignar costos compartidos a las actividades que los consumen</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Análisis de sensibilidad</td><td style="padding:8px 0 8px 14px;color:#242A31">Identificar los supuestos con mayor efecto económico</td></tr>
+            <tr><td style="padding:8px 14px 8px 0;color:#242A31">Pronóstico continuo</td><td style="padding:8px 0 8px 14px;color:#242A31">Reemplazar supuestos con desempeño real a lo largo del tiempo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid" style="margin-top:32px">
+        <div></div>
+        <div class="textcol">
+          <p>En la manufactura física, los prototipos y las corridas piloto revelan el rendimiento real del material, el tiempo de ensamble y los defectos del proceso. Los productos digitales necesitan el equivalente — lanzamientos instrumentados que midan el costo de entrega y el esfuerzo operativo, no solo la adopción. Un MVP que valida la demanda mientras ignora la operación valida solo la mitad del producto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Catálogo de Costos</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <div class="placeholder" style="aspect-ratio:4/5">[ retrato 4:5 — un libro mayor compartido, no una hoja de cálculo privada ]</div>
+            <figcaption>Ninguna imagen licenciada o generada coincidía con esta sección todavía — se dejó como un espacio honesto en lugar de una imagen mal emparejada.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>La visibilidad del costo no debería quedarse dentro de una hoja de cálculo propiedad únicamente de finanzas o de ingeniería de nube. Las decisiones de producto necesitan un catálogo compartido que conecte el gasto con las decisiones de diseño.</p>
+          <p>Todo costo significativo debería identificar el producto o la capacidad que lo genera, su dueño, si es fijo, variable o semifijo, la unidad que provoca su crecimiento, la evidencia detrás de la estimación, el nivel de incertidumbre, y la fecha de la última revisión.</p>
+          <p>Una factura de nube organizada solo por servicio técnico es insuficiente — puede mostrar que la transferencia de datos aumentó sin explicar qué comportamiento de cliente, característica o mercado lo produjo. La gestión de costo de producto requiere asignación por unidades significativas: hogar activo, pedido completado, transacción exitosa, documento procesado o solicitud resuelta.</p>
+          <p>Las prácticas de FinOps formalizan esta colaboración entre producto, ingeniería y finanzas. El objetivo no es simplemente reducir el gasto en nube, sino conectar el consumo tecnológico con el valor de negocio y asignar la responsabilidad de ambos.</p>
+          <p>Los tableros para pronóstico, etiquetado, asignación, presupuestos y detección de anomalías pueden apoyar este trabajo, pero su valor depende por completo de la calidad del modelo de producto que hay debajo. Un tablero sofisticado no puede reparar una unidad de valor indefinida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Diseño Continúa Después del Lanzamiento</h2>
+      <div class="grid">
+        <div class="figcol">
+          <figure>
+            <img src="/assets/chapter-02-design-continues.png" alt="Un producto todavía en diseño y refinamiento después del lanzamiento, no un artefacto terminado" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+            <figcaption>Un producto, todavía en diseño — los productos más resilientes son los construidos para cambiar cuando llega la realidad.</figcaption>
+          </figure>
+        </div>
+        <div class="textcol">
+          <p>El Sillón Barcelona y Northline parecen pertenecer a mundos distintos — uno transforma acero y cuero en un objeto físico, el otro transforma datos, infraestructura y derechos de contenido en horas de entretenimiento. Ambos revelan la misma relación entre diseño y economía.</p>
+          <p>El Sillón Barcelona preservó un oficio costoso y encontró viabilidad a través de una posición premium. Northline no puede resolver el aumento del consumo simplemente cobrando más por cada ineficiencia técnica; debe rediseñar continuamente cómo se codifica, almacena y entrega el contenido.</p>
+          <p>Los materiales cambian, los proveedores desaparecen, los patrones de uso evolucionan, la tecnología envejece, las regulaciones introducen nuevos controles, y el crecimiento revela cuellos de botella que eran invisibles en el prototipo. El refinamiento de costo no es evidencia de que el producto original haya fallado — es parte de su desarrollo.</p>
+          <p>El fracaso ocurre cuando la organización protege el diseño original después de que la evidencia ha cambiado. Un producto no es solo el objeto, la interfaz o el servicio que experimenta el cliente; es también el sistema capaz de producir esa experiencia repetidamente.</p>
+          <p>Los productos más resilientes no son aquellos cuyos equipos predijeron cada costo futuro. Son aquellos diseñados con suficiente visibilidad y capacidad de adaptación para cambiar cuando llega la realidad. Todo costo comienza con una decisión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="refs">
+    <div class="wrap">
+      <h2>REFERENCIAS</h2>
+      <ol>
+        <li>Stratechi (Joe Newsum) — Sobre la ecuación de valor del cliente, la cuña de valor, las dimensiones del producto, las fuentes de ventaja competitiva y el proceso de roadmap en cuatro pasos.</li>
+        <li>IDEO — Design thinking: deseabilidad, factibilidad y viabilidad como lentes de evaluación.</li>
+        <li>Museum of Modern Art — Sobre el Sillón Barcelona, diseñado por Ludwig Mies van der Rohe y Lilly Reich, 1929.</li>
+        <li>Knoll — El Sillón Barcelona en producción con licencia: oficio y método de tapizado.</li>
+        <li>NASA Software Engineering Handbook — Atributos de proyecto usados en la estimación de costos de software.</li>
+        <li>Amplitude — Sobre definir y usar una North Star Metric.</li>
+        <li>Netflix — Open Connect, el sistema de entrega de contenido de Netflix.</li>
+        <li>AWS — Documentación de Auto Scaling.</li>
+        <li>Google Cloud — Well-Architected Framework, guía de costos para cargas de trabajo de IA y machine learning.</li>
+        <li>GAO — Guía de Estimación y Evaluación de Costos.</li>
+        <li>FinOps Foundation — Prácticas y principios de FinOps.</li>
+      </ol>
+    </div>
+  </section>
+
+  <nav class="chapternav" aria-label="Navegación de capítulos">
+    <div class="wrap">
+      <div class="side prev">
+        <span class="lbl">← ANTERIOR</span>
+        <a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="title">¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span></a>
+      </div>
+      <div class="side next">
+        <span class="lbl">SIGUIENTE →</span>
+        <span class="title" aria-disabled="true" style="opacity:.5">Lo que una línea de producción enseña sobre arquitectura — en desarrollo</span>
+      </div>
+    </div>
+  </nav>
+
+  <footer>
+    <div class="wrap">
+      <span>Parte I · Entender el Producto — Capítulo 02 · <span style="opacity:.7">Diseño por Tecronomic, SAPI de CV</span></span>
+      <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="/downloads/pensar-en-productos-construir-sistemas-actual.pdf">Descargar PDF</a></span>
+    </div>
+  </footer>
+
+  <div class="toc-overlay" id="tocOverlay"></div>
+  <aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Tabla de contenido">
+    <button class="close" id="tocClose">Cerrar ✕</button>
+    <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PARTE I — ENTENDER EL PRODUCTO</p>
+    <ul>
+      <li><a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span>¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span></a></li>
+      <li><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/"><span class="n">02</span><span>Estrategia de Producto, Materiales y el Costo de una Decisión</span></a></li>
+      <li><span class="n">03</span><span style="opacity:.5">Lo que una línea de producción enseña sobre arquitectura</span></li>
+      <li><span class="n">04</span><span style="opacity:.5">El producto nunca es solo el objeto</span></li>
+    </ul>
+  </aside>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imagen">
+    <button class="close" id="lightboxClose">Cerrar ✕</button>
+    <figure class="box">
+      <div class="placeholder">[ imagen ampliada ]</div>
+      <figcaption>Referencia de lightbox: atrapa el foco, cierra con Escape o el control de cierre, el pie de foto sigue visible.</figcaption>
+    </figure>
+  </div>
+
+  <script is:inline>
+  (function(){
+    var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
+        overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
+    function open(){ panel.classList.add('open'); overlay.classList.add('open'); close.focus(); document.addEventListener('keydown', onKey); }
+    function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
+    function onKey(e){
+      if(e.key==='Escape'){ shut(); lightboxShut(); }
+    }
+    if(btn) btn.addEventListener('click', open);
+    if(close) close.addEventListener('click', shut);
+    if(overlay) overlay.addEventListener('click', shut);
+    panel?.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+
+    var lb=document.getElementById('lightbox'), lbClose=document.getElementById('lightboxClose');
+    function lightboxShut(){ lb?.classList.remove('open'); }
+    if(lbClose) lbClose.addEventListener('click', lightboxShut);
+    document.querySelectorAll('.catalog figure, .ribbon figure').forEach(function(f){
+      f.style.cursor='zoom-in';
+      f.addEventListener('click', function(){ lb?.classList.add('open'); lbClose?.focus(); });
+    });
+
+    var bar=document.getElementById('progressBar');
+    function onScroll(){
+      var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+      if(bar) bar.style.setProperty('--p', p+'%');
+    }
+    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  })();
+  </script>
+</Layout>

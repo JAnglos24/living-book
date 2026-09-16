@@ -95,12 +95,12 @@ const EDITIONS = [
   {
     lang: 'en',
     outFile: 'thinking-in-products-building-systems-current.pdf',
-    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/'],
+    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/'],
   },
   {
     lang: 'es',
     outFile: 'pensar-en-productos-construir-sistemas-actual.pdf',
-    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/'],
+    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/'],
   },
 ];
 

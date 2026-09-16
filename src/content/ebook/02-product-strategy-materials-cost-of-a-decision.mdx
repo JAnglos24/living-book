@@ -1,0 +1,860 @@
+---
+chapter: 2
+title: "Product Strategy, Materials and the Cost of a Decision"
+status: "published"
+published_at: 2026-09-16
+summary: "Every product begins as a promise made before enough is known. This chapter follows that promise from vision to roadmap to cost — through a fictional streaming product and the Barcelona Chair — to ask what it actually costs to keep."
+---
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <span class="crumb">Part I · Understanding the Product — Chapter 2</span>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="/ebook/02-product-strategy-materials-cost-of-a-decision/" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+{/* ===== CHAPTER OPENER ===== */}
+<header class="opener">
+  <span class="num" aria-hidden="true">02</span>
+  <div class="wrap">
+    <p class="eyebrow">PART I — UNDERSTANDING THE PRODUCT · CHAPTER 02</p>
+    <h1>Product Strategy, Materials and the Cost of a Decision</h1>
+    <p class="dek">Every product begins as a promise made before enough is known. This chapter is about what that promise costs to keep.</p>
+    <p class="meta">
+      <span>Published Sep 16, 2026</span>
+      <span>14 min read</span>
+      <span>Edition 0.2</span>
+      <span>Status: Published</span>
+    </p>
+  </div>
+</header>
+
+{/* ===== INTRO ===== */}
+<section class="intro">
+  <div class="wrap">
+    <p>A physical product may begin with a sketch: a surface, a structure, a proposed relationship with the human body. A digital product begins with a vision of change — a customer who should be able to do something faster, more safely, or with less effort than before. Neither begins with a roadmap. A roadmap is already an act of translation, arriving only after the organization has chosen a direction.</p>
+    <p>Before it can exist, the organization must define its Product Vision, choose a Product Strategy and decide how delivered value will be recognized. A North Star Metric gives that value a measurable direction, and only then can a sequence of product bets be organized over time. At this point the product still exists mostly as intent — the team may understand the problem without knowing the real cost of solving it.</p>
+    <p>This is where feasibility begins — not the narrow question of whether something can be built, but an examination of whether it can be produced, operated, maintained and adapted under conditions the organization and the market can sustain. A technically possible solution is not automatically a feasible product. The rest of this chapter asks what that difference actually costs.</p>
+  </div>
+</section>
+
+{/* ===== FACTS 1 ===== */}
+<section class="facts" aria-label="Chapter facts and figures">
+  <div class="wrap">
+    <div><b>4</b><span>LENSES A PRODUCT<br />MUST PASS THROUGH</span></div>
+    <div><b>6</b><span>COST FAMILIES<br />FROM BUILD TO RETIREMENT</span></div>
+    <div><b>80%</b><span>TYPICAL MATERIAL YIELD<br />IN THE WORKED EXAMPLE</span></div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Vision to Roadmap ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Direction precedes planning</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1000 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <defs><marker id="arrow-c2-1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+        <rect x="20" y="70" width="200" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="120" y="115" font-size="16" font-weight="700" text-anchor="middle" fill="#111418">VISION</text>
+        <line x1="220" y1="110" x2="276" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-1)"/>
+        <rect x="280" y="70" width="200" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="380" y="115" font-size="16" font-weight="700" text-anchor="middle" fill="#111418">STRATEGY</text>
+        <line x1="480" y1="110" x2="536" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-1)"/>
+        <rect x="540" y="70" width="220" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="650" y="109" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">NORTH STAR</text>
+        <text x="650" y="128" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">METRIC</text>
+        <line x1="760" y1="110" x2="816" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-1)"/>
+        <rect x="820" y="70" width="160" height="80" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="900" y="115" font-size="16" font-weight="700" text-anchor="middle" fill="#FFFFFF">ROADMAP</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Product Strategy ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>What a Product Strategy Actually Commits To</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-strategy-regional-bet.png" alt="A regional streaming strategy chosen deliberately over global reach" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Choosing a regional audience over global reach — a strategy is as much about what a product will not do.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A Product Vision states a direction of change. A Product Strategy decides how the organization will get there under real constraints — which customers it will serve first, which problems it will refuse to solve, and how it intends to win against alternatives. Vision points; strategy commits.</p>
+        <p>Consider a fictional streaming product called Northline. Its vision is to give families immediate access to relevant regional stories on any connected device. That vision alone says nothing about how Northline competes with services that already have larger catalogues and larger budgets.</p>
+        <p>Northline's strategy narrows the vision into a bet: serve a specific regional audience through a curated, locally produced catalogue, rather than compete on the sheer volume of global content. It deliberately trades reach for relevance and a lower cost of content acquisition.</p>
+        <p>A strategy is therefore as much about what a product will not do as about what it will. Northline will not license international blockbusters, will not attempt every device profile in its first year, and will not chase every geography a global competitor already owns.</p>
+        <p>This is the strategy the rest of the chapter tests against reality — because a strategy that cannot be produced, operated and paid for is not yet a strategy. It is a preference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Customer Value Equation ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The Customer Value Equation</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-value-equation-wedge.png" alt="Benefits rising and price falling, widening the value a product delivers" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Benefits up, price down, value grows — the same wedge that reshaped the smartphone market in 2007.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>People buy a product because it improves their life or their business more than the alternatives available to them. That comparison is never made in isolation — it is always made against whatever else the customer could choose instead, including doing nothing.</p>
+        <p>A simple way to hold this in mind is a value equation: a product's value equals its benefits, rational and emotional, relative to its price, judged against competitors. A product that improves this ratio faster than its competitors tends to keep the customers it has and attract new ones.</p>
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.05em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">Value = (Rational Benefit + Emotional Benefit) ÷ Price — relative to the competitive set</p>
+        <p>For Northline, the rational benefit is straightforward: content a household cannot easily find on a larger, more generic platform. The emotional benefit is closer to identity — seeing a region's own stories told on its own terms. Neither benefit matters if the price, in money or in friction, erases the advantage.</p>
+        <p>A product strategy therefore has two levers, not one: grow the benefits customers actually notice, or shrink the cost of delivering them. Improving both at once — better content, cheaper delivery — is what turns a narrow regional bet into a durable margin rather than a one-time novelty.</p>
+        <p>This is the same value wedge that reshaped the smartphone market in 2007, when a new entrant stopped competing on battery life and messaging speed and instead removed the unmet friction of using the internet from a phone at all. The lesson was never the device — it was where the value gap had been hiding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Value Wedge ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>The value wedge</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1040 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <defs><marker id="arrow-c2-2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+        <rect x="0" y="10" width="230" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="115" y="52" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">GROW BENEFITS</text>
+        <text x="115" y="72" font-size="12" text-anchor="middle" fill="#5C6673">Rational + emotional</text>
+        <rect x="0" y="120" width="230" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="115" y="162" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">SHRINK COST</text>
+        <text x="115" y="182" font-size="12" text-anchor="middle" fill="#5C6673">Price + friction</text>
+        <line x1="230" y1="55" x2="284" y2="88" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-2)"/>
+        <line x1="230" y1="165" x2="284" y2="132" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-2)"/>
+        <rect x="290" y="70" width="260" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="420" y="115" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">VALUE WEDGE</text>
+        <line x1="550" y1="110" x2="604" y2="110" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-2)"/>
+        <rect x="610" y="60" width="260" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="740" y="103" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">CUSTOMER KEEPS</text>
+        <text x="740" y="123" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">CHOOSING IT</text>
+        <line x1="870" y1="110" x2="924" y2="110" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow-c2-2)"/>
+        <rect x="930" y="70" width="110" height="80" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="985" y="115" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">GROWTH</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Which Dimensions Compete ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Which Dimensions Actually Compete</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-dimensions-priority.png" alt="Choosing two competitive dimensions instead of trying to win on eight" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Picking two dimensions, not eight — tightening what customers barely notice is expensive over-specification.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Every product competes on a shortlist of dimensions: features, usability, performance, durability, reliability, serviceability, conformance and aesthetics. Not every dimension matters equally to every customer, and treating all eight as equally important is itself a strategic mistake.</p>
+        <p>A regional streaming product like Northline gains little by competing with a global catalogue on raw feature count. Its real contest is on usability — how fast a household finds something worth watching — and on reliability — whether the stream that starts on a Tuesday evening keeps playing.</p>
+        <p>Durability and serviceability, dimensions that matter enormously for a physical product, barely register for a streaming service; conformance to a regional content rating system, by contrast, may matter more to Northline's audience than to a global competitor's.</p>
+        <p>This is the same idea introduced earlier as tolerance, applied one level up: a strategy does not just set a tolerance for each dimension, it first decides which dimensions deserve a tolerance at all. Tightening a dimension customers barely notice is the strategic equivalent of over-specifying a bolt no one will ever inspect.</p>
+        <p>Deciding which two or three dimensions to compete on — and which the product can afford to be merely adequate at — is one of the clearest outputs a product strategy can produce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Sources of Advantage ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Sources of competitive advantage</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1040 230" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <rect x="0" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="155" y="58" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">CUSTOMER VALUE</text>
+        <text x="155" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Brand loyalty, innovation,</text>
+        <text x="155" y="96" font-size="12" text-anchor="middle" fill="#5C6673">network effect</text>
+        <rect x="365" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="520" y="58" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">FINANCIAL VALUE</text>
+        <text x="520" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Scale, proprietary</text>
+        <text x="520" y="96" font-size="12" text-anchor="middle" fill="#5C6673">data and information</text>
+        <rect x="730" y="20" width="310" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="885" y="58" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">LIMITED RESOURCE</text>
+        <text x="885" y="78" font-size="12" text-anchor="middle" fill="#5C6673">Exclusive supply,</text>
+        <text x="885" y="96" font-size="12" text-anchor="middle" fill="#5C6673">licenses, IP</text>
+        <path d="M155,130 C155,175 390,185 460,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <path d="M520,130 C520,165 500,180 500,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <path d="M885,130 C885,175 640,185 570,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="380" y="198" width="280" height="26" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="520" y="215" font-size="12" font-weight="700" text-anchor="middle" fill="#FFFFFF">COMPETITIVE ADVANTAGE</text>
+      </svg>
+    </div>
+    <figcaption>Sustainable advantage tends to come from one of three kinds of barrier: what customers value, what the balance sheet can fund, or what a competitor simply cannot access.</figcaption>
+  </div>
+</section>
+
+{/* ===== FRAMEWORK: Four Steps to a Roadmap ===== */}
+<section class="framework">
+  <div class="wrap">
+    <h2>Four Steps to a Product Roadmap</h2>
+    <p class="dek">A roadmap is not a wish list in date order. It is the output of a disciplined narrowing, from insight to sequence.</p>
+    <ol class="steps">
+      <li><div class="ic">1</div><h3>Generate Insights</h3><p>Product, market and customer signals.</p></li>
+      <li><div class="ic">2</div><h3>Develop Opportunities</h3><p>Use cases, features, a snapshot.</p></li>
+      <li><div class="ic">3</div><h3>Prioritize</h3><p>Value against effort, on one matrix.</p></li>
+      <li><div class="ic">4</div><h3>Build the Roadmap</h3><p>Sequence bets as a living document.</p></li>
+    </ol>
+  </div>
+</section>
+
+{/* ===== LONGFORM: What and How ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Two Outputs: the What and the How</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-roadmap-and-delivery.png" alt="A roadmap and a delivery plan laid out side by side" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A roadmap and a delivery plan, side by side — negotiated together, not handed off.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A product strategy produces two distinct documents, and conflating them is a common source of confusion. The roadmap is the what — the sequence of product bets the organization has chosen to make. The product development lifecycle strategy is the how — the goals and initiatives that determine whether the organization can actually deliver that sequence.</p>
+        <p>The lifecycle strategy itself has three parts: effectiveness goals, which describe the outcomes the roadmap should produce; efficiency goals, which describe what it should cost in time and resources to produce them; and the initiatives needed to close the gap between current and target performance on both.</p>
+        <p>For Northline, an effectiveness goal already exists in this chapter: weekly hours of content successfully reproduced by active households. An efficiency goal exists too: the cost per successfully streamed hour. A roadmap without both is just a list of features; goals without a roadmap are just aspirations.</p>
+        <p>This is why a credible product strategy cannot be written by the product team alone, sealed, and handed to engineering and finance afterward. The roadmap and the lifecycle strategy have to be negotiated together, because a roadmap that ignores delivery cost is not a strategy — it is the upper-left quadrant from the decision quadrant below, unexamined.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Rationalize, Improve, Build ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Rationalize, Improve, or Build</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-portfolio-editing.png" alt="A product portfolio deliberately edited, some capabilities kept, others retired" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A portfolio, edited on purpose — rationalizing is the least comfortable of the three moves, and the most often skipped.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Every product portfolio decision reduces to one of three moves: improve what already exists, build something new, or rationalize — retire what no longer earns its cost.</p>
+        <p>An improvement should differentiate the product from competitors, drive better customer value, or open a new use case or segment. A new product should change the game, help sell more of the current lineup, or fill a real hole in the portfolio, not a hypothetical one.</p>
+        <p>Rationalization is the least comfortable of the three, and the most often skipped. Retiring a low-value feature or an underused content tier frees the budget and attention a genuinely new bet requires — the same sunk-cost trap the decision quadrant below was built to expose.</p>
+        <p>For Northline, this might mean retiring a device profile with negligible usage, improving discovery for its core regional catalogue rather than chasing catalogue size, and building exactly one new capability — localized recommendations — that a global competitor has no strategic reason to build first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Four Questions ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>A Product Must Survive Four Questions</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-feasibility-review.png" alt="A feasibility review in progress, testing a product against desirability, feasibility, viability and operability" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A feasibility review in progress — no single lens can compensate indefinitely for the absence of another.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>An engineer may confirm that a chair can be fabricated from a specific steel section. A software architect may demonstrate that a platform can process the expected transactions. Neither answer establishes whether customers want the product, whether the organization can produce it consistently, or whether its economics will remain sustainable after launch.</p>
+        <p>The familiar design-thinking model evaluates innovation through desirability, feasibility and viability. Desirability asks whether the solution matters to people. Feasibility examines whether it can be produced with the available technology and capabilities. Viability considers whether it can survive economically.</p>
+        <p>For products intended to live beyond their first release, a fourth lens is necessary: operability. Operability asks whether the product can be supplied, monitored, repaired, supported and eventually retired without destroying the value it was designed to create.</p>
+        <p>These questions are connected. A desirable product may be impossible to manufacture at the expected price. A technically feasible platform may require operating costs greater than the revenue it generates. A profitable first release may accumulate maintenance obligations that make each later improvement slower and more expensive.</p>
+        <p>Feasibility is therefore not a gate crossed once. It is a condition examined again as the product, its market and its production system change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Four Lenses ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>The four lenses of product feasibility</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1040 270" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <rect x="0" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <rect x="270" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <rect x="540" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <rect x="810" y="20" width="230" height="88" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="115" y="55" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">DESIRABILITY</text>
+        <text x="115" y="76" font-size="12" text-anchor="middle" fill="#5C6673">Do people need it?</text>
+        <text x="385" y="55" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">FEASIBILITY</text>
+        <text x="385" y="76" font-size="12" text-anchor="middle" fill="#5C6673">Can we make it?</text>
+        <text x="655" y="55" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">VIABILITY</text>
+        <text x="655" y="76" font-size="12" text-anchor="middle" fill="#5C6673">Can it sustain a margin?</text>
+        <text x="925" y="55" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">OPERABILITY</text>
+        <text x="925" y="76" font-size="12" text-anchor="middle" fill="#5C6673">Can we keep it working?</text>
+        <path d="M115,108 C115,170 400,170 460,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <path d="M385,108 C385,150 440,170 470,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <path d="M655,108 C655,150 560,170 530,202" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <path d="M925,108 C925,180 600,180 540,204" fill="none" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="380" y="204" width="240" height="56" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="500" y="238" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">PRODUCT DECISION</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Investment Decision ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>From Direction to an Investment Decision</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-investment-decision.png" alt="Sorting product ideas by expected value against delivery difficulty" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Sorting ideas by value and difficulty — a living decision instrument, not a ceremonial workshop artifact.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Before calculating detailed costs, the team needs to decide which product assumptions deserve investment. A simple decision quadrant can compare expected value with total delivery difficulty.</p>
+        <p>Expected value includes customer benefit, strategic contribution and economic potential. Difficulty includes cost, time, technical uncertainty, dependencies and operational risk. The quadrant is not a mathematical proof of viability — its purpose is to expose the relationship between benefit and effort.</p>
+        <p>An idea in the upper-left combines high expected value with low difficulty and is a strong candidate for validation. An idea in the upper-right may still be valuable, but the team should divide it, investigate its largest uncertainties, or search for another way to produce the result.</p>
+        <p>The lower-right area deserves particular attention. Organizations often continue funding expensive, low-value features because work has already begun; the quadrant makes visible what sunk-cost reasoning attempts to hide.</p>
+        <p>The position of an idea changes as evidence appears. Research may raise its expected value, a prototype may reduce technical uncertainty, and a supplier quotation or a load test may reveal that the original production model is not viable. The diagram is a living decision instrument, not a ceremonial workshop artifact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Product Decision Quadrant ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Product decision quadrant</h2>
+    <div class="frame">
+      <svg viewBox="0 0 900 640" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <text x="450" y="34" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">Product Decision Quadrant</text>
+        <text x="225" y="66" font-size="13" text-anchor="middle" fill="#5C6673">Low delivery difficulty</text>
+        <text x="675" y="66" font-size="13" text-anchor="middle" fill="#5C6673">High delivery difficulty</text>
+        <g transform="translate(0,80)">
+          <rect x="0" y="0" width="450" height="240" fill="#EAF1FE"/>
+          <rect x="450" y="0" width="450" height="240" fill="#EAF1FE"/>
+          <rect x="0" y="240" width="450" height="240" fill="#F6F9FF"/>
+          <rect x="450" y="240" width="450" height="240" fill="#F6F9FF"/>
+          <line x1="450" y1="0" x2="450" y2="480" stroke="#0057D9" stroke-width="2"/>
+          <line x1="0" y1="240" x2="900" y2="240" stroke="#0057D9" stroke-width="2"/>
+          <text x="225" y="125" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">Build and validate</text>
+          <text x="675" y="125" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">Investigate and</text>
+          <text x="675" y="150" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">redesign</text>
+          <text x="225" y="365" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">Automate or postpone</text>
+          <text x="675" y="365" font-size="18" font-weight="700" text-anchor="middle" fill="#111418">Discard</text>
+        </g>
+        <text x="34" y="330" font-size="13" text-anchor="middle" fill="#5C6673" transform="rotate(-90 34 330)">High expected value</text>
+        <text x="34" y="570" font-size="13" text-anchor="middle" fill="#5C6673" transform="rotate(-90 34 570)">Low expected value</text>
+      </svg>
+    </div>
+    <figcaption>High-value ideas are not automatically approved; difficult ideas require stronger evidence, decomposition or a different production model.</figcaption>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Anatomy of Cost ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The Anatomy of Cost</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-cost-anatomy.png" alt="Six cost families sharing one language across physical and digital products" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Six families, one shared language — development, production, operation, storage, maintenance, retirement.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Once a product hypothesis deserves further exploration, its cost must be decomposed. A first model can use six families: development, production, operation, storage, maintenance and retirement.</p>
+        <p>These categories apply to both physical and digital products. The objects inside them change, but their economic function remains surprisingly similar — a fact the table below makes explicit.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;overflow-x:auto">
+      <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Table 2.1 — A shared cost language</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <thead>
+          <tr style="border-bottom:1.5px solid var(--graphite)">
+            <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Cost family</th>
+            <th style="text-align:left;padding:10px 14px;font-weight:700;color:var(--graphite)">Physical product</th>
+            <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Digital product or service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Development</b></td><td style="padding:10px 14px;color:#242A31">Research, prototypes, engineering, tooling</td><td style="padding:10px 0 10px 14px;color:#242A31">Discovery, UX, architecture, development, testing</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Production</b></td><td style="padding:10px 14px;color:#242A31">Materials, labor, assembly, quality control</td><td style="padding:10px 0 10px 14px;color:#242A31">Compute, API execution, data processing, AI inference</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Operation</b></td><td style="padding:10px 14px;color:#242A31">Energy, machinery, supervision, distribution</td><td style="padding:10px 0 10px 14px;color:#242A31">Cloud services, security, observability, support</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Storage</b></td><td style="padding:10px 14px;color:#242A31">Raw material, work in progress, inventory</td><td style="padding:10px 0 10px 14px;color:#242A31">Media, databases, logs, backups, inactive data</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Maintenance</b></td><td style="padding:10px 14px;color:#242A31">Repairs, spare parts, tooling replacement</td><td style="padding:10px 0 10px 14px;color:#242A31">Corrective work, upgrades, technical debt, incidents</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:10px 14px 10px 0"><b>Retirement</b></td><td style="padding:10px 14px;color:#242A31">Returns, disposal, recycling</td><td style="padding:10px 0 10px 14px;color:#242A31">Migration, archival, data deletion, decommissioning</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid" style="margin-top:32px">
+      <div></div>
+      <div class="textcol">
+        <p>This decomposition matters because early estimates frequently include development and omit the rest of the product's life. A prototype can demonstrate that a concept works; it rarely demonstrates what it will cost to keep working for five years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Materials ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Materials Are Visible Decisions</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-material-yield.png" alt="Offcuts and yield showing the true cost of a sheet of material after waste" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Offcuts, yield and the true cost of a sheet of material — the purchase price is only the beginning.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>In a physical product, material cost appears tangible — wood, steel, leather, adhesives and finishes can be measured, weighed and quoted. Yet purchase price is only the beginning.</p>
+        <p>Material selection also affects waste, machining time, energy consumption, defect rates, packaging, transportation and maintenance. If one hundred dollars of material produces only eighty dollars of usable output after cutting and defects, the product does not have a material cost of one hundred.</p>
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.05em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">C<sub>usable material</sub> = C<sub>purchased material</sub> ÷ yield</p>
+        <p>At an 80% yield, one hundred dollars of purchased material becomes an effective usable-material cost of 125 dollars.</p>
+        <p>A designer can change this relationship before purchasing negotiations begin. Reducing the number of parts, changing a cutting pattern, standardizing a section, or designing several components from the same stock may save more than a small supplier discount.</p>
+        <p>Digital products consume materials too, although they do not remain visible in the final interface. Computing capacity, network transfer, storage, licensed data, third-party APIs and model tokens are transformed into a service — the material simply arrives through a meter rather than a truck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Tolerance ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Tolerance Is an Economic Variable</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-tolerance-stack.png" alt="A tolerance stack drawn to scale, showing accumulated variation across parts" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A tolerance stack, drawn to scale — precision creates value in some places and merely cost in others.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A tolerance defines how much variation the product can accept and still perform its intended function. In manufacturing it may describe a dimension, an angle, surface roughness, color variation or material strength.</p>
+        <p>Tighter tolerances normally require more precise equipment, additional inspection, better process control and higher rejection costs. Digital products have tolerances too — maximum response time, acceptable error rate, service availability, recovery time after failure, data freshness, synchronization delay and result accuracy.</p>
+        <p>A requirement for 99.99% availability is not simply a decimal placed in a document. It can imply redundancy, monitoring, automated recovery, more complex deployments and permanent operational capacity.</p>
+        <p>A tolerance should come from the consequence experienced by the user. A financial transaction and a film recommendation do not require the same certainty; a medical component and a decorative cover should not carry the same dimensional control.</p>
+        <p>Applying the strictest tolerance to every part produces an expensive product. Applying no discipline produces an unreliable one. Design consists partly in knowing where precision creates value and where it merely creates cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== RIBBON: Barcelona Chair image ===== */}
+<section class="ribbon" aria-label="Image ribbon">
+  <div class="track">
+    <figure>
+      <img src="/assets/chapter-02-barcelona-chair-form-production.png" alt="The Barcelona Chair's crossed steel frame during production, a study in form versus manufacturing method" loading="lazy" style="aspect-ratio:16/9;object-fit:cover;width:100%" />
+      <figcaption>The Barcelona Chair: apparent industrial simplicity did not create a low-cost method of production.</figcaption>
+    </figure>
+  </div>
+</section>
+
+{/* ===== QUOTE-ESSAY: Barcelona Chair ===== */}
+<section class="quote-essay">
+  <div class="wrap">
+    <blockquote class="pullquote">
+      "Cost optimization does not always mean making the cheapest possible product."
+      <cite>— On the Barcelona Chair</cite>
+    </blockquote>
+    <div class="essay">
+      <p>The Barcelona Chair is often treated as a symbol of industrial modernity — its crossed steel frame appears reduced, rational and ready for reproduction. Its production tells a more complicated story.</p>
+      <p>Ludwig Mies van der Rohe and Lilly Reich designed the chair for the German Pavilion at the 1929 Barcelona International Exposition, for a representative setting where the Spanish royal couple would be received: an important, monumental chair, not inexpensive seating for a mass market.</p>
+      <p>The chair combines a curved metal frame, supporting straps and carefully upholstered leather cushions, assembled from multiple individually treated sections rather than a single mechanically formed surface.</p>
+      <p>The chair could not compete with ordinary seating through low price or high-volume efficiency. Its viability required a different equation — one the framework below makes explicit.</p>
+      <p>Place the same chair in a low-cost, high-volume strategy and the product becomes economically incoherent without changing a single line of its form.</p>
+    </div>
+  </div>
+</section>
+
+{/* ===== FRAMEWORK: Premium Viability ===== */}
+<section class="framework">
+  <div class="wrap">
+    <h2>Premium Viability, Decomposed</h2>
+    <p class="dek">Rather than removing every expensive operation, the Barcelona Chair's business model preserved them and found a market willing to pay for the result.</p>
+    <ol class="steps">
+      <li><div class="ic">1</div><h3>Craft Value</h3><p>Labor the market chooses to pay for.</p></li>
+      <li><div class="ic">2</div><h3>Authorship</h3><p>A recognizable design signature.</p></li>
+      <li><div class="ic">3</div><h3>Durability</h3><p>Built to outlast a trend cycle.</p></li>
+      <li><div class="ic">4</div><h3>Cultural Meaning</h3><p>An object people choose to keep.</p></li>
+    </ol>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Barcelona Chair form vs production ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Form versus production</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1040 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <rect x="0" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="150" y="145" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">COMPLETE CHAIR</text>
+        <text x="150" y="165" font-size="12" text-anchor="middle" fill="#5C6673">Black leather, polished steel</text>
+        <line x1="300" y1="130" x2="364" y2="130" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="370" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="520" y="125" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">EXPLODED FRAME,</text>
+        <text x="520" y="145" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">STRAPS &amp; UPHOLSTERY</text>
+        <line x1="670" y1="130" x2="734" y2="130" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="740" y="20" width="300" height="220" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="890" y="115" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">MANUAL FORMING,</text>
+        <text x="890" y="135" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">POLISHING, SEWING</text>
+        <text x="890" y="155" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">&amp; ASSEMBLY</text>
+      </svg>
+    </div>
+    <figcaption>Barcelona Chair: form versus production. Apparent industrial simplicity did not create a low-cost method of production.</figcaption>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Labor ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Labor and the Illusion of Linear Output</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-team-not-headcount.png" alt="A software team working together, coordination costs that do not scale linearly with headcount" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A team, not a headcount — hours worked are an input, not finished pieces.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Manufacturing labor can often be connected to observable operations — cutting, bending, welding, sewing, assembling, inspecting. Even there the relationship is not perfectly linear: setup time, batch size, learning, defects and model changes affect the cost per piece.</p>
+        <p>In digital products the connection between labor and completed units becomes even less direct. Ten developers working for a month do not necessarily produce twice as much valuable software as five — adding people also adds onboarding, communication, integration, review and coordination.</p>
+        <p>A feature that appears small on the interface may require changes to identity management, data models, cybersecurity controls and several existing integrations. Another may be assembled rapidly from capabilities the organization already owns. Hours worked are an input, not finished pieces.</p>
+        <p>Software-cost estimation therefore considers functionality, complexity, criticality, technical conditions and risk — not headcount alone. This is one place where an experienced Product Manager creates measurable value: not certainty, but recognition of what a first calculation omits.</p>
+        <p>Legacy constraints behind the interface, unavailable or poor-quality data, external approvals, security and regulatory work, operational readiness, adoption, migration and the cost of failure — the Product Manager connects technical uncertainty with customer value and economic consequence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== FACTS 2: Northline ===== */}
+<section class="facts" aria-label="Northline, in brief">
+  <div class="wrap">
+    <div><b>100K</b><span>ACTIVE HOUSEHOLDS<br />IN THE MODEL</span></div>
+    <div><b>$0.33</b><span>COST PER<br />SUCCESSFUL HOUR</span></div>
+    <div><b>$140K</b><span>ESTIMATED MONTHLY<br />CONTRIBUTION</span></div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Northline cost of an hour ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>A Streaming Service and the Cost of One Successful Hour</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-northline-streaming.png" alt="Northline, a fictional regional streaming product, tested against a real cost structure" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Northline, a fictional regional streaming product — a vision and a strategy still have to survive contact with a cost structure.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Return to Northline, introduced earlier as a strategy bet on regional relevance over global reach. A vision and a strategy are not yet a business — they still have to survive contact with a cost structure, starting with the metric that will measure whether the bet is working.</p>
+        <p>Its North Star Metric is not the number of registrations or downloads — neither guarantees customers receive value. A more useful metric is weekly hours of content successfully reproduced by active households.</p>
+        <p>For Northline, "successfully reproduced" also requires a tolerance: playback must start within the expected time and continue without a failure severe enough to make the viewer abandon it. The metric therefore connects customer experience with technical and economic performance.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;overflow-x:auto">
+      <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Illustrative monthly scenario</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px;max-width:520px">
+        <thead>
+          <tr style="border-bottom:1.5px solid var(--graphite)">
+            <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Variable</th>
+            <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Assumption</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Active households</td><td style="padding:8px 0 8px 14px;color:#242A31">100,000</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Average successful viewing</td><td style="padding:8px 0 8px 14px;color:#242A31">20 hours</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Successfully streamed hours</td><td style="padding:8px 0 8px 14px;color:#242A31">2,000,000</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Subscription revenue per household</td><td style="padding:8px 0 8px 14px;color:#242A31">$8.00</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Monthly revenue</td><td style="padding:8px 0 8px 14px;color:#242A31">$800,000</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Fixed and step-fixed costs</td><td style="padding:8px 0 8px 14px;color:#242A31">$420,000</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Variable cost per streamed hour</td><td style="padding:8px 0 8px 14px;color:#242A31">$0.12</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Total variable cost</td><td style="padding:8px 0 8px 14px;color:#242A31">$240,000</td></tr>
+          <tr><td style="padding:8px 14px 8px 0"><b>Estimated contribution</b></td><td style="padding:8px 0 8px 14px"><b>$140,000</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid" style="margin-top:32px">
+      <div></div>
+      <div class="textcol">
+        <p>These numbers do not represent Netflix or a particular cloud provider — they form a transparent model for understanding cost behavior. The estimated monthly contribution is revenue minus fixed and variable costs: 800,000 minus 660,000, or 140,000 dollars. The cost per successfully streamed hour works out to $0.33.</p>
+        <p>Now imagine viewing rises to thirty hours per household without a price change. Engagement improves, but variable consumption also increases: an additional million viewing hours costs 120,000 dollars more, so the North Star Metric moves upward while the margin moves downward. This does not mean the metric is wrong — it means a North Star must be accompanied by economic guardrails.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Value to Margin ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>A North Star Metric needs economic guardrails</h2>
+    <div class="frame">
+      <svg viewBox="0 0 1040 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <rect x="0" y="60" width="210" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="105" y="102" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">CUSTOMER VALUE</text>
+        <text x="105" y="122" font-size="12" text-anchor="middle" fill="rgba(255,255,255,.85)">Successful hours</text>
+        <line x1="210" y1="90" x2="264" y2="62" stroke="#5C6673" stroke-width="1.5"/>
+        <line x1="210" y1="130" x2="264" y2="158" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="270" y="10" width="220" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="380" y="48" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">PRODUCT GROWTH</text>
+        <text x="380" y="68" font-size="12" text-anchor="middle" fill="#5C6673">Retention</text>
+        <rect x="270" y="120" width="220" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="380" y="158" font-size="13" font-weight="700" text-anchor="middle" fill="#111418">VARIABLE USE</text>
+        <text x="380" y="178" font-size="12" text-anchor="middle" fill="#5C6673">Delivery + compute</text>
+        <line x1="490" y1="55" x2="544" y2="55" stroke="#5C6673" stroke-width="1.5"/>
+        <line x1="490" y1="165" x2="544" y2="165" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="550" y="10" width="180" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="640" y="60" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">REVENUE</text>
+        <rect x="550" y="120" width="180" height="90" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="640" y="170" font-size="14" font-weight="700" text-anchor="middle" fill="#111418">COST</text>
+        <line x1="730" y1="55" x2="784" y2="88" stroke="#5C6673" stroke-width="1.5"/>
+        <line x1="730" y1="165" x2="784" y2="132" stroke="#5C6673" stroke-width="1.5"/>
+        <rect x="790" y="60" width="250" height="100" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="915" y="115" font-size="14" font-weight="700" text-anchor="middle" fill="#FFFFFF">SUSTAINABLE MARGIN</text>
+      </svg>
+    </div>
+    <figcaption>Greater engagement creates value but may also increase the cost to serve.</figcaption>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Growth Changes Architecture ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>When Growth Changes the Product</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-growth-architecture.png" alt="A system architecture redesigned around real demand instead of initial assumptions" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A system redesigned around real demand — architecture is part of the business model.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Northline's first architecture might be intentionally simple — a limited catalogue stored in one cloud region, encoded into a few playback formats, delivered through external services. This may be the fastest, least expensive way to test whether the audience exists.</p>
+        <p>If the product gains traction, its economic conditions change. More users create more concurrent sessions, a larger catalogue increases storage and encoding, and expansion to new countries adds content rights, regional infrastructure, support complexity and new device profiles.</p>
+        <p>Large streaming platforms bring content closer to viewers because repeated long-distance delivery is expensive and can damage performance. The specific architecture is not universal — the principle is that as demand becomes observable, the production system can be redesigned around actual patterns rather than initial assumptions.</p>
+        <p>Northline might pre-encode its most-watched titles, place popular assets closer to concentrated audiences, change storage tiers, eliminate low-use formats, cache repeated requests, or scale variable services according to demand.</p>
+        <p>Cloud autoscaling can align capacity with consumption, but it cannot correct an inefficient unit of work. If every streamed hour uses unnecessary processing, scaling simply automates the multiplication of that cost. Architecture is therefore part of the business model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== DIAGRAM: Validation to Scale ===== */}
+<section class="diagram">
+  <div class="wrap">
+    <h2>Product growth changes the production architecture</h2>
+    <div class="frame">
+      <svg viewBox="0 0 900 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#FFFFFF; font-family:'Archivo', -apple-system, sans-serif;">
+        <defs><marker id="arrow-c2-3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#5C6673"/></marker></defs>
+        <rect x="0" y="0" width="320" height="110" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="160" y="46" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">VALIDATION</text>
+        <text x="160" y="68" font-size="12" text-anchor="middle" fill="rgba(255,255,255,.85)">Simple hosting</text>
+        <text x="160" y="86" font-size="12" text-anchor="middle" fill="rgba(255,255,255,.85)">Small catalogue</text>
+        <path d="M160,110 C160,150 60,160 60,186" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-3)"/>
+        <rect x="0" y="200" width="320" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="160" y="246" font-size="15" font-weight="700" text-anchor="middle" fill="#111418">TRACTION</text>
+        <text x="160" y="268" font-size="12" text-anchor="middle" fill="#5C6673">More formats</text>
+        <text x="160" y="286" font-size="12" text-anchor="middle" fill="#5C6673">Growing support</text>
+        <rect x="440" y="200" width="320" height="110" rx="2" fill="#F7F8FA" stroke="#C9D0D8" stroke-width="1.5"/>
+        <text x="600" y="246" font-size="15" font-weight="700" text-anchor="middle" fill="#111418">REFINEMENT</text>
+        <text x="600" y="268" font-size="12" text-anchor="middle" fill="#5C6673">Caching + encoding</text>
+        <text x="600" y="286" font-size="12" text-anchor="middle" fill="#5C6673">Architecture redesign</text>
+        <path d="M270,310 C420,380 480,380 556,394" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-3)"/>
+        <path d="M600,310 C600,350 600,360 600,384" fill="none" stroke="#5C6673" stroke-width="1.5" marker-end="url(#arrow-c2-3)"/>
+        <rect x="430" y="310" width="340" height="110" rx="2" fill="#0057D9" stroke="#0057D9" stroke-width="1.5"/>
+        <text x="600" y="356" font-size="15" font-weight="700" text-anchor="middle" fill="#FFFFFF">SCALE</text>
+        <text x="600" y="378" font-size="12" text-anchor="middle" fill="rgba(255,255,255,.85)">CDN + regional capacity</text>
+        <text x="600" y="396" font-size="12" text-anchor="middle" fill="rgba(255,255,255,.85)">Cost allocation</text>
+        <path d="M770,310 C800,270 790,240 764,222" fill="none" stroke="#0057D9" stroke-width="1.5" marker-end="url(#arrow-c2-3)"/>
+      </svg>
+    </div>
+    <figcaption>Refinement continues after traction — scale informs a return to refinement, not a finish line.</figcaption>
+  </div>
+</section>
+
+{/* ===== LONGFORM: AI and Labor ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>AI Changes the Shape of Labor</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-ai-review-cycle.png" alt="An AI-assisted workflow with retries and human review, the real cost behind faster generation" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Retries, review and the real cost of speed — faster generation is not the same as proportionally cheaper production.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Artificial intelligence can reduce the time required for research, coding, content tagging, interface exploration, testing and documentation — and let a team explore more alternatives before selecting one. But faster generation is not the same as proportionally cheaper production.</p>
+        <p style="font-family:var(--serif);font-style:italic;font-size:1em;padding:16px 20px;background:var(--paper);border-left:3px solid var(--cobalt);margin-block:1.2em">C<sub>AI workflow</sub> = C<sub>inference</sub> + C<sub>retrieval</sub> + C<sub>evaluation</sub> + C<sub>retries</sub> + C<sub>human review</sub> + C<sub>operation</sub></p>
+        <p>A model with a lower price per token may produce a higher cost per successful task if its outputs require more retries or manual correction. A generated component may appear complete while still requiring security review, integration, testing and long-term ownership.</p>
+        <p>This is why AI-assisted estimates can remain far from reality — the tool may estimate the effort visible in the request while missing the environment the work must survive in.</p>
+        <p>Cloud providers recommend measuring unit costs — cost per inference, per data point, per completed task — alongside business-value measures, and continuously comparing costs and outcomes as the system and its resource allocation are refined. AI changes the speed of production. It does not remove the obligation to understand production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Estimation (no matching real asset — honest placeholder) ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Estimation Is a Range, Not a Promise</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-cost-catalogue.png" alt="A cone of uncertainty narrowing from an early estimation to a confirmed cost, with confidence ranges marked along the way" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A forecast, not a receipt — an estimate narrows as confidence ranges close in on a confirmed cost.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>An early estimate will be wrong. That does not make it useless — its purpose is not to disguise uncertainty with a precise figure, but to reveal which assumptions could change the investment decision.</p>
+        <p>A credible estimate begins with a technical baseline, decomposes the work, records assumptions and applies more than one estimating method, then tests sensitivity and risk before comparing the forecast with actual results.</p>
+        <p>Instead of saying the product will cost $500,000, a team can say: under the current catalogue, device coverage and viewing assumptions, the first release is expected to cost between $450,000 and $650,000, with content preparation and delivery volume as the greatest uncertainty.</p>
+        <p>The second statement is less comfortable but more useful — it identifies where research, prototyping or negotiation can reduce uncertainty. Different methods can be combined as product knowledge improves.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;overflow-x:auto">
+      <p style="font-size:13px;letter-spacing:.04em;color:var(--ink2);margin-bottom:14px;text-transform:uppercase">Table 2.2 — Estimation methods evolve with product maturity</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <thead>
+          <tr style="border-bottom:1.5px solid var(--graphite)">
+            <th style="text-align:left;padding:10px 14px 10px 0;font-weight:700;color:var(--graphite)">Method</th>
+            <th style="text-align:left;padding:10px 0 10px 14px;font-weight:700;color:var(--graphite)">Best use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Analogous estimation</td><td style="padding:8px 0 8px 14px;color:#242A31">Comparing with similar products or previous initiatives</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Bottom-up estimation</td><td style="padding:8px 0 8px 14px;color:#242A31">Costing known components and activities</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Parametric estimation</td><td style="padding:8px 0 8px 14px;color:#242A31">Applying relationships such as cost per hour, unit or transaction</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Three-point estimation</td><td style="padding:8px 0 8px 14px;color:#242A31">Modeling optimistic, probable and pessimistic scenarios</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Activity-based costing</td><td style="padding:8px 0 8px 14px;color:#242A31">Assigning shared costs to the activities that consume them</td></tr>
+          <tr style="border-bottom:1px solid var(--line)"><td style="padding:8px 14px 8px 0;color:#242A31">Sensitivity analysis</td><td style="padding:8px 0 8px 14px;color:#242A31">Identifying assumptions with the largest economic effect</td></tr>
+          <tr><td style="padding:8px 14px 8px 0;color:#242A31">Rolling forecast</td><td style="padding:8px 0 8px 14px;color:#242A31">Replacing assumptions with actual performance over time</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid" style="margin-top:32px">
+      <div></div>
+      <div class="textcol">
+        <p>In physical manufacturing, prototypes and pilot runs reveal actual material yield, assembly time and process defects. Digital products need the equivalent — instrumented releases that measure delivery cost and operational effort, not adoption alone. An MVP that validates demand while ignoring operation validates only half of the product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Cost Catalogue ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The Cost Catalogue</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <div class="placeholder" style="aspect-ratio:4/5">[ 4:5 portrait — a shared ledger, not a private spreadsheet ]</div>
+          <figcaption>No licensed or generated image matched this section yet — left as an honest placeholder rather than a mismatched one.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Cost visibility should not remain inside a spreadsheet owned only by finance or cloud engineering. Product decisions need a shared catalogue that connects expenditure with design choices.</p>
+        <p>Every significant cost should identify the product or capability that creates it, its owner, whether it is fixed, variable or step-fixed, the unit that causes it to grow, the evidence behind the estimate, the level of uncertainty, and the date it was last reviewed.</p>
+        <p>A cloud invoice organized only by technical service is insufficient — it can show that data transfer increased without explaining which customer behavior, feature or market produced it. Product cost management requires allocation by meaningful units: active household, completed order, successful transaction, processed document or resolved request.</p>
+        <p>FinOps practices formalize this collaboration between product, engineering and finance. The objective is not simply to reduce cloud spending but to connect technology consumption with business value and assign responsibility for both.</p>
+        <p>Dashboards for forecasting, tagging, allocation, budgets and anomaly detection can support this work, but their value depends entirely on the quality of the product model underneath them. A sophisticated dashboard cannot repair an undefined unit of value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== LONGFORM: Design Continues (closing) ===== */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Design Continues After Launch</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-02-design-continues.png" alt="A product still being designed and refined after launch, not a finished artifact" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>A product, still being designed — the most resilient products are those built to change when reality arrives.</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>The Barcelona Chair and Northline appear to belong to different worlds — one transforms steel and leather into a physical object, the other transforms data, infrastructure and content rights into hours of entertainment. Both reveal the same relationship between design and economics.</p>
+        <p>The Barcelona Chair preserved expensive craftsmanship and found viability through a premium position. Northline cannot solve increasing consumption simply by charging more for every technical inefficiency; it must continually redesign how content is encoded, stored and delivered.</p>
+        <p>Materials change, suppliers disappear, usage patterns evolve, technology ages, regulations introduce new controls, and growth reveals bottlenecks that were invisible in the prototype. Cost refinement is not evidence that the original product failed — it is part of the product's development.</p>
+        <p>The failure occurs when the organization protects the original design after the evidence has changed. A product is not only the object, interface or service the customer experiences; it is also the system capable of producing that experience repeatedly.</p>
+        <p>The most resilient products are not those whose teams predicted every future cost. They are those designed with enough visibility and adaptability to change when reality arrives. Every cost begins with a decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ===== REFERENCES ===== */}
+<section class="refs">
+  <div class="wrap">
+    <h2>REFERENCES</h2>
+    <ol>
+      <li>Stratechi (Joe Newsum) — On the customer value equation, the value wedge, product dimensions, sources of competitive advantage and the four-step roadmap process.</li>
+      <li>IDEO — Design thinking: desirability, feasibility and viability as evaluation lenses.</li>
+      <li>Museum of Modern Art — On the Barcelona Chair, designed by Ludwig Mies van der Rohe and Lilly Reich, 1929.</li>
+      <li>Knoll — The Barcelona Chair in licensed production: craftsmanship and upholstery method.</li>
+      <li>NASA Software Engineering Handbook — Project attributes used in software-cost estimation.</li>
+      <li>Amplitude — On defining and using a North Star Metric.</li>
+      <li>Netflix — Open Connect, Netflix's content-delivery system.</li>
+      <li>AWS — Auto Scaling documentation.</li>
+      <li>Google Cloud — Well-Architected Framework, AI and machine-learning workload cost guidance.</li>
+      <li>GAO — Cost Estimating and Assessment Guide.</li>
+      <li>FinOps Foundation — FinOps practices and principles.</li>
+    </ol>
+  </div>
+</section>
+
+{/* ===== NEXT CHAPTER / NAV ===== */}
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <div class="side prev">
+      <span class="lbl">← PREVIOUS</span>
+      <a href="/ebook/01-what-can-industrial-design-teach/"><span class="title">What Can Industrial Design Teach Digital Product Leaders?</span></a>
+    </div>
+    <div class="side next">
+      <span class="lbl">NEXT →</span>
+      <span class="title" aria-disabled="true" style="opacity:.5">What a Production Line Teaches About Architecture — in development</span>
+    </div>
+  </div>
+</nav>
+
+<footer>
+  <div class="wrap">
+    <span>Part I · Understanding the Product — Chapter 02 · <span style="opacity:.7">Design by Tecronomic, SAPI de CV</span></span>
+    <span><a href="/ebook/">All chapters</a> · <a href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF</a></span>
+  </div>
+</footer>
+
+{/* ===== TOC SLIDE-OVER ===== */}
+<div class="toc-overlay" id="tocOverlay"></div>
+<aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Table of contents">
+  <button class="close" id="tocClose">Close ✕</button>
+  <p class="eyebrow" style="color:var(--cobalt);margin-top:20px">PART I — UNDERSTANDING THE PRODUCT</p>
+  <ul>
+    <li><a href="/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span>What Can Industrial Design Teach Digital Product Leaders?</span></a></li>
+    <li><a href="/ebook/02-product-strategy-materials-cost-of-a-decision/"><span class="n">02</span><span>Product Strategy, Materials and the Cost of a Decision</span></a></li>
+    <li><span class="n">03</span><span style="opacity:.5">What a Production Line Teaches About Architecture</span></li>
+    <li><span class="n">04</span><span style="opacity:.5">The Product Is Never Just the Object</span></li>
+  </ul>
+</aside>
+
+{/* ===== LIGHTBOX ===== */}
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="close" id="lightboxClose">Close ✕</button>
+  <figure class="box">
+    <div class="placeholder">[ enlarged image ]</div>
+    <figcaption>Lightbox reference: traps focus, closes on Escape or the close control, caption remains visible.</figcaption>
+  </figure>
+</div>
