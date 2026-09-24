@@ -7,12 +7,12 @@ import '../styles/global.css';
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title}</title>
-<meta name="description" content={description}>
-<meta name="keywords" content="Portfolio Manager, Escritor CDMX, Diseño de productos, Administrador de empresas, Misterio en la Biblioteca, Living Book, Retail punto de venta, José Ángel Sosa López">
+<title>{title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}</title>
+<meta name="description" content={description || "José Ángel Sosa López — Senior Portfolio Manager, Product Manager Leadership, Product Management & PMO Director. Experto en arquitectura y gestión de productos tecnológicos, Retail POS y gobernanza."}>
+<meta name="keywords" content="Portfolio Manager, Product Manager Leadership, Product Management, Gestión de Producto, Líder de Gestión de Producto, Product Manager Lead, PMO Director, Agile Coach, Retail POS, IT Portfolio Governance, José Ángel Sosa López, J. Angel Sosa">
 <meta name="author" content="José Ángel Sosa López">
-<meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
+<meta property="og:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
+<meta property="og:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://www.jasosal.com/">
 <meta property="og:image" content="https://www.jasosal.com/assets/jas-warm.jpg">
@@ -24,9 +24,9 @@ import '../styles/global.css';
       "@type": "Person",
       "@id": "https://www.jasosal.com/#person",
       "name": "José Ángel Sosa López",
-      "alternateName": "J. Angel Sosa",
-      "jobTitle": "Portfolio Manager",
-      "description": "Administrador de empresas con larga carrera en administración de proyectos, productos tecnológicos y retail punto de venta.",
+      "alternateName": ["J. Angel Sosa", "José Ángel Sosa"],
+      "jobTitle": ["Líder en Gestión de Producto", "Portfolio Manager", "Product Manager Lead", "PMO Director", "Agile Coach"],
+      "description": "Líder en Gestión de Producto, Senior Portfolio Manager, PMO Director y Agile Coach. Especialista en estrategia de productos tecnológicos, Retail POS, gobernanza de proyectos y administración de empresas.",
       "birthPlace": {
         "@type": "Place",
         "name": "CDMX, México"
@@ -37,7 +37,38 @@ import '../styles/global.css';
         "https://www.linkedin.com/in/jasosal/",
         "https://github.com/jasosal"
       ],
-      "knowsAbout": ["Project Management", "Product Generation", "Retail", "Point of Sale", "Design"]
+      "knowsAbout": [
+        "Gestión de Producto",
+        "Estrategia y Dirección de Producto",
+        "Portfolio Management",
+        "Product Management Leadership",
+        "PMO Governance",
+        "Agile Coaching & Scrum",
+        "Retail Point of Sale Systems",
+        "Business Administration"
+      ],
+      "hasOccupation": [
+        {
+          "@type": "Occupation",
+          "name": "Líder en Gestión de Producto"
+        },
+        {
+          "@type": "Occupation",
+          "name": "Portfolio Manager"
+        },
+        {
+          "@type": "Occupation",
+          "name": "Product Manager Lead"
+        },
+        {
+          "@type": "Occupation",
+          "name": "PMO Director"
+        },
+        {
+          "@type": "Occupation",
+          "name": "Agile Coach"
+        }
+      ]
     },
     {
       "@type": "Book",

@@ -1,0 +1,681 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+---
+<Layout title="Capítulo 3 — Lo que una línea de producción enseña sobre arquitectura · Thinking in Products, Building Systems">
+  <style is:inline>
+    /* Copied styles from chapter 3 */
+    :root{
+      --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+      --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+      --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+      --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+      --ease:cubic-bezier(.65,0,.35,1);
+    }
+    figure{margin:0} figcaption{font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.5}
+    .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+    .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;text-transform:uppercase}
+    
+    .topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:20px}
+    .topbar a.home{font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em;flex:0 0 auto}
+    .topbar .chapmeta{display:flex;align-items:baseline;gap:10px;font-size:13px;color:var(--ink2);overflow:hidden}
+    .topbar .chapmeta b{color:var(--graphite);font-weight:700;white-space:nowrap}
+    .topbar .chapmeta span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar nav{display:flex;align-items:center;gap:22px;font-size:14px;flex:0 0 auto}
+    .topbar nav a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
+    .topbar .lang a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+    .topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:8px 18px;cursor:pointer;flex:0 0 auto}
+    .progress{height:2px;background:var(--grid-blue)}
+    .progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
+
+    .opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden}
+    .opener .num{position:absolute;right:calc(var(--margin) * -0.3);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(160px,26vw,420px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;pointer-events:none;user-select:none}
+    .opener .wrap{position:relative;z-index:1;padding-block:clamp(52px,9vh,96px) clamp(44px,7vh,80px)}
+    .opener .eyebrow{color:#fff;display:flex;align-items:center;gap:14px}
+    .opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.55)}
+    .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,4.4vw,74px);line-height:.98;letter-spacing:-.03em;margin:22px 0 20px;max-width:17ch}
+    .opener .dek{font-family:var(--serif);font-size:clamp(19px,1.5vw,23px);line-height:1.42;max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:30px}
+    .opener .meta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13px;color:rgba(255,255,255,.78);border-top:1px solid rgba(255,255,255,.28);padding-top:18px}
+
+    .intro{background:var(--white)}
+    .intro .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);padding-block:clamp(48px,7vh,80px)}
+    .intro p{font-family:var(--serif);font-size:17px;line-height:1.62;color:#242A31}
+    @media (max-width:860px){.intro .cols{grid-template-columns:1fr;gap:22px}}
+
+    .facts{background:var(--white);border-top:1px solid var(--line)}
+    .facts .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .facts div{border-left:1px solid var(--line);padding-left:20px}
+    .facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;letter-spacing:-.01em;margin-bottom:10px;color:var(--graphite)}
+    .facts span{font-size:13px;letter-spacing:.04em;color:var(--ink2);line-height:1.5}
+    @media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+    .longform{background:var(--white);border-top:1px solid var(--line)}
+    .longform .wrap{padding-block:clamp(56px,8vh,96px)}
+    .longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,2.8vw,42px);line-height:1.06;letter-spacing:-.02em;max-width:18ch;margin-bottom:clamp(28px,4vh,40px)}
+    .longform .grid{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--gutter);align-items:start}
+    .longform .textcol p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:760px){.longform .grid{grid-template-columns:1fr}}
+
+    .datawrap{grid-column:1 / -1;margin-top:8px}
+    .datawrap .tlabel{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt);font-weight:700;margin-bottom:12px}
+    .datawrap table{width:100%;border-collapse:collapse;font-size:14px}
+    .datawrap th,.datawrap td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+    .datawrap th{font-family:var(--grot);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+    .datawrap td{color:#242A31;font-family:var(--grot)}
+    .datawrap td:first-child,.datawrap th:first-child{padding-left:0}
+    .datawrap tr:last-child td{border-bottom:1px solid var(--graphite)}
+    @media (max-width:700px){.datawrap table,.datawrap thead,.datawrap tbody,.datawrap th,.datawrap td,.datawrap tr{display:block}.datawrap thead{display:none}.datawrap tr{border-bottom:1px solid var(--line);padding-block:10px}.datawrap td{border:none;padding:3px 0}.datawrap td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);margin-bottom:2px}}
+
+    .diagram{background:var(--paper);border-top:1px solid var(--line)}
+    .diagram .wrap{padding-block:clamp(48px,7vh,80px)}
+    .diagram .kicker{font-size:13px;color:var(--cobalt);font-weight:700;letter-spacing:.04em;margin-bottom:18px}
+    .diagram .frame{background:var(--white);border:1px solid var(--line);padding:clamp(22px,3.4vw,44px);display:flex;align-items:center;justify-content:center}
+    .diagram svg{width:100%;height:auto;display:block;max-height:78svh}
+    .diagram figcaption{margin-top:18px;font-size:14px;line-height:1.55;color:var(--ink2);max-width:80ch}
+
+    .quote-essay{background:var(--white);border-top:1px solid var(--line)}
+    .quote-essay .wrap{padding-block:clamp(56px,8vh,96px)}
+    .quote-essay .grid{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gutter);align-items:start}
+    .quote-essay blockquote{font-family:var(--serif);font-weight:500;font-size:clamp(26px,2.8vw,40px);line-height:1.16;color:var(--cobalt);max-width:16ch}
+    .quote-essay cite{display:block;margin-top:20px;font-size:14px;font-style:normal;color:var(--ink2)}
+    .quote-essay .essay p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:900px){.quote-essay .grid{grid-template-columns:1fr;gap:28px}}
+
+    .framework{background:var(--white);border-top:1px solid var(--line)}
+    .framework .wrap{padding-block:clamp(48px,7vh,80px)}
+    .framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.02em;max-width:22ch}
+    .framework .lede{font-family:var(--serif);color:var(--ink2);font-size:15px;max-width:56ch;margin-top:10px}
+    .framework .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-top:clamp(28px,4vh,40px)}
+    .framework .step{border-top:3px solid var(--cobalt);padding-top:18px}
+    .framework .step .n{font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px}
+    .framework .step h3{font-weight:700;font-size:18px;max-width:16ch;letter-spacing:-.01em;margin-bottom:8px}
+    .framework .step p{font-family:var(--serif);font-size:14px;line-height:1.4;color:var(--ink2);max-width:20ch}
+    @media (max-width:860px){.framework .steps{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.framework .steps{grid-template-columns:1fr}}
+
+    .refs{background:var(--white);border-top:1px solid var(--line)}
+    .refs .wrap{padding-block:clamp(40px,6vh,64px)}
+    .refs h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);margin-bottom:22px;font-weight:700}
+    .refs ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink2);line-height:2;max-width:80ch}
+    .refs ol b{color:var(--graphite);font-weight:600}
+
+    .chapternav{background:var(--cobalt);color:#fff}
+    .chapternav .wrap{padding-block:clamp(32px,5vh,48px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+    .chapternav a{text-decoration:none;color:#fff;display:block}
+    .chapternav .next{text-align:right}
+    .chapternav .dir{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.72;margin-bottom:10px}
+    .chapternav .ctitle{font-weight:700;font-size:clamp(18px,2vw,26px);letter-spacing:-.01em;line-height:1.15;max-width:24ch}
+    .chapternav .next .ctitle{margin-left:auto}
+    .chapternav .locked{opacity:.55;cursor:default;pointer-events:none}
+    @media (max-width:700px){.chapternav .wrap{grid-template-columns:1fr;gap:26px}.chapternav .next{text-align:left}.chapternav .next .ctitle{margin-left:0}}
+
+    footer.sitefoot{background:var(--white);border-top:1px solid var(--line)}
+    footer.sitefoot .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+    footer.sitefoot a{text-decoration:none}
+
+    .dbox{fill:var(--white);stroke:var(--line);stroke-width:1.5}
+    .dbox.strong{fill:var(--cobalt);stroke:var(--cobalt)}
+    .dtext{font-family:Archivo,sans-serif;font-weight:700;fill:var(--graphite)}
+    .dtext.on{fill:#fff}
+    .dsub{font-family:Archivo,sans-serif;font-weight:500;fill:var(--ink2)}
+    .dsub.on{fill:rgba(255,255,255,.85)}
+    .darrow{stroke:var(--line);stroke-width:1.5;fill:none;marker-end:url(#arrow)}
+    .darrow.blue{stroke:var(--cobalt-light)}
+  </style>
+
+  <div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/es/ebook/">JAS</a>
+    <div class="chapmeta"><b>Capítulo 03</b><span>Lo Que una Línea de Producción Enseña Sobre Arquitectura</span></div>
+    <nav aria-label="Libro">
+      <a href="/es/ebook/">Contenido</a>
+      <a href="es-author.html">Autor</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="/ebook/03-what-a-production-line-teaches-about-architecture/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/" aria-current="page">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 1 — PORTADA                                                    -->
+<!-- ============================================================= -->
+<header class="opener">
+  <span class="num" aria-hidden="true">03</span>
+  <div class="wrap">
+    <p class="eyebrow">Parte I — Entender el Producto · Capítulo 03</p>
+    <h1>Lo Que una Línea de Producción Enseña Sobre Arquitectura</h1>
+    <p class="dek">Una silla cruza una frontera antes de sentar a alguien. Un crédito cruza un banco entero antes de aprobar a alguien. Ambos cruces obedecen la misma disciplina de flujo.</p>
+    <div class="meta">
+      <span>21 sep 2026</span>
+      <span>17 min de lectura</span>
+      <span>Edición viva 0.3</span>
+      <span>Estado: en desarrollo</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================= -->
+<!-- 2 — INTRO                                                      -->
+<!-- ============================================================= -->
+<section class="intro">
+  <div class="wrap cols">
+    <p>Una silla en una terraza de Acapulco y un crédito aprobado en un teléfono parecen no tener nada en común. Uno es acero, cuerda de vinilo y sol; el otro es una app, un modelo de riesgo y un expediente digital. Pero detrás de ambos hay el mismo aparato invisible: una línea de producción — una secuencia de estaciones, materiales, manos y reglas que convierten una intención en algo que un cliente puede usar.</p>
+    <p>El lean manufacturing, formalizado por Taiichi Ohno en el Sistema de Producción Toyota, le dio a ese aparato un vocabulario preciso: flujo, desperdicio, jalar en vez de empujar, y una disciplina para hacer visible lo que normalmente permanece oculto detrás de la superficie de un producto terminado. Esas categorías no nacieron para el software, pero tampoco están limitadas al metal.</p>
+    <p>Este capítulo camina el argumento dos veces. Primero desde un objeto físico — la silla Acapulco, su origen, sus materiales, la mano de obra que la teje y la aduana que cruza para llegar a otro país. Después transpone la misma línea a un producto de crédito en dispositivo móvil dentro de un banco con un landscape tradicional: su apificación, su estación de OCR, su aduana regulatoria y su punto de venta en sucursal.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 3 — FACTS (tanda 1)                                            -->
+<!-- ============================================================= -->
+<section class="facts" aria-label="En resumen">
+  <div class="wrap">
+    <div><b>7</b><span>TIPOS DE DESPERDICIO QUE<br>CATALOGÓ TAIICHI OHNO</span></div>
+    <div><b>1950s</b><span>DÉCADA EN QUE NACIÓ<br>LA SILLA ACAPULCO</span></div>
+    <div><b>9401.79</b><span>FRACCIÓN ARANCELARIA DE UN<br>ASIENTO METÁLICO SIN TAPIZAR</span></div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 9 — DIAGRAMA 3.1                                                -->
+<!-- ============================================================= -->
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 3.1</p>
+    <div class="frame">
+      <svg viewBox="0 0 1040 260" role="img" aria-label="Materia prima fluye por dos estaciones hasta el cliente, que envía una señal de jalar hacia atrás">
+        <defs><marker id="arrow3a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="20" width="220" height="90" rx="2"/>
+        <text class="dtext" x="110" y="60" font-size="13" text-anchor="middle">MATERIA PRIMA</text>
+        <text class="dsub" x="110" y="80" font-size="11" text-anchor="middle">Insumo o solicitud</text>
+        <line class="darrow" x1="220" y1="65" x2="278" y2="65" marker-end="url(#arrow3a)"/>
+        <rect class="dbox" x="280" y="20" width="220" height="90" rx="2"/>
+        <text class="dtext" x="390" y="60" font-size="13" text-anchor="middle">ESTACIÓN 1</text>
+        <text class="dsub" x="390" y="80" font-size="11" text-anchor="middle">Procesa un lote pequeño</text>
+        <line class="darrow" x1="500" y1="65" x2="558" y2="65" marker-end="url(#arrow3a)"/>
+        <rect class="dbox" x="560" y="20" width="220" height="90" rx="2"/>
+        <text class="dtext" x="670" y="60" font-size="13" text-anchor="middle">ESTACIÓN 2</text>
+        <text class="dsub" x="670" y="80" font-size="11" text-anchor="middle">Entrega listo para usar</text>
+        <line class="darrow" x1="780" y1="65" x2="838" y2="65" marker-end="url(#arrow3a)"/>
+        <rect class="dbox strong" x="840" y="20" width="200" height="90" rx="2"/>
+        <text class="dtext on" x="940" y="65" font-size="13" text-anchor="middle">CLIENTE</text>
+        <path class="darrow blue" d="M940,112 C940,180 110,180 110,112" marker-end="url(#arrow3a)"/>
+        <text class="dsub" x="525" y="205" font-size="12" text-anchor="middle">SEÑAL DE JALAR (KANBAN) — nada se produce sin una demanda real corriente arriba</text>
+      </svg>
+    </div>
+    <figcaption>Figura 3.1 — El principio de jalar. Cada estación produce solo lo que la siguiente pide, y la siguiente pide solo lo que el cliente pidió primero.</figcaption>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Una Línea No Es una Metáfora                    -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Una Línea de Producción No Es una Metáfora</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-metaphor-workstation.png" alt="Una estación de trabajo, una pieza a la vez" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Taiichi Ohno catalogó siete formas de desperdicio en la planta de Toyota: sobreproducción, espera, transporte, sobreprocesamiento, inventario, movimiento y defectos. Ninguna de las siete es un defecto de calidad en sí misma — son formas de gastar tiempo, material o esfuerzo en algo que el cliente nunca pidió.</p>
+        <p>La sobreproducción es la más peligrosa de las siete porque genera a todas las demás: producir de más crea inventario, el inventario exige transporte y almacenamiento, y el exceso de trabajo en curso oculta los defectos hasta que ya es tarde para corregirlos barato. Por eso el sistema de Toyota se organiza alrededor de jalar (just-in-time) en vez de empujar: cada estación produce solo lo que la siguiente estación pide, y la señal viene, en última instancia, del cliente.</p>
+        <p>El segundo pilar es jidoka — automatización con juicio humano. Sakichi Toyoda lo construyó primero en un telar: cuando un hilo se rompía, la máquina se detenía sola. Un operador podía entonces supervisar varias máquinas a la vez, porque las máquinas sabían cuándo pedir ayuda. Un defecto detenido en el origen nunca viaja río abajo a costar diez veces más.</p>
+        <p>Estos dos pilares — jalar y detener el defecto en el origen — no son técnicas de manufactura. Son una forma de diseñar cualquier sistema que produce algo repetidamente: una fábrica, un banco, una plataforma de software. El resto de este capítulo sigue esa misma línea a través de dos productos muy distintos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — La Silla Acapulco: Materiales                   -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>La Silla Acapulco: Materiales y su Idiosincrasia</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-acapulco-materials.png" alt="Varilla de acero y cordón de PVC, antes de convertirse en silla" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>La silla Acapulco nació en México a mediados del siglo XX, en un puerto donde el calor tropical volvía incómoda cualquier silla tapizada. Su autoría exacta se perdió — no tiene derechos de autor ni fabricante oficial, y de ahí que existan tantas versiones — pero todas las historias coinciden en el problema que resolvía: dejar pasar el aire.</p>
+        <p>La versión más citada de su origen conecta la silla con una técnica muy anterior: el tejido abierto de las hamacas mayas, adaptado por artesanos de la costa de Guerrero. Otra explicación local, menos romántica y quizás más precisa, la vincula con el huaculete — el aro de varilla que los panaderos costeños usaban al hombro, entrelazado con cordel de henequén para sostener hasta cuarenta piezas de pan. El principio estructural es el mismo: un aro rígido que sostiene una red de tensión.</p>
+        <p>El objeto terminado tiene solo dos familias de material — una estructura de varilla de acero doblada y soldada, y un cordón tejido a mano, hoy casi siempre PVC en lugar de la fibra vegetal original. Esa simplicidad de materiales es engañosa: dice poco sobre cuánto trabajo humano interviene entre la varilla y la silla lista para sentarse.</p>
+        <p>El acero llega como insumo genérico, intercambiable entre proveedores. El tejido no. Ahí es donde la silla deja de ser un objeto industrial y se vuelve un objeto de oficio — y donde su cadena de valor empieza a parecerse menos a una fábrica y más a un taller.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 9 — DIAGRAMA 3.2 — Cadena de Valor                              -->
+<!-- ============================================================= -->
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 3.2</p>
+    <div class="frame">
+      <svg viewBox="0 0 1040 220" role="img" aria-label="La varilla de acero se forma, se teje a mano, se ensambla y se distribuye o exporta">
+        <defs><marker id="arrow3b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="60" width="185" height="100" rx="2"/>
+        <text class="dtext" x="92" y="102" font-size="12" text-anchor="middle">VARILLA DE ACERO</text>
+        <text class="dsub" x="92" y="122" font-size="11" text-anchor="middle">Proveedor regional</text>
+        <line class="darrow" x1="185" y1="110" x2="233" y2="110" marker-end="url(#arrow3b)"/>
+        <rect class="dbox" x="235" y="60" width="185" height="100" rx="2"/>
+        <text class="dtext" x="327" y="102" font-size="12" text-anchor="middle">FORMADO Y PINTURA</text>
+        <text class="dsub" x="327" y="122" font-size="11" text-anchor="middle">Taller local</text>
+        <line class="darrow" x1="420" y1="110" x2="468" y2="110" marker-end="url(#arrow3b)"/>
+        <rect class="dbox strong" x="470" y="50" width="195" height="120" rx="2"/>
+        <text class="dtext on" x="567" y="98" font-size="12" text-anchor="middle">TEJIDO ARTESANAL</text>
+        <text class="dsub on" x="567" y="118" font-size="11" text-anchor="middle">Un tejedor,</text>
+        <text class="dsub on" x="567" y="136" font-size="11" text-anchor="middle">una silla a la vez</text>
+        <line class="darrow" x1="665" y1="110" x2="713" y2="110" marker-end="url(#arrow3b)"/>
+        <rect class="dbox" x="715" y="60" width="150" height="100" rx="2"/>
+        <text class="dtext" x="790" y="102" font-size="12" text-anchor="middle">ENSAMBLE</text>
+        <text class="dsub" x="790" y="122" font-size="11" text-anchor="middle">Y control</text>
+        <line class="darrow" x1="865" y1="110" x2="913" y2="110" marker-end="url(#arrow3b)"/>
+        <rect class="dbox" x="915" y="60" width="125" height="100" rx="2"/>
+        <text class="dtext" x="977" y="98" font-size="11" text-anchor="middle">DISTRIBUCIÓN</text>
+        <text class="dtext" x="977" y="115" font-size="11" text-anchor="middle">O EXPORTACIÓN</text>
+      </svg>
+    </div>
+    <figcaption>Figura 3.2 — La cadena de valor de la silla Acapulco. Solo una estación no puede acelerarse con más máquinas: el tejido, hecho por una persona, a la vez.</figcaption>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 7 — FRAMEWORK — Cuatro Principios de una Línea Esbelta          -->
+<!-- ============================================================= -->
+<section class="framework">
+  <div class="wrap">
+    <h2>Cuatro Principios de una Línea Esbelta</h2>
+    <p class="lede">Los mismos cuatro principios ordenan una fábrica de sillas y una plataforma de crédito. Solo cambia el material que fluye entre las estaciones.</p>
+    <div class="steps">
+      <div class="step"><p class="n">01</p><h3>Jalar</h3><p>Producir según demanda real, no según pronóstico.</p></div>
+      <div class="step"><p class="n">02</p><h3>Fluir</h3><p>Reducir el lote y la espera entre cada estación.</p></div>
+      <div class="step"><p class="n">03</p><h3>Ritmo</h3><p>Fijar el paso al consumo del cliente, no a la capacidad máxima.</p></div>
+      <div class="step"><p class="n">04</p><h3>Mejorar</h3><p>Ajustar continuamente con lo que la línea misma revela.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Mano de Obra Localizada                          -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Mano de Obra Localizada y lo que no se Subcontrata</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-localized-labor-weaving.png" alt="Manos tejiendo cordón de vinilo alrededor del marco de acero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Tejer una silla Acapulco a mano toma horas, no minutos, y el resultado depende de la tensión que aplica quien teje — demasiado floja y la silla se hunde, demasiado tensa y el cordón se rompe con el uso. Esa habilidad no está escrita en un plano; vive en el cuerpo de quien la practicó cientos de veces, casi siempre en la misma región donde la técnica se transmitió de generación en generación.</p>
+        <p>Esto crea una restricción que la selección de materiales por sí sola no explica: mover el tejido a una región distinta — buscando mano de obra más barata — no reduce el costo de forma lineal, porque también se pierde el oficio acumulado. Una fábrica puede relocalizar el formado y la pintura del acero casi sin fricción; no puede relocalizar el tejido sin antes formar tejedores nuevos, lo cual toma tiempo y produce defectos mientras la curva de aprendizaje sube.</p>
+        <p>La arquitectura de un sistema digital tiene su propio equivalente: hay componentes genéricos, intercambiables entre proveedores de nube o equipos, y hay un núcleo de dominio — el modelo de riesgo de un banco, el algoritmo de recomendación de una plataforma — que concentra el conocimiento acumulado de la organización y que subcontratar barato destruye más valor del que ahorra.</p>
+        <p>Identificar cuál estación de la línea es intercambiable y cuál es el oficio irremplazable es, en ambos casos, una decisión de arquitectura antes que una decisión de costos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Cruzar una Frontera                              -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Cruzar una Frontera: Aduanas, Clasificación y Aranceles</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-crossing-border-declaration.png" alt="Un pedimento de exportación para clasificación arancelaria" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Una silla terminada no cruza una frontera por sí sola: cruza como una fracción arancelaria. Un asiento con estructura metálica y sin tapizado — el cordón tejido no cuenta como tapicería para efectos aduaneros — se clasifica bajo la fracción 9401.79 del Sistema Armonizado, la misma categoría en más de doscientos países, aunque cada aduana nacional agregue dígitos propios para su arancel específico.</p>
+        <p>Esa clasificación no es un trámite menor. Determina el arancel que paga el importador, los certificados de origen que debe acompañar el envío, y si el producto califica para trato preferencial bajo un tratado como el T-MEC. Hacia 2026, alrededor del 85% de las exportaciones mexicanas que cumplen las reglas de origen del tratado siguen entrando a Estados Unidos con arancel cero; el resto — y en particular ciertos productos con contenido metálico bajo aranceles de la Sección 232 — puede enfrentar recargos que no dependen de si el producto califica bajo el T-MEC.</p>
+        <p>Desde la óptica de una línea de producción, una aduana es exactamente lo que Ohno llamaría espera e inventario: un embarque detenido mientras se verifica su clasificación es trabajo terminado que no genera valor hasta que cruza. Clasificar correctamente desde el diseño del producto — y no como un trámite posterior — es la forma en que una organización evita construir ese desperdicio en su propia cadena.</p>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:8px">
+      <div class="datawrap" style="grid-column:1/-1">
+        <p class="tlabel">Tabla 3.1 — Qué determina la fracción arancelaria de un asiento</p>
+        <table>
+          <thead><tr><th>Elemento clasificado</th><th>Qué decide</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Elemento">Material de la estructura</td><td data-label="Decide">Metal vs. madera vs. mimbre — cada uno tiene su propia subpartida dentro de la partida 9401</td></tr>
+            <tr><td data-label="Elemento">Presencia de tapizado</td><td data-label="Decide">Un cordón tejido tensado no upholstery; un cojín con relleno sí lo es, y cambia la subpartida</td></tr>
+            <tr><td data-label="Elemento">Regla de origen T-MEC</td><td data-label="Decide">Si el contenido regional califica para arancel cero en Estados Unidos y Canadá</td></tr>
+            <tr><td data-label="Elemento">Aranceles de la Sección 232</td><td data-label="Decide">Recargos sobre metales que aplican con independencia de la calificación T-MEC</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 6 — CITA + ENSAYO — Puente hacia lo digital                     -->
+<!-- ============================================================= -->
+<section class="quote-essay">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <blockquote>Una línea de producción no vende velocidad. Vende la certeza de que el siguiente paso siempre estará listo.</blockquote>
+        <cite>— Sobre el valor del flujo</cite>
+      </div>
+      <div class="essay">
+        <p>El valor de una línea bien diseñada — la de la silla o la de cualquier otro producto — no se mide en cuántas unidades produce por hora en su mejor día. Se mide en cuántas veces, un día normal, la siguiente estación encuentra listo lo que necesita, sin esperar, sin defectos que reparar y sin inventario acumulado escondiendo el problema.</p>
+        <p>Esa misma certeza es lo que un cliente le pide a un crédito bancario, aunque casi nunca lo diga en esos términos. No pide velocidad absoluta; pide que la aplicación no se quede a medias, que el documento que subió no se pierda, que la aprobación no dependa de que alguien recuerde revisar una carpeta.</p>
+        <p>Transponer la línea de la silla Acapulco a un producto de crédito móvil no es forzar una metáfora. Es reconocer que ambos sistemas resuelven el mismo problema — convertir una intención en un resultado confiable, de forma repetida — con materiales distintos: varilla y cordón en un caso, datos, documentos y decisiones de riesgo en el otro.</p>
+        <p>Lo que sigue examina esa segunda línea, estación por estación, dentro de un banco cuyo landscape tecnológico se construyó mucho antes de que existiera un teléfono capaz de aprobar un crédito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 3 — FACTS (tanda 2)                                             -->
+<!-- ============================================================= -->
+<section class="facts" aria-label="El crédito móvil, en resumen">
+  <div class="wrap">
+    <div><b>90%</b><span>COINCIDENCIA BIOMÉTRICA MÍNIMA<br>QUE EXIGE EL ANEXO 71 DE LA CNBV</span></div>
+    <div><b>90</b><span>DÍAS HÁBILES DE PLAZO PARA<br>ADECUARSE A LA REFORMA DE 2026</span></div>
+    <div><b>$0.24</b><span>COSTO ILUSTRATIVO POR DOCUMENTO<br>EN EL ESCENARIO OCR MEJORADO</span></div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Transponiendo la Línea                           -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Transponiendo la Línea: un Crédito en el Bolsillo</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-loan-in-pocket.png" alt="Un teléfono móvil junto a un núcleo bancario legado" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Consideremos un banco tradicional con un landscape construido en capas sucesivas durante décadas: un núcleo bancario (core) diseñado para operaciones por lotes nocturnos, un canal de sucursal maduro, y encima de eso, más recientemente, una capa móvil que el negocio quiere usar para originar crédito directamente desde el teléfono del cliente.</p>
+        <p>Igual que la silla Acapulco no pudo simplemente trasladar su tejido artesanal a una fábrica automatizada sin perder lo que la hacía valiosa, el banco no puede simplemente construir una app bonita encima de un core que no fue diseñado para responder en segundos. La introducción de un producto de crédito móvil obliga a apificar servicios que antes solo existían como transacciones internas por lotes — consulta de buró, validación de identidad, cálculo de línea, desembolso — y exponerlos como servicios que el canal móvil puede llamar en tiempo real.</p>
+        <p>Esa apificación es, en términos de la línea de producción, la construcción de una nueva estación de forma y pintura: no cambia la materia prima del core, pero sí cambia el ritmo al que el resto de la línea puede consumir lo que el core produce. Sin ella, la app móvil termina esperando — la misma espera que Ohno catalogó como desperdicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 9 — DIAGRAMA 3.3 — Landscape del Banco                          -->
+<!-- ============================================================= -->
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 3.3</p>
+    <div class="frame">
+      <svg viewBox="0 0 1040 260" role="img" aria-label="El núcleo bancario heredado se expone mediante una capa de APIs que alimenta tanto a la app móvil como al punto de venta en sucursal, y ambos convergen en un crédito aprobado">
+        <defs><marker id="arrow3c" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="80" width="230" height="90" rx="2"/>
+        <text class="dtext" x="115" y="118" font-size="12" text-anchor="middle">NÚCLEO BANCARIO</text>
+        <text class="dsub" x="115" y="138" font-size="11" text-anchor="middle">Core heredado, por lotes</text>
+        <line class="darrow" x1="230" y1="125" x2="288" y2="125" marker-end="url(#arrow3c)"/>
+        <rect class="dbox strong" x="290" y="80" width="220" height="90" rx="2"/>
+        <text class="dtext on" x="400" y="118" font-size="12" text-anchor="middle">CAPA DE APIS</text>
+        <text class="dsub on" x="400" y="138" font-size="11" text-anchor="middle">Tiempo real, apificación</text>
+        <path class="darrow" d="M510,110 C560,80 610,50 660,40" marker-end="url(#arrow3c)"/>
+        <path class="darrow" d="M510,140 C560,170 610,200 660,210" marker-end="url(#arrow3c)"/>
+        <rect class="dbox" x="660" y="0" width="200" height="80" rx="2"/>
+        <text class="dtext" x="760" y="35" font-size="12" text-anchor="middle">APP MÓVIL</text>
+        <text class="dsub" x="760" y="55" font-size="11" text-anchor="middle">OCR, biometría, firma</text>
+        <rect class="dbox" x="660" y="170" width="200" height="80" rx="2"/>
+        <text class="dtext" x="760" y="205" font-size="12" text-anchor="middle">PUNTO DE VENTA</text>
+        <text class="dsub" x="760" y="225" font-size="11" text-anchor="middle">Sucursal, cierre asistido</text>
+        <path class="darrow blue" d="M860,40 C920,60 940,90 940,125" marker-end="url(#arrow3c)"/>
+        <path class="darrow blue" d="M860,210 C920,190 940,160 940,125" marker-end="url(#arrow3c)"/>
+        <rect class="dbox strong" x="940" y="80" width="100" height="90" rx="2"/>
+        <text class="dtext on" x="990" y="118" font-size="11" text-anchor="middle">CRÉDITO</text>
+        <text class="dtext on" x="990" y="135" font-size="11" text-anchor="middle">APROBADO</text>
+      </svg>
+    </div>
+    <figcaption>Figura 3.3 — La capa de APIs es la estación que el landscape tradicional no tenía. Sin ella, la app móvil y la sucursal no pueden consumir el mismo core al mismo ritmo.</figcaption>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Arquitectura Empresarial: Módulos, Orquestación y Seguridad -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>La Línea Empresarial: Módulos, Orquestación y Seguridad</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-enterprise-switchboard.png" alt="Un conmutador empresarial ilustrando arquitectura de APIs" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>La capa de APIs de la Figura 3.3 no es una sola estación, sino una pequeña fábrica en sí misma. Detrás de ella conviven módulos discretos — identidad y biometría, consulta de buró, calificación de riesgo, gestión documental, desembolso — cada uno propiedad de un equipo distinto, cada uno con su propio calendario de liberaciones, y ninguno construido sabiendo que algún día un teléfono lo llamaría directamente. Tratar esa capa como una sola caja esconde justo el problema de coordinación que un gerente de línea no puede darse el lujo de esconder.</p>
+        <p>Lo que conecta esos módulos con el modelo de dispositivo móvil — y con la sucursal, y eventualmente con otras instituciones que el crédito toca, como un buró de crédito o un registro gubernamental — es un landscape de orquestación: un API gateway que autentica y enruta cada llamada, una capa de integración o de eventos que secuencia pasos que no pueden correr en paralelo, y un registro de servicios que permite que un módulo nuevo se sume a la línea sin reconstruir cada estación existente. Esto es la banda transportadora de una línea empresarial; sin ella, la apificación es solo un conjunto de puertas que no dan al mismo pasillo.</p>
+        <p>La seguridad en este landscape no es una estación al final de la línea — está incorporada en cada estación, tal como el jidoka incorpora controles de calidad en la propia máquina en vez de inspeccionar la silla terminada después. TLS mutuo y autenticación basada en tokens entre la app y el gateway, tokenización a nivel de campo de los datos que el OCR acaba de capturar, limitación de tasa y detección de anomalías contra el fraude que invita un canal digital veloz, y una postura de confianza cero entre módulos internos — ninguno de estos es un añadido opcional; cada uno es un mecanismo de "detener la línea" que atrapa un defecto antes de que llegue al cliente o al regulador.</p>
+        <p>Un landscape tradicional casi siempre construyó sus módulos para confiar en la red donde vivían, no en quien llamaba del otro lado — un supuesto razonable dentro de un centro de datos, uno peligroso en cuanto el teléfono del propio cliente es quien llama. Rediseñar esa frontera de confianza, no solo agregar una pantalla móvil, es lo que realmente convierte un core heredado en una línea capaz de producir un crédito en minutos en vez de días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — OCR: Recepción de Materia Prima                  -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>OCR de Documentos: la Estación de Recepción</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-ocr-id-scanner.png" alt="Una identificación oficial pasando por un escáner de captura OCR" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>En la silla, la varilla de acero entra a la línea con una tolerancia conocida y un rendimiento medible: cierto porcentaje del material comprado se convierte en producto utilizable después del corte. En el crédito móvil, el equivalente es el reconocimiento óptico de caracteres (OCR) que procesa identificación oficial, comprobante de domicilio y estado de cuenta que el cliente fotografía con su propio teléfono, casi nunca en condiciones ideales de luz o encuadre.</p>
+        <p>El rendimiento de esa estación tiene el mismo comportamiento económico que el rendimiento del material en el capítulo anterior: si el motor OCR acepta un documento en la primera pasada solo un porcentaje de las veces, el resto exige un reintento o una revisión manual — mucho más cara por unidad que la llamada automatizada.</p>
+        <p>Un escenario ilustrativo lo hace explícito: diez mil solicitudes, tres documentos cada una, treinta mil documentos en total. Con un motor que acepta el 78% en la primera pasada a $0.15 por llamada, el 60% de los fallidos se recupera en un reintento y el resto exige revisión manual a $1.80 cada uno — el costo total llega a $10,242, o $0.34 por documento procesado.</p>
+        <p>Mejorar solo la tasa de aceptación en primera pasada al 90%, sin cambiar el precio por llamada, reduce el costo total a $7,110 — treinta por ciento menos — porque cada punto de rendimiento ganado en la primera pasada evita una cascada de reintentos y revisión manual corriente abajo, exactamente como un mejor patrón de corte evita desperdicio de material.</p>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:8px">
+      <div class="datawrap" style="grid-column:1/-1">
+        <p class="tlabel">Tabla 3.2 — El mismo lote de documentos, dos tasas de aceptación</p>
+        <table>
+          <thead><tr><th>Variable</th><th>Escenario base (78%)</th><th>Escenario mejorado (90%)</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Variable">Documentos totales</td><td data-label="Base">30,000</td><td data-label="Mejorado">30,000</td></tr>
+            <tr><td data-label="Variable">Aceptados en primera pasada</td><td data-label="Base">23,400</td><td data-label="Mejorado">27,000</td></tr>
+            <tr><td data-label="Variable">Requieren revisión manual</td><td data-label="Base">2,640</td><td data-label="Mejorado">1,200</td></tr>
+            <tr><td data-label="Variable">Costo total</td><td data-label="Base">$10,242</td><td data-label="Mejorado">$7,110</td></tr>
+            <tr><td data-label="Variable"><b>Costo por documento</b></td><td data-label="Base"><b>$0.34</b></td><td data-label="Mejorado"><b>$0.24</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 9 — DIAGRAMA 3.4 — Embudo de OCR                                -->
+<!-- ============================================================= -->
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 3.4</p>
+    <div class="frame">
+      <svg viewBox="0 0 1040 220" role="img" aria-label="Un documento pasa por OCR, y lo que falla se reintenta, y lo que sigue fallando pasa a revisión manual, hasta llegar a un expediente completo">
+        <defs><marker id="arrow3d" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="60" width="180" height="100" rx="2"/>
+        <text class="dtext" x="90" y="102" font-size="12" text-anchor="middle">DOCUMENTO</text>
+        <text class="dsub" x="90" y="122" font-size="11" text-anchor="middle">Foto del cliente</text>
+        <line class="darrow" x1="180" y1="110" x2="228" y2="110" marker-end="url(#arrow3d)"/>
+        <rect class="dbox strong" x="230" y="60" width="180" height="100" rx="2"/>
+        <text class="dtext on" x="320" y="102" font-size="12" text-anchor="middle">OCR PASADA 1</text>
+        <text class="dsub on" x="320" y="122" font-size="11" text-anchor="middle">90% de éxito</text>
+        <line class="darrow" x1="410" y1="90" x2="458" y2="60" marker-end="url(#arrow3d)"/>
+        <line class="darrow" x1="410" y1="130" x2="458" y2="160" marker-end="url(#arrow3d)"/>
+        <rect class="dbox" x="460" y="20" width="170" height="70" rx="2"/>
+        <text class="dtext" x="545" y="60" font-size="12" text-anchor="middle">ACEPTADO</text>
+        <rect class="dbox" x="460" y="150" width="170" height="70" rx="2"/>
+        <text class="dtext" x="545" y="182" font-size="11" text-anchor="middle">REINTENTO</text>
+        <text class="dsub" x="545" y="200" font-size="10" text-anchor="middle">60% recupera</text>
+        <line class="darrow" x1="630" y1="185" x2="678" y2="185" marker-end="url(#arrow3d)"/>
+        <rect class="dbox" x="680" y="150" width="180" height="70" rx="2"/>
+        <text class="dtext" x="770" y="182" font-size="11" text-anchor="middle">REVISIÓN MANUAL</text>
+        <text class="dsub" x="770" y="200" font-size="10" text-anchor="middle">El resto</text>
+        <line class="darrow blue" d="" x1="545" y1="90" x2="545" y2="148" marker-end="url(#arrow3d)"/>
+        <path class="darrow blue" d="M630,55 C830,55 900,120 900,150 C900,180 860,190 862,190" marker-end="url(#arrow3d)"/>
+        <path class="darrow blue" d="M860,185 C960,185 990,140 990,110" marker-end="url(#arrow3d)"/>
+        <rect class="dbox strong" x="870" y="70" width="160" height="70" rx="2"/>
+        <text class="dtext on" x="950" y="98" font-size="11" text-anchor="middle">EXPEDIENTE</text>
+        <text class="dtext on" x="950" y="115" font-size="11" text-anchor="middle">COMPLETO</text>
+      </svg>
+    </div>
+    <figcaption>Figura 3.4 — El embudo de OCR. Cada punto de rendimiento ganado en la primera pasada evita una cascada de reintento y revisión manual corriente abajo.</figcaption>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Cumplimiento como Aduana                         -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>El Cumplimiento como Aduana Interna</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-compliance-sealed-file.png" alt="Un expediente de cumplimiento sellado con aprobación biométrica" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Así como la silla no cruza una frontera sin clasificación arancelaria correcta, un crédito no se desembolsa sin cruzar su propia aduana regulatoria. La CNBV exige, desde julio de 2026, que la identificación de clientes en operaciones sujetas a las disposiciones del Artículo 115 valide biometría —huella y, ahora también, rostro— contra bases del INE, la SRE o la autoridad fiscal, con una coincidencia mínima del 90% y un plazo de 90 días hábiles para que las instituciones se adecúen al nuevo Anexo 71.</p>
+        <p>Los documentos que el OCR capturó deben conservarse con valor probatorio bajo la NOM-151, que exige que la digitalización preserve la integridad del documento original y, cuando aplica, una constancia de conservación emitida por un prestador de servicios de certificación acreditado. Y el propio contrato de crédito, antes de poder ofrecerse al público, debe estar registrado en el RECA que administra la CONDUSEF — el registro público de contratos de adhesión que impide a una institución financiera vender condiciones distintas a las que declaró.</p>
+        <p>A esto se suma la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, vigente desde marzo de 2025, que gobierna cómo se trata cada dato biométrico y cada documento de identidad que la app recolectó — desde el aviso de privacidad hasta las reglas de transferencia si algún proveedor externo participa en el procesamiento.</p>
+        <p>Ninguno de estos cuatro cruces es opcional, y como en cualquier aduana, saltarse uno no acelera el envío — lo detiene por completo cuando el regulador lo revisa después.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Modelo de Soporte                                -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>El Modelo de Soporte: la Red de Servicio Posventa</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-support-resolving.png" alt="Un agente de soporte asistiendo cuando la autoservicio falla" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Un fabricante de sillas que exporta necesita saber qué pasa cuando una pieza llega dañada o un tejido se afloja con el uso — una red de garantía y refacciones, aunque sea mínima, es parte del producto, no un añadido posterior. Un producto de crédito móvil necesita exactamente el mismo pensamiento aplicado a sus propios modos de falla.</p>
+        <p>Cuando el OCR no logra leer una identificación después de dos intentos, cuando la biometría no alcanza el 90% de coincidencia exigido, o cuando el cliente simplemente se queda a medias en un formulario largo, alguien tiene que resolverlo — y ese alguien no puede ser exclusivamente la misma app que ya falló una vez con ese cliente.</p>
+        <p>Un modelo de soporte razonable para este producto opera en niveles: autoservicio dentro de la app para los casos más comunes (reintentar una foto, actualizar un dato), un centro de atención telefónica para lo que requiere verificación humana pero no presencia física, y la sucursal como el nivel final para lo que exige identificación presencial o resolución de una excepción que el sistema no anticipó.</p>
+        <p>Diseñar estos niveles antes del lanzamiento — no descubrirlos por los reclamos — es lo que separa un producto operable de uno que solo se ve bien en la demostración.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Punto de Venta en Sucursal                       -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>El Punto de Venta en Sucursal: la Última Estación</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-branch-short-line.png" alt="Una sucursal bancaria con una fila corta de solicitudes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Aunque el producto se diseñó como digital primero, una parte de las solicitudes siempre termina en sucursal — por preferencia del cliente, por una excepción que el flujo móvil no pudo resolver, o porque cerrar la venta exige una firma que el banco todavía prefiere presencial. La sucursal es, en la línea de producción, la última estación antes de que el producto salga por la puerta.</p>
+        <p>La Ley de Little da un lenguaje preciso para lo que ocurre ahí: el tiempo de espera de una solicitud es igual al número de solicitudes en proceso dividido entre el ritmo al que la sucursal las cierra. Si hay 120 solicitudes abiertas en un momento dado y la operación cierra 40 al día, el tiempo de espera promedio es de tres días — no porque cada solicitud individual sea lenta, sino porque el sistema tiene más trabajo en curso del que su ritmo de cierre puede absorber.</p>
+        <p>Esto es exactamente lo que Ohno llamaba inventario disfrazado de trabajo en progreso: agregar más cajeros no resuelve el problema si la causa real es que demasiadas solicitudes entran al mismo tiempo sin un límite. La solución, en una sucursal como en una línea de ensamble, no es correr más rápido — es limitar cuánto trabajo se permite tener abierto a la vez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Caso: el Onboarding en Papel como Desperdicio    -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Caso: el Onboarding en Papel como Desperdicio</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-briefcase-left-behind.png" alt="Un maletín que se queda en la oficina tras la digitalización" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>Un equipo de implementación encontró su peor desperdicio no en la capa de APIs, sino en el camino. Sus acreditados eran dueños de pequeños negocios que trabajaban en oficinas alejadas de conectividad confiable, y el encargado de crédito asignado a cerrar cada expediente tenía que viajar hasta ahí en persona, recabar firmas en papel, manejar de regreso a una sucursal con señal, subir lo que se pudiera subir, y volver — a veces más de una vez — cada vez que un formulario quedaba incompleto o una firma se colocaba en el recuadro equivocado.</p>
+        <p>Leído con las categorías de Ohno, ese viaje de ida y vuelta rara vez era un solo desperdicio; era tres a la vez. Transporte, en cada trayecto entre la oficina y la sucursal que no acercaba el producto a su conclusión. Espera, en cada expediente sentado en un escritorio hasta la siguiente ventana de conectividad. Y movimiento, en las visitas repetidas del propio encargado para corregir lo que una sola visita bien diseñada debió capturar desde la primera vez.</p>
+        <p>La solución que el equipo diseñó no esperó a tener conectividad perfecta — asumió su ausencia. El flujo de onboarding se reconstruyó para funcionar online y offline: datos, documentos y una firma facsímil capturados en el propio dispositivo móvil, encolados localmente cuando no había señal, y sincronizados en cuanto el teléfono del encargado encontraba una, complementados con un paso de video firma que le dio al expediente el mismo peso probatorio que antes solo tenía una firma húmeda.</p>
+        <p>Los propios instrumentos de la línea hacen legible el resultado: recabar el conjunto completo de datos de un acreditado bajó de treinta días a cerca de una semana, y el tiempo de apertura de cuenta se redujo aproximadamente a la mitad — no porque el encargado manejara más rápido, sino porque el proceso dejó de depender del trayecto por completo.</p>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:8px">
+      <div class="datawrap" style="grid-column:1/-1">
+        <p class="tlabel">Tabla 3.3 — Onboarding en papel frente al híbrido online/offline</p>
+        <table>
+          <thead><tr><th>Variable</th><th>Onboarding en papel</th><th>Híbrido online/offline</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Variable">Recolección de datos del acreditado</td><td data-label="Papel">~30 días</td><td data-label="Híbrido">~1 semana</td></tr>
+            <tr><td data-label="Variable">Tiempo de apertura de cuenta</td><td data-label="Papel">Línea base</td><td data-label="Híbrido">~50% menor</td></tr>
+            <tr><td data-label="Variable">Captura de firma</td><td data-label="Papel">Firma húmeda, visita a oficina</td><td data-label="Híbrido">Facsímil + video firma, en dispositivo</td></tr>
+            <tr><td data-label="Variable">Desperdicio dominante eliminado</td><td data-label="Papel">—</td><td data-label="Híbrido">Transporte, espera, movimiento</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 5 — LONGFORM — Cierre                                           -->
+<!-- ============================================================= -->
+<section class="longform">
+  <div class="wrap">
+    <h2>Diseñar la Línea, no Solo el Producto</h2>
+    <div class="grid">
+      <figure class="figure" style="overflow:hidden;padding:0"><img src="/assets/chapter-03-chair-and-phone-closing.png" alt="Una silla Acapulco y un teléfono inteligente juntos" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></figure>
+      <div class="textcol">
+        <p>La silla Acapulco y el crédito móvil parecen pertenecer a mundos distintos — uno convierte acero y cordón en un objeto que se puede tocar, el otro convierte documentos, biometría y reglas regulatorias en una decisión de riesgo. Ambos, sin embargo, dependen de la misma disciplina: una secuencia de estaciones donde cada una produce solo lo que la siguiente puede consumir, y donde un defecto se detiene en el origen en vez de viajar corriente abajo.</p>
+        <p>La arquitectura de un producto — física o digital — no es el diagrama que se dibuja una vez al inicio del proyecto. Es la línea de producción que la organización va a operar todos los días después del lanzamiento, con sus materiales genéricos, su oficio irremplazable, sus aduanas y su punto de venta final.</p>
+        <p>Ver esa línea con claridad — y no solo el producto terminado que sale de ella — es lo que separa a un equipo que puede escalar de uno que solo puede lanzar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- 11 — REFERENCIAS                                                -->
+<!-- ============================================================= -->
+<section class="refs">
+  <div class="wrap">
+    <h2>Referencias</h2>
+    <ol>
+      <li><b>Taiichi Ohno</b> — Toyota Production System (1978); catálogo de los siete desperdicios, jalar y jidoka.</li>
+      <li><b>Wikipedia / sillaacapulco.com / acento.mx</b> — Sobre el origen de la silla Acapulco, sus materiales y las distintas versiones de su historia.</li>
+      <li><b>HS Code Atlas / UK Advance Tariff Rulings</b> — Clasificación arancelaria 9401.79 para asientos con estructura metálica sin tapizar.</li>
+      <li><b>Secretaría de Economía / Infobae</b> — Revisión del T-MEC 2026 y el estado de los aranceles aplicables a exportaciones mexicanas.</li>
+      <li><b>Comisión Nacional Bancaria y de Valores (CNBV)</b> — Resolución que reforma el Anexo 71 de las Disposiciones de carácter general aplicables a las instituciones de crédito, DOF, 1 de julio de 2026.</li>
+      <li><b>Diario Oficial de la Federación</b> — Ley Federal de Protección de Datos Personales en Posesión de los Particulares, 20 de marzo de 2025.</li>
+      <li><b>Secretaría de Economía</b> — NOM-151-SCFI-2016, conservación de mensajes de datos y digitalización de documentos.</li>
+      <li><b>CONDUSEF</b> — Registro de Contratos de Adhesión (RECA) y Disposiciones de Carácter General para su registro.</li>
+      <li><b>John D. C. Little</b> — La Ley de Little, la relación entre trabajo en proceso, rendimiento y tiempo de espera.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- NAVEGACIÓN ENTRE CAPÍTULOS                                     -->
+<!-- ============================================================= -->
+<nav class="chapternav" aria-label="Navegación de capítulos">
+  <div class="wrap">
+    <a class="prev" href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/">
+      <p class="dir">← Capítulo 02</p>
+      <p class="ctitle">Estrategia de Producto, Materiales y el Costo de una Decisión</p>
+    </a>
+    <a class="next locked" href="#" aria-disabled="true">
+      <p class="dir">Capítulo 04 — próximamente →</p>
+      <p class="ctitle">El producto nunca es solo el objeto</p>
+    </a>
+  </div>
+</nav>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <span>J. Angel Sosa — Thinking in Products, Building Systems</span>
+    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="#rss">RSS</a> · <a href="#privacidad">Privacidad</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progressBar');
+  function onScroll(){
+    var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.setProperty('--p', p+'%');
+  }
+  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var tocBtn=document.getElementById('tocBtn');
+  if(tocBtn){ tocBtn.addEventListener('click', function(){ window.location.href='es-ebook.html#toc'; }); }
+})();
+</script>
+</Layout>

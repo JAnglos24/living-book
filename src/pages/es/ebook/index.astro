@@ -87,15 +87,16 @@ h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
 .continue .head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:28px;flex-wrap:wrap}
 .continue h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em}
 .continue .head a{font-size:14px;font-weight:600;color:var(--cobalt);text-decoration:none}
-.chapcard{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--gutter);background:var(--white);border:1px solid var(--line);align-items:stretch}
-.chapcard .img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px}
-.chapcard .body{padding:clamp(20px,3vw,40px) clamp(20px,3vw,40px) clamp(20px,3vw,40px) 0}
+.chapcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:var(--gutter);background:var(--white);border:1px solid var(--line);align-items:stretch;overflow:hidden}
+.chapcard .img{background:linear-gradient(135deg,var(--grid-blue),var(--white));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--cobalt);font-size:14px;overflow:hidden;min-width:0;position:relative;min-height:240px}
+.chapcard .img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.chapcard .body{padding:clamp(24px,3vw,40px);min-width:0;display:flex;flex-direction:column;justify-content:center}
 .chapcard .kicker{font-size:13px;color:var(--ink2);margin-bottom:10px}
 .chapcard h3{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(24px,2.6vw,36px);line-height:1.08;letter-spacing:-.02em;margin-bottom:12px;max-width:20ch}
 .chapcard h3 a{text-decoration:none}
 .chapcard p{color:var(--ink2);max-width:50ch;margin-bottom:16px}
 .chapcard .link{font-size:14px;font-weight:600;color:var(--cobalt);text-decoration:none}
-@media (max-width:760px){.chapcard{grid-template-columns:1fr}.chapcard .body{padding:20px}}
+@media (max-width:760px){.chapcard{grid-template-columns:1fr}.chapcard .img{min-height:200px}.chapcard .body{padding:20px}}
 
 /* ===== table of contents by part ===== */
 .toc-section{background:var(--white);border-top:1px solid var(--line)}
@@ -167,7 +168,7 @@ footer a{text-decoration:none}
     <p class="eyebrow">EL LIBRO VIVO</p>
     <h1>Thinking in Products, Building Systems</h1>
     <p class="sub">Del diseño físico a los productos digitales, los proyectos y los portafolios empresariales.</p>
-    <p class="meta">Edición viva 0.2 — 2 de ~20 capítulos publicados — se actualiza cada semana</p>
+    <p class="meta">Edición viva 0.3 — 3 de ~20 capítulos publicados — se actualiza cada semana</p>
     <div class="cta-row">
       <a class="btn solid" href="#continue">Continuar leyendo</a>
       <a class="btn outline" href="/downloads/pensar-en-productos-construir-sistemas-actual.pdf">Descargar PDF actual</a>
@@ -190,7 +191,7 @@ footer a{text-decoration:none}
 <section class="facts" aria-label="In brief">
   <div class="wrap">
     <div><b>5</b><span>PARTES PLANEADAS<br>EN TODO EL LIBRO</span></div>
-    <div><b>2</b><span>CAPÍTULOS PUBLICADOS<br>EN ESTA EDICIÓN</span></div>
+    <div><b>3</b><span>CAPÍTULOS PUBLICADOS<br>EN ESTA EDICIÓN</span></div>
     <div><b>Semanal</b><span>RITMO DE PUBLICACIÓN<br>CADA JUEVES</span></div>
   </div>
 </section>
@@ -200,17 +201,17 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="head">
       <h2>Continuar leyendo</h2>
-      <a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/">Capítulo 2 de 20 (planeados) →</a>
+      <a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">Capítulo 3 de 20 (planeados) →</a>
     </div>
     <article class="chapcard">
       <div class="img" role="img" aria-label="Placeholder de imagen héroe, 16 por 9" style="overflow: hidden;">
-        <img src="/assets/chapter-02-strategy-regional-bet.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+        <img src="/assets/chapter-03-acapulco-materials.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <div class="body">
-        <p class="kicker">Parte I · Entender el Producto — Capítulo 2</p>
-        <h3><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/">Estrategia de Producto, Materiales y el Costo de una Decisión</a></h3>
-        <p>Todo producto comienza como una promesa hecha antes de saber lo suficiente. Este capítulo sigue esa promesa desde la visión hasta el roadmap y el costo — a través de un producto de streaming ficticio y el Sillón Barcelona — para preguntar qué cuesta realmente cumplirla.</p>
-        <a class="link" href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/">Leer el capítulo 2 →</a>
+        <p class="kicker">Parte I · Entender el Producto — Capítulo 3</p>
+        <h3><a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">Lo que una línea de producción enseña sobre arquitectura</a></h3>
+        <p>Una silla cruza una frontera antes de sentar a nadie. Un crédito cruza un banco entero antes de aprobar a nadie. Ambos cruces obedecen a la misma disciplina de flujo.</p>
+        <a class="link" href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">Leer el capítulo 3 →</a>
       </div>
     </article>
   </div>
@@ -222,11 +223,11 @@ footer a{text-decoration:none}
     <h2>Tabla de contenido</h2>
 
     <div class="part">
-      <div class="partmeta"><b>Parte I — Entender el Producto</b><span>2 de 4 publicados</span></div>
+      <div class="partmeta"><b>Parte I — Entender el Producto</b><span>3 de 4 publicados</span></div>
       <ul class="chlist">
         <li class="published"><a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="n">01</span><span class="t">¿Qué le puede enseñar el diseño industrial a los líderes de producto digital?</span><span class="st">Publicado</span></a></li>
         <li class="published"><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/"><span class="n">02</span><span class="t">Estrategia de Producto, Materiales y el Costo de una Decisión</span><span class="st">Publicado</span></a></li>
-        <li><span class="n">03</span><span class="t locked">Lo que una línea de producción enseña sobre arquitectura</span><span class="st">Próximamente</span></li>
+        <li class="published"><a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/"><span class="n">03</span><span class="t">Lo que una línea de producción enseña sobre arquitectura</span><span class="st">Publicado</span></a></li>
         <li><span class="n">04</span><span class="t locked">El producto nunca es solo el objeto</span><span class="st">Próximamente</span></li>
       </ul>
     </div>
@@ -279,6 +280,7 @@ footer a{text-decoration:none}
     <div>
       <h2>Historial de ediciones</h2>
       <ul>
+        <li><b>Edición 0.3</b> Capítulo 3 publicado — 21 sep 2026</li>
         <li><b>Edición 0.2</b> Capítulo 2 publicado — 16 sep 2026</li>
         <li><b>Edición 0.1</b> Capítulo 1 publicado — 09 sep 2026</li>
         <li><b>Edición 0.0</b> Libro anunciado, estructura definida — 04 sep 2026</li>
@@ -287,7 +289,7 @@ footer a{text-decoration:none}
     <div class="pdfcard">
       <b>Descargar la edición actual</b>
       <span>Un PDF que reúne cada capítulo publicado hasta ahora, generado a partir de la misma fuente que la edición web.</span>
-      <a class="btn solid" style="background:var(--cobalt);color:#fff" href="/downloads/pensar-en-productos-construir-sistemas-actual.pdf">Descargar PDF — Edición 0.2</a>
+      <a class="btn solid" style="background:var(--cobalt);color:#fff" href="/downloads/pensar-en-productos-construir-sistemas-actual.pdf">Descargar PDF — Edición 0.3</a>
     </div>
   </div>
 </section>
