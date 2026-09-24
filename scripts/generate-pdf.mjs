@@ -95,16 +95,21 @@ const EDITIONS = [
   {
     lang: 'en',
     outFile: 'thinking-in-products-building-systems-current.pdf',
-    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/'],
+    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/', '/ebook/03-what-a-production-line-teaches-about-architecture/'],
   },
   {
     lang: 'es',
     outFile: 'pensar-en-productos-construir-sistemas-actual.pdf',
-    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/'],
+    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/', '/es/ebook/03-what-a-production-line-teaches-about-architecture/'],
   },
 ];
 
 async function main() {
+  if (process.env.CF_PAGES === '1' || process.env.CF_PAGES === 'true' || process.env.CF_PAGES) {
+    console.log(`[generate-pdf] Skipping PDF generation in Cloudflare Pages environment.`);
+    return;
+  }
+
   if (!existsSync(ROOT)) {
     console.error(`[generate-pdf] build output not found at ${ROOT} — run "npm run build" first.`);
     process.exit(1);
