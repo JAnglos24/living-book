@@ -190,22 +190,22 @@ import Layout from '../../../../layouts/Layout.astro';
     <div class="frame">
       <svg viewBox="0 0 1040 260" role="img" aria-label="Materia prima fluye por dos estaciones hasta el cliente, que envía una señal de jalar hacia atrás">
         <defs><marker id="arrow3a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
-        <rect class="dbox" x="0" y="20" width="220" height="90" rx="2"/>
-        <text class="dtext" x="110" y="60" font-size="13" text-anchor="middle">MATERIA PRIMA</text>
-        <text class="dsub" x="110" y="80" font-size="11" text-anchor="middle">Insumo o solicitud</text>
-        <line class="darrow" x1="220" y1="65" x2="278" y2="65" marker-end="url(#arrow3a)"/>
-        <rect class="dbox" x="280" y="20" width="220" height="90" rx="2"/>
-        <text class="dtext" x="390" y="60" font-size="13" text-anchor="middle">ESTACIÓN 1</text>
-        <text class="dsub" x="390" y="80" font-size="11" text-anchor="middle">Procesa un lote pequeño</text>
-        <line class="darrow" x1="500" y1="65" x2="558" y2="65" marker-end="url(#arrow3a)"/>
-        <rect class="dbox" x="560" y="20" width="220" height="90" rx="2"/>
-        <text class="dtext" x="670" y="60" font-size="13" text-anchor="middle">ESTACIÓN 2</text>
-        <text class="dsub" x="670" y="80" font-size="11" text-anchor="middle">Entrega listo para usar</text>
-        <line class="darrow" x1="780" y1="65" x2="838" y2="65" marker-end="url(#arrow3a)"/>
-        <rect class="dbox strong" x="840" y="20" width="200" height="90" rx="2"/>
-        <text class="dtext on" x="940" y="65" font-size="13" text-anchor="middle">CLIENTE</text>
-        <path class="darrow blue" d="M940,112 C940,180 110,180 110,112" marker-end="url(#arrow3a)"/>
-        <text class="dsub" x="525" y="205" font-size="12" text-anchor="middle">SEÑAL DE JALAR (KANBAN) — nada se produce sin una demanda real corriente arriba</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="0" y="20" width="220" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="110" y="60" font-size="13" text-anchor="middle">MATERIA PRIMA</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="110" y="80" font-size="11" text-anchor="middle">Insumo o solicitud</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="220" y1="65" x2="278" y2="65" marker-end="url(#arrow3a)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="280" y="20" width="220" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="390" y="60" font-size="13" text-anchor="middle">ESTACIÓN 1</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="390" y="80" font-size="11" text-anchor="middle">Procesa un lote pequeño</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="500" y1="65" x2="558" y2="65" marker-end="url(#arrow3a)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="560" y="20" width="220" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="670" y="60" font-size="13" text-anchor="middle">ESTACIÓN 2</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="670" y="80" font-size="11" text-anchor="middle">Entrega listo para usar</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="780" y1="65" x2="838" y2="65" marker-end="url(#arrow3a)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="840" y="20" width="200" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="940" y="65" font-size="13" text-anchor="middle">CLIENTE</text>
+        <path style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="M940,112 C940,180 110,180 110,112" marker-end="url(#arrow3a)"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="525" y="205" font-size="12" text-anchor="middle">SEÑAL DE JALAR (KANBAN) — nada se produce sin una demanda real corriente arriba</text>
       </svg>
     </div>
     <figcaption>Figura 3.1 — El principio de jalar. Cada estación produce solo lo que la siguiente pide, y la siguiente pide solo lo que el cliente pidió primero.</figcaption>
@@ -257,26 +257,26 @@ import Layout from '../../../../layouts/Layout.astro';
     <div class="frame">
       <svg viewBox="0 0 1040 220" role="img" aria-label="La varilla de acero se forma, se teje a mano, se ensambla y se distribuye o exporta">
         <defs><marker id="arrow3b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
-        <rect class="dbox" x="0" y="60" width="185" height="100" rx="2"/>
-        <text class="dtext" x="92" y="102" font-size="12" text-anchor="middle">VARILLA DE ACERO</text>
-        <text class="dsub" x="92" y="122" font-size="11" text-anchor="middle">Proveedor regional</text>
-        <line class="darrow" x1="185" y1="110" x2="233" y2="110" marker-end="url(#arrow3b)"/>
-        <rect class="dbox" x="235" y="60" width="185" height="100" rx="2"/>
-        <text class="dtext" x="327" y="102" font-size="12" text-anchor="middle">FORMADO Y PINTURA</text>
-        <text class="dsub" x="327" y="122" font-size="11" text-anchor="middle">Taller local</text>
-        <line class="darrow" x1="420" y1="110" x2="468" y2="110" marker-end="url(#arrow3b)"/>
-        <rect class="dbox strong" x="470" y="50" width="195" height="120" rx="2"/>
-        <text class="dtext on" x="567" y="98" font-size="12" text-anchor="middle">TEJIDO ARTESANAL</text>
-        <text class="dsub on" x="567" y="118" font-size="11" text-anchor="middle">Un tejedor,</text>
-        <text class="dsub on" x="567" y="136" font-size="11" text-anchor="middle">una silla a la vez</text>
-        <line class="darrow" x1="665" y1="110" x2="713" y2="110" marker-end="url(#arrow3b)"/>
-        <rect class="dbox" x="715" y="60" width="150" height="100" rx="2"/>
-        <text class="dtext" x="790" y="102" font-size="12" text-anchor="middle">ENSAMBLE</text>
-        <text class="dsub" x="790" y="122" font-size="11" text-anchor="middle">Y control</text>
-        <line class="darrow" x1="865" y1="110" x2="913" y2="110" marker-end="url(#arrow3b)"/>
-        <rect class="dbox" x="915" y="60" width="125" height="100" rx="2"/>
-        <text class="dtext" x="977" y="98" font-size="11" text-anchor="middle">DISTRIBUCIÓN</text>
-        <text class="dtext" x="977" y="115" font-size="11" text-anchor="middle">O EXPORTACIÓN</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="0" y="60" width="185" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="92" y="102" font-size="12" text-anchor="middle">VARILLA DE ACERO</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="92" y="122" font-size="11" text-anchor="middle">Proveedor regional</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="185" y1="110" x2="233" y2="110" marker-end="url(#arrow3b)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="235" y="60" width="185" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="327" y="102" font-size="12" text-anchor="middle">FORMADO Y PINTURA</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="327" y="122" font-size="11" text-anchor="middle">Taller local</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="420" y1="110" x2="468" y2="110" marker-end="url(#arrow3b)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="470" y="50" width="195" height="120" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="567" y="98" font-size="12" text-anchor="middle">TEJIDO ARTESANAL</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:rgba(255,255,255,.85)" x="567" y="118" font-size="11" text-anchor="middle">Un tejedor,</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:rgba(255,255,255,.85)" x="567" y="136" font-size="11" text-anchor="middle">una silla a la vez</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="665" y1="110" x2="713" y2="110" marker-end="url(#arrow3b)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="715" y="60" width="150" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="790" y="102" font-size="12" text-anchor="middle">ENSAMBLE</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="790" y="122" font-size="11" text-anchor="middle">Y control</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="865" y1="110" x2="913" y2="110" marker-end="url(#arrow3b)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="915" y="60" width="125" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="977" y="98" font-size="11" text-anchor="middle">DISTRIBUCIÓN</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="977" y="115" font-size="11" text-anchor="middle">O EXPORTACIÓN</text>
       </svg>
     </div>
     <figcaption>Figura 3.2 — La cadena de valor de la silla Acapulco. Solo una estación no puede acelerarse con más máquinas: el tejido, hecho por una persona, a la vez.</figcaption>
@@ -405,26 +405,26 @@ import Layout from '../../../../layouts/Layout.astro';
     <div class="frame">
       <svg viewBox="0 0 1040 260" role="img" aria-label="El núcleo bancario heredado se expone mediante una capa de APIs que alimenta tanto a la app móvil como al punto de venta en sucursal, y ambos convergen en un crédito aprobado">
         <defs><marker id="arrow3c" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
-        <rect class="dbox" x="0" y="80" width="230" height="90" rx="2"/>
-        <text class="dtext" x="115" y="118" font-size="12" text-anchor="middle">NÚCLEO BANCARIO</text>
-        <text class="dsub" x="115" y="138" font-size="11" text-anchor="middle">Core heredado, por lotes</text>
-        <line class="darrow" x1="230" y1="125" x2="288" y2="125" marker-end="url(#arrow3c)"/>
-        <rect class="dbox strong" x="290" y="80" width="220" height="90" rx="2"/>
-        <text class="dtext on" x="400" y="118" font-size="12" text-anchor="middle">CAPA DE APIS</text>
-        <text class="dsub on" x="400" y="138" font-size="11" text-anchor="middle">Tiempo real, apificación</text>
-        <path class="darrow" d="M510,110 C560,80 610,50 660,40" marker-end="url(#arrow3c)"/>
-        <path class="darrow" d="M510,140 C560,170 610,200 660,210" marker-end="url(#arrow3c)"/>
-        <rect class="dbox" x="660" y="0" width="200" height="80" rx="2"/>
-        <text class="dtext" x="760" y="35" font-size="12" text-anchor="middle">APP MÓVIL</text>
-        <text class="dsub" x="760" y="55" font-size="11" text-anchor="middle">OCR, biometría, firma</text>
-        <rect class="dbox" x="660" y="170" width="200" height="80" rx="2"/>
-        <text class="dtext" x="760" y="205" font-size="12" text-anchor="middle">PUNTO DE VENTA</text>
-        <text class="dsub" x="760" y="225" font-size="11" text-anchor="middle">Sucursal, cierre asistido</text>
-        <path class="darrow blue" d="M860,40 C920,60 940,90 940,125" marker-end="url(#arrow3c)"/>
-        <path class="darrow blue" d="M860,210 C920,190 940,160 940,125" marker-end="url(#arrow3c)"/>
-        <rect class="dbox strong" x="940" y="80" width="100" height="90" rx="2"/>
-        <text class="dtext on" x="990" y="118" font-size="11" text-anchor="middle">CRÉDITO</text>
-        <text class="dtext on" x="990" y="135" font-size="11" text-anchor="middle">APROBADO</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="0" y="80" width="230" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="115" y="118" font-size="12" text-anchor="middle">NÚCLEO BANCARIO</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="115" y="138" font-size="11" text-anchor="middle">Core heredado, por lotes</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="230" y1="125" x2="288" y2="125" marker-end="url(#arrow3c)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="290" y="80" width="220" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="400" y="118" font-size="12" text-anchor="middle">CAPA DE APIS</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:rgba(255,255,255,.85)" x="400" y="138" font-size="11" text-anchor="middle">Tiempo real, apificación</text>
+        <path style="stroke:#C9D0D8;stroke-width:1.5;fill:none" d="M510,110 C560,80 610,50 660,40" marker-end="url(#arrow3c)"/>
+        <path style="stroke:#C9D0D8;stroke-width:1.5;fill:none" d="M510,140 C560,170 610,200 660,210" marker-end="url(#arrow3c)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="660" y="0" width="200" height="80" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="760" y="35" font-size="12" text-anchor="middle">APP MÓVIL</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="760" y="55" font-size="11" text-anchor="middle">OCR, biometría, firma</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="660" y="170" width="200" height="80" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="760" y="205" font-size="12" text-anchor="middle">PUNTO DE VENTA</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="760" y="225" font-size="11" text-anchor="middle">Sucursal, cierre asistido</text>
+        <path style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="M860,40 C920,60 940,90 940,125" marker-end="url(#arrow3c)"/>
+        <path style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="M860,210 C920,190 940,160 940,125" marker-end="url(#arrow3c)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="940" y="80" width="100" height="90" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="990" y="118" font-size="11" text-anchor="middle">CRÉDITO</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="990" y="135" font-size="11" text-anchor="middle">APROBADO</text>
       </svg>
     </div>
     <figcaption>Figura 3.3 — La capa de APIs es la estación que el landscape tradicional no tenía. Sin ella, la app móvil y la sucursal no pueden consumir el mismo core al mismo ritmo.</figcaption>
@@ -491,30 +491,30 @@ import Layout from '../../../../layouts/Layout.astro';
     <div class="frame">
       <svg viewBox="0 0 1040 220" role="img" aria-label="Un documento pasa por OCR, y lo que falla se reintenta, y lo que sigue fallando pasa a revisión manual, hasta llegar a un expediente completo">
         <defs><marker id="arrow3d" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
-        <rect class="dbox" x="0" y="60" width="180" height="100" rx="2"/>
-        <text class="dtext" x="90" y="102" font-size="12" text-anchor="middle">DOCUMENTO</text>
-        <text class="dsub" x="90" y="122" font-size="11" text-anchor="middle">Foto del cliente</text>
-        <line class="darrow" x1="180" y1="110" x2="228" y2="110" marker-end="url(#arrow3d)"/>
-        <rect class="dbox strong" x="230" y="60" width="180" height="100" rx="2"/>
-        <text class="dtext on" x="320" y="102" font-size="12" text-anchor="middle">OCR PASADA 1</text>
-        <text class="dsub on" x="320" y="122" font-size="11" text-anchor="middle">90% de éxito</text>
-        <line class="darrow" x1="410" y1="90" x2="458" y2="60" marker-end="url(#arrow3d)"/>
-        <line class="darrow" x1="410" y1="130" x2="458" y2="160" marker-end="url(#arrow3d)"/>
-        <rect class="dbox" x="460" y="20" width="170" height="70" rx="2"/>
-        <text class="dtext" x="545" y="60" font-size="12" text-anchor="middle">ACEPTADO</text>
-        <rect class="dbox" x="460" y="150" width="170" height="70" rx="2"/>
-        <text class="dtext" x="545" y="182" font-size="11" text-anchor="middle">REINTENTO</text>
-        <text class="dsub" x="545" y="200" font-size="10" text-anchor="middle">60% recupera</text>
-        <line class="darrow" x1="630" y1="185" x2="678" y2="185" marker-end="url(#arrow3d)"/>
-        <rect class="dbox" x="680" y="150" width="180" height="70" rx="2"/>
-        <text class="dtext" x="770" y="182" font-size="11" text-anchor="middle">REVISIÓN MANUAL</text>
-        <text class="dsub" x="770" y="200" font-size="10" text-anchor="middle">El resto</text>
-        <line class="darrow blue" d="" x1="545" y1="90" x2="545" y2="148" marker-end="url(#arrow3d)"/>
-        <path class="darrow blue" d="M630,55 C830,55 900,120 900,150 C900,180 860,190 862,190" marker-end="url(#arrow3d)"/>
-        <path class="darrow blue" d="M860,185 C960,185 990,140 990,110" marker-end="url(#arrow3d)"/>
-        <rect class="dbox strong" x="870" y="70" width="160" height="70" rx="2"/>
-        <text class="dtext on" x="950" y="98" font-size="11" text-anchor="middle">EXPEDIENTE</text>
-        <text class="dtext on" x="950" y="115" font-size="11" text-anchor="middle">COMPLETO</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="0" y="60" width="180" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="90" y="102" font-size="12" text-anchor="middle">DOCUMENTO</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="90" y="122" font-size="11" text-anchor="middle">Foto del cliente</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="180" y1="110" x2="228" y2="110" marker-end="url(#arrow3d)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="230" y="60" width="180" height="100" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="320" y="102" font-size="12" text-anchor="middle">OCR PASADA 1</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:rgba(255,255,255,.85)" x="320" y="122" font-size="11" text-anchor="middle">90% de éxito</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="410" y1="90" x2="458" y2="60" marker-end="url(#arrow3d)"/>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="410" y1="130" x2="458" y2="160" marker-end="url(#arrow3d)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="460" y="20" width="170" height="70" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="545" y="60" font-size="12" text-anchor="middle">ACEPTADO</text>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="460" y="150" width="170" height="70" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="545" y="182" font-size="11" text-anchor="middle">REINTENTO</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="545" y="200" font-size="10" text-anchor="middle">60% recupera</text>
+        <line style="stroke:#C9D0D8;stroke-width:1.5;fill:none" x1="630" y1="185" x2="678" y2="185" marker-end="url(#arrow3d)"/>
+        <rect style="fill:#FFFFFF;stroke:#C9D0D8;stroke-width:1.5" x="680" y="150" width="180" height="70" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#111418" x="770" y="182" font-size="11" text-anchor="middle">REVISIÓN MANUAL</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:500;fill:#5C6673" x="770" y="200" font-size="10" text-anchor="middle">El resto</text>
+        <line style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="" x1="545" y1="90" x2="545" y2="148" marker-end="url(#arrow3d)"/>
+        <path style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="M630,55 C830,55 900,120 900,150 C900,180 860,190 862,190" marker-end="url(#arrow3d)"/>
+        <path style="stroke:#2E7CFF;stroke-width:1.5;fill:none" d="M860,185 C960,185 990,140 990,110" marker-end="url(#arrow3d)"/>
+        <rect style="fill:#0057D9;stroke:#0057D9;stroke-width:1.5" x="870" y="70" width="160" height="70" rx="2"/>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="950" y="98" font-size="11" text-anchor="middle">EXPEDIENTE</text>
+        <text style="font-family:Archivo,sans-serif;font-weight:700;fill:#ffffff" x="950" y="115" font-size="11" text-anchor="middle">COMPLETO</text>
       </svg>
     </div>
     <figcaption>Figura 3.4 — El embudo de OCR. Cada punto de rendimiento ganado en la primera pasada evita una cascada de reintento y revisión manual corriente abajo.</figcaption>
