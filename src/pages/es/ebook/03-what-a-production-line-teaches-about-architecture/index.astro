@@ -131,7 +131,7 @@ import Layout from '../../../../layouts/Layout.astro';
     <div class="chapmeta"><b>Capítulo 03</b><span>Lo Que una Línea de Producción Enseña Sobre Arquitectura</span></div>
     <nav aria-label="Libro">
       <a href="/es/ebook/">Contenido</a>
-      <a href="es-author.html">Autor</a>
+      <a href="/es/author/">Autor</a>
     </nav>
     <div class="lang" role="group" aria-label="Idioma">
       <a href="/ebook/03-what-a-production-line-teaches-about-architecture/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/" aria-current="page">ES</a>
@@ -662,7 +662,7 @@ import Layout from '../../../../layouts/Layout.astro';
 <footer class="sitefoot">
   <div class="wrap">
     <span>J. Angel Sosa — Thinking in Products, Building Systems</span>
-    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="#rss">RSS</a> · <a href="#privacidad">Privacidad</a></span>
+    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="/es/privacidad/">Privacidad</a></span>
   </div>
 </footer>
 
@@ -675,7 +675,7 @@ import Layout from '../../../../layouts/Layout.astro';
   }
   document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
   var tocBtn=document.getElementById('tocBtn');
-  if(tocBtn){ tocBtn.addEventListener('click', function(){ window.location.href='es-ebook.html#toc'; }); }
+  if(tocBtn){ tocBtn.addEventListener('click', function(){ window.location.href='/es/ebook/#toc'; }); }
 })();
 </script>
 </Layout>
