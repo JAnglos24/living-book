@@ -1,0 +1,515 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+---
+<Layout title="Capítulo 4 — El Producto Nunca es Solo el Objeto · Thinking in Products, Building Systems">
+  <style is:inline>
+    :root{
+      --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+      --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+      --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+      --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+      --ease:cubic-bezier(.65,0,.35,1);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,p,blockquote,figure{margin:0} a{color:inherit} img{max-width:100%;display:block}
+    figure{margin:0} figcaption{font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.5}
+    .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+    .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;text-transform:uppercase}
+
+    .topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:20px}
+    .topbar a.home{font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em;flex:0 0 auto}
+    .topbar .chapmeta{display:flex;align-items:baseline;gap:10px;font-size:13px;color:var(--ink2);overflow:hidden}
+    .topbar .chapmeta b{color:var(--graphite);font-weight:700;white-space:nowrap}
+    .topbar .chapmeta span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar nav{display:flex;align-items:center;gap:22px;font-size:14px;flex:0 0 auto}
+    .topbar nav a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
+    .topbar .lang a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+    .topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:8px 18px;cursor:pointer;flex:0 0 auto}
+    .progress{height:2px;background:var(--grid-blue)}
+    .progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
+
+    .opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden}
+    .opener .num{position:absolute;right:calc(var(--margin) * -0.3);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(160px,26vw,420px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;pointer-events:none;user-select:none}
+    .opener .wrap{position:relative;z-index:1;padding-block:clamp(52px,9vh,96px) clamp(44px,7vh,80px)}
+    .opener .eyebrow{color:#fff;display:flex;align-items:center;gap:14px}
+    .opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.55)}
+    .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,4.4vw,74px);line-height:.98;letter-spacing:-.03em;margin:22px 0 20px;max-width:17ch}
+    .opener .dek{font-family:var(--serif);font-size:clamp(19px,1.5vw,23px);line-height:1.42;max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:30px}
+    .opener .meta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13px;color:rgba(255,255,255,.78);border-top:1px solid rgba(255,255,255,.28);padding-top:18px}
+
+    .intro{background:var(--white)}
+    .intro .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);padding-block:clamp(48px,7vh,80px)}
+    .intro p{font-family:var(--serif);font-size:17px;line-height:1.62;color:#242A31}
+    @media (max-width:860px){.intro .cols{grid-template-columns:1fr;gap:22px}}
+
+    .facts{background:var(--white);border-top:1px solid var(--line)}
+    .facts .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .facts div{border-left:1px solid var(--line);padding-left:20px}
+    .facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;letter-spacing:-.01em;margin-bottom:10px;color:var(--graphite)}
+    .facts span{font-size:13px;letter-spacing:.04em;color:var(--ink2);line-height:1.5}
+    @media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+    .longform{background:var(--white);border-top:1px solid var(--line)}
+    .longform .wrap{padding-block:clamp(56px,8vh,96px)}
+    .longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,2.8vw,42px);line-height:1.06;letter-spacing:-.02em;max-width:18ch;margin-bottom:clamp(28px,4vh,40px)}
+    .longform .grid{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--gutter);align-items:start}
+    .longform .figcol figure{aspect-ratio:4/5;overflow:hidden}
+    .longform .textcol p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:760px){.longform .grid{grid-template-columns:1fr}}
+
+    .longform .poster{margin-bottom:clamp(32px,4.5vh,48px)}
+    .longform .poster .frame{width:100%;aspect-ratio:16/9;overflow:hidden}
+    .longform .poster .frame img{width:100%;height:100%;object-fit:cover;display:block}
+    .longform .poster .platecap{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+    .longform .poster .platecap b{font-family:var(--grot);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt);white-space:nowrap}
+    .longform .poster .platecap span{font-size:13px;color:var(--ink2);line-height:1.5}
+
+    .longform .prose{columns:2;column-gap:var(--gutter)}
+    .longform .prose p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;break-inside:avoid-column}
+    @media (max-width:760px){.longform .prose{columns:1}}
+
+    .diagram{background:var(--paper);border-top:1px solid var(--line)}
+    .diagram .wrap{padding-block:clamp(48px,7vh,80px)}
+    .diagram .kicker{font-size:13px;color:var(--cobalt);font-weight:700;letter-spacing:.04em;margin-bottom:18px}
+    .diagram .frame{background:var(--white);border:1px solid var(--line);padding:clamp(22px,3.4vw,44px);display:flex;align-items:center;justify-content:center;overflow-x:auto}
+    .diagram svg{width:100%;height:auto;display:block;max-height:82svh}
+    .diagram figcaption{margin-top:18px;font-size:14px;line-height:1.55;color:var(--ink2);max-width:80ch}
+    @media (max-width:700px){.diagram .frame{justify-content:flex-start}.diagram svg{min-width:640px;width:640px;flex:0 0 auto}}
+
+    .quote-essay{background:var(--white);border-top:1px solid var(--line)}
+    .quote-essay .wrap{padding-block:clamp(56px,8vh,96px)}
+    .quote-essay .grid{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gutter);align-items:start}
+    .quote-essay blockquote{font-family:var(--serif);font-weight:500;font-size:clamp(26px,2.8vw,40px);line-height:1.16;color:var(--cobalt);max-width:16ch}
+    .quote-essay cite{display:block;margin-top:20px;font-size:14px;font-style:normal;color:var(--ink2)}
+    .quote-essay .essay p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:900px){.quote-essay .grid{grid-template-columns:1fr;gap:28px}}
+
+    .framework{background:var(--white);border-top:1px solid var(--line)}
+    .framework .wrap{padding-block:clamp(48px,7vh,80px)}
+    .framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.02em;max-width:22ch}
+    .framework .lede{font-family:var(--serif);color:var(--ink2);font-size:15px;max-width:56ch;margin-top:10px}
+    .framework .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-top:clamp(28px,4vh,40px)}
+    .framework .step{border-top:3px solid var(--cobalt);padding-top:18px}
+    .framework .step .n{font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px}
+    .framework .step h3{font-weight:700;font-size:18px;max-width:16ch;letter-spacing:-.01em;margin-bottom:8px}
+    .framework .step p{font-family:var(--serif);font-size:14px;line-height:1.4;color:var(--ink2);max-width:20ch}
+    @media (max-width:860px){.framework .steps{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.framework .steps{grid-template-columns:1fr}}
+
+    .colophon{background:var(--paper);border-top:1px solid var(--line)}
+    .colophon .wrap{padding-block:clamp(36px,5vh,56px)}
+    .colophon h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);margin-bottom:18px;font-weight:700}
+    .colophon table{width:100%;border-collapse:collapse;font-size:13px;max-width:90ch}
+    .colophon th,.colophon td{text-align:left;padding:9px 16px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+    .colophon th{font-family:var(--grot);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+    .colophon td.v{font-family:var(--serif);font-weight:600;color:var(--cobalt);white-space:nowrap}
+    .colophon td.d{color:var(--ink2);white-space:nowrap}
+    .colophon td.n{color:#242A31}
+
+    .refs{background:var(--white);border-top:1px solid var(--line)}
+    .refs .wrap{padding-block:clamp(40px,6vh,64px)}
+    .refs h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);margin-bottom:22px;font-weight:700}
+    .refs ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink2);line-height:2;max-width:80ch}
+    .refs ol b{color:var(--graphite);font-weight:600}
+
+    .chapternav{background:var(--cobalt);color:#fff}
+    .chapternav .wrap{padding-block:clamp(32px,5vh,48px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+    .chapternav a{text-decoration:none;color:#fff;display:block}
+    .chapternav .next{text-align:right}
+    .chapternav .dir{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.72;margin-bottom:10px}
+    .chapternav .ctitle{font-weight:700;font-size:clamp(18px,2vw,26px);letter-spacing:-.01em;line-height:1.15;max-width:24ch}
+    .chapternav .next .ctitle{margin-left:auto}
+    .chapternav .locked{opacity:.55;cursor:default;pointer-events:none}
+    @media (max-width:700px){.chapternav .wrap{grid-template-columns:1fr;gap:26px}.chapternav .next{text-align:left}.chapternav .next .ctitle{margin-left:0}}
+
+    footer.sitefoot{background:var(--white);border-top:1px solid var(--line)}
+    footer.sitefoot .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+    footer.sitefoot a{text-decoration:none}
+  </style>
+
+  <div class="topbar">
+    <div class="wrap row">
+      <a class="home" href="/es/ebook/">JAS</a>
+      <div class="chapmeta"><b>Capítulo 04</b><span>El Producto Nunca es Solo el Objeto</span></div>
+      <nav aria-label="Libro">
+        <a href="/es/ebook/">Contenido</a>
+        <a href="/es/author/">Autor</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma">
+        <a href="/ebook/04-the-product-is-never-just-the-object/">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/04-the-product-is-never-just-the-object/" aria-current="page">ES</a>
+      </div>
+      <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+  </div>
+
+  <!-- 1 — PORTADA -->
+  <header class="opener">
+    <span class="num" aria-hidden="true">04</span>
+    <div class="wrap">
+      <p class="eyebrow">Parte I — Entender el Producto · Capítulo 04</p>
+      <h1>El Producto Nunca es Solo el Objeto</h1>
+      <p class="dek">Un refrigerador no vende frío: vende estatus. Una cajetilla no vende tabaco: vende una promesa visual. Detrás de cada objeto, sistema o servicio hay una necesidad cubierta y un deseo satisfecho.</p>
+      <div class="meta">
+        <span>28 sep 2026</span>
+        <span>19 min de lectura</span>
+        <span>Edición viva 0.3</span>
+        <span>Estado: en desarrollo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2 — INTRO -->
+  <section class="intro">
+    <div class="wrap cols">
+      <p>En 1949, la revista TIME puso en su portada a un diseñador que nunca fabricó nada con sus propias manos y que, sin embargo, terminó tocando el día a día de una fracción enorme de la población estadounidense: Raymond Loewy, el hombre que rediseñó el refrigerador Coldspot, la botella de Coca-Cola y la cajetilla de Lucky Strike. Loewy no vendía acero, vidrio ni papel. Vendía la sensación de que un objeto cotidiano, sin dejar de ser reconocible, se sentía un paso adelante de lo que el cliente ya tenía.</p>
+      <p>Esa sensación tiene nombre: Loewy la llamó MAYA — Most Advanced Yet Acceptable, lo más avanzado pero aceptable — y es el punto de partida de este capítulo. Un producto nunca es solo el objeto que un cliente compra; es la respuesta a una necesidad cubierta y un deseo satisfecho que existían antes de que el objeto existiera. Cuando esa respuesta se olvida, el objeto se vuelve irrelevante aunque su función siga siendo impecable — es exactamente lo que le pasó a Blockbuster frente a Netflix, que nunca compitió por rentar mejores discos, sino por eliminar la ansiedad de una fecha de devolución.</p>
+      <p>Este capítulo camina esa idea en cuatro direcciones. Primero, la psicología detrás del objeto físico, con Loewy y el principio MAYA. Después, dos casos donde el producto es intangible por completo — el crédito y las apuestas — y donde suplir una necesidad tangible o atacar directamente la psicología del usuario se vuelve el diseño mismo del producto. Luego, el aparato metodológico para encontrar esa necesidad antes de construir: Jobs to Be Done, el doble diamante del Design Thinking y las técnicas de elicitación. Y por último, qué hacer con un producto que ya está en producción — la matriz BCG, y la decisión de evolucionarlo, tener hijos o crear familias de variantes.</p>
+    </div>
+  </section>
+
+  <!-- 3 — FACTS (tanda 1) -->
+  <section class="facts" aria-label="Raymond Loewy, en resumen">
+    <div class="wrap">
+      <div><b>1893–1986</b><span>AÑOS DE VIDA DE RAYMOND LOEWY,<br>EL PADRE DEL DISEÑO INDUSTRIAL</span></div>
+      <div><b>1951</b><span>AÑO EN QUE PUBLICÓ "NEVER LEAVE<br>WELL ENOUGH ALONE" Y FORMALIZÓ MAYA</span></div>
+      <div><b>200+</b><span>EMPRESAS PARA LAS QUE TRABAJÓ<br>COMO CONSULTOR DE DISEÑO</span></div>
+    </div>
+  </section>
+
+  <!-- 9 — DIAGRAMA 4.1 — El Espectro MAYA -->
+  <section class="diagram">
+    <div class="wrap">
+      <p class="kicker">Figura 4.1</p>
+      <div class="frame">
+        <svg viewBox="0 0 1040 240" role="img" aria-label="Un espectro entre neofobia y neofilia, con el punto óptimo MAYA al centro, y los dos extremos marcados como rechazo del cliente">
+          <defs><marker id="arrow4a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="0" y="55" width="260" height="130" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#111418" x="130" y="112" font-size="20" text-anchor="middle">NEOFOBIA</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="130" y="138" font-size="14" text-anchor="middle">Miedo a lo desconocido</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="130" y="160" font-size="13" text-anchor="middle">rechazo por exceso de cambio</text>
+          <line stroke="#C9D0D8" stroke-width="1.5" fill="none" x1="260" y1="120" x2="388" y2="120" marker-end="url(#arrow4a)"/>
+          <rect fill="#0057D9" stroke="#0057D9" stroke-width="1.5" x="390" y="25" width="260" height="190" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#ffffff" x="520" y="100" font-size="22" text-anchor="middle">MAYA</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="130" font-size="14" text-anchor="middle">Most Advanced Yet Acceptable</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="154" font-size="13" text-anchor="middle">Avanzado, pero reconocible</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="176" font-size="13" text-anchor="middle">— el punto donde nace el deseo</text>
+          <line stroke="#C9D0D8" stroke-width="1.5" fill="none" x1="650" y1="120" x2="778" y2="120" marker-end="url(#arrow4a)"/>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="780" y="55" width="260" height="130" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#111418" x="910" y="112" font-size="20" text-anchor="middle">NEOFILIA</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="910" y="138" font-size="14" text-anchor="middle">Atracción por lo nuevo</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="910" y="160" font-size="13" text-anchor="middle">rechazo por falta de anclaje</text>
+        </svg>
+      </div>
+      <figcaption>Figura 4.1 — El espectro que Loewy identificó: un producto demasiado familiar aburre, uno demasiado nuevo asusta. El deseo comercial vive en la franja estrecha entre ambos.</figcaption>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — El Principio MAYA -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Principio MAYA: Diseñar Para el Miedo y el Deseo a la Vez</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-loewy-sketch.png" alt="Un boceto de Loewy, a medio camino entre lo viejo y lo nuevo" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Raymond Loewy no partió de una teoría de diseño abstracta. Partió de una observación práctica, repetida cliente tras cliente durante cinco décadas de consultoría: la gente quiere algo nuevo, pero solo hasta el punto en que deja de reconocerlo como suyo. Loewy lo resumió en dos fuerzas psicológicas opuestas que conviven en cada consumidor — neofilia, la curiosidad por lo nuevo, y neofobia, el miedo a lo demasiado distinto — y en una fórmula para resolver la tensión entre ambas: MAYA, most advanced yet acceptable.</p>
+          <p>La fórmula no describe un objeto; describe una decisión de diseño. Un producto completamente familiar no genera deseo porque no ofrece nada que el cliente no tuviera ya. Un producto completamente nuevo no genera confianza porque no le da al cliente ningún punto de referencia desde el cual evaluarlo. El trabajo del diseñador — de producto, no solo de forma — es encontrar el punto exacto donde el objeto se siente como un salto hacia adelante sin dejar de sentirse familiar.</p>
+          <p>Esto explica por qué Loewy nunca inventó categorías nuevas de producto. Rediseñó refrigeradores que ya existían, botellas que ya se vendían, cajetillas que ya fumaba medio país. Su genio no estuvo en la invención sino en la traducción: tomar una necesidad ya cubierta de forma mediocre y resolverla de una forma que se sintiera, al mismo tiempo, moderna y obvia.</p>
+          <p>El resto de este capítulo repite esa misma pregunta en contextos donde el objeto ya no es un objeto — un crédito, una apuesta, un catálogo entero de streaming — pero donde la tensión entre lo conocido y lo nuevo sigue siendo la fuerza que decide si un producto se adopta o se ignora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Coldspot -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Coldspot: un Refrigerador que Vendía Estatus, no Frío</h2>
+      <div class="poster">
+        <div class="frame">
+          <img src="/assets/chapter-04-coldspot-refrigerator.png" alt="El refrigerador Coldspot de 1934, líneas redondeadas y tirador cromado, fotografiado como pieza de museo" loading="lazy" />
+        </div>
+        <div class="platecap">
+          <b>Lámina 4.1</b>
+          <span>Refrigerador Coldspot, Sears, 1934 — rediseño de Raymond Loewy. La función de refrigeración no cambió; la carrocería dejó de parecer maquinaria industrial.</span>
+        </div>
+      </div>
+      <div class="prose">
+        <p>Antes de Loewy, el refrigerador doméstico era, funcionalmente, una caja metálica ruidosa cuya única promesa era conservar comida fría — una necesidad real, pero resuelta sin ninguna consideración por cómo se sentía tenerla en la cocina. Sears le encargó a Loewy en 1934 rediseñar su línea Coldspot, y lo que entregó no cambió el mecanismo de refrigeración: cambió por completo la carrocería, introduciendo líneas redondeadas, un tirador cromado y una superficie que ya no parecía maquinaria industrial sino un mueble de la casa.</p>
+        <p>Ese cambio resolvía una necesidad que nadie había articulado como tal: un refrigerador no es solo un electrodoméstico, es un objeto visible todos los días por cada persona que entra a la cocina, y por lo tanto comunica algo sobre quién lo posee. Loewy entendió que la función — mantener la comida fría — ya estaba resuelta desde antes; lo que faltaba resolver era el deseo de que ese objeto no avergonzara a su dueño frente a una visita.</p>
+        <p>El resultado comercial confirmó la lectura psicológica: las ventas de la línea Coldspot crecieron de forma sostenida tras el rediseño, sin que el motor, el compresor ni la capacidad de enfriamiento hubieran cambiado en lo sustancial. El objeto seguía haciendo exactamente lo mismo — el deseo que satisfacía era otro.</p>
+        <p>Esta es la primera de las tres necesidades psicológicas que Loewy hizo visibles con sus productos insignia: el estatus. Las otras dos — la identidad de marca y la percepción instantánea — aparecen en sus dos rediseños más citados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Coca-Cola y Lucky Strike -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Coca-Cola y Lucky Strike: Identidad y Percepción</h2>
+      <div class="poster">
+        <div class="frame">
+          <img src="/assets/chapter-04-bottle-and-pack.png" alt="La botella contour de Coca-Cola junto a la cajetilla blanca de Lucky Strike, la misma escala, dos rediseños distintos" loading="lazy" />
+        </div>
+        <div class="platecap">
+          <b>Lámina 4.2</b>
+          <span>Botella contour de Coca-Cola y cajetilla de Lucky Strike — rediseños de Raymond Loewy, décadas de 1930 y 1942 respectivamente.</span>
+        </div>
+      </div>
+      <div class="prose">
+        <p>La botella contour de Coca-Cola no nació para contener más o menos líquido — nació para ser identificable al tacto, en la oscuridad, incluso rota en el piso de una tienda. Loewy perfeccionó esa silueta y diseñó los dispensadores de la marca, y con eso resolvió un problema distinto al de Sears': no el estatus de quien la posee, sino la identidad instantánea de un producto que se consume en segundos y que necesita reconocerse antes de leerse. El envase, más que el líquido, es lo que el cliente en realidad está comprando cada vez que elige esa botella entre un anaquel de imitaciones.</p>
+        <p>La cajetilla de Lucky Strike, en 1942, resolvió un tercer problema con el cambio de diseño más económico posible: Loewy eliminó el fondo verde original — que exigía un pigmento costoso y difícil de conseguir durante la guerra — y lo sustituyó por un blanco impecable con el logo impreso en ambas caras. El resultado no fue solo un ahorro de producción; fue una cajetilla que se veía más limpia, más moderna y más visible en el bolsillo de una camisa, justo cuando la marca necesitaba diferenciarse sin gastar un peso adicional en publicidad.</p>
+        <p>Los tres casos — Coldspot, Coca-Cola, Lucky Strike — comparten una misma lección que trasciende el diseño industrial: ninguno cambió lo que el producto hacía. Los tres cambiaron lo que el producto significaba para quien lo usaba, lo compraba o simplemente lo veía en manos de otra persona. Un objeto nunca compite solo contra su función; compite contra el deseo psicológico que otro objeto, mejor diseñado, ya está satisfaciendo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 — CITA + ENSAYO -->
+  <section class="quote-essay">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <blockquote>El objeto es el vehículo. La necesidad cubierta y el deseo satisfecho son el destino.</blockquote>
+          <cite>— Sobre por qué un producto nunca es solo la cosa que se vende</cite>
+        </div>
+        <div class="essay">
+          <p>Loewy trabajó con objetos que se podían tocar: acero, vidrio, cartón. Pero la lógica que descubrió no depende de que exista un objeto físico de por medio — depende de que exista una necesidad real, y de que el diseñador entienda cuál es antes de construir la solución. Esa lógica se sostiene igual de bien cuando lo que se vende no cabe en una vitrina.</p>
+          <p>Netflix nunca fabricó un disco mejor que el de Blockbuster; atacó la necesidad que Blockbuster nunca terminó de resolver. Un crédito bancario no es un objeto — es una promesa de dinero futuro convertida en una necesidad presente resuelta hoy. Una apuesta no resuelve ninguna necesidad material — resuelve, o más bien secuestra, un mecanismo psicológico mucho más antiguo que cualquier producto financiero.</p>
+          <p>Las tres secciones que siguen caminan esos tres casos en orden creciente de intangibilidad: primero un servicio que reemplazó a un objeto físico, después un producto financiero que nunca fue un objeto, y por último un producto diseñado explícitamente para operar sobre la psicología del usuario sin ninguna necesidad material de por medio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 — FACTS (tanda 2) -->
+  <section class="facts" aria-label="Netflix contra Blockbuster, en resumen">
+    <div class="wrap">
+      <div><b>$800M</b><span>INGRESOS ANUALES DE BLOCKBUSTER<br>POR RECARGOS DE ATRASO EN 2000</span></div>
+      <div><b>1997</b><span>AÑO EN QUE REED HASTINGS Y MARC<br>RANDOLPH FUNDARON NETFLIX</span></div>
+      <div><b>2010</b><span>AÑO EN QUE BLOCKBUSTER<br>SE DECLARÓ EN QUIEBRA</span></div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Netflix vs Blockbuster -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Netflix no Compitió por Mejores Discos: Atajó la Necesidad de Blockbuster</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-mailbox-envelope.png" alt="Un sobre rojo en un buzón, no un mostrador de tienda" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>En el año 2000, Blockbuster dominaba la renta de video con miles de tiendas alrededor del mundo, y una fuente de ingresos que la propia compañía nunca quiso soltar: los recargos por atraso, que le generaban alrededor de 800 millones de dólares anuales. Esa cifra revela el error de fondo — Blockbuster había convertido en modelo de negocio precisamente la fricción que sus clientes más odiaban. La necesidad real del cliente nunca fue "poder rentar un video"; era "ver una película esta noche sin que eso se convierta en un castigo si la devuelvo tarde".</p>
+          <p>Reed Hastings y Marc Randolph fundaron Netflix en 1997 apostando exactamente a esa necesidad mal atendida: una suscripción mensual, sin fecha de devolución, sin recargo, con el catálogo llegando por correo en vez de exigir un viaje a la tienda. Netflix no inventó el DVD ni mejoró la calidad de las películas — atacó el punto de dolor psicológico que Blockbuster había normalizado como parte del negocio.</p>
+          <p>Blockbuster tuvo la oportunidad de comprar Netflix por 50 millones de dólares en el año 2000 y la rechazó, convencida de que el negocio seguía siendo la tienda física y el recargo por atraso. Cuando finalmente intentó copiar el modelo de suscripción, ya era tarde: había construido toda su estructura de costos alrededor de una fricción que ahora tenía que desmantelar mientras un competidor más ágil escalaba sin ella. Blockbuster se declaró en quiebra en 2010.</p>
+          <p>La lección para cualquier producto, físico o digital, es la misma que enseñaba Loewy desde otro ángulo: cuando una compañía confunde su modelo de ingresos con la necesidad real del cliente, cualquier competidor que resuelva esa necesidad sin la fricción termina ganando, aunque su producto — en este caso, un disco enviado por correo — sea objetivamente más simple que el original.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — El Crédito -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Crédito: un Producto Intangible que Suple una Necesidad Tangible</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-key-before-money.png" alt="Una llave entregada antes de que exista el dinero para pagarla" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Un crédito no tiene forma, peso ni color. No existe como objeto en ningún momento de su ciclo de vida — es, literalmente, una promesa contractual de dinero futuro. Y sin embargo resuelve necesidades absolutamente tangibles: una casa que habitar hoy, un auto que conducir esta semana, una cirugía que no puede esperar al siguiente aguinaldo. El producto es intangible; la necesidad que cubre es tan física como cualquier refrigerador Coldspot.</p>
+          <p>Esta inversión — un producto sin cuerpo resolviendo una necesidad con cuerpo — es lo que vuelve al crédito un caso límite del principio MAYA. La aceptación de un crédito depende de un salto de confianza mucho mayor que el de comprar un objeto: el cliente entrega su firma a cambio de dinero que ni siquiera existe todavía en su cuenta, confiando en un sistema — el banco, el score, el contrato — que casi nunca entiende del todo. Cuanto más abstracto es el producto, más pesa la aceptación (la A de MAYA) frente al avance (la M): un crédito demasiado novedoso genera desconfianza antes que deseo.</p>
+          <p>Por eso los productos de crédito que mejor funcionan no compiten únicamente en tasa de interés — compiten en reducir la distancia psicológica entre "pedir dinero prestado", que activa ansiedad, y "resolver una necesidad hoy", que activa alivio. Un crédito aprobado en minutos desde el teléfono no solo es más rápido que uno tramitado en sucursal: cambia el significado emocional del acto de pedir dinero, de una negociación incómoda a una transacción tan simple como comprar cualquier otro producto.</p>
+          <p>El caso de las apuestas lleva esta misma lógica un paso más lejos: ya no se trata de un producto intangible que resuelve una necesidad material, sino de un producto que ni siquiera necesita resolver una necesidad — le basta con activar un mecanismo psicológico que ya existe en el usuario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Apuestas -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Apuestas: Cuando el Producto Ataca Directamente la Psicología del Usuario</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-play-again-button.png" alt="Un botón de jugar de nuevo, no una máquina completa" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Un producto de apuestas no cubre ninguna necesidad material — ni siquiera intenta hacerlo. Su diseño se apoya en un principio de psicología conductual descrito por B. F. Skinner a mediados del siglo XX: el refuerzo de razón variable. A diferencia de un premio que llega cada cierto número fijo de intentos, un premio que llega en un intervalo impredecible genera una tasa de respuesta mucho más alta y mucho más resistente a extinguirse — el usuario nunca sabe si el siguiente intento será el que gane, así que sigue intentando.</p>
+          <p>Skinner mismo señaló que si un negocio de apuestas no puede convencer a un cliente de entregar dinero sin ninguna retribución, puede lograr el mismo efecto devolviéndole una parte de ese dinero bajo un esquema de razón variable. Ese principio, formulado en el laboratorio con palomas y palancas, es exactamente el mecanismo detrás de una máquina tragamonedas, una ruleta o cualquier producto digital de apuestas: el objeto — físico o en pantalla — es solo la superficie sobre la que corre un patrón de refuerzo diseñado para maximizar la repetición, no la satisfacción.</p>
+          <p>Aquí el principio MAYA se invierte de una forma inquietante: en un producto de apuestas bien diseñado no hay tensión entre lo nuevo y lo conocido, porque la familiaridad del ritual — la misma máquina, el mismo gesto, la misma espera — es precisamente lo que sostiene el enganche. Lo "avanzado" no está en la forma del objeto sino en la sofisticación con la que el sistema calcula cuándo entregar el siguiente refuerzo para maximizar el tiempo de juego.</p>
+          <p>Entender este mecanismo no es una invitación a usarlo sin límites — es, al contrario, la razón por la que cualquier equipo de producto que trabaje cerca de mecánicas de recompensa variable (una notificación, una racha, una caja sorpresa) tiene una responsabilidad de diseño distinta a la de un refrigerador: el mismo principio que genera deseo puede, sin ninguna fricción adicional, generar dependencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 — FRAMEWORK — Doble Diamante -->
+  <section class="framework">
+    <div class="wrap">
+      <h2>Encontrar la Necesidad Antes de Construir el Objeto</h2>
+      <p class="lede">Loewy podía intuir el deseo del consumidor después de décadas de oficio. Un equipo de producto necesita un método — el doble diamante del Design Thinking, aplicado a encontrar el job que un usuario contrata un producto para resolver.</p>
+      <div class="steps">
+        <div class="step"><p class="n">01</p><h3>Descubrir</h3><p>Elicitación: entrevistas contextuales, shadowing, diarios de uso — observar el job real, no el que el usuario cree tener.</p></div>
+        <div class="step"><p class="n">02</p><h3>Definir</h3><p>Redactar el Job to Be Done: la parte funcional, la emocional y la social de la necesidad.</p></div>
+        <div class="step"><p class="n">03</p><h3>Desarrollar</h3><p>Prototipar opciones y evaluarlas en la matriz Deseo–Usabilidad (D&amp;U).</p></div>
+        <div class="step"><p class="n">04</p><h3>Entregar</h3><p>Lanzar, medir el flujo de casos de uso real y sus outputs contra la necesidad definida.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — El Milkshake -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>El Milkshake que Cambió Cómo se Investiga a un Usuario</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-milkshake-cupholder.png" alt="Un vaso alto en el portavasos de un auto, no en una mesa" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Una cadena de comida rápida quería vender más malteadas y probó el camino obvio: encuestó a sus clientes, preguntó si las querían más espesas, más dulces, con más trozos de fruta, y ajustó la receta según las respuestas. Las ventas no se movieron. El equipo de Clayton Christensen tomó un camino distinto — se paró afuera del restaurante y le preguntó a cada persona que salía con una malteada en la mano un solo tipo de pregunta: "¿para qué trabajo contrataste esta malteada?".</p>
+          <p>La respuesta reveló dos jobs completamente distintos según la hora del día. En la mañana, quienes la compraban eran conductores solitarios con un trayecto largo y aburrido: la malteada competía contra un plátano, una dona o un café — no contra otras malteadas — porque el job era "algo que se pueda sostener con una mano, que dure todo el trayecto y que llene hasta el almuerzo". Por la tarde, el job era otro por completo: un padre comprándole a su hijo algo que lo mantuviera tranquilo, sin competir contra el desayuno sino contra un juguete o una golosina.</p>
+          <p>Ese hallazgo es la esencia del framework Jobs to Be Done: la gente no compra productos por sus atributos — los "contrata" para resolver un progreso específico en un momento específico de su vida. Un usuario no busca "una app de streaming"; contrata algo para el job de "llenar una noche sin esfuerzo de decisión" o "compartir una experiencia con mi pareja sin salir de casa" — jobs que ni Netflix ni Blockbuster habrían identificado preguntando simplemente "¿qué películas prefieres rentar?".</p>
+          <p>Un Job to Be Done bien escrito tiene tres capas: la funcional (qué tarea resuelve), la emocional (cómo quiere sentirse el usuario al resolverla) y la social (cómo quiere que lo perciban los demás mientras la resuelve) — las mismas tres capas que Loewy, sin nombrarlas así, ya estaba resolviendo con el Coldspot, la botella y la cajetilla.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Elicitación -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Elicitación y el Balance Entre Deseo y Usabilidad</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-field-notebook.png" alt="Una libreta de notas de campo, no una encuesta cerrada" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Elicitar una necesidad — sacarla a la superficie, en el sentido literal del verbo — casi nunca funciona pidiéndola directamente, porque la mayoría de los usuarios no tienen lenguaje consciente para su propio job. Las técnicas que sí funcionan comparten un principio: observar el comportamiento real antes que la opinión declarada. Entrevistas contextuales dentro del entorno donde se usa el producto, shadowing del flujo completo de una tarea, diarios de uso que el usuario llena en el momento — no después, una vez que ya racionalizó su decisión — y la pregunta por el "job", exactamente como la usó el equipo de Christensen afuera del restaurante.</p>
+          <p>Una vez elicitada la necesidad, el siguiente reto es decidir qué tan avanzada o familiar debe sentirse la solución — la misma tensión MAYA, convertida ahora en herramienta de decisión de diseño: la matriz Deseo y Usabilidad (D&amp;U). El eje de Deseo mide cuánto quiere el usuario esta solución específica comparada con las alternativas que ya conoce; el eje de Usabilidad mide cuánto esfuerzo cognitivo exige adoptarla. Un producto con alto deseo y baja usabilidad genera curiosidad pero fricción de adopción. Un producto con alta usabilidad y bajo deseo se adopta sin esfuerzo pero no genera ninguna ventaja competitiva.</p>
+          <p>El cuadrante que busca un equipo de producto es el mismo punto óptimo que Loewy dibujaba a mano: alto deseo sostenido por una usabilidad que no obligue al usuario a aprender un idioma nuevo para resolver el job. Ese cuadrante no es un punto fijo — se mueve a medida que el mercado madura y el usuario acumula experiencia — por lo que MAYA no es una regla de diseño sino un blanco en movimiento que hay que reevaluar cada vez que el producto, el competidor o el usuario cambian.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 — DIAGRAMA 4.2 — Matriz BCG -->
+  <section class="diagram">
+    <div class="wrap">
+      <p class="kicker">Figura 4.2</p>
+      <div class="frame">
+        <svg viewBox="0 0 700 520" role="img" aria-label="Matriz BCG con cuatro cuadrantes: Estrellas alto crecimiento alta participación, Vacas Lecheras bajo crecimiento alta participación, Signos de Interrogación alto crecimiento baja participación, Perros bajo crecimiento baja participación">
+          <defs><marker id="arrow4b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1" x="0" y="0" width="700" height="520" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="350" y="30" text-anchor="middle">PARTICIPACIÓN DE MERCADO</text>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="175" y="52" text-anchor="middle">ALTA</text>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="525" y="52" text-anchor="middle">BAJA</text>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,20,260)" x="20" y="260" text-anchor="middle">CRECIMIENTO DE MERCADO</text>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,42,160)" x="42" y="160" text-anchor="middle">ALTO</text>
+          <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,42,380)" x="42" y="380" text-anchor="middle">BAJO</text>
+          <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="60" x2="60" y2="500"/>
+          <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="60" x2="680" y2="60"/>
+          <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="280" x2="680" y2="280" stroke-dasharray="4,4"/>
+          <line stroke="#C9D0D8" stroke-width="1" x1="370" y1="60" x2="370" y2="500" stroke-dasharray="4,4"/>
+          <rect fill="#0057D9" stroke="#0057D9" stroke-width="1.5" x="70" y="70" width="290" height="200" rx="2" opacity="0.92"/>
+          <text font-family="Archivo,sans-serif" font-weight="800" fill="#ffffff" font-size="22" x="215" y="148" text-anchor="middle">ESTRELLAS</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" font-size="13" x="215" y="172" text-anchor="middle">Alto crecimiento · alta participación</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" font-size="12" x="215" y="194" text-anchor="middle">Invertir para sostener el liderazgo</text>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="380" y="70" width="290" height="200" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="16" x="525" y="148" text-anchor="middle">SIGNOS DE INTERROGACIÓN</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="525" y="172" text-anchor="middle">Alto crecimiento · baja participación</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="525" y="194" text-anchor="middle">Invertir o desinvertir — decidir rápido</text>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="70" y="290" width="290" height="200" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="18" x="215" y="378" text-anchor="middle">VACAS LECHERAS</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="215" y="402" text-anchor="middle">Bajo crecimiento · alta participación</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="215" y="424" text-anchor="middle">Cosechar y financiar las Estrellas</text>
+          <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="380" y="290" width="290" height="200" rx="2"/>
+          <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="22" x="525" y="378" text-anchor="middle">PERROS</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="525" y="402" text-anchor="middle">Bajo crecimiento · baja participación</text>
+          <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="525" y="424" text-anchor="middle">Desinvertir o descontinuar</text>
+        </svg>
+      </div>
+      <figcaption>Figura 4.2 — La matriz BCG. La decisión clave no es en qué cuadrante está el producto hoy, sino hacia dónde se mueve — y si la inversión del equipo corresponde a esa trayectoria.</figcaption>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Matriz BCG y Familias -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Matriz BCG: Cuándo un Producto Necesita Evolucionar, Tener Hijos o Crear una Familia</h2>
+      <div class="grid">
+        <figure class="figcol" style="overflow:hidden;padding:0"><img src="/assets/chapter-04-phone-four-colors.png" alt="El mismo teléfono en cuatro colores distintos — una familia de producto desde una sola arquitectura" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5" /></figure>
+        <div class="textcol">
+          <p>Una vez que un producto existe y corre en el mercado, el trabajo del diseñador cambia: ya no se trata de encontrar la necesidad sino de decidir qué hacer con la respuesta que ya funciona. La matriz del Boston Consulting Group — desarrollada en los años setenta pero todavía útil como diagnóstico de primera pasada — organiza esa decisión alrededor de dos ejes: crecimiento del mercado y participación relativa del producto en ese mercado.</p>
+          <p>Una Estrella es un producto con alto crecimiento y alta participación: domina un mercado que aún tiene espacio para crecer, y la decisión correcta es invertir para sostener ese liderazgo antes de que el mercado madure. Una Vaca Lechera genera ingresos sostenidos en un mercado maduro donde la participación es alta pero el crecimiento se frenó: la decisión correcta es cosechar sus márgenes y usarlos para financiar las Estrellas y los Signos de Interrogación. Un Signo de Interrogación tiene alto crecimiento de mercado pero baja participación: es una apuesta que todavía no rindió frutos, y el equipo tiene que decidir rápido si invertir agresivamente para construir participación o salir antes de que la ventana se cierre. Un Perro tiene bajo crecimiento y baja participación: consume recursos sin retorno estratégico, y la decisión correcta casi siempre es desinvertir o descontinuar.</p>
+          <p>La matriz no describe la identidad de un producto — describe su posición en un momento específico, que cambia. Una Estrella madura en Vaca Lechera. Un Signo de Interrogación se convierte en Estrella si la inversión es correcta, o en Perro si no lo es. La decisión clave no es en qué cuadrante está el producto hoy, sino hacia qué cuadrante se mueve — y si la inversión, la atención y la energía de diseño del equipo corresponden a esa trayectoria.</p>
+          <p>Cuando un producto alcanza el estado de Vaca Lechera — estable, generando márgenes, pero con crecimiento limitado — el movimiento clásico es tener hijos: productos derivados que se expanden hacia segmentos adyacentes usando la misma plataforma central. El teléfono en cuatro colores, el refrigerador en tres tamaños, la app de streaming con plan familiar y nivel premium — todos son familias de producto construidas desde una sola base, cada una apuntando a un job ligeramente distinto mientras comparten la inversión ya hecha en la plataforma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — LONGFORM — Familias de Producto -->
+  <section class="longform">
+    <div class="wrap">
+      <h2>Familias de Producto: Dos Catálogos, una Plataforma</h2>
+      <div class="poster">
+        <div class="frame">
+          <img src="/assets/chapter-04-two-catalog-covers.png" alt="Dos portadas de catálogo — la misma línea de producto expresada en dos mercados distintos" loading="lazy" />
+        </div>
+        <div class="platecap">
+          <b>Lámina 4.3</b>
+          <span>Dos catálogos, una plataforma — la misma arquitectura de producto sirviendo a dos segmentos de mercado distintos.</span>
+        </div>
+      </div>
+      <div class="prose">
+        <p>Una familia de producto no comienza como familia: comienza con un solo producto que funciona, y con una decisión deliberada de extender su alcance sin reconstruir desde cero. La arquitectura del original — su característica central, su plataforma tecnológica, la confianza que sus usuarios ya tienen en ella — se convierte en la base sobre la que se agregan variantes. Lo que cambia entre variantes es el job que cada una es contratada para resolver, y el deseo específico que cada una necesita satisfacer.</p>
+        <p>Loewy lo entendió sin nombrarlo: cuando Coca-Cola le pidió diseñar dispensadores después de la botella contour, no estaba empezando de cero — estaba extendiendo una identidad visual y una lógica de materiales ya probada en la botella hacia un nuevo formato. El dispensador y la botella pertenecen a la misma familia porque comparten el mismo cálculo MAYA, aplicado a un contexto de uso distinto.</p>
+        <p>La implicación práctica para un equipo de producto es que la decisión de construir una familia debe llegar después de que el producto central sea lo suficientemente estable para ser una plataforma real, no antes. Un Signo de Interrogación no puede tener hijos — todavía no se ha ganado el derecho de extenderse porque no ha demostrado que puede dominar su segmento original. Una Vaca Lechera es el momento correcto: el núcleo genera márgenes, la plataforma está probada, y el equipo puede aplicar el excedente a explorar jobs adyacentes con un riesgo de fracaso catastrófico mucho menor que el que enfrentó al construir el original.</p>
+        <p>Este capítulo abrió con Raymond Loewy en la portada de TIME en 1949, y cierra en aproximadamente el mismo lugar: el producto nunca es solo el objeto, y administrar un portafolio de productos nunca es solo administrar una lista de funcionalidades. Es administrar un conjunto de jobs, deseos y contratos psicológicos entre usuarios y las cosas que contratan — y decidir, para cada uno, si invertir, cosechar o retirarse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOPHON -->
+  <section class="colophon">
+    <div class="wrap">
+      <h2>Historial de Versiones</h2>
+      <table>
+        <thead><tr><th>Versión</th><th>Fecha</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr><td class="v">0.3</td><td class="d">28 sep 2026</td><td class="n">Primer borrador completo — todas las secciones, diagramas e imágenes reales incluidas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- REFS -->
+  <section class="refs">
+    <div class="wrap">
+      <h2>Referencias</h2>
+      <ol>
+        <li><b>Loewy, R.</b> (1951). <em>Never Leave Well Enough Alone.</em> Simon &amp; Schuster.</li>
+        <li><b>Christensen, C. M., Hall, T., Dillon, K., &amp; Duncan, D. S.</b> (2016). Know your customers' jobs to be done. <em>Harvard Business Review,</em> 94(9), 54–62.</li>
+        <li><b>Skinner, B. F.</b> (1938). <em>The Behavior of Organisms.</em> Appleton-Century-Crofts.</li>
+        <li><b>Henderson, B. D.</b> (1970). <em>The Product Portfolio.</em> Boston Consulting Group.</li>
+        <li><b>IDEO.</b> (2015). <em>The Field Guide to Human-Centered Design.</em> IDEO.org.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CHAPTERNAV -->
+  <nav class="chapternav" aria-label="Navegación de capítulos">
+    <div class="wrap">
+      <a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">
+        <div class="dir">← Anterior</div>
+        <div class="ctitle">Capítulo 3 — Lo que una línea de producción enseña sobre arquitectura</div>
+      </a>
+      <div class="next locked" aria-disabled="true">
+        <div class="dir">Siguiente →</div>
+        <div class="ctitle">Capítulo 5 — Próximamente</div>
+      </div>
+    </div>
+  </nav>
+
+  <footer class="sitefoot">
+    <div class="wrap">
+      <span>© 2026 J. A. Sosa — Edición viva</span>
+      <a href="/">jasosal.com</a>
+    </div>
+  </footer>
+</Layout>

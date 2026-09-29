@@ -1,0 +1,463 @@
+---
+chapter: 4
+title: "The Product Is Never Just the Object"
+status: "published"
+published_at: 2026-09-28
+summary: "A refrigerator doesn't sell cold: it sells status. A cigarette pack doesn't sell tobacco: it sells a visual promise. Behind every object, system, or service sits a need met and a desire satisfied."
+---
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/">JAS</a>
+    <span class="crumb">Part I · Understanding the Product — Chapter 4</span>
+    <div class="lang" role="group" aria-label="Language">
+      <a href="/ebook/04-the-product-is-never-just-the-object/" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/04-the-product-is-never-just-the-object/">ES</a>
+    </div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+
+{/* ============================================================= */}
+{/* 1 — OPENER */}
+{/* ============================================================= */}
+<header class="opener">
+  <span class="num" aria-hidden="true">04</span>
+  <div class="wrap">
+    <p class="eyebrow">Part I — Understanding the Product · Chapter 04</p>
+    <h1>The Product Is Never Just the Object</h1>
+    <p class="dek">A refrigerator doesn't sell cold: it sells status. A cigarette pack doesn't sell tobacco: it sells a visual promise. Behind every object, system, or service sits a need met and a desire satisfied.</p>
+    <div class="meta">
+      <span>Sep 28, 2026</span>
+      <span>19 min read</span>
+      <span>Living edition 0.3</span>
+      <span>Status: in progress</span>
+    </div>
+  </div>
+</header>
+
+{/* ============================================================= */}
+{/* 2 — INTRO */}
+{/* ============================================================= */}
+<section class="intro">
+  <div class="wrap cols">
+    <p>In 1949, TIME magazine put on its cover a designer who never manufactured anything with his own hands, and who nonetheless ended up touching the daily life of an enormous share of the American population: Raymond Loewy, the man who redesigned the Coldspot refrigerator, the Coca-Cola bottle, and the Lucky Strike pack. Loewy wasn't selling steel, glass, or paper. He was selling the feeling that an everyday object, without losing its familiarity, felt one step ahead of whatever the customer already owned.</p>
+    <p>That feeling has a name: Loewy called it MAYA — Most Advanced Yet Acceptable — and it is the starting point of this chapter. A product is never just the object a customer buys; it is the answer to a need already met and a desire already satisfied that existed before the object itself did. When that answer is forgotten, the object becomes irrelevant even if its function remains flawless — exactly what happened to Blockbuster against Netflix, which never competed on renting better discs, but on removing the anxiety of a return date.</p>
+    <p>This chapter walks that idea in four directions. First, the psychology behind the physical object, through Loewy and the MAYA principle. Then, two cases where the product is entirely intangible — credit and gambling — where meeting a tangible need or attacking the user's psychology directly becomes the design of the product itself. Next, the methodological toolkit for finding that need before building: Jobs to Be Done, the Design Thinking double diamond, and elicitation techniques. And finally, what to do with a product already in production — the BCG matrix, and the decision to evolve it, have children, or build families of variants.</p>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 3 — FACTS (round 1) */}
+{/* ============================================================= */}
+<section class="facts" aria-label="Raymond Loewy, at a glance">
+  <div class="wrap">
+    <div><b>1893–1986</b><span>RAYMOND LOEWY'S LIFESPAN,<br />THE FATHER OF INDUSTRIAL DESIGN</span></div>
+    <div><b>1951</b><span>YEAR HE PUBLISHED "NEVER LEAVE<br />WELL ENOUGH ALONE" AND FORMALIZED MAYA</span></div>
+    <div><b>200+</b><span>COMPANIES HE WORKED FOR<br />AS A DESIGN CONSULTANT</span></div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 9 — DIAGRAM 4.1 — The MAYA Spectrum */}
+{/* ============================================================= */}
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figure 4.1</p>
+    <div class="frame">
+      <svg viewBox="0 0 1040 240" role="img" aria-label="A spectrum between neophobia and neophilia, with the MAYA sweet spot at the center, and both extremes marked as customer rejection">
+        <defs><marker id="arrow4a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="0" y="55" width="260" height="130" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#111418" x="130" y="112" font-size="20" text-anchor="middle">NEOPHOBIA</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="130" y="138" font-size="14" text-anchor="middle">Fear of the unfamiliar</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="130" y="160" font-size="13" text-anchor="middle">rejection from too much change</text>
+        <line stroke="#C9D0D8" stroke-width="1.5" fill="none" x1="260" y1="120" x2="388" y2="120" marker-end="url(#arrow4a)"/>
+        <rect fill="#0057D9" stroke="#0057D9" stroke-width="1.5" x="390" y="25" width="260" height="190" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#ffffff" x="520" y="100" font-size="22" text-anchor="middle">MAYA</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="130" font-size="14" text-anchor="middle">Most Advanced Yet Acceptable</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="154" font-size="13" text-anchor="middle">Advanced, yet recognizable</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" x="520" y="176" font-size="13" text-anchor="middle">— the point where desire is born</text>
+        <line stroke="#C9D0D8" stroke-width="1.5" fill="none" x1="650" y1="120" x2="778" y2="120" marker-end="url(#arrow4a)"/>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="780" y="55" width="260" height="130" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#111418" x="910" y="112" font-size="20" text-anchor="middle">NEOPHILIA</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="910" y="138" font-size="14" text-anchor="middle">Attraction to the new</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" x="910" y="160" font-size="13" text-anchor="middle">rejection from lack of anchor</text>
+      </svg>
+    </div>
+    <figcaption>Figure 4.1 — The spectrum Loewy identified: a product too familiar bores, one too new frightens. Commercial desire lives in the narrow band between the two.</figcaption>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — The MAYA Principle */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The MAYA Principle: Designing for Fear and Desire at Once</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-loewy-sketch.png" alt="A Loewy sketch, halfway between the old and the new" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>Loewy sketching the tension between known and new</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Raymond Loewy didn't start from an abstract design theory. He started from a practical observation, repeated client after client across five decades of consulting: people want something new, but only up to the point where they stop recognizing it as their own. Loewy summarized it as two opposing psychological forces that coexist in every consumer — neophilia, curiosity for the new, and neophobia, fear of the too different — and a formula for resolving the tension between them: MAYA, most advanced yet acceptable.</p>
+        <p>The formula doesn't describe an object; it describes a design decision. A completely familiar product generates no desire because it offers nothing the customer didn't already have. A completely new product generates no trust because it gives the customer no reference point from which to evaluate it. The designer's job — of product, not merely of form — is to find the exact point where the object feels like a step forward without ceasing to feel familiar.</p>
+        <p>This explains why Loewy never invented new product categories. He redesigned refrigerators that already existed, bottles that were already selling, packs of cigarettes that half the country was already smoking. His genius wasn't in invention but in translation: taking a need already met mediocrely and solving it in a way that felt, at once, modern and obvious.</p>
+        <p>The rest of this chapter repeats that same question in contexts where the object is no longer an object — a loan, a bet, an entire streaming catalog — but where the tension between the known and the new remains the force that decides whether a product gets adopted or ignored.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Coldspot */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Coldspot: a Refrigerator That Sold Status, Not Cold</h2>
+    <div class="poster">
+      <div class="frame">
+        <img src="/assets/chapter-04-coldspot-refrigerator.png" alt="The 1934 Coldspot refrigerator, rounded lines and chrome handle, photographed like a museum piece" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
+      </div>
+      <div class="platecap">
+        <b>Plate 4.1</b>
+        <span>Coldspot refrigerator, Sears, 1934 — redesigned by Raymond Loewy. The refrigeration mechanism didn't change; the body stopped looking like industrial machinery.</span>
+      </div>
+    </div>
+    <div class="prose">
+      <p>Before Loewy, the household refrigerator was, functionally, a noisy metal box whose only promise was keeping food cold — a real need, but solved with no consideration whatsoever for how it felt to have it in the kitchen. Sears commissioned Loewy in 1934 to redesign its Coldspot line, and what he delivered didn't change the refrigeration mechanism: it completely changed the body, introducing rounded lines, a chrome handle, and a surface that no longer looked like industrial machinery but like a piece of home furniture.</p>
+      <p>That change solved a need no one had articulated as such: a refrigerator isn't just an appliance, it's an object seen every day by everyone who walks into the kitchen, and it therefore communicates something about whoever owns it. Loewy understood that the function — keeping food cold — had already been solved before; what remained unsolved was the desire that this object not embarrass its owner in front of a guest.</p>
+      <p>The commercial result confirmed the psychological reading: Coldspot sales grew steadily after the redesign, without the motor, the compressor, or the cooling capacity having changed in any substantial way. The object kept doing exactly the same thing — the desire it satisfied was a different one.</p>
+      <p>This is the first of three psychological needs Loewy made visible through his signature products: status. The other two — brand identity and instant perception — show up in his two most cited redesigns.</p>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Coca-Cola and Lucky Strike */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Coca-Cola and Lucky Strike: Identity and Perception</h2>
+    <div class="poster">
+      <div class="frame">
+        <img src="/assets/chapter-04-bottle-and-pack.png" alt="The Coca-Cola contour bottle next to the white Lucky Strike pack, same scale, two different redesigns" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
+      </div>
+      <div class="platecap">
+        <b>Plate 4.2</b>
+        <span>Coca-Cola contour bottle and Lucky Strike pack — Raymond Loewy redesigns, from the 1930s and 1942 respectively.</span>
+      </div>
+    </div>
+    <div class="prose">
+      <p>The Coca-Cola contour bottle wasn't born to hold more or less liquid — it was born to be identifiable by touch, in the dark, even shattered on a store floor. Loewy refined that silhouette and designed the brand's dispensers, solving a different problem than Sears': not the status of whoever owns it, but the instant identity of a product consumed in seconds that needs to be recognized before it's read. The container, more than the liquid, is what the customer is actually buying every time they pick that bottle off a shelf of imitations.</p>
+      <p>The Lucky Strike pack, in 1942, solved a third problem with the cheapest possible design change: Loewy eliminated the original green background — which required an expensive pigment that was hard to source during the war — and replaced it with a spotless white with the logo printed on both faces. The result wasn't just a production saving; it was a pack that looked cleaner, more modern, and more visible in a shirt pocket, right when the brand needed to stand out without spending an extra dollar on advertising.</p>
+      <p>The three cases — Coldspot, Coca-Cola, Lucky Strike — share a single lesson that transcends industrial design: none of them changed what the product did. All three changed what the product meant to whoever used it, bought it, or simply saw it in someone else's hands. An object never competes solely against its function; it competes against the psychological desire that another, better-designed object is already satisfying.</p>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 6 — QUOTE + ESSAY — Bridge to the intangible */}
+{/* ============================================================= */}
+<section class="quote-essay">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <blockquote>The object is the vehicle. The need met and the desire satisfied are the destination.</blockquote>
+        <cite>— On why a product is never just the thing being sold</cite>
+      </div>
+      <div class="essay">
+        <p>Loewy worked with objects you could touch: steel, glass, cardboard. But the logic he uncovered doesn't depend on a physical object being present — it depends on a real need existing, and on the designer understanding what it is before building the solution. That logic holds just as well when what's being sold doesn't fit in a display case.</p>
+        <p>Netflix never manufactured a better disc than Blockbuster's; it attacked the need Blockbuster never fully solved. A bank loan isn't an object — it's a promise of future money turned into a present need resolved today. A bet solves no material need at all — it solves, or rather hijacks, a psychological mechanism far older than any financial product.</p>
+        <p>The three sections that follow walk these three cases in increasing order of intangibility: first a service that replaced a physical object, then a financial product that was never an object, and finally a product designed explicitly to operate on the user's psychology with no material need involved at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 3 — FACTS (round 2) */}
+{/* ============================================================= */}
+<section class="facts" aria-label="Netflix versus Blockbuster, at a glance">
+  <div class="wrap">
+    <div><b>$800M</b><span>BLOCKBUSTER'S ANNUAL REVENUE<br />FROM LATE FEES IN 2000</span></div>
+    <div><b>1997</b><span>YEAR REED HASTINGS AND MARC<br />RANDOLPH FOUNDED NETFLIX</span></div>
+    <div><b>2010</b><span>YEAR BLOCKBUSTER<br />FILED FOR BANKRUPTCY</span></div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Netflix vs Blockbuster */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Netflix Didn't Compete on Better Discs: It Shortcut Blockbuster's Need</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-mailbox-envelope.png" alt="A red envelope in a mailbox, not a store counter" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>a red envelope that removed the friction of a return date</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>In 2000, Blockbuster dominated video rental with thousands of stores around the world, and a revenue stream the company itself never wanted to let go of: late fees, which generated around 800 million dollars a year. That figure reveals the underlying mistake — Blockbuster had turned the very friction its customers hated most into a business model. The customer's real need was never "being able to rent a video"; it was "watching a movie tonight without that turning into a punishment if I return it late."</p>
+        <p>Reed Hastings and Marc Randolph founded Netflix in 1997 betting on exactly that poorly served need: a monthly subscription, no return date, no late fee, with the catalog arriving by mail instead of requiring a trip to the store. Netflix didn't invent the DVD or improve movie quality — it attacked the psychological pain point that Blockbuster had normalized as part of the business.</p>
+        <p>Blockbuster had the chance to buy Netflix for 50 million dollars in 2000 and turned it down, convinced the business was still the physical store and the late fee. By the time it finally tried to copy the subscription model, it was too late: it had built its entire cost structure around a friction it now had to dismantle while a nimbler competitor scaled without it. Blockbuster filed for bankruptcy in 2010.</p>
+        <p>The lesson for any product, physical or digital, is the same one Loewy taught from another angle: when a company confuses its revenue model with the customer's real need, any competitor who solves that need without the friction ends up winning, even if their product — in this case, a disc mailed to your door — is objectively simpler than the original.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Credit */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Credit: an Intangible Product That Meets a Tangible Need</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-key-before-money.png" alt="A key handed over before the money to pay for it exists" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>the key exists before the money does</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A loan has no shape, weight, or color. It doesn't exist as an object at any point in its lifecycle — it is, literally, a contractual promise of future money. And yet it meets absolutely tangible needs: a house to live in today, a car to drive this week, a surgery that can't wait for the next paycheck. The product is intangible; the need it meets is as physical as any Coldspot refrigerator.</p>
+        <p>This inversion — a bodiless product solving a need with a body — is what makes credit a limit case of the MAYA principle. Accepting a loan requires a far bigger leap of trust than buying an object: the customer signs away their name in exchange for money that doesn't even exist yet in their account, trusting a system — the bank, the score, the contract — they almost never fully understand. The more abstract the product, the more the acceptance side of MAYA (the "A") outweighs the advancement side (the "M"): a loan that's too novel in how it's approved or disbursed generates distrust before desire.</p>
+        <p>That's why the credit products that work best don't compete solely on interest rate — they compete on shrinking the psychological distance between "borrowing money," which triggers anxiety, and "solving a need today," which triggers relief. A loan approved in minutes from a phone isn't just faster than one processed at a branch: it changes the emotional meaning of the act of asking for money, from an uncomfortable negotiation into a transaction as simple as buying any other product.</p>
+        <p>The gambling case takes this same logic one step further: it's no longer an intangible product solving a material need, but a product that doesn't even need to solve a need — it only needs to trigger a psychological mechanism that already exists in the user.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Gambling */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Gambling: When the Product Attacks User Psychology Directly</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-play-again-button.png" alt="A play again button, not a whole machine" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>the button, not the machine — the mechanism, not the surface</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A gambling product meets no material need at all — it doesn't even try to. Its design rests on a principle of behavioral psychology described by B. F. Skinner in the mid-20th century: variable-ratio reinforcement. Unlike a reward that arrives every fixed number of attempts, a reward that arrives at an unpredictable interval generates a much higher response rate and far more resistance to extinction — the user never knows whether the next attempt will be the winning one, so they keep trying.</p>
+        <p>Skinner himself noted that if a gambling business can't convince a customer to hand over money with no return at all, it can achieve the same effect by giving back part of that money under a variable-ratio schedule. That principle, formulated in the lab with pigeons and levers, is exactly the mechanism behind a slot machine, a roulette wheel, or any digital gambling product: the object — physical or on-screen — is only the surface on which a reinforcement pattern runs, designed to maximize repetition, not satisfaction.</p>
+        <p>Here the MAYA principle flips in an unsettling way: a well-designed gambling product carries no tension between the new and the familiar, because the familiarity of the ritual — the same machine, the same gesture, the same wait — is precisely what sustains the hook. What's "advanced" isn't the shape of the object but the sophistication with which the system calculates when to deliver the next reinforcement to maximize time on device.</p>
+        <p>Understanding this mechanism isn't an invitation to use it without limits — quite the opposite: it's the reason any product team working near variable-reward mechanics (a notification, a streak, a surprise box) carries a design responsibility different from that of a refrigerator: the same principle that generates desire can, with no additional friction, generate dependency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 7 — FRAMEWORK — Double Diamond */}
+{/* ============================================================= */}
+<section class="framework">
+  <div class="wrap">
+    <h2>Finding the Need Before Building the Object</h2>
+    <p class="lede">Loewy could intuit consumer desire after decades in the craft. A product team needs a method — the Design Thinking double diamond, applied to finding the job a user hires a product to do.</p>
+    <div class="steps">
+      <div class="step"><p class="n">01</p><h3>Discover</h3><p>Elicitation: contextual interviews, shadowing, usage diaries — observe the real job, not the one the user thinks they have.</p></div>
+      <div class="step"><p class="n">02</p><h3>Define</h3><p>Write the Job to Be Done: the functional, emotional, and social parts of the need.</p></div>
+      <div class="step"><p class="n">03</p><h3>Develop</h3><p>Prototype options and evaluate them on the Desire–Usability (D&amp;U) matrix.</p></div>
+      <div class="step"><p class="n">04</p><h3>Deliver</h3><p>Launch, measure the real use-case flow and its outputs against the defined need.</p></div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — The Milkshake */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>The Milkshake That Changed How Users Get Researched</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-milkshake-cupholder.png" alt="A tall cup in a car's cupholder, not on a table" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>the cupholder, not the counter — the job changes the product</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>A fast-food chain wanted to sell more milkshakes and tried the obvious path: it surveyed customers, asked whether they wanted them thicker, sweeter, with more fruit chunks, and adjusted the recipe based on the answers. Sales didn't move. Clayton Christensen's team took a different path — they stood outside the restaurant and asked every person walking out with a milkshake in hand a single kind of question: "what job did you hire this milkshake to do?"</p>
+        <p>The answer revealed two completely different jobs depending on the time of day. In the morning, buyers were solitary commuters on a long, boring drive: the milkshake competed against a banana, a donut, or a coffee — not against other milkshakes — because the job was "something that can be held with one hand, that lasts the whole commute, and that keeps me full until lunch." In the afternoon, the job was entirely different: a parent buying their kid something to keep them calm, competing not against breakfast but against a toy or a piece of candy.</p>
+        <p>That finding is the essence of the Jobs to Be Done framework: people don't buy products for their attributes — they "hire" them to make a specific kind of progress at a specific moment in their lives. A user isn't looking for "a streaming app"; they hire something for the job of "filling an evening with no decision effort" or "sharing an experience with my partner without leaving the house" — jobs neither Netflix nor Blockbuster would have identified by simply asking "which movies do you prefer to rent?"</p>
+        <p>A well-written Job to Be Done has three layers: the functional (what task it solves), the emotional (how the user wants to feel while solving it), and the social (how they want to be perceived by others while solving it) — the same three layers Loewy, without naming them that way, was already solving with the Coldspot, the bottle, and the pack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Elicitation and D&U */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Elicitation and the Balance Between Desire and Usability</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-field-notebook.png" alt="A field notebook, not a closed survey form" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>a notebook in the field, not a form sent by email</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Eliciting a need — bringing it to the surface, in the literal sense of the verb — almost never works by asking for it directly, because most users have no conscious language for their own job. The techniques that do work share one principle: observe real behavior before stated opinion. Contextual interviews inside the environment where the product gets used, shadowing the full flow of a task, usage diaries the user fills in the moment — not afterward, once they've already rationalized their decision — and the "job" question, exactly as Christensen's team used it outside the restaurant.</p>
+        <p>Once a need has been elicited, the next challenge is deciding how advanced or how familiar the solution should feel — the same MAYA tension, now turned into a design-decision tool: the Desire and Usability matrix (D&amp;U). The Desire axis measures how much the user wants this specific solution compared with the alternatives they already know; the Usability axis measures how much cognitive effort adopting it demands. A product with high desire and low usability generates curiosity but adoption friction. A product with high usability and low desire gets adopted effortlessly but generates no competitive advantage at all.</p>
+        <p>The quadrant a product team is after is the same sweet spot Loewy used to sketch by hand: high desire held up by a usability that doesn't force the user to learn a new language to get the job done. That quadrant is not a fixed point — it shifts as the market matures and the user accumulates experience — which is why MAYA is not a design rule but a moving target that has to be re-evaluated every time the product, the competitor, or the user changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 9 — DIAGRAM 4.2 — BCG Matrix */}
+{/* ============================================================= */}
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figure 4.2</p>
+    <div class="frame">
+      <svg viewBox="0 0 700 520" role="img" aria-label="BCG matrix with four quadrants: Stars high growth high share, Cash Cows low growth high share, Question Marks high growth low share, Dogs low growth low share">
+        <defs><marker id="arrow4b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C9D0D8"/></marker></defs>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1" x="0" y="0" width="700" height="520" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="350" y="30" text-anchor="middle">MARKET SHARE</text>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="175" y="52" text-anchor="middle">HIGH</text>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" x="525" y="52" text-anchor="middle">LOW</text>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,20,260)" x="20" y="260" text-anchor="middle">MARKET GROWTH</text>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,42,160)" x="42" y="160" text-anchor="middle">HIGH</text>
+        <text font-family="Archivo,sans-serif" font-weight="700" fill="#5C6673" font-size="11" letter-spacing="0.08em" transform="rotate(-90,42,380)" x="42" y="380" text-anchor="middle">LOW</text>
+        <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="60" x2="60" y2="500"/>
+        <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="60" x2="680" y2="60"/>
+        <line stroke="#C9D0D8" stroke-width="1" x1="60" y1="280" x2="680" y2="280" stroke-dasharray="4,4"/>
+        <line stroke="#C9D0D8" stroke-width="1" x1="370" y1="60" x2="370" y2="500" stroke-dasharray="4,4"/>
+        <rect fill="#0057D9" stroke="#0057D9" stroke-width="1.5" x="70" y="70" width="290" height="200" rx="2" opacity="0.92"/>
+        <text font-family="Archivo,sans-serif" font-weight="800" fill="#ffffff" font-size="22" x="215" y="148" text-anchor="middle">STARS</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" font-size="13" x="215" y="172" text-anchor="middle">High growth · high share</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="rgba(255,255,255,.85)" font-size="12" x="215" y="194" text-anchor="middle">Invest to sustain leadership</text>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="380" y="70" width="290" height="200" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="18" x="525" y="148" text-anchor="middle">QUESTION MARKS</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="525" y="172" text-anchor="middle">High growth · low share</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="525" y="194" text-anchor="middle">Invest or divest — decide fast</text>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="70" y="290" width="290" height="200" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="18" x="215" y="378" text-anchor="middle">CASH COWS</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="215" y="402" text-anchor="middle">Low growth · high share</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="215" y="424" text-anchor="middle">Harvest and fund Stars</text>
+        <rect fill="#FFFFFF" stroke="#C9D0D8" stroke-width="1.5" x="380" y="290" width="290" height="200" rx="2"/>
+        <text font-family="Archivo,sans-serif" font-weight="800" fill="#111418" font-size="22" x="525" y="378" text-anchor="middle">DOGS</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="13" x="525" y="402" text-anchor="middle">Low growth · low share</text>
+        <text font-family="Archivo,sans-serif" font-weight="500" fill="#5C6673" font-size="12" x="525" y="424" text-anchor="middle">Divest or discontinue</text>
+      </svg>
+    </div>
+    <figcaption>Figure 4.2 — The BCG matrix. The key decision isn't which quadrant a product is in today, but which quadrant it is moving toward — and whether the team's investment matches that trajectory.</figcaption>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — BCG and Product Families */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>BCG Matrix: When a Product Needs to Evolve, Have Children, or Build a Family</h2>
+    <div class="grid">
+      <div class="figcol">
+        <figure>
+          <img src="/assets/chapter-04-phone-four-colors.png" alt="The same phone in four different colors — a product family from a single core" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%" />
+          <figcaption>four colors, one architecture — a product family from a single platform</figcaption>
+        </figure>
+      </div>
+      <div class="textcol">
+        <p>Once a product exists and runs in the market, the designer's job changes: it is no longer about finding the need but about deciding what to do with the answer that already works. The Boston Consulting Group matrix — developed in the 1970s but still useful as a first-pass diagnostic — organizes that decision around two axes: market growth and the product's relative share within that market.</p>
+        <p>A Star is a product with high growth and high share: it dominates a market that still has room to grow, and the right move is to invest to sustain that leadership before the market matures. A Cash Cow generates steady revenue in a mature market where share is high but growth has slowed: the right move is to harvest its margins and use them to fund the Stars and Question Marks. A Question Mark has high market growth but low share: it's a bet that hasn't paid off yet, and the team has to decide fast whether to invest aggressively to build share or exit before the window closes. A Dog has low growth and low share: it consumes resources without strategic return, and the right move is almost always to divest or discontinue.</p>
+        <p>The matrix doesn't describe a product's identity — it describes a product's position at a specific moment, which changes. A Star matures into a Cash Cow. A Question Mark becomes a Star if the investment is right, or a Dog if it isn't. The key decision isn't which quadrant a product is in today, but which quadrant it is moving toward — and whether the team's investment, attention, and design energy match that trajectory.</p>
+        <p>When a product reaches Cash Cow status — stable, generating margin, but with limited growth — the classical move is to have children: derivative products that expand into adjacent segments using the same core platform. The four-color phone, the refrigerator in three sizes, the streaming app with a family plan and a premium tier — all of them are product families built from a single core, each targeting a slightly different job while sharing the investment already made in the platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* 5 — LONGFORM — Product Families */}
+{/* ============================================================= */}
+<section class="longform">
+  <div class="wrap">
+    <h2>Product Families: Two Catalogs, One Platform</h2>
+    <div class="poster">
+      <div class="frame">
+        <img src="/assets/chapter-04-two-catalog-covers.png" alt="Two catalog covers — the same product line expressed in two different markets" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
+      </div>
+      <div class="platecap">
+        <b>Plate 4.3</b>
+        <span>Two catalogs, one platform — the same product architecture serving two distinct market segments.</span>
+      </div>
+    </div>
+    <div class="prose">
+      <p>A product family doesn't start with a family: it starts with a single product that works, and a deliberate decision to extend its reach without rebuilding from zero. The architecture of the original — its core feature, its technology platform, the trust its users already have in it — becomes the foundation on which variants are added. What changes between variants is the job each one is hired to do, and the specific desire each one needs to satisfy.</p>
+      <p>Loewy understood this without naming it: when Coca-Cola asked him to design dispensers after the contour bottle, he wasn't starting over — he was extending a visual identity and a material logic already proven in the bottle into a new form factor. The dispenser and the bottle belong to the same family because they share the same MAYA calculation, applied to a different context of use.</p>
+      <p>The practical implication for a product team is that the decision to build a family should come after the core product is stable enough to be a real platform, not before. A Question Mark cannot have children — it hasn't yet earned the right to extend because it hasn't yet proven it can dominate its original segment. A Cash Cow is the right moment: the core is generating margin, the platform is proven, and the team can apply the surplus to exploring adjacent jobs with a lower risk of catastrophic failure than they faced when building the original.</p>
+      <p>This chapter opened with Raymond Loewy on the cover of TIME magazine in 1949, and it closes in roughly the same place: the product is never just the object, and managing a product portfolio is never just managing a list of features. It is managing a set of jobs, desires, and psychological contracts between users and the things they hire — and deciding, for each one, whether to invest, harvest, or walk away.</p>
+    </div>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* COLOPHON */}
+{/* ============================================================= */}
+<section class="colophon">
+  <div class="wrap">
+    <h2>Version History</h2>
+    <table>
+      <thead><tr><th>Version</th><th>Date</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="v">0.3</td><td class="d">Sep 28, 2026</td><td class="n">First complete draft — all sections, diagrams, and real images included.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* REFS */}
+{/* ============================================================= */}
+<section class="refs">
+  <div class="wrap">
+    <h2>References</h2>
+    <ol>
+      <li><b>Loewy, R.</b> (1951). <em>Never Leave Well Enough Alone.</em> Simon &amp; Schuster.</li>
+      <li><b>Christensen, C. M., Hall, T., Dillon, K., &amp; Duncan, D. S.</b> (2016). Know your customers' jobs to be done. <em>Harvard Business Review,</em> 94(9), 54–62.</li>
+      <li><b>Skinner, B. F.</b> (1938). <em>The Behavior of Organisms.</em> Appleton-Century-Crofts.</li>
+      <li><b>Henderson, B. D.</b> (1970). <em>The Product Portfolio.</em> Boston Consulting Group.</li>
+      <li><b>IDEO.</b> (2015). <em>The Field Guide to Human-Centered Design.</em> IDEO.org.</li>
+    </ol>
+  </div>
+</section>
+
+{/* ============================================================= */}
+{/* CHAPTER NAV */}
+{/* ============================================================= */}
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <a href="/ebook/03-what-a-production-line-teaches-about-architecture/">
+      <div class="dir">← Previous</div>
+      <div class="ctitle">Chapter 3 — What a Production Line Teaches About Architecture</div>
+    </a>
+    <div class="next locked" aria-disabled="true">
+      <div class="dir">Next →</div>
+      <div class="ctitle">Chapter 5 — Coming soon</div>
+    </div>
+  </div>
+</nav>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <span>© 2026 J. A. Sosa — Living edition</span>
+    <a href="/">jasosal.com</a>
+  </div>
+</footer>
