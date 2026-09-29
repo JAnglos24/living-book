@@ -1,5 +1,5 @@
 ---
-const { title, description, isHome = false } = Astro.props;
+const { title, description, isHome = false, ogImage = 'https://www.jasosal.com/assets/ebook-hero.png', ogType = 'website' } = Astro.props;
 import '../styles/global.css';
 ---
 <!doctype html>
@@ -11,11 +11,21 @@ import '../styles/global.css';
 <meta name="description" content={description || "José Ángel Sosa López — Senior Portfolio Manager, Product Manager Leadership, Product Management & PMO Director. Experto en arquitectura y gestión de productos tecnológicos, Retail POS y gobernanza."}>
 <meta name="keywords" content="Portfolio Manager, Product Manager Leadership, Product Management, Gestión de Producto, Líder de Gestión de Producto, Product Manager Lead, PMO Director, Agile Coach, Retail POS, IT Portfolio Governance, José Ángel Sosa López, J. Angel Sosa">
 <meta name="author" content="José Ángel Sosa López">
+
+<!-- Open Graph / WhatsApp / Facebook -->
 <meta property="og:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
 <meta property="og:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
-<meta property="og:type" content="profile">
+<meta property="og:type" content={ogType}>
 <meta property="og:url" content="https://www.jasosal.com/">
-<meta property="og:image" content="https://www.jasosal.com/assets/jas-warm.jpg">
+<meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `https://www.jasosal.com${ogImage}`}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
+<meta name="twitter:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
+<meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `https://www.jasosal.com${ogImage}`}>
 <script type="application/ld+json" set:html={`
 {
   "@context": "https://schema.org",
