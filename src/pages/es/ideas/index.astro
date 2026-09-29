@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideas y Conceptos Industriales — J. Angel Sosa</title>
+<meta name="description" content="Conceptos, prototipos físicos, ecosistemas de hardware modular y experimentos de diseño industrial por José Ángel Sosa.">
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.jasosal.com/es/ideas/">
+<meta property="og:title" content="Ideas y Conceptos Industriales — J. Angel Sosa">
+<meta property="og:description" content="Conceptos, prototipos físicos, ecosistemas de hardware modular y experimentos de diseño industrial por José Ángel Sosa.">
+<meta property="og:image" content="https://www.jasosal.com/assets/ideas/echo-perfume-sculpture.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.jasosal.com/es/ideas/">
+<meta name="twitter:title" content="Ideas y Conceptos Industriales — J. Angel Sosa">
+<meta name="twitter:description" content="Conceptos, prototipos físicos, ecosistemas de hardware modular y experimentos de diseño industrial por José Ángel Sosa.">
+<meta name="twitter:image" content="https://www.jasosal.com/assets/ideas/echo-perfume-sculpture.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+  --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+  --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+
+/* ===== topbar ===== */
+.topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:16px}
+.topbar a.home{font-weight:700;text-decoration:none;font-size:15px}
+.topbar nav{display:flex;align-items:center;gap:28px;font-size:14px}
+.topbar nav a{text-decoration:none;color:var(--ink2)}
+.topbar nav a[aria-current]{color:var(--graphite);font-weight:700}
+.topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.topbar .lang a{text-decoration:none;color:var(--ink2)}
+.topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+
+/* ===== hero ===== */
+.hero{background:var(--graphite);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{padding-block:clamp(56px,10vh,96px)}
+.hero .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.hero .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
+.hero h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,6.5vw,96px);line-height:1;letter-spacing:-.035em;margin-bottom:20px;max-width:15ch}
+.hero p{font-size:clamp(17px,1.5vw,22px);max-width:54ch;color:rgba(255,255,255,.88);line-height:1.45}
+
+/* ===== grid list ===== */
+.ideas-grid{padding-block:clamp(48px,8vh,80px);display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gutter)}
+@media (max-width:860px){.ideas-grid{grid-template-columns:1fr}}
+
+.idea-card{background:var(--white);border:1px solid var(--line);border-radius:2px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.idea-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(17,20,24,.08)}
+.idea-card .img-box{position:relative;background:var(--paper);overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.idea-card .img-box img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.idea-card:hover .img-box img{transform:scale(1.04)}
+.idea-card .tag-badge{position:absolute;top:16px;left:16px;background:rgba(17,20,24,.85);backdrop-filter:blur(8px);color:#fff;font-size:11px;letter-spacing:.12em;font-weight:600;padding:5px 12px;border-radius:999px;text-transform:uppercase}
+
+.idea-card .body{padding:28px 32px 36px;display:flex;flex-direction:column;flex:1}
+.idea-card h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(22px,2vw,30px);line-height:1.15;letter-spacing:-.02em;margin-bottom:12px;color:var(--graphite)}
+.idea-card .desc{color:var(--ink2);font-size:15px;line-height:1.6;margin-bottom:24px;flex:1}
+.idea-card .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--ink2)}
+.idea-card .specs strong{display:block;color:var(--graphite);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+/* ===== MODU-PHON Hero Spotlight ===== */
+.modu-spotlight{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:clamp(48px,8vh,80px)}
+.modu-spotlight .wrap{padding-block:clamp(56px,8vh,88px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter);align-items:center}
+.modu-spotlight .badge{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--cobalt);text-transform:uppercase;margin-bottom:14px;display:block}
+.modu-spotlight h2{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(36px,4vw,64px);line-height:1.02;letter-spacing:-.03em;margin-bottom:20px}
+.modu-spotlight p{color:var(--ink2);font-size:16px;line-height:1.6;margin-bottom:24px}
+.modu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;border-top:1px solid var(--line);padding-top:24px}
+.modu-item{font-size:13px}
+.modu-item b{display:block;color:var(--graphite);font-weight:700;font-size:14px;margin-bottom:4px}
+.modu-item span{color:var(--ink2)}
+.modu-visual{background:var(--graphite);color:#fff;border-radius:4px;padding:36px;display:flex;flex-direction:column;justify-content:center;aspect-ratio:4/3;position:relative;overflow:hidden}
+.modu-visual::before{content:"9 CARCASAS / 1 NÚCLEO";position:absolute;right:-20px;bottom:-10px;font-size:80px;font-weight:900;color:rgba(255,255,255,.04);letter-spacing:-.05em;pointer-events:none;white-space:nowrap}
+.modu-visual .big-num{font-size:clamp(60px,8vw,110px);font-weight:900;line-height:.85;color:var(--cobalt-light);margin-bottom:16px}
+.modu-visual .tag{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase}
+
+footer{background:var(--white);border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+footer a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="/es/">JAS</a>
+    <nav aria-label="Sitio">
+      <a href="/es/">Inicio</a>
+      <a href="/es/ebook/">Libro</a>
+      <a href="/es/ideas/" aria-current="page">Ideas</a>
+      <a href="/es/articles/">Artículos</a>
+      <a href="/es/author/">Autor</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="/ideas/">EN</a><span aria-hidden="true">/</span><a href="/es/ideas/" aria-current="page">ES</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">IDEAS Y CONCEPTOS</p>
+    <h1>Forma Física, Hardware Modular y Sistemas</h1>
+    <p>Una colección curada de conceptos de diseño industrial, ecosistemas de hardware modular y experimentos de materiales que exploran la intersección entre la artesanía física y la tecnología.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== MODU-PHON SPOTLIGHT ===== -->
+  <section class="modu-spotlight" style="margin-top:clamp(48px,8vh,80px)">
+    <div class="wrap" style="padding-block:0">
+      <div>
+        <span class="badge">CONCEPTO DE ECOSISTEMA DE HARDWARE</span>
+        <h2>MODU-PHON</h2>
+        <p>Un núcleo flexible que se adapta a la forma, el material y la función que exige cada contexto. La pantalla deja de imponer una carcasa fija: el usuario inserta el módulo en una estructura especializada y transforma el mismo dispositivo.</p>
+        <div class="modu-grid">
+          <div class="modu-item">
+            <b>Uso Diario</b>
+            <span>Aluminio anodizado, polímero blanco ergonómico y acabados de tendencia.</span>
+          </div>
+          <div class="modu-item">
+            <b>Trabajo y Viaje</b>
+            <span>Cuero ejecutivo, protección reforzada y agarre seguro.</span>
+          </div>
+          <div class="modu-item">
+            <b>Función Extendida</b>
+            <span>Empuñadura fotográfica, base de escritorio y extensión de audio hi-fi.</span>
+          </div>
+          <div class="modu-item">
+            <b>Personalización</b>
+            <span>Materiales translúcidos, textiles y ediciones estacionales.</span>
+          </div>
+        </div>
+      </div>
+      <div class="modu-visual">
+        <div class="big-num">1 Núcleo</div>
+        <div class="tag">9 Carcasas Intercambiables</div>
+        <p style="margin-top:16px;color:rgba(255,255,255,.75);font-size:14px">Pantalla Curva Flex · Interfaz Estandarizada · Cero Duplicación de Tecnología de Alto Valor</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPTS GRID ===== -->
+  <section class="ideas-grid">
+
+    <!-- ECHO PERFUME BOTTLE -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/echo-perfume-sculpture.png" alt="Concepto de Botella de Perfume Escultórico ECHO" loading="lazy" />
+        <span class="tag-badge">Diseño Industrial</span>
+      </div>
+      <div class="body">
+        <h2>ECHO — Escultura de Perfume</h2>
+        <p class="desc">Un contenedor de fragancia escultórico de edición limitada que combina una cúpula de cristal transparente de alta refracción, núcleo líquido azul cobalto y cuerpo de vidrio rojo translúcido texturizado con anillos de agarre ergonómicos.</p>
+        <div class="specs">
+          <div>
+            <strong>Materiales</strong>
+            Cristal de Refracción / PE / Aluminio
+          </div>
+          <div>
+            <strong>Innovación Central</strong>
+            Atomizador integrado oculto y óptica de fluido dual
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ECHO PERFUME BLUEPRINT -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/echo-perfume-blueprint.png" alt="Plano Técnico Explosionado de Perfume ECHO" loading="lazy" />
+        <span class="tag-badge">Plano Técnico</span>
+      </div>
+      <div class="body">
+        <h2>ECHO — Especificación Técnica</h2>
+        <p class="desc">Corte de plano técnico que ilustra el conducto interno de fluido, la cavidad del depósito cobalto y el ensamble de bomba atomizadora de precisión encajada dentro de la cúpula de vidrio de protección.</p>
+        <div class="specs">
+          <div>
+            <strong>Ensamble</strong>
+            Ensamble a presión de 3 piezas
+          </div>
+          <div>
+            <strong>Dispersión</strong>
+            Atomizador de micro-gotas integrado
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- LUMIBAMBOO AMBIENT TABLE -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/lumibamboo-ambient-table.png" alt="Mesa de Noche Lumibamboo y Lámpara de Ambiente" loading="lazy" />
+        <span class="tag-badge">Mobiliario e Iluminación</span>
+      </div>
+      <div class="body">
+        <h2>Mesa de Noche Ambiental Lumibamboo</h2>
+        <p class="desc">Una mesa de noche arquitectónica que fusiona bloques geométricos de nogal sólido con una pantalla central de cañas de bambú natural y un motor de iluminación ambiental cálida retroiluminada.</p>
+        <div class="specs">
+          <div>
+            <strong>Materiales</strong>
+            Nogal Sólido y Cañas de Bambú Natural
+          </div>
+          <div>
+            <strong>Iluminación</strong>
+            Luz Cálida Difusa LED (2700K)
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- HELICAL TWIST GLASSWARE -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/helical-twist-glassware.png" alt="Cáliz de Cristalería Helical Twist" loading="lazy" />
+        <span class="tag-badge">Cristalería</span>
+      </div>
+      <div class="body">
+        <h2>Cristalería Helical Twist</h2>
+        <p class="desc">Cristalería experimental que presenta un exoesqueleto helicoidal entrelazado de resina esmeralda que acuna un recipiente de cristal, equilibrando tensión estructural y elegancia fluida.</p>
+        <div class="specs">
+          <div>
+            <strong>Oficio</strong>
+            Cristal soplado y jaula bio-polimérica
+          </div>
+          <div>
+            <strong>Ergonomía</strong>
+            Base pesada auto-equilibrada
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>J. Angel Sosa — Ideas y Conceptos · <span style="opacity:.7">Diseño por Tecronomic, SAPI de CV</span></span>
+    <span><a href="/es/">Inicio</a> · <a href="/es/ebook/">El libro vivo</a> · <a href="/es/author/">Autor</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
