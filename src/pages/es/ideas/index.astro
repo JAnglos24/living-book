@@ -50,7 +50,7 @@ h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
 .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
 
 /* ===== hero ===== */
-.hero{background:var(--graphite);color:#fff;position:relative;overflow:hidden}
+.hero{background:var(--cobalt);color:#fff;position:relative;overflow:hidden}
 .hero .wrap{padding-block:clamp(56px,10vh,96px)}
 .hero .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .hero .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.5)}
@@ -148,16 +148,65 @@ footer a{text-decoration:none}
           </div>
         </div>
       </div>
-      <div class="modu-visual">
-        <div class="big-num">1 Núcleo</div>
-        <div class="tag">9 Carcasas Intercambiables</div>
-        <p style="margin-top:16px;color:rgba(255,255,255,.75);font-size:14px">Pantalla Curva Flex · Interfaz Estandarizada · Cero Duplicación de Tecnología de Alto Valor</p>
+      <div class="modu-visual-gallery" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--graphite);aspect-ratio:16/9;">
+          <img src="/assets/ideas/image-2-1.png" alt="MODU-PHON Diapositiva Concepto 1 - Arquitectura de Núcleo y Carcasas" style="width:100%;height:100%;object-fit:cover;" />
+          <span class="tag-badge" style="position:absolute;top:12px;left:12px;background:rgba(17,20,24,.85);backdrop-filter:blur(8px);color:#fff;font-size:11px;letter-spacing:.12em;font-weight:600;padding:4px 10px;border-radius:999px;">SLIDE 01 / ECOSISTEMA</span>
+        </div>
+        <div style="position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--graphite);aspect-ratio:16/9;">
+          <img src="/assets/ideas/image-1-1.jpeg" alt="MODU-PHON Diapositiva Concepto 2 - Variaciones de Hardware" style="width:100%;height:100%;object-fit:cover;" />
+          <span class="tag-badge" style="position:absolute;top:12px;left:12px;background:rgba(17,20,24,.85);backdrop-filter:blur(8px);color:#fff;font-size:11px;letter-spacing:.12em;font-weight:600;padding:4px 10px;border-radius:999px;">SLIDE 02 / VARIACIONES DE HARDWARE</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== CONCEPTS GRID ===== -->
   <section class="ideas-grid">
+
+    <!-- MODU-PHON HARDWARE CONCEPT -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/image-2-1.png" alt="MODU-PHON Resumen de Arquitectura Modular" loading="lazy" />
+        <span class="tag-badge">Hardware Modular</span>
+      </div>
+      <div class="body">
+        <h2>MODU-PHON — Arquitectura de Núcleo y Carcasa</h2>
+        <p class="desc">Un concepto de hardware revolucionario que rompe con la forma estática de los smartphones tradicionales. Un núcleo de cómputo estandarizado de alto rendimiento se desliza sin problemas en carcasas estructurales especializadas.</p>
+        <div class="specs">
+          <div>
+            <strong>Arquitectura Central</strong>
+            Pantalla Flexible + Módulo de Cómputo
+          </div>
+          <div>
+            <strong>Modularidad</strong>
+            9 Carcasas para Contextos Específicos
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MODU-PHON SLIDE OVERVIEW -->
+    <article class="idea-card">
+      <div class="img-box">
+        <img src="/assets/ideas/image-1-1.jpeg" alt="Presentación MODU-PHON Diapositivas de Diseño Industrial" loading="lazy" />
+        <span class="tag-badge">Diapositivas de Presentación</span>
+      </div>
+      <div class="body">
+        <h2>MODU-PHON — Diapositivas de Diseño Industrial</h2>
+        <p class="desc">Diapositivas originales de presentación que detallan la ergonomía por contexto, selección de materiales (aluminio anodizado, cuero ejecutivo, biopolímeros) y conectores con disipación térmica.</p>
+        <div class="specs">
+          <div>
+            <strong>Materiales</strong>
+            Aleación, Cuero, Polímero y Textil
+          </div>
+          <div>
+            <strong>Interfaz</strong>
+            Dock Magnético de Alto Ancho de Banda
+          </div>
+        </div>
+      </div>
+    </article>
 
     <!-- ECHO PERFUME BOTTLE -->
     <article class="idea-card">
