@@ -1,6 +1,9 @@
 ---
-const { title, description, isHome = false } = Astro.props;
+const { title, description, isHome = false, ogImage, ogType, ogUrl } = Astro.props;
 import '../styles/global.css';
+
+const image = ogImage || "https://www.jasosal.com/assets/jas-warm.jpg";
+const fullImageUrl = image.startsWith('http') ? image : `https://www.jasosal.com${image}`;
 ---
 <!doctype html>
 <html lang="en">
@@ -13,9 +16,13 @@ import '../styles/global.css';
 <meta name="author" content="José Ángel Sosa López">
 <meta property="og:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
 <meta property="og:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://www.jasosal.com/">
-<meta property="og:image" content="https://www.jasosal.com/assets/jas-warm.jpg">
+<meta property="og:type" content={ogType || "profile"}>
+<meta property="og:url" content={ogUrl || "https://www.jasosal.com/"}>
+<meta property="og:image" content={fullImageUrl}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title || "José Ángel Sosa — Portfolio Manager"}>
+<meta name="twitter:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
+<meta name="twitter:image" content={fullImageUrl}>
 <script type="application/ld+json" set:html={`
 {
   "@context": "https://schema.org",

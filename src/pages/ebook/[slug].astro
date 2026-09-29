@@ -12,8 +12,16 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const chapterSlug = entry.id || `chapter-${entry.data.chapter.toString().padStart(2, '0')}`;
+const chapterImage = entry.data.og_image || entry.data.hero_image || `/assets/chapter-${entry.data.chapter.toString().padStart(2, '0')}-thumb.jpg`;
 ---
-<Layout title={`${entry.data.title} — Thinking in Products, Building Systems`}>
+<Layout 
+  title={`${entry.data.title} — Thinking in Products, Building Systems`}
+  description={entry.data.summary || `Chapter ${entry.data.chapter} of The Living Book by J. Angel Sosa.`}
+  ogImage={chapterImage}
+  ogType="article"
+  ogUrl={`https://www.jasosal.com/ebook/${chapterSlug}/`}
+>
   <style is:inline>
     /* Copied from original chapter head */
     figure{margin:0}
