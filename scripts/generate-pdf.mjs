@@ -95,12 +95,12 @@ const EDITIONS = [
   {
     lang: 'en',
     outFile: 'thinking-in-products-building-systems-current.pdf',
-    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/', '/ebook/03-what-a-production-line-teaches-about-architecture/', '/ebook/04-the-product-is-never-just-the-object/'],
+    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/', '/ebook/03-what-a-production-line-teaches-about-architecture/', '/ebook/04-the-product-is-never-just-the-object/', '/ebook/05-digital-materials-apis-data-and-constraints/'],
   },
   {
     lang: 'es',
     outFile: 'pensar-en-productos-construir-sistemas-actual.pdf',
-    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/', '/es/ebook/03-what-a-production-line-teaches-about-architecture/', '/es/ebook/04-the-product-is-never-just-the-object/'],
+    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/', '/es/ebook/03-what-a-production-line-teaches-about-architecture/', '/es/ebook/04-the-product-is-never-just-the-object/', '/es/ebook/05-digital-materials-apis-data-and-constraints/'],
   },
 ];
 

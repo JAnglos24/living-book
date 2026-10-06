@@ -1,0 +1,544 @@
+---
+chapter: 5
+title: "Digital Materials: APIs, Data and Constraints"
+status: "published"
+published_at: 2026-10-05
+summary: "A vacuum flask reveals how materials, regional supply and manufacturing processes shape a product."
+---
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="ebook.html">JAS</a>
+    <div class="chapmeta"><b>Chapter 05</b><span>Digital Materials: APIs, Data and Constraints</span></div>
+    <nav aria-label="Book">
+      <a href="ebook.html">Contents</a>
+      <a href="author.html">Author</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language"><a href="ebook-chapter-05.html" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="es-ebook-chapter-05.html" hreflang="es">ES</a></div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contents</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+{/* 1 — OPENER */}
+<header class="opener">
+  <span class="num" aria-hidden="true">05</span>
+  <div class="wrap">
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 05</p>
+    <h1>Digital Materials: APIs, Data and Constraints</h1>
+    <p class="dek">A product takes shape through the materials we can obtain, transform and trust. In a marketplace, APIs and data carry those same conditions into every customer promise.</p>
+    <div class="meta">
+      <span>Oct 5, 2026</span>
+      <span>23 min read</span>
+      <span>Living edition 0.3</span>
+      <span>Status: in progress</span>
+    </div>
+  </div>
+</header>
+
+{/* 2 — INTRO */}
+<section class="intro">
+  <div class="wrap cols">
+    <p>A vacuum flask is a modest object, and that is why it teaches well. Its cobalt surface hides a vessel, a vacuum, a seal and a finish, each chosen for what it can do, where it can be sourced and how it behaves once someone carries it through a rainy commute. Nobody buying it sees those decisions; everybody feels them when one is wrong.</p>
+    <p>A marketplace hides decisions of the same kind. Behind a product page sit inventory feeds, payment services, address lookups and data copied from one system to the next, and each has properties that shift with the provider, the market and the day. Those properties set the limit of what the page can honestly promise.</p>
+    <p>This chapter treats APIs and data as materials. We start with the flask (its purpose, supply, process and market) and then follow the same questions into a hypothetical drinkware marketplace: payments, delivery, data provenance, regional rules and security. It closes with the Digital Materials Map, a four-stage method for turning a customer promise into evidence a team can test.</p>
+  </div>
+</section>
+
+{/* 3 — FACTS */}
+<section class="facts" aria-label="Two ounces, one flask: the capacity gap">
+  <div class="wrap">
+    <div><b>591 mL</b><span>20 US FLUID OUNCES,<br/>CONVERTED</span></div>
+    <div><b>568 mL</b><span>20 IMPERIAL FLUID OUNCES,<br/>CONVERTED</span></div>
+    <div><b>23 mL</b><span>THE GAP BETWEEN THE TWO,<br/>IN ONE FLASK</span></div>
+    </div>
+</section>
+
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Before the First Drawing</h2>
+    <div class="poster">
+      <div class="frame">
+        <span>[ 16:9 plate — A cobalt vacuum flask with a closed lid standing on a plain table in soft daylight. ]</span>
+        <img src="chapter-05-cobalt-flask-table.jpg" alt="A cobalt vacuum flask with a closed lid standing on a plain table in soft daylight." width="3200" height="1800" loading="lazy" onerror="this.remove()" />
+      </div>
+      <div class="platecap"><b>Plate 5.1</b><span>A cobalt double-wall flask on a bare table: the whole product at a glance, before anyone asks what it is made of.</span></div>
+    </div>
+    <div class="prose">
+        <p>A vacuum flask rests on the table. Its cobalt surface looks simple, and the lid closes with a reassuring turn. Someone sees a useful container; someone else sees a gift. The designer sees steel, a seal, an insulating space and the processes that allow them to work together.</p>
+        <p>Move that flask into another market and the questions change. Can the same supplier deliver there? Does the finish survive the intended use? Will buyers understand its capacity? An object that looks complete still depends on where it will be made, sold, carried, cleaned and repaired.</p>
+        <p>A digital product enters the same conversation. The marketplace on a screen is assembled from services and information whose properties vary by provider and region. Before deciding what customers should see, we need to understand what these materials allow the business to promise.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>The Purpose Inside the Object</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — Three unbranded drinkware pieces side by side: a slim commuter flask, a tall flask held in a gloved hand and an open desk tumbler. ]</span>
+          <img src="chapter-05-three-uses.jpg" alt="Three unbranded drinkware pieces side by side: a slim commuter flask, a tall flask held in a gloved hand and an open desk tumbler." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.2 — One need, three jobs: the commute, the job site and the desk.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Begin with a commuter who wants coffee to remain warm during a journey and arrive without leaking into a bag. The requirement sounds ordinary, but it gives the object a particular shape. The flask must fit in the available space, remain comfortable to carry, open without excessive effort and be easy enough to clean that yesterday's drink does not become today's problem. Capacity matters, but more capacity is not automatically more value.</p>
+        <p>An outdoor worker may need a larger container, a surface that remains manageable with gloves and a lid that tolerates dirt. A desk user may prefer an open tumbler because sipping convenience matters more than transport security. If these uses are collapsed into a single brief, the team can manufacture an object that performs adequately in a laboratory and awkwardly everywhere else. The purpose determines which material properties deserve attention and which compromises are acceptable.</p>
+        <p>Consider an illustrative double-wall stainless-steel flask. Its inner vessel contacts the drink, the outer shell takes handling and impact, the space between them contributes insulation, and the lid and gasket control closure. The alloy grade alone does not establish whether the finished product is suitable for its intended food-contact use. Surface condition, joining, seals, coatings where relevant, manufacturing controls and verification belong to the same decision.</p>
+        <p>That distinction will matter when we reach digital architecture. Saying that a platform uses a secure cloud or a compliant payment provider resembles saying that a flask uses good steel. It identifies one input. It does not yet explain the behavior of the assembled product, the conditions under which it works, or who will take responsibility when it fails.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>A Material Has an Address</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A flask taken apart into vessel, lid and rubber gasket, laid out on a pale surface. ]</span>
+          <img src="chapter-05-flask-components.jpg" alt="A flask taken apart into vessel, lid and rubber gasket, laid out on a pale surface." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.3 — The vessel can be made locally while the gasket travels.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>A designer can specify a material that exists in a supplier's catalog and still discover that it is unavailable in the form, quantity or schedule the project needs. Sheet thickness, forming capability, tooling access, batch size and replacement components can all affect whether the design can be produced. Availability is therefore more specific than the existence of steel somewhere in the world.</p>
+        <p>Imagine two manufacturing options. One supplier can produce the vessel and finish locally but imports the gasket. Another offers a complete assembly from an established production line, although replenishment requires a longer international journey. Neither option is inherently superior. The decision depends on volume, delivery variability, inspection, inventory exposure, repair strategy and the consequences of interruption. These are hypothetical options, not claims about the capabilities of a particular country.</p>
+        <p>The color creates another dependency. A cobalt finish may require a particular coating formulation, preparation process and application capability. Its appearance on a small sample does not guarantee consistency across a curved vessel or across production batches. A supplier may offer the desired color only at a minimum order that exceeds expected demand. Procurement has now changed the design discussion: perhaps the launch needs fewer variants, a different process or a more patient replenishment plan.</p>
+        <p>Geography enters through that network of capabilities. Regional availability includes what can be sourced nearby, what must cross a border and what can be replaced after sale. A material choice that appears inexpensive at the factory can become costly when the business carries several months of inventory or cannot supply a replacement lid. The drawing contains an object; the supply arrangement determines whether the object can become a dependable product.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>The Process Changes the Material</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — Close-up of the brushed stainless-steel base of a flask showing a joined seam. ]</span>
+          <img src="chapter-05-weld-seam.jpg" alt="Close-up of the brushed stainless-steel base of a flask showing a joined seam." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.4 — Each stage inherits the condition the previous one left.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>In one possible manufacturing route, metal is formed into the inner and outer vessels, trimmed, joined and prepared for assembly. The insulating space is evacuated and sealed; the lid and gasket are fitted; the exterior receives its specified treatment. The exact sequence and methods depend on the design and production system. The useful point is that the final properties emerge through processing, rather than arriving intact with the purchased inputs.</p>
+        <p>A forming operation can create defects that affect later joining. A seal can appear acceptable and still fail under repeated use. A finish may adhere well initially but behave differently under abrasion, cleaning or temperature changes. Each stage inherits the condition produced by the previous stage, and an attractive surface can hide a problem the user discovers only after purchase.</p>
+        <p>The designer consequently needs evidence tied to the intended use. A thermal-retention test should specify initial temperature, ambient conditions, fill volume, duration and opening behavior. A leak test needs an orientation and handling scenario. A color or finish assessment needs a reference and a repeatable inspection method. Without those conditions, two suppliers can report successful tests while describing different performances.</p>
+        <p>The parallel with data processing is already visible. Information can be extracted correctly, transformed incorrectly and displayed beautifully. An API can return a technically valid response whose meaning changes during normalization. The final interface inherits these transformations just as the flask inherits its manufacturing history. Examining the finished surface is necessary, but it is too late to be the only form of quality control.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Color Meets the Market</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — Four coated steel swatches in slightly different cobalt blues under the same raking light. ]</span>
+          <img src="chapter-05-cobalt-finish-samples.jpg" alt="Four coated steel swatches in slightly different cobalt blues under the same raking light." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.5 — One name for the color, four different batches.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Suppose the cobalt flask reaches buyers. Its color may suggest technical precision to one audience, personal style to another and an inconvenient mismatch to someone choosing accessories for a workplace. Weight may feel reassuring during an in-store demonstration and burdensome during a commute. These interpretations are hypotheses to investigate with the intended audience; they cannot be assigned reliably to an entire country.</p>
+        <p>The finish also participates in use. A textured surface may help handling but complicate cleaning. A glossy surface may show fingerprints or wear in ways the buyer dislikes. If photographs exaggerate the color or hide the actual texture, the gap between perception and experience becomes a source of returns. Aesthetic choices have become operational inputs.</p>
+        <p>We can examine acceptance by observing representative users carry, fill, open and wash the object, then compare those findings with purchases and returns. A stated preference for a color is different from willingness to buy it at the intended price. Sales can also mislead if one variant receives better shelf placement, more advertising or more reliable stock. Market measurement needs to explain the conditions that produced the result.</p>
+        <p>For the digital product, the equivalent question is whether the offered interaction feels credible and usable locally. A familiar payment method, an address form that accepts the customer's actual address and a delivery estimate that proves reliable can matter more than visual consistency across countries. Acceptance emerges from the meeting between a product's capabilities and people's circumstances.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Capacity Needs a Language</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A glass measuring jug with unreadable markings beside a flask, the water level close to the rim of the opening. ]</span>
+          <img src="chapter-05-measuring-jug.jpg" alt="A glass measuring jug with unreadable markings beside a flask, the water level close to the rim of the opening." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.6 — Capacity measured to the brim is not capacity you can use.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>A capacity label appears to be a small localization task. Yet “20 ounces” is incomplete when we do not know whether it means mass or fluid volume, and which fluid-ounce convention applies. NIST's conversion tables distinguish US and Imperial fluid ounces: approximately 29.57 mL and 28.41 mL respectively. Twenty US fluid ounces therefore correspond to about 591 mL; twenty Imperial fluid ounces correspond to about 568 mL.<sup><a href="#ref-1">1</a></sup></p>
+        <p>These differences do not authorize relabeling every 20 US fl oz flask as 600 mL. The manufacturer needs a verified capacity, an agreed measurement procedure and suitable market labeling. Useful fill capacity can also differ from volume measured to the brim. A buyer should not have to discover that distinction by overflowing the container when inserting the lid.</p>
+        <p>Capacity returns us to purpose. Does the container hold the drink sold by the nearby café? Can the user carry it comfortably? Is its opening suitable for filling and cleaning? Regional conventions help people interpret the object, but physical volume still needs to satisfy the intended job. A conversion can be mathematically correct and commercially misleading if the original quantity was never defined.</p>
+        <p>Now imagine the flask entering a marketplace. One seller submits “20 oz,” another “600 ml,” and a third places the capacity only in an image. Search, filters and comparisons need a canonical representation, while buyers need a locally understandable display. If the platform silently treats every number as equivalent, the catalog introduces defects before the customer reaches checkout. Localization has exposed a data-model problem.</p>
+      </div>
+    </div>
+    <div class="datawrap"><p class="tlabel">Table 5.1 — One bottle, three ways to state its capacity</p><table><thead><tr><th class="">Capacity expression</th><th class="r">Approximate volume</th><th class="">What the team must establish</th></tr></thead><tbody><tr><td class="" data-label="Capacity expression">20 US fl oz</td><td class="r" data-label="Approximate volume">591 mL</td><td class="" data-label="What the team must establish">The US fluid-volume convention is intended</td></tr><tr><td class="" data-label="Capacity expression">20 Imperial fl oz</td><td class="r" data-label="Approximate volume">568 mL</td><td class="" data-label="What the team must establish">The Imperial fluid-volume convention is intended</td></tr><tr><td class="" data-label="Capacity expression">600 mL</td><td class="r" data-label="Approximate volume">600 mL</td><td class="" data-label="What the team must establish">The declared capacity and measurement procedure</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>From Vessel to Marketplace</h2>
+    <div class="poster">
+      <div class="frame">
+        <span>[ 16:9 plate — A shelf of unbranded flasks and tumblers in mixed sizes, arranged unevenly, with one cobalt flask near the center. ]</span>
+        <img src="chapter-05-drinkware-shelf.jpg" alt="A shelf of unbranded flasks and tumblers in mixed sizes, arranged unevenly, with one cobalt flask near the center." width="3200" height="1800" loading="lazy" onerror="this.remove()" />
+      </div>
+      <div class="platecap"><b>Plate 5.7</b><span>Many sellers, one shelf: the catalog is assembled from sources that never agreed on a format.</span></div>
+    </div>
+    <div class="prose">
+        <p>We will follow a hypothetical marketplace selling drinkware from several merchants, initially in Mexico and later in the United States and Portugal. It operates the shopping experience and coordinates sellers, payments and fulfillment partners. The scenario is illustrative: the service choices, thresholds and measurements below are proposed design examples rather than results from an actual implementation.</p>
+        <p>The marketplace needs product descriptions, seller identities, inventory, prices, payment services, address interpretation, shipping information and order records. Each input has a source and a transformation history. The capacity attribute might originate with a manufacturer, pass through a seller spreadsheet and become a searchable field. Stock might arrive from a warehouse API whose update schedule differs from the seller's point-of-sale system.</p>
+        <p>Calling these inputs digital materials is useful because it encourages us to inspect properties before committing to a design. Data has freshness, completeness, provenance and permitted uses. APIs have supported operations, latency, quotas, error behavior and contractual boundaries. Their combination affects the experience in the same way that metal, seals and production processes affect the flask.</p>
+        <p>There is a limit to the analogy. A supplier can change an API after launch, withdraw a service or alter access conditions. Data can be copied across systems, and those copies can create additional obligations. Digital materials remain active dependencies throughout operation. The product team needs to design for their continuing behavior, not merely approve them at procurement.</p>
+    </div>
+    <div class="datawrap"><p class="tlabel">Table 5.2 — From the flask to the marketplace</p><table><thead><tr><th class="">Physical design question</th><th class="">Marketplace equivalent</th></tr></thead><tbody><tr><td class="" data-label="Physical design question">Is the required material available in this region?</td><td class="" data-label="Marketplace equivalent">Is the service contractually and operationally available for this market and business model?</td></tr><tr><td class="" data-label="Physical design question">What happens during forming and assembly?</td><td class="" data-label="Marketplace equivalent">What changes during ingestion, normalization and orchestration?</td></tr><tr><td class="" data-label="Physical design question">How does the finish behave in use?</td><td class="" data-label="Marketplace equivalent">How do the interface and its underlying services behave in local customer journeys?</td></tr><tr><td class="" data-label="Physical design question">Does the capacity specification mean the same thing?</td><td class="" data-label="Marketplace equivalent">Do units, currency, timestamps and business states retain their meaning?</td></tr><tr><td class="" data-label="Physical design question">Can a damaged component be replaced?</td><td class="" data-label="Marketplace equivalent">Can data and workflows move to another provider at an acceptable cost?</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="quote-essay">
+  <div class="wrap">
+    <h2>An API Contains a Promise</h2>
+    <div class="grid">
+      <div><blockquote>A syntactically correct response is the beginning of the contract, rather than its entire content.</blockquote></div>
+      <div class="essay">
+        <p>An API is often described through its endpoints, authentication method and response schema. Those details are necessary, but a product decision requires an additional layer of meaning. An inventory response saying that five units are available does not tell us whether those units can be reserved, whether another channel can sell them simultaneously or how quickly the information becomes stale.</p>
+        <p>Suppose the page promises “available now,” while the seller updates stock once each evening. Engineering can integrate that feed perfectly and the product can still disappoint customers. The material supports a periodic estimate; the design presents an immediate assurance. The problem lies in the distance between the information's properties and the promise attached to it.</p>
+        <p>A reservation operation changes what becomes possible. The marketplace might hold a unit while the buyer completes payment, subject to an expiry rule and a release process. A failed payment must release the reservation; a delayed confirmation needs reconciliation; repeated requests must not create multiple holds accidentally. A new endpoint has created new responsibilities across the journey.</p>
+        <p>An OpenAPI description helps document HTTP operations, parameters and response structures in a standard form.<sup><a href="#ref-2">2</a></sup> The product team should complement it with business semantics: what counts as success, when a result is authoritative, how long it remains usable and what happens if confirmation never arrives. A syntactically correct response is the beginning of the contract, rather than its entire content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Payment Begins With the Model</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A blank handheld payment terminal on a counter next to a closed flask. ]</span>
+          <img src="chapter-05-card-terminal.jpg" alt="A blank handheld payment terminal on a counter next to a closed flask." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.8 — Who sells, who receives funds and who refunds is settled before the checkout screen exists.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Before choosing a payment service provider, the marketplace needs to establish who sells to the buyer, who receives funds, who issues refunds and who carries the relevant commercial responsibilities. A single merchant selling its own inventory differs from a platform coordinating payments for multiple sellers. Seller onboarding, settlement, disputes and reconciliation may change with that model, even when the checkout screen looks almost identical.</p>
+        <p>This also clarifies a common ambiguity. We connect to a processor, gateway, acquirer or payment platform; PCI DSS is a security standard, not a service endpoint. The provider's validated scope, the integration method and the marketplace's own environment all matter. Outsourcing payment processing can reduce the requirements directly applicable to the merchant environment, but the PCI Security Standards Council states that responsibilities remain, including oversight of the third party.<sup><a href="#ref-3">3</a></sup></p>
+        <p>For our illustrative marketplace, a hosted payment experience may reduce direct exposure to card details. It also affects navigation, branding, available payment methods and the handling of interrupted journeys. The team must understand the chosen integration's security and assessment implications with the provider and relevant payment stakeholders. A commercial claim that a vendor is “PCI compliant” does not settle those questions by itself.</p>
+        <p>Regional capability needs similar precision. A service may accept a customer's card in a country without supporting local seller accounts, desired settlement currencies or the marketplace's payout model. A method that fits one market may require a different provider or workflow elsewhere. The payment material shapes the business model and the customer journey together.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>The Order Outlives Checkout</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — Two small cardboard parcels with blank labels side by side, one holding a flask and one a replacement lid. ]</span>
+          <img src="chapter-05-two-parcels.jpg" alt="Two small cardboard parcels with blank labels side by side, one holding a flask and one a replacement lid." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.9 — One purchase for the customer, two shipments for the operation.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Consider a basket containing one cobalt flask from Seller A and a replacement lid from Seller B. The customer sees one purchase, but fulfillment may involve two inventories, two shipments and different cancellation opportunities. If the chosen payment arrangement cannot support the required allocations or refunds, the marketplace must either change its operating process or change its promise to the buyer.</p>
+        <p>Payment completion also has a time dimension. A synchronous response might be interrupted while the provider continues processing. A notification can arrive later, repeat or conflict with an earlier local state. The marketplace needs stable order identifiers, authenticated notifications, deduplication and reconciliation so that uncertainty does not become a duplicate charge or an unpaid shipment.</p>
+        <p>The interface should reflect these states. “Payment pending” gives the customer a different instruction from “payment failed.” A refund requested is different from a refund confirmed. If operations cannot explain the state using an order reference and a traceable record, customer support inherits an ambiguity created by architecture. The integration has become part of the service customers experience after the sale.</p>
+        <p>The flask comparison helps here. Testing whether a lid closes once is insufficient when the intended product must survive repeated opening, washing and transport. Similarly, confirming that a payment succeeds once in a sandbox says little about cancellations, partial refunds, retries or settlement. The material must be examined through the lifecycle the product actually offers.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>A Pin Is Not Delivery</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A building entrance with a gate and an unlabeled intercom panel, softly out of focus. ]</span>
+          <img src="chapter-05-doorstep-intercom.jpg" alt="A building entrance with a gate and an unlabeled intercom panel, softly out of focus." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.10 — The coordinate points at the building; the courier needs the entrance.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Geolocation looks just as simple from the interface. The buyer enters an address, a map shows a pin and the checkout estimates delivery. But address autocomplete, geocoding, routing and carrier serviceability answer different questions. Recognizing a location does not establish that a particular seller's carrier serves it, at the proposed price, within the promised period.</p>
+        <p>Our marketplace might encounter apartment details omitted by autocomplete, a rural address whose useful instructions include a landmark, or a coordinate located at a property's center rather than its accessible entrance. These possibilities should be tested with local address samples rather than converted into generalizations about national behavior. A provider's strong performance in one city does not establish its quality across a country.</p>
+        <p>Selection should therefore compare representative addresses, ambiguous cases, correction effort and actual carrier acceptance. The product can preserve the customer's original entry alongside the normalized form and request confirmation when the suggested result is uncertain. Device location can be optional, with manual address entry available; the usefulness of precise coordinates depends on the journey, not on the mere availability of a permission prompt.</p>
+        <p>Commercial and usage terms also affect design. Google's Geocoding API policies, for example, impose conditions on storing or caching content and on attribution, with specified exceptions such as place IDs.<sup><a href="#ref-4">4</a></sup> We cannot assume that buying API access grants unrestricted ownership of the returned information. A fallback provider or a long-lived address database may require a different arrangement from the one initially imagined.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figure 5.1</p>
+    <figure>
+    <div class="frame">
+      <svg viewBox="-2 0 1044 300" role="img" aria-label="A capacity value travels from the manufacturer to the seller sheet to a canonical record, which feeds search and filters and the buyer's display">
+        <defs><marker id="arrow5a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="95" width="200" height="110" rx="2"/>
+        <text class="dtext" x="100" y="144" font-size="18" text-anchor="middle">MANUFACTURER</text>
+        <text class="dsub" x="100" y="168" font-size="13" text-anchor="middle">declares capacity</text>
+        <text class="dsub" x="100" y="186" font-size="13" text-anchor="middle">and its unit</text>
+        <line class="darrow" x1="200" y1="150" x2="248" y2="150" marker-end="url(#arrow5a)"/>
+        <rect class="dbox" x="250" y="95" width="200" height="110" rx="2"/>
+        <text class="dtext" x="350" y="144" font-size="18" text-anchor="middle">SELLER SHEET</text>
+        <text class="dsub" x="350" y="168" font-size="13" text-anchor="middle">“20 oz”</text>
+        <text class="dsub" x="350" y="186" font-size="13" text-anchor="middle">which ounce?</text>
+        <line class="darrow" x1="450" y1="150" x2="498" y2="150" marker-end="url(#arrow5a)"/>
+        <rect class="dbox strong" x="500" y="55" width="250" height="190" rx="2"/>
+        <text class="dtext on" x="625" y="118" font-size="19" text-anchor="middle">CANONICAL RECORD</text>
+        <text class="dsub on" x="625" y="150" font-size="14" text-anchor="middle">volume in mL</text>
+        <text class="dsub on" x="625" y="172" font-size="14" text-anchor="middle">original value kept</text>
+        <text class="dsub on" x="625" y="194" font-size="14" text-anchor="middle">conversion rule logged</text>
+        <line class="darrow" x1="750" y1="125" x2="796" y2="80" marker-end="url(#arrow5a)"/>
+        <line class="darrow" x1="750" y1="175" x2="796" y2="220" marker-end="url(#arrow5a)"/>
+        <rect class="dbox" x="800" y="30" width="240" height="100" rx="2"/>
+        <text class="dtext" x="920" y="76" font-size="18" text-anchor="middle">SEARCH AND FILTERS</text>
+        <text class="dsub" x="920" y="102" font-size="13" text-anchor="middle">compared in mL</text>
+        <rect class="dbox" x="800" y="170" width="240" height="100" rx="2"/>
+        <text class="dtext" x="920" y="216" font-size="18" text-anchor="middle">BUYER DISPLAY</text>
+        <text class="dsub" x="920" y="242" font-size="13" text-anchor="middle">shown in the local unit</text>
+      </svg>
+    </div>
+    <figcaption>Figure 5.1 — The journey of one capacity value. The canonical record keeps the original value and the conversion rule, so an incorrect conversion can be traced and repaired.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Data Arrives With a History</h2>
+    <div class="prose">
+        <p>The marketplace's catalog is assembled from sources with different incentives and authority. A manufacturer may supply dimensions and care instructions; a seller supplies price and availability; a logistics partner reports shipment events; the customer supplies an address. An inferred preference derived from browsing is another kind of information again. Treating these records as equally authoritative makes the platform easier to build and harder to trust.</p>
+        <p>For the cobalt flask, the team should know who declared the capacity, which unit was supplied, whether the value was verified and when the record changed. Normalization should preserve the original value and the transformation rule so that an incorrect conversion can be traced and repaired. A derived field without provenance can spread the same mistake into search, recommendations, exports and advertising feeds.</p>
+        <p>Freshness also depends on the decision. A color description may remain valid for a long time; availability can change while a customer is browsing. The dataset therefore needs quality expectations connected to use. Completeness, validity, consistency, uniqueness, freshness and accuracy offer useful dimensions, but the target for each should be chosen according to the consequence of error.</p>
+        <p>Accuracy requires particular care. A value matching its allowed format is valid; it is accurate only if it represents the relevant reality. We can check that capacity is a positive number automatically, but that does not prove the flask holds the declared amount. Likewise, a coordinate can pass a format check and still send a courier to the wrong entrance. The production process for data needs evidence beyond clean formatting.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Geography Reaches the Copies</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — Rows of plain, unmarked shipping containers at a port, with a single cobalt container in one row. ]</span>
+          <img src="chapter-05-container-yard.jpg" alt="Rows of plain, unmarked shipping containers at a port, with a single cobalt container in one row." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.11 — Data, like cargo, leaves a record at every stop.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>When the marketplace expands, data location becomes more complex than selecting a database region. An address can travel to a shipping partner, a fraud service, a support tool and an analytics pipeline. Copies may appear in logs, exports, backups and incident records. Remote access and provider arrangements also need examination; the location of the primary database does not describe the entire processing environment.</p>
+        <p>For European personal data, the GDPR's transfer framework requires attention when information is transferred outside the European Economic Area. The EDPB describes mechanisms including adequacy decisions and appropriate safeguards such as standard contractual clauses.<sup><a href="#ref-5">5</a></sup> That is different from claiming that every European dataset must always remain physically inside Europe. The applicable arrangement depends on the actual flow and circumstances.</p>
+        <p>Mexico requires its own analysis. A new private-sector personal-data law took effect on 21 March 2025, replacing the 2010 text, and supervision moved from the former INAI to the Secretaría Anticorrupción y Buen Gobierno. Its principles include purpose, proportionality, information and accountability; it recognizes access, rectification, cancellation and opposition rights and addresses security and transfers.<sup><a href="#ref-6">6</a>, <a href="#ref-8">8</a></sup> A regional implementation needs those obligations reflected in notices, handling processes and system behavior, rather than inherited unquestioningly from another market.</p>
+        <p>The United States introduces another reason to avoid a single regional assumption. California's CCPA, where applicable, includes rights concerning access, deletion, correction, sale or sharing and certain uses of sensitive personal information.<sup><a href="#ref-7">7</a></sup> That example does not describe every US business or jurisdiction. It shows why a country selector is too coarse to serve as the sole privacy rule engine.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Security Becomes Product Behavior</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A ring of several keys of different sizes, one with a cobalt tag, resting on a metal tray. ]</span>
+          <img src="chapter-05-key-ring.jpg" alt="A ring of several keys of different sizes, one with a cobalt tag, resting on a metal tray." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.12 — Different keys for different doors: access follows responsibility.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Security decisions change who can do what inside the marketplace. Seller A should see the orders needed to fulfill its sales without gaining access to Seller B's customers. A support agent may need delivery information without unrestricted access to exported personal records. Administrative actions need appropriate authorization and traceability because the platform can harm customers through misuse as well as through an external attack.</p>
+        <p>These decisions should follow specific threats and responsibilities. They affect service identities, access rules, secrets, notification verification, audit records and incident response. Encryption contributes protection, but it does not decide whether a user was entitled to retrieve a record or whether a provider should have received it. Product design needs to connect controls to the actual paths through which information and money move.</p>
+        <p>Deletion also exposes the architecture. Removing a customer profile does not automatically remove data from every downstream system. Some records may need retention for a justified obligation, while information no longer needed should have a defined disposition. The product must explain and implement those differences, including how restored backups avoid silently reinstating information that should remain deleted.</p>
+        <p>A regional constraint register makes this manageable. Each requirement should identify the relevant market, data category, purpose, responsible entity, affected flow, implementation decision, reviewer and evidence date. Legal and security specialists establish the applicable obligations; product and engineering translate them into testable behavior. Compliance then influences the design while alternatives remain available, instead of becoming an unexplained obstacle at launch.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figure 5.2</p>
+    <figure>
+    <div class="frame">
+      <svg viewBox="-2 0 1044 200" role="img" aria-label="Six materials feed the promise of one purchase: capacity, stock, address, carrier, payment and order">
+        <defs><marker id="arrow5b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="40" width="150" height="120" rx="2"/><text class="dtext" x="75" y="92" font-size="17" text-anchor="middle">CAPACITY</text><text class="dsub" x="75" y="118" font-size="13" text-anchor="middle">unit stated,</text><text class="dsub" x="75" y="136" font-size="13" text-anchor="middle">value verified</text>
+        <line class="darrow" x1="150" y1="100" x2="176" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="178" y="40" width="150" height="120" rx="2"/><text class="dtext" x="253" y="92" font-size="17" text-anchor="middle">STOCK</text><text class="dsub" x="253" y="118" font-size="13" text-anchor="middle">fresh enough</text><text class="dsub" x="253" y="136" font-size="13" text-anchor="middle">to promise?</text>
+        <line class="darrow" x1="328" y1="100" x2="354" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="356" y="40" width="150" height="120" rx="2"/><text class="dtext" x="431" y="92" font-size="17" text-anchor="middle">ADDRESS</text><text class="dsub" x="431" y="118" font-size="13" text-anchor="middle">original entry</text><text class="dsub" x="431" y="136" font-size="13" text-anchor="middle">kept beside result</text>
+        <line class="darrow" x1="506" y1="100" x2="532" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="534" y="40" width="150" height="120" rx="2"/><text class="dtext" x="609" y="92" font-size="17" text-anchor="middle">CARRIER</text><text class="dsub" x="609" y="118" font-size="13" text-anchor="middle">serves this address,</text><text class="dsub" x="609" y="136" font-size="13" text-anchor="middle">at this price?</text>
+        <line class="darrow" x1="684" y1="100" x2="710" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="712" y="40" width="150" height="120" rx="2"/><text class="dtext" x="787" y="92" font-size="17" text-anchor="middle">PAYMENT</text><text class="dsub" x="787" y="118" font-size="13" text-anchor="middle">pending is</text><text class="dsub" x="787" y="136" font-size="13" text-anchor="middle">not failed</text>
+        <line class="darrow" x1="862" y1="100" x2="888" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox strong" x="890" y="40" width="150" height="120" rx="2"/><text class="dtext on" x="965" y="92" font-size="17" text-anchor="middle">ORDER</text><text class="dsub on" x="965" y="118" font-size="13" text-anchor="middle">every state</text><text class="dsub on" x="965" y="136" font-size="13" text-anchor="middle">traceable</text>
+      </svg>
+    </div>
+    <figcaption>Figure 5.2 — One purchase, six materials. Each box carries a property the promise depends on: a verified unit, a freshness window, the original address entry, carrier coverage, pending versus failed states and a traceable order record.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="framework">
+  <div class="wrap">
+    <h2>Map the Digital Materials</h2>
+    <p class="lede">Four stages connect a customer promise to the services, information and conditions that make it possible.</p>
+    <div class="steps">
+      <div class="step"><p class="n">01</p><h3>Define</h3><p>State what the customer must be able to rely on, in testable terms.</p></div>
+      <div class="step"><p class="n">02</p><h3>Trace</h3><p>Link each promise to the services and data that produce it.</p></div>
+      <div class="step"><p class="n">03</p><h3>Test</h3><p>Gather regional evidence: samples, failures and lifecycle cases.</p></div>
+      <div class="step"><p class="n">04</p><h3>Decide</h3><p>Launch, adapt or withhold, with an owner and a review trigger.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>From Promise to Decision</h2>
+    <div class="prose">
+        <p>We can bring these questions together through a four-stage <b>Digital Materials Map</b>: define, trace, test and decide. This is a working method proposed for this chapter, rather than a formal certification standard. Its purpose is to connect a customer promise to the services, information and conditions that make it possible, so that product, engineering, operations and control functions can examine the same decision.</p>
+        <p><b>Define the promise.</b> Begin with a journey narrow enough to examine: a customer buys the cobalt flask for delivery to a specified address. Define what the platform intends to assert about capacity, stock, payment and delivery. “Support international commerce” is too broad to test. “Accept an eligible order, confirm payment without duplicate collection and quote a carrier-supported delivery option” gives the team identifiable states and dependencies.</p>
+        <p>Set acceptance criteria before comparing providers. For illustration, the team might require capacity units to be explicit, stock to be reserved before an order is finally confirmed, and ambiguous addresses to receive customer confirmation. A proposed latency target should state where it is measured, under what load and with which percentile. These are design targets to validate, not industry-wide benchmarks.</p>
+        <p><b>Trace the materials.</b> Create one record for each consequential API and dataset. Include its owner, source or provider, supported markets, operations, schema, business meaning, authentication, sensitivity, processing locations, permitted uses, retention, quotas, cost drivers, failure behavior and exit conditions. Attach evidence and a review date. Unknown properties should remain marked as unknown rather than replaced with optimistic assumptions.</p>
+        <p>Trace the journey through those records. The capacity originates with the supplier; catalog normalization creates a canonical quantity; inventory supports availability; address interpretation suggests a location; carrier coverage establishes serviceability; payment and order services establish financial and commercial states. Draw the data recipients separately where necessary. A technical dependency map and a personal-data flow map overlap, but neither fully substitutes for the other.</p>
+        <p><b>Test the properties.</b> Test candidate services with representative regional samples and lifecycle cases. For data, inspect missing units, conflicting seller descriptions, stale inventory and duplicate identifiers. For APIs, test timeouts, rate limits, authentication failures, duplicate notifications and recovery. Measure end-to-end behavior as well as individual services because a fast endpoint can still contribute to a slow or unreliable journey.</p>
+        <p>For example, suppose a geocoding pilot uses 200 appropriately handled test addresses in a target delivery area. If 164 are correctly resolved without customer intervention, the observed unassisted resolution rate is 82%. That invented result is a teaching example, not a provider evaluation. Segment the failures by relevant address characteristics and compare with carrier acceptance; the average alone cannot tell us whether the material supports the intended market.</p>
+        <p><b>Decide with conditions.</b> Use mandatory gates before a weighted comparison. If a payment provider cannot contractually support the required seller model, a high usability score cannot make it eligible. If a data use is not permitted, low cost cannot compensate. Once candidates pass the necessary gates, compare quality, reliability, regional fit, economics and switching effort using weights agreed for the journey.</p>
+        <p>An illustrative score can use ratings from one to five and weights totaling one: quality 0.30, reliability 0.25, regional fit 0.20, economics 0.15 and switching effort 0.10, with higher switching scores meaning easier exit. Record the evidence behind each rating and check whether reasonable weight changes reverse the choice. The score supports a decision; it does not eliminate uncertainty or override a failed gate.</p>
+    </div>
+    
+  </div>
+</section>
+<section class="facts" aria-label="Illustrative geocoding pilot figures, invented for teaching">
+  <div class="wrap">
+    <div><b>200</b><span>TEST ADDRESSES IN THE<br/>ILLUSTRATIVE PILOT</span></div>
+    <div><b>164</b><span>RESOLVED WITHOUT<br/>CUSTOMER HELP</span></div>
+    <div><b>82%</b><span>UNASSISTED RESOLUTION<br/>(AN INVENTED EXAMPLE)</span></div>
+    </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Measure the Assembled Promise</h2>
+    <div class="prose">
+        <p>The resulting map should support a short set of measures that operations can maintain. A provider's availability percentage is useful, but the customer depends on successful completion of a journey. Likewise, counting geocoding responses says little about correct delivery. The denominator needs to represent the decision we are evaluating, and exclusions need to be visible.</p>
+        <p>Suppose the cheapest mapping service requires more customer corrections and produces more failed delivery attempts. Its request price is lower, but its contribution to cost per fulfilled order may be higher. The same logic applies to a payment provider with inexpensive successful charges but costly exceptions, or an inventory feed that is cheap to ingest but expensive to correct after overselling.</p>
+        <p>Measure these outcomes by market and meaningful segment. A launch limited to one delivery area should not be presented as proof of national coverage. A pilot conducted with carefully curated seller records should not establish a quality claim for unrestricted onboarding. The evidence defines the boundary of the decision, just as a thermal test defines the conditions under which the flask's retention claim was demonstrated.</p>
+    </div>
+    <div class="datawrap"><p class="tlabel">Table 5.3 — Five measures for the assembled promise</p><table><thead><tr><th class="">Measure</th><th class="">Practical definition</th><th class="">Design consequence</th></tr></thead><tbody><tr><td class="" data-label="Measure">Catalog unit completeness</td><td class="" data-label="Practical definition">In-scope capacity records with explicit, recognized units / all in-scope capacity records</td><td class="" data-label="Design consequence">Hold ambiguous listings for correction</td></tr><tr><td class="" data-label="Measure">Stock freshness compliance</td><td class="" data-label="Practical definition">Required stock records within the agreed freshness limit / records assessed</td><td class="" data-label="Design consequence">Restrict immediate availability promises</td></tr><tr><td class="" data-label="Measure">Unassisted address resolution</td><td class="" data-label="Practical definition">Addresses correctly resolved without customer correction / representative addresses tested</td><td class="" data-label="Design consequence">Introduce confirmation or manual alternatives</td></tr><tr><td class="" data-label="Measure">Payment reconciliation coverage</td><td class="" data-label="Practical definition">Payment attempts linked to an explained authoritative state / attempts in the reconciliation window</td><td class="" data-label="Design consequence">Investigate unresolved states before fulfillment</td></tr><tr><td class="" data-label="Measure">Cost per fulfilled order</td><td class="" data-label="Practical definition">Attributable service costs, including failed attempts and retries / fulfilled orders</td><td class="" data-label="Design consequence">Compare providers against achieved business output</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="quote-essay">
+  <div class="wrap">
+    <h2>Let Evidence Change the Design</h2>
+    <div class="grid">
+      <div><blockquote>A promise blocked by an unknown dependency is different from a feature postponed for lack of capacity.</blockquote></div>
+      <div class="essay">
+        <p>Imagine that our first pilot reveals good catalog quality but weak inventory timeliness from several sellers. The design could allow those sellers to list products while withholding immediate availability claims, or require a stronger inventory integration before enabling that promise. The appropriate response depends on the business model, but either choice acknowledges the material's actual properties.</p>
+        <p>Now suppose address testing shows that autocomplete performs well in the initial delivery area but does not reliably handle another intended area. The marketplace can retain manual entry, validate serviceability with carriers and narrow its launch boundary while investigating alternatives. A polished map interaction should not force the business to accept addresses it cannot serve dependably.</p>
+        <p>Expansion into Portugal might also reveal different payment arrangements, seller onboarding requirements and personal-data flows. The team can retain common definitions for orders, quantities and state transitions while varying providers and approved processing arrangements. Shared architecture should preserve coherent meaning; it need not impose an identical supply network on every region.</p>
+        <p>Those decisions belong in the roadmap with owners and conditions. A promise blocked by an unknown dependency is different from a feature postponed for lack of capacity. Showing that distinction helps leaders invest in the missing evidence, contractual arrangement or service capability. Product design then evolves through informed choices about materials, rather than through repeated surprise during implementation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>What the Flask Teaches Us</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ 4:5 portrait — A cobalt flask and a smartphone showing an abstract cobalt shape on its lock screen, side by side on one surface. ]</span>
+          <img src="chapter-05-flask-and-phone.jpg" alt="A cobalt flask and a smartphone showing an abstract cobalt shape on its lock screen, side by side on one surface." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figure 5.13 — The same question, in two materials.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Return to the cobalt flask. Its visible simplicity is the result of many coordinated choices: a purpose, a material specification, a production route, a closure, a finish, a capacity convention and a supply arrangement. When those choices fit, the buyer can use the object without knowing their details. When they do not, the buyer experiences the unresolved decision as leakage, inconvenience, wear or disappointment.</p>
+        <p>The marketplace achieves a similar simplicity only when its underlying services and information support the offered experience. The customer should not need to understand reservation expiry, provider notifications, address normalization or international transfer arrangements. The team must understand them well enough to make the purchase dependable.</p>
+        <p>This is why APIs and data belong in product discovery. They determine which promises can be made, where they can be made and what maintaining them will require. Regional constraints are part of that design space, alongside commercial capability, security, operating cost and market acceptance. Mapping those conditions early allows the team to shape a product that can survive beyond its demonstration.</p>
+        <p>If a product's behavior depends on the properties of its materials, and those properties change with source, process and region, then its design must begin with those conditions. The interface is where the customer encounters the decision. It is not where the decision begins.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+{/* 11 — REFERENCES */}
+<section class="refs">
+  <div class="wrap">
+    <h2>References</h2>
+    <p class="note">Sources checked on 5 October 2026. Examples, pilot figures and evaluation weights are illustrative. The regional discussion identifies design questions; applicable obligations depend on the actual entities, activities, contracts and data flows.</p>
+    <ol>
+      <li id="ref-1"><b>NIST — Measurement conversions.</b> <a href="https://www.nist.gov/pml/owm/metric-si/unit-conversion/approximate-conversions-us-customary-measures-metric" rel="noopener">Approximate conversions from US customary measures to metric</a> and <a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9" rel="noopener">SI Guide, Appendix B.9</a>. US and Imperial fluid-ounce conversions.</li>
+      <li id="ref-2"><b>OpenAPI Initiative — <a href="https://spec.openapis.org/oas/" rel="noopener">OpenAPI Specification</a>.</b> Standard descriptions of HTTP API interfaces; the material records in this chapter add product and operational context.</li>
+      <li id="ref-3"><b>PCI Security Standards Council — <a href="https://www.pcisecuritystandards.org/faqs/does-pci-dss-apply-to-merchants-who-outsource-all-payment-processing-operations-and-never-store-process-or-transmit-cardholder-data/" rel="noopener">Does PCI DSS apply to merchants who outsource all payment processing?</a>.</b> Outsourcing, reduced scope and retained merchant responsibilities. See also <a href="https://www.pcisecuritystandards.org/standards/pci-dss/" rel="noopener">PCI DSS</a>.</li>
+      <li id="ref-4"><b>Google Maps Platform — <a href="https://developers.google.com/maps/documentation/geocoding/policies" rel="noopener">Policies and attributions for Geocoding API</a>.</b> Usage, storage and attribution conditions; review the applicable agreement for the intended implementation.</li>
+      <li id="ref-5"><b>European Data Protection Board — <a href="https://www.edpb.europa.eu/sme/be-compliant/international-data-transfers_en" rel="noopener">International data transfers</a>.</b> Transfer mechanisms and safeguards under the GDPR framework.</li>
+      <li id="ref-6"><b>Cámara de Diputados — <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</a>.</b> Current text displayed with the reform dated 14 November 2025; especially the provisions concerning principles, rights, security and transfers.</li>
+      <li id="ref-7"><b>California Department of Justice — <a href="https://www.oag.ca.gov/privacy/ccpa" rel="noopener">California Consumer Privacy Act</a>.</b> Rights and applicability under the CCPA as amended; this is a California example, not a summary of all US privacy requirements.</li>
+      <li id="ref-8"><b>Creel — <a href="https://www.creel.mx/publicaciones/alertas-clientes/federal-law-for-the-protection-of-personal-data-in-the-possession-of-private-parties/" rel="noopener">Federal Law for the Protection of Personal Data in the Possession of Private Parties</a>.</b> Client alert on the 20 March 2025 decree: new law in force on 21 March 2025, 2010 law repealed, supervisory functions transferred from the INAI to the Secretaría Anticorrupción y Buen Gobierno.</li>
+    </ol>
+  </div>
+</section>
+
+{/* COLOPHON */}
+<section class="colophon">
+  <div class="wrap">
+    <h2>Edition history — Chapter 05</h2>
+    <table>
+      <thead><tr><th>Version</th><th>Date</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td class="v">v0.1</td><td class="d">Oct 5, 2026</td><td class="n">First draft — the flask as a design lesson, APIs and data as digital materials, payments, delivery, data provenance, regional rules, security and the Digital Materials Map.</td></tr>
+        <tr><td class="v">v0.2</td><td class="d">Oct 5, 2026</td><td class="n">Editorial pass: American spelling unified across the chapter, three-column intro and capacity facts added, Mexico data-protection reference updated to the law in force since March 2025, magazine layout with 13 photographs and two diagrams.</td></tr>
+        <tr><td class="v">v0.3</td><td class="d">Oct 5, 2026</td><td class="n">Typography aligned to the design system: reading text at 18–21 px with 1.66 line height and 62ch measure, serif weights 400/500/600 loaded, h2 and facts scale per spec, secondary serif text raised to 16 px. Spanish edition published with EN/ES switcher.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{/* CHAPTER NAVIGATION */}
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <a class="prev" href="ebook-chapter-04.html">
+      <p class="dir">← Chapter 04</p>
+      <p class="ctitle">The Product Is Never Just the Object</p>
+    </a>
+    <a class="next locked" href="#" aria-disabled="true">
+      <p class="dir">Chapter 06 — coming soon →</p>
+      <p class="ctitle">Next in Part II</p>
+    </a>
+  </div>
+</nav>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <span>J. Angel Sosa — Thinking in Products, Building Systems</span>
+    <span><a href="ebook.html">All chapters</a> · <a href="#rss">RSS</a> · <a href="#privacy">Privacy</a></span>
+  </div>
+</footer>
+
+

@@ -1,0 +1,543 @@
+---
+// Layout or custom Astro logic here if needed
+const chapter = 5;
+const title = "Materiales Digitales: APIs, Datos y Restricciones";
+const summary = "Un termo revela cómo los materiales, el abasto regional y los procesos de manufactura dan forma a un producto.";
+---
+
+<div class="topbar">
+  <div class="wrap row">
+    <a class="home" href="es-ebook.html">JAS</a>
+    <div class="chapmeta"><b>Capítulo 05</b><span>Materiales Digitales: APIs, Datos y Restricciones</span></div>
+    <nav aria-label="Libro">
+      <a href="es-ebook.html">Contenido</a>
+      <a href="es-author.html">Autor</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma"><a href="ebook-chapter-05.html" hreflang="en">EN</a><span aria-hidden="true">/</span><a href="es-ebook-chapter-05.html" aria-current="page">ES</a></div>
+    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+</div>
+
+{/* 1 — OPENER */}
+<header class="opener">
+  <span class="num" aria-hidden="true">05</span>
+  <div class="wrap">
+    <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 05</p>
+    <h1>Materiales Digitales: APIs, Datos y Restricciones</h1>
+    <p class="dek">Un producto toma forma a partir de los materiales que podemos conseguir, transformar y en los que podemos confiar. En un marketplace, las APIs y los datos llevan esas mismas condiciones a cada promesa al cliente.</p>
+    <div class="meta">
+      <span>5 oct 2026</span>
+      <span>29 min de lectura</span>
+      <span>Edición viva 0.3</span>
+      <span>Estado: en desarrollo</span>
+    </div>
+  </div>
+</header>
+
+{/* 2 — INTRO */}
+<section class="intro">
+  <div class="wrap cols">
+    <p>Un termo es un objeto modesto, y por eso enseña tan bien. Su superficie cobalto esconde un recipiente, un vacío, un sello y un acabado, cada uno elegido por lo que puede hacer, por dónde se puede conseguir y por cómo se comporta cuando alguien lo lleva en un trayecto lluvioso. Nadie que lo compra ve esas decisiones; todos las sienten cuando una falla.</p>
+    <p>Un marketplace esconde decisiones del mismo tipo. Detrás de una página de producto hay fuentes de inventario, servicios de pago, búsquedas de direcciones y datos copiados de un sistema a otro, y cada uno tiene propiedades que cambian con el proveedor, el mercado y el día. Esas propiedades fijan el límite de lo que la página puede prometer con honestidad.</p>
+    <p>Este capítulo trata las APIs y los datos como materiales. Empezamos con el termo (su propósito, su abasto, su proceso y su mercado) y luego llevamos las mismas preguntas a un marketplace hipotético de artículos para bebidas: pagos, entrega, procedencia de los datos, reglas regionales y seguridad. Cierra con el Mapa de Materiales Digitales, un método de cuatro etapas para convertir una promesa al cliente en evidencia que un equipo pueda probar.</p>
+  </div>
+</section>
+
+{/* 3 — FACTS */}
+<section class="facts" aria-label="Dos onzas, un termo: la brecha de capacidad">
+  <div class="wrap">
+    <div><b>591 mL</b><span>20 ONZAS LÍQUIDAS DE EE. UU.,<br/>CONVERTIDAS</span></div>
+    <div><b>568 mL</b><span>20 ONZAS LÍQUIDAS IMPERIALES,<br/>CONVERTIDAS</span></div>
+    <div><b>23 mL</b><span>LA BRECHA ENTRE AMBAS,<br/>EN UN SOLO TERMO</span></div>
+    </div>
+</section>
+
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Antes del Primer Dibujo</h2>
+    <div class="poster">
+      <div class="frame">
+        <span>[ lámina 16:9 — Un termo cobalto con la tapa cerrada, de pie sobre una mesa lisa bajo luz suave de día. ]</span>
+        <img src="chapter-05-cobalt-flask-table.jpg" alt="Un termo cobalto con la tapa cerrada, de pie sobre una mesa lisa bajo luz suave de día." width="3200" height="1800" loading="lazy" onerror="this.remove()" />
+      </div>
+      <div class="platecap"><b>Lámina 5.1</b><span>Un termo cobalto de doble pared sobre una mesa vacía: todo el producto de un vistazo, antes de que alguien pregunte de qué está hecho.</span></div>
+    </div>
+    <div class="prose">
+        <p>Un termo descansa sobre la mesa. Su superficie cobalto parece simple, y la tapa cierra con un giro tranquilizador. Alguien ve un recipiente útil; alguien más ve un regalo. El diseñador ve acero, un sello, un espacio aislante y los procesos que permiten que todo eso funcione junto.</p>
+        <p>Lleva ese termo a otro mercado y las preguntas cambian. ¿Puede el mismo proveedor entregar allá? ¿Sobrevive el acabado al uso previsto? ¿Entenderán los compradores su capacidad? Un objeto que parece completo sigue dependiendo de dónde se fabricará, se venderá, se cargará, se lavará y se reparará.</p>
+        <p>Un producto digital entra a la misma conversación. El marketplace en una pantalla se arma con servicios e información cuyas propiedades varían según el proveedor y la región. Antes de decidir qué deben ver los clientes, necesitamos entender qué le permiten prometer al negocio estos materiales.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>El Propósito Dentro del Objeto</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Tres artículos para bebidas sin marca, lado a lado: un termo delgado de trayecto, un termo alto sostenido con guante y un vaso abierto de escritorio. ]</span>
+          <img src="chapter-05-three-uses.jpg" alt="Tres artículos para bebidas sin marca, lado a lado: un termo delgado de trayecto, un termo alto sostenido con guante y un vaso abierto de escritorio." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.2 — Una necesidad, tres trabajos: el trayecto, la obra y el escritorio.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Empecemos con una persona que se traslada y quiere que su café siga caliente durante el viaje y llegue sin escurrirse en la mochila. El requisito suena ordinario, pero le da al objeto una forma particular. El termo debe caber en el espacio disponible, ser cómodo de cargar, abrirse sin esfuerzo excesivo y ser lo bastante fácil de limpiar para que la bebida de ayer no se convierta en el problema de hoy. La capacidad importa, pero más capacidad no es automáticamente más valor.</p>
+        <p>Un trabajador al aire libre puede necesitar un recipiente más grande, una superficie manejable con guantes y una tapa que tolere la tierra. Quien trabaja en un escritorio puede preferir un vaso abierto, porque la comodidad de beber pesa más que la seguridad en el traslado. Si estos usos se reducen a un solo brief, el equipo puede fabricar un objeto que funciona bien en el laboratorio y mal en todas partes. El propósito determina qué propiedades del material merecen atención y qué concesiones son aceptables.</p>
+        <p>Consideremos, a modo de ilustración, un termo de acero inoxidable de doble pared. El recipiente interior toca la bebida, la carcasa exterior soporta el manejo y los golpes, el espacio entre ambos aporta el aislamiento, y la tapa y el empaque controlan el cierre. El grado de la aleación, por sí solo, no establece si el producto terminado es apto para su uso previsto en contacto con alimentos. El estado de la superficie, las uniones, los sellos, los recubrimientos cuando los hay, los controles de manufactura y la verificación forman parte de la misma decisión.</p>
+        <p>Esa distinción importará cuando lleguemos a la arquitectura digital. Decir que una plataforma usa una nube segura o un proveedor de pagos que cumple con la norma se parece a decir que un termo usa buen acero. Identifica un insumo. Todavía no explica el comportamiento del producto ensamblado, las condiciones en que funciona ni quién asumirá la responsabilidad cuando falle.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Un Material Tiene Domicilio</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Un termo desarmado en recipiente, tapa y empaque de goma, dispuestos sobre una superficie clara. ]</span>
+          <img src="chapter-05-flask-components.jpg" alt="Un termo desarmado en recipiente, tapa y empaque de goma, dispuestos sobre una superficie clara." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.3 — El recipiente puede fabricarse localmente mientras el empaque viaja.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Un diseñador puede especificar un material que existe en el catálogo de un proveedor y, aun así, descubrir que no está disponible en la forma, la cantidad o el calendario que el proyecto necesita. El espesor de la lámina, la capacidad de formado, el acceso a herramentales, el tamaño del lote y los componentes de repuesto pueden afectar si el diseño se puede producir. La disponibilidad es, por tanto, más específica que la existencia de acero en algún lugar del mundo.</p>
+        <p>Imaginemos dos opciones de manufactura. Un proveedor puede producir el recipiente y el acabado localmente, pero importa el empaque. Otro ofrece un ensamble completo desde una línea de producción consolidada, aunque el reabasto requiere un trayecto internacional más largo. Ninguna opción es superior en sí misma. La decisión depende del volumen, la variabilidad de las entregas, la inspección, la exposición de inventario, la estrategia de reparación y las consecuencias de una interrupción. Son opciones hipotéticas, no afirmaciones sobre las capacidades de un país en particular.</p>
+        <p>El color crea otra dependencia. Un acabado cobalto puede requerir una formulación de recubrimiento, un proceso de preparación y una capacidad de aplicación particulares. Su aspecto en una muestra pequeña no garantiza consistencia en un recipiente curvo ni entre lotes de producción. Un proveedor puede ofrecer el color deseado solo con un pedido mínimo que excede la demanda esperada. Las compras ya cambiaron la discusión de diseño: quizá el lanzamiento necesite menos variantes, otro proceso o un plan de reabasto más paciente.</p>
+        <p>La geografía entra por esa red de capacidades. La disponibilidad regional incluye lo que se puede conseguir cerca, lo que debe cruzar una frontera y lo que se puede reponer después de la venta. Un material que parece barato en la fábrica puede volverse caro cuando el negocio carga varios meses de inventario o no puede surtir una tapa de repuesto. El dibujo contiene un objeto; el arreglo de abasto determina si ese objeto puede convertirse en un producto confiable.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>El Proceso Cambia el Material</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Acercamiento de la base de acero inoxidable cepillado de un termo, con una unión soldada visible. ]</span>
+          <img src="chapter-05-weld-seam.jpg" alt="Acercamiento de la base de acero inoxidable cepillado de un termo, con una unión soldada visible." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.4 — Cada etapa hereda la condición que dejó la anterior.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>En una ruta de manufactura posible, el metal se forma en los recipientes interior y exterior, se recorta, se une y se prepara para el ensamble. El espacio aislante se evacúa y se sella; se colocan la tapa y el empaque; el exterior recibe su tratamiento especificado. La secuencia y los métodos exactos dependen del diseño y del sistema de producción. Lo útil es que las propiedades finales surgen del proceso, y no llegan intactas con los insumos comprados.</p>
+        <p>Una operación de formado puede crear defectos que afectan la unión posterior. Un sello puede parecer aceptable y fallar con el uso repetido. Un acabado puede adherirse bien al principio y comportarse distinto con la abrasión, el lavado o los cambios de temperatura. Cada etapa hereda la condición producida por la anterior, y una superficie atractiva puede esconder un problema que el usuario descubre solo después de comprar.</p>
+        <p>Por eso el diseñador necesita evidencia atada al uso previsto. Una prueba de retención térmica debe especificar la temperatura inicial, las condiciones ambientales, el volumen de llenado, la duración y la forma de apertura. Una prueba de fugas necesita una orientación y un escenario de manejo. Una evaluación de color o acabado necesita una referencia y un método de inspección repetible. Sin esas condiciones, dos proveedores pueden reportar pruebas exitosas describiendo desempeños distintos.</p>
+        <p>El paralelo con el procesamiento de datos ya es visible. La información puede extraerse bien, transformarse mal y mostrarse de forma hermosa. Una API puede devolver una respuesta técnicamente válida cuyo significado cambia durante la normalización. La interfaz final hereda esas transformaciones igual que el termo hereda su historia de manufactura. Examinar la superficie terminada es necesario, pero llega demasiado tarde para ser la única forma de control de calidad.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>El Color Llega al Mercado</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Cuatro muestras de acero recubierto en tonos de cobalto ligeramente distintos bajo la misma luz rasante. ]</span>
+          <img src="chapter-05-cobalt-finish-samples.jpg" alt="Cuatro muestras de acero recubierto en tonos de cobalto ligeramente distintos bajo la misma luz rasante." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.5 — Un solo nombre para el color, cuatro lotes distintos.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Supongamos que el termo cobalto llega a los compradores. Su color puede sugerir precisión técnica a un público, estilo personal a otro y un desajuste incómodo a quien elige accesorios para una oficina. El peso puede sentirse tranquilizador en una demostración en tienda y pesado durante un trayecto diario. Estas interpretaciones son hipótesis por investigar con el público previsto; no se pueden asignar con fiabilidad a todo un país.</p>
+        <p>El acabado también participa en el uso. Una superficie texturizada puede ayudar al agarre y complicar la limpieza. Una superficie brillante puede mostrar huellas o desgaste de maneras que el comprador no quiere. Si las fotografías exageran el color u ocultan la textura real, la brecha entre percepción y experiencia se vuelve una fuente de devoluciones. Las decisiones estéticas se convirtieron en insumos operativos.</p>
+        <p>Podemos examinar la aceptación observando a usuarios representativos cargar, llenar, abrir y lavar el objeto, y comparando esos hallazgos con las compras y las devoluciones. Una preferencia declarada por un color es distinta de la disposición a comprarlo al precio previsto. Las ventas también pueden engañar si una variante recibe mejor lugar en el anaquel, más publicidad o inventario más confiable. La medición de mercado necesita explicar las condiciones que produjeron el resultado.</p>
+        <p>Para el producto digital, la pregunta equivalente es si la interacción ofrecida se siente creíble y usable localmente. Un método de pago conocido, un formulario de dirección que acepta la dirección real del cliente y una estimación de entrega que resulta confiable pueden importar más que la consistencia visual entre países. La aceptación surge del encuentro entre las capacidades de un producto y las circunstancias de las personas.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>La Capacidad Necesita un Idioma</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Una jarra medidora de vidrio con marcas ilegibles junto a un termo, con el agua cerca del borde de la abertura. ]</span>
+          <img src="chapter-05-measuring-jug.jpg" alt="Una jarra medidora de vidrio con marcas ilegibles junto a un termo, con el agua cerca del borde de la abertura." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.6 — La capacidad medida hasta el borde no es capacidad que se pueda usar.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Una etiqueta de capacidad parece una pequeña tarea de localización. Sin embargo, “20 onzas” está incompleto si no sabemos si se refiere a masa o a volumen de fluido, y qué convención de onza líquida aplica. Las tablas de conversión de NIST distinguen la onza líquida de EE. UU. de la imperial: aproximadamente 29.57 mL y 28.41 mL, respectivamente. Veinte onzas líquidas de EE. UU. equivalen entonces a unos 591 mL; veinte onzas líquidas imperiales equivalen a unos 568 mL.<sup><a href="#ref-1">1</a></sup></p>
+        <p>Estas diferencias no autorizan a reetiquetar como 600 mL cada termo de 20 oz líquidas de EE. UU. El fabricante necesita una capacidad verificada, un procedimiento de medición acordado y un etiquetado adecuado para cada mercado. La capacidad útil de llenado también puede diferir del volumen medido hasta el borde. Un comprador no debería descubrir esa distinción derramando el contenido al colocar la tapa.</p>
+        <p>La capacidad nos devuelve al propósito. ¿Cabe en el recipiente la bebida que vende la cafetería de la esquina? ¿Puede la persona cargarlo con comodidad? ¿Es la abertura adecuada para llenar y limpiar? Las convenciones regionales ayudan a interpretar el objeto, pero el volumen físico aún debe cumplir el trabajo previsto. Una conversión puede ser matemáticamente correcta y comercialmente engañosa si la cantidad original nunca se definió.</p>
+        <p>Ahora imaginemos el termo entrando a un marketplace. Un vendedor envía “20 oz”, otro “600 ml” y un tercero pone la capacidad solo en una imagen. La búsqueda, los filtros y las comparaciones necesitan una representación canónica, mientras que los compradores necesitan una presentación comprensible localmente. Si la plataforma trata en silencio todos los números como equivalentes, el catálogo introduce defectos antes de que el cliente llegue al checkout. La localización dejó al descubierto un problema del modelo de datos.</p>
+      </div>
+    </div>
+    <div class="datawrap"><p class="tlabel">Tabla 5.1 — Una botella, tres maneras de declarar su capacidad</p><table><thead><tr><th class="">Expresión de capacidad</th><th class="r">Volumen aproximado</th><th class="">Lo que el equipo debe establecer</th></tr></thead><tbody><tr><td class="" data-label="Expresión de capacidad">20 oz líquidas (EE. UU.)</td><td class="r" data-label="Volumen aproximado">591 mL</td><td class="" data-label="Lo que el equipo debe establecer">Que se pretende la convención de volumen de EE. UU.</td></tr><tr><td class="" data-label="Expresión de capacidad">20 oz líquidas (imperiales)</td><td class="r" data-label="Volumen aproximado">568 mL</td><td class="" data-label="Lo que el equipo debe establecer">Que se pretende la convención de volumen imperial</td></tr><tr><td class="" data-label="Expresión de capacidad">600 mL</td><td class="r" data-label="Volumen aproximado">600 mL</td><td class="" data-label="Lo que el equipo debe establecer">La capacidad declarada y el procedimiento de medición</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Del Termo al Marketplace</h2>
+    <div class="poster">
+      <div class="frame">
+        <span>[ lámina 16:9 — Un anaquel de termos y vasos sin marca de tamaños mezclados, acomodados de forma despareja, con un termo cobalto cerca del centro. ]</span>
+        <img src="chapter-05-drinkware-shelf.jpg" alt="Un anaquel de termos y vasos sin marca de tamaños mezclados, acomodados de forma despareja, con un termo cobalto cerca del centro." width="3200" height="1800" loading="lazy" onerror="this.remove()" />
+      </div>
+      <div class="platecap"><b>Lámina 5.7</b><span>Muchos vendedores, un solo anaquel: el catálogo se arma con fuentes que nunca acordaron un formato.</span></div>
+    </div>
+    <div class="prose">
+        <p>Seguiremos a un marketplace hipotético que vende artículos para bebidas de varios comerciantes, al principio en México y después en Estados Unidos y Portugal. Opera la experiencia de compra y coordina a los vendedores, los pagos y los socios de surtido. El escenario es ilustrativo: las decisiones de servicio, los umbrales y las mediciones que siguen son ejemplos de diseño propuestos, no resultados de una implementación real.</p>
+        <p>El marketplace necesita descripciones de producto, identidades de vendedores, inventario, precios, servicios de pago, interpretación de direcciones, información de envío y registros de pedidos. Cada insumo tiene una fuente y un historial de transformaciones. El atributo de capacidad puede originarse con un fabricante, pasar por una hoja de cálculo del vendedor y convertirse en un campo de búsqueda. El inventario puede llegar desde la API de un almacén cuyo calendario de actualización difiere del punto de venta del vendedor.</p>
+        <p>Llamar materiales digitales a estos insumos es útil porque nos anima a inspeccionar sus propiedades antes de comprometer un diseño. Los datos tienen frescura, completitud, procedencia y usos permitidos. Las APIs tienen operaciones soportadas, latencia, cuotas, comportamiento ante errores y límites contractuales. Su combinación afecta la experiencia de la misma forma en que el metal, los sellos y los procesos de producción afectan al termo.</p>
+        <p>La analogía tiene un límite. Un proveedor puede cambiar una API después del lanzamiento, retirar un servicio o alterar las condiciones de acceso. Los datos pueden copiarse entre sistemas, y esas copias pueden crear obligaciones adicionales. Los materiales digitales siguen siendo dependencias activas durante toda la operación. El equipo de producto necesita diseñar para su comportamiento continuo, y no solo aprobarlos al momento de la compra.</p>
+    </div>
+    <div class="datawrap"><p class="tlabel">Tabla 5.2 — Del termo al marketplace</p><table><thead><tr><th class="">Pregunta de diseño físico</th><th class="">Equivalente en el marketplace</th></tr></thead><tbody><tr><td class="" data-label="Pregunta de diseño físico">¿Está disponible el material requerido en esta región?</td><td class="" data-label="Equivalente en el marketplace">¿Está el servicio disponible, contractual y operativamente, para este mercado y este modelo de negocio?</td></tr><tr><td class="" data-label="Pregunta de diseño físico">¿Qué ocurre durante el formado y el ensamble?</td><td class="" data-label="Equivalente en el marketplace">¿Qué cambia durante la ingesta, la normalización y la orquestación?</td></tr><tr><td class="" data-label="Pregunta de diseño físico">¿Cómo se comporta el acabado en uso?</td><td class="" data-label="Equivalente en el marketplace">¿Cómo se comportan la interfaz y sus servicios de fondo en los recorridos locales del cliente?</td></tr><tr><td class="" data-label="Pregunta de diseño físico">¿Significa lo mismo la especificación de capacidad?</td><td class="" data-label="Equivalente en el marketplace">¿Conservan su significado las unidades, la moneda, las marcas de tiempo y los estados de negocio?</td></tr><tr><td class="" data-label="Pregunta de diseño físico">¿Se puede reemplazar un componente dañado?</td><td class="" data-label="Equivalente en el marketplace">¿Pueden migrarse los datos y los flujos a otro proveedor a un costo aceptable?</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="quote-essay">
+  <div class="wrap">
+    <h2>Una API Contiene una Promesa</h2>
+    <div class="grid">
+      <div><blockquote>Una respuesta sintácticamente correcta es el comienzo del contrato, no su contenido completo.</blockquote></div>
+      <div class="essay">
+        <p>Una API suele describirse por sus endpoints, su método de autenticación y su esquema de respuesta. Esos detalles son necesarios, pero una decisión de producto exige una capa adicional de significado. Una respuesta de inventario que dice que hay cinco unidades disponibles no nos dice si esas unidades pueden reservarse, si otro canal puede venderlas al mismo tiempo ni qué tan rápido se vuelve obsoleta la información.</p>
+        <p>Supongamos que la página promete “disponible ahora”, mientras el vendedor actualiza su inventario una vez por la noche. Ingeniería puede integrar ese feed a la perfección y el producto aun así decepcionar a los clientes. El material sostiene una estimación periódica; el diseño presenta una garantía inmediata. El problema está en la distancia entre las propiedades de la información y la promesa que se le adjunta.</p>
+        <p>Una operación de reserva cambia lo que es posible. El marketplace puede apartar una unidad mientras el comprador completa el pago, sujeta a una regla de expiración y a un proceso de liberación. Un pago fallido debe liberar la reserva; una confirmación tardía requiere conciliación; las solicitudes repetidas no deben crear varios apartados por accidente. Un nuevo endpoint creó nuevas responsabilidades a lo largo del recorrido.</p>
+        <p>Una descripción OpenAPI ayuda a documentar las operaciones HTTP, los parámetros y las estructuras de respuesta en una forma estándar.<sup><a href="#ref-2">2</a></sup> El equipo de producto debe complementarla con la semántica de negocio: qué cuenta como éxito, cuándo un resultado es autoritativo, cuánto tiempo sigue siendo utilizable y qué pasa si la confirmación nunca llega. Una respuesta sintácticamente correcta es el comienzo del contrato, no su contenido completo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>El Pago Empieza con el Modelo</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Una terminal de pago portátil en blanco sobre un mostrador, junto a un termo cerrado. ]</span>
+          <img src="chapter-05-card-terminal.jpg" alt="Una terminal de pago portátil en blanco sobre un mostrador, junto a un termo cerrado." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.8 — Quién vende, quién recibe los fondos y quién reembolsa se resuelve antes de que exista la pantalla de checkout.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Antes de elegir un proveedor de servicios de pago, el marketplace necesita establecer quién le vende al comprador, quién recibe los fondos, quién emite los reembolsos y quién asume las responsabilidades comerciales pertinentes. Un solo comerciante que vende su propio inventario es distinto de una plataforma que coordina pagos para varios vendedores. El alta de vendedores, la liquidación, las disputas y la conciliación pueden cambiar con ese modelo, aunque la pantalla de checkout se vea casi idéntica.</p>
+        <p>Esto también aclara una ambigüedad común. Nos conectamos a un procesador, una pasarela, un adquirente o una plataforma de pagos; PCI DSS es un estándar de seguridad, no un endpoint de servicio. Importan el alcance validado del proveedor, el método de integración y el propio entorno del marketplace. Tercerizar el procesamiento de pagos puede reducir los requisitos que se aplican directamente al entorno del comercio, pero el PCI Security Standards Council señala que las responsabilidades permanecen, incluida la supervisión del tercero.<sup><a href="#ref-3">3</a></sup></p>
+        <p>Para nuestro marketplace ilustrativo, una experiencia de pago alojada puede reducir la exposición directa a los datos de tarjeta. También afecta la navegación, la marca, los métodos de pago disponibles y el manejo de recorridos interrumpidos. El equipo debe entender, junto con el proveedor y los participantes relevantes del ecosistema de pagos, las implicaciones de seguridad y de evaluación de la integración elegida. Que un proveedor afirme comercialmente que “cumple con PCI” no resuelve esas preguntas por sí solo.</p>
+        <p>La capacidad regional necesita una precisión similar. Un servicio puede aceptar la tarjeta de un cliente en un país sin soportar cuentas locales de vendedores, las monedas de liquidación deseadas ni el modelo de dispersión del marketplace. Un método que funciona en un mercado puede requerir otro proveedor o flujo en otro. El material de pago da forma, a la vez, al modelo de negocio y al recorrido del cliente.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>El Pedido Sobrevive al Pago</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Dos paquetes pequeños de cartón con etiquetas en blanco, uno con un termo y otro con una tapa de repuesto. ]</span>
+          <img src="chapter-05-two-parcels.jpg" alt="Dos paquetes pequeños de cartón con etiquetas en blanco, uno con un termo y otro con una tapa de repuesto." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.9 — Una compra para el cliente, dos envíos para la operación.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Consideremos una canasta con un termo cobalto del Vendedor A y una tapa de repuesto del Vendedor B. El cliente ve una sola compra, pero el surtido puede involucrar dos inventarios, dos envíos y distintas oportunidades de cancelación. Si el arreglo de pago elegido no puede soportar las asignaciones o los reembolsos requeridos, el marketplace debe cambiar su proceso operativo o cambiar su promesa al comprador.</p>
+        <p>El pago también tiene una dimensión de tiempo. Una respuesta síncrona puede interrumpirse mientras el proveedor sigue procesando. Una notificación puede llegar tarde, repetirse o contradecir un estado local anterior. El marketplace necesita identificadores de pedido estables, notificaciones autenticadas, deduplicación y conciliación para que la incertidumbre no se convierta en un cargo duplicado o en un envío sin pagar.</p>
+        <p>La interfaz debe reflejar esos estados. “Pago pendiente” le da al cliente una instrucción distinta de “pago fallido”. Un reembolso solicitado es distinto de un reembolso confirmado. Si operaciones no puede explicar el estado con un número de pedido y un registro rastreable, el servicio al cliente hereda una ambigüedad creada por la arquitectura. La integración se volvió parte del servicio que los clientes viven después de la venta.</p>
+        <p>La comparación con el termo ayuda aquí. Probar que una tapa cierra una vez no basta cuando el producto previsto debe sobrevivir a aperturas repetidas, lavados y traslados. De igual forma, confirmar que un pago se completa una vez en un sandbox dice poco sobre cancelaciones, reembolsos parciales, reintentos o liquidación. El material debe examinarse a lo largo del ciclo de vida que el producto realmente ofrece.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Un Pin no Es una Entrega</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — La entrada de un edificio con un portón y un interfón sin rótulos, desenfocados suavemente. ]</span>
+          <img src="chapter-05-doorstep-intercom.jpg" alt="La entrada de un edificio con un portón y un interfón sin rótulos, desenfocados suavemente." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.10 — La coordenada apunta al edificio; el repartidor necesita la entrada.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>La geolocalización se ve igual de simple desde la interfaz. El comprador escribe una dirección, un mapa muestra un pin y el checkout estima la entrega. Pero el autocompletado de direcciones, la geocodificación, el cálculo de rutas y la cobertura de las paqueterías responden preguntas distintas. Reconocer una ubicación no establece que la paquetería de un vendedor particular le dé servicio, al precio propuesto y dentro del plazo prometido.</p>
+        <p>Nuestro marketplace podría encontrarse con detalles de departamento que el autocompletado omite, una dirección rural cuyas indicaciones útiles incluyen un punto de referencia, o una coordenada ubicada en el centro de un predio y no en su entrada accesible. Estas posibilidades deben probarse con muestras locales de direcciones, y no convertirse en generalizaciones sobre el comportamiento de un país. El buen desempeño de un proveedor en una ciudad no establece su calidad en todo un país.</p>
+        <p>La selección debe, por tanto, comparar direcciones representativas, casos ambiguos, el esfuerzo de corrección y la aceptación real de las paqueterías. El producto puede conservar la captura original del cliente junto con la forma normalizada y pedir confirmación cuando el resultado sugerido sea incierto. La ubicación del dispositivo puede ser opcional, con captura manual de la dirección disponible; la utilidad de las coordenadas precisas depende del recorrido, no de la mera disponibilidad de una solicitud de permiso.</p>
+        <p>Los términos comerciales y de uso también afectan el diseño. Las políticas de la API de Geocodificación de Google, por ejemplo, imponen condiciones sobre el almacenamiento o la caché del contenido y sobre la atribución, con excepciones específicas como los identificadores de lugar.<sup><a href="#ref-4">4</a></sup> No podemos suponer que comprar acceso a una API otorga propiedad irrestricta sobre la información devuelta. Un proveedor de respaldo o una base de direcciones de larga vida puede requerir un arreglo distinto del que se imaginó al principio.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 5.1</p>
+    <figure>
+    <div class="frame">
+      <svg viewBox="-2 0 1044 300" role="img" aria-label="Un valor de capacidad viaja del fabricante a la hoja del vendedor y a un registro canónico, que alimenta la búsqueda y los filtros y lo que ve el comprador">
+        <defs><marker id="arrow5a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="95" width="200" height="110" rx="2"/>
+        <text class="dtext" x="100" y="144" font-size="18" text-anchor="middle">FABRICANTE</text>
+        <text class="dsub" x="100" y="168" font-size="13" text-anchor="middle">declara la capacidad</text>
+        <text class="dsub" x="100" y="186" font-size="13" text-anchor="middle">y su unidad</text>
+        <line class="darrow" x1="200" y1="150" x2="248" y2="150" marker-end="url(#arrow5a)"/>
+        <rect class="dbox" x="250" y="95" width="200" height="110" rx="2"/>
+        <text class="dtext" x="350" y="144" font-size="16" text-anchor="middle">HOJA DEL VENDEDOR</text>
+        <text class="dsub" x="350" y="168" font-size="13" text-anchor="middle">«20 oz»</text>
+        <text class="dsub" x="350" y="186" font-size="13" text-anchor="middle">¿qué onza?</text>
+        <line class="darrow" x1="450" y1="150" x2="498" y2="150" marker-end="url(#arrow5a)"/>
+        <rect class="dbox strong" x="500" y="55" width="250" height="190" rx="2"/>
+        <text class="dtext on" x="625" y="118" font-size="19" text-anchor="middle">REGISTRO CANÓNICO</text>
+        <text class="dsub on" x="625" y="150" font-size="14" text-anchor="middle">volumen en mL</text>
+        <text class="dsub on" x="625" y="172" font-size="14" text-anchor="middle">valor original conservado</text>
+        <text class="dsub on" x="625" y="194" font-size="14" text-anchor="middle">regla de conversión registrada</text>
+        <line class="darrow" x1="750" y1="125" x2="796" y2="80" marker-end="url(#arrow5a)"/>
+        <line class="darrow" x1="750" y1="175" x2="796" y2="220" marker-end="url(#arrow5a)"/>
+        <rect class="dbox" x="800" y="30" width="240" height="100" rx="2"/>
+        <text class="dtext" x="920" y="76" font-size="18" text-anchor="middle">BÚSQUEDA Y FILTROS</text>
+        <text class="dsub" x="920" y="102" font-size="13" text-anchor="middle">se compara en mL</text>
+        <rect class="dbox" x="800" y="170" width="240" height="100" rx="2"/>
+        <text class="dtext" x="920" y="216" font-size="18" text-anchor="middle">VISTA DEL COMPRADOR</text>
+        <text class="dsub" x="920" y="242" font-size="13" text-anchor="middle">en la unidad local</text>
+      </svg>
+    </div>
+    <figcaption>Figura 5.1 — El recorrido de un valor de capacidad. El registro canónico conserva el valor original y la regla de conversión, de modo que una conversión incorrecta pueda rastrearse y repararse.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Los Datos Llegan con Historia</h2>
+    <div class="prose">
+        <p>El catálogo del marketplace se arma con fuentes de incentivos y autoridad distintos. Un fabricante puede aportar dimensiones e instrucciones de cuidado; un vendedor aporta precio y disponibilidad; un socio logístico reporta los eventos del envío; el cliente aporta una dirección. Una preferencia inferida a partir de la navegación es otro tipo de información más. Tratar todos estos registros como igualmente autoritativos hace a la plataforma más fácil de construir y más difícil de creer.</p>
+        <p>Para el termo cobalto, el equipo debe saber quién declaró la capacidad, qué unidad se envió, si el valor fue verificado y cuándo cambió el registro. La normalización debe conservar el valor original y la regla de transformación, para que una conversión incorrecta pueda rastrearse y repararse. Un campo derivado sin procedencia puede propagar el mismo error a la búsqueda, las recomendaciones, las exportaciones y los feeds de publicidad.</p>
+        <p>La frescura también depende de la decisión. La descripción de un color puede seguir siendo válida mucho tiempo; la disponibilidad puede cambiar mientras un cliente navega. El conjunto de datos necesita, por tanto, expectativas de calidad ligadas al uso. La completitud, la validez, la consistencia, la unicidad, la frescura y la exactitud ofrecen dimensiones útiles, pero la meta de cada una debe elegirse según la consecuencia del error.</p>
+        <p>La exactitud requiere un cuidado particular. Un valor que cumple su formato permitido es válido; es exacto solo si representa la realidad pertinente. Podemos comprobar automáticamente que la capacidad es un número positivo, pero eso no prueba que el termo contenga la cantidad declarada. Del mismo modo, una coordenada puede pasar una validación de formato y aun así mandar al repartidor a la entrada equivocada. El proceso de producción de los datos necesita evidencia más allá de un formato limpio.</p>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>La Geografía Llega a las Copias</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Hileras de contenedores de carga lisos y sin marcas en un puerto, con un solo contenedor cobalto en una de las hileras. ]</span>
+          <img src="chapter-05-container-yard.jpg" alt="Hileras de contenedores de carga lisos y sin marcas en un puerto, con un solo contenedor cobalto en una de las hileras." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.11 — Los datos, como la carga, dejan un registro en cada parada.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Cuando el marketplace se expande, la ubicación de los datos se vuelve más compleja que elegir una región de base de datos. Una dirección puede viajar a un socio de envíos, un servicio antifraude, una herramienta de soporte y un pipeline de analítica. Pueden aparecer copias en bitácoras, exportaciones, respaldos y registros de incidentes. También hay que examinar el acceso remoto y los arreglos con proveedores; la ubicación de la base de datos principal no describe todo el entorno de procesamiento.</p>
+        <p>Para los datos personales europeos, el marco de transferencias del RGPD exige atención cuando la información se transfiere fuera del Espacio Económico Europeo. El EDPB describe mecanismos que incluyen decisiones de adecuación y garantías apropiadas como las cláusulas contractuales tipo.<sup><a href="#ref-5">5</a></sup> Eso es distinto de afirmar que todo conjunto de datos europeo debe permanecer siempre físicamente dentro de Europa. El arreglo aplicable depende del flujo real y de las circunstancias.</p>
+        <p>México requiere su propio análisis. Una nueva ley de protección de datos personales en posesión de particulares entró en vigor el 21 de marzo de 2025, sustituyendo el texto de 2010, y la supervisión pasó del extinto INAI a la Secretaría Anticorrupción y Buen Gobierno. Sus principios incluyen finalidad, proporcionalidad, información y responsabilidad; reconoce los derechos de acceso, rectificación, cancelación y oposición, y aborda la seguridad y las transferencias.<sup><a href="#ref-6">6</a>, <a href="#ref-8">8</a></sup> Una implementación regional necesita que esas obligaciones se reflejen en los avisos, los procesos de manejo y el comportamiento del sistema, en lugar de heredarse sin cuestionar de otro mercado.</p>
+        <p>Estados Unidos aporta otra razón para evitar una sola suposición regional. La CCPA de California, donde aplica, incluye derechos de acceso, eliminación, corrección, venta o intercambio de datos y ciertos usos de información personal sensible.<sup><a href="#ref-7">7</a></sup> Ese ejemplo no describe a todas las empresas ni jurisdicciones de EE. UU. Muestra por qué un selector de país es demasiado burdo para servir como único motor de reglas de privacidad.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>La Seguridad se Vuelve Comportamiento del Producto</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Un llavero con varias llaves de distintos tamaños, una con etiqueta cobalto, sobre una charola metálica. ]</span>
+          <img src="chapter-05-key-ring.jpg" alt="Un llavero con varias llaves de distintos tamaños, una con etiqueta cobalto, sobre una charola metálica." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.12 — Llaves distintas para puertas distintas: el acceso sigue a la responsabilidad.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Las decisiones de seguridad cambian quién puede hacer qué dentro del marketplace. El Vendedor A debe ver los pedidos que necesita para surtir sus ventas sin acceder a los clientes del Vendedor B. Un agente de soporte puede necesitar los datos de entrega sin acceso irrestricto a registros personales exportados. Las acciones administrativas requieren autorización y trazabilidad adecuadas, porque la plataforma puede dañar a los clientes por mal uso, además de por un ataque externo.</p>
+        <p>Estas decisiones deben seguir amenazas y responsabilidades concretas. Afectan las identidades de servicio, las reglas de acceso, los secretos, la verificación de notificaciones, los registros de auditoría y la respuesta a incidentes. El cifrado aporta protección, pero no decide si un usuario tenía derecho a consultar un registro ni si un proveedor debió recibirlo. El diseño de producto necesita conectar los controles con las rutas reales por las que se mueven la información y el dinero.</p>
+        <p>La eliminación también deja al descubierto la arquitectura. Borrar el perfil de un cliente no elimina automáticamente los datos de todos los sistemas posteriores. Algunos registros pueden requerir conservación por una obligación justificada, mientras que la información que ya no se necesita debe tener una disposición definida. El producto debe explicar e implementar esas diferencias, incluida la forma en que los respaldos restaurados evitan reinstalar en silencio información que debía permanecer eliminada.</p>
+        <p>Un registro de restricciones regionales vuelve esto manejable. Cada requisito debe identificar el mercado pertinente, la categoría de datos, la finalidad, la entidad responsable, el flujo afectado, la decisión de implementación, el revisor y la fecha de la evidencia. Los especialistas legales y de seguridad establecen las obligaciones aplicables; producto e ingeniería las traducen en comportamiento comprobable. El cumplimiento influye entonces en el diseño mientras aún hay alternativas disponibles, en lugar de convertirse en un obstáculo sin explicación al momento del lanzamiento.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="diagram">
+  <div class="wrap">
+    <p class="kicker">Figura 5.2</p>
+    <figure>
+    <div class="frame">
+      <svg viewBox="-2 0 1044 200" role="img" aria-label="Seis materiales alimentan la promesa de una compra: capacidad, inventario, dirección, paquetería, pago y pedido">
+        <defs><marker id="arrow5b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="var(--line)"/></marker></defs>
+        <rect class="dbox" x="0" y="40" width="150" height="120" rx="2"/><text class="dtext" x="75" y="92" font-size="17" text-anchor="middle">CAPACIDAD</text><text class="dsub" x="75" y="118" font-size="13" text-anchor="middle">unidad declarada,</text><text class="dsub" x="75" y="136" font-size="13" text-anchor="middle">valor verificado</text>
+        <line class="darrow" x1="150" y1="100" x2="176" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="178" y="40" width="150" height="120" rx="2"/><text class="dtext" x="253" y="92" font-size="17" text-anchor="middle">INVENTARIO</text><text class="dsub" x="253" y="118" font-size="13" text-anchor="middle">¿suficientemente</text><text class="dsub" x="253" y="136" font-size="13" text-anchor="middle">fresco para prometer?</text>
+        <line class="darrow" x1="328" y1="100" x2="354" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="356" y="40" width="150" height="120" rx="2"/><text class="dtext" x="431" y="92" font-size="17" text-anchor="middle">DIRECCIÓN</text><text class="dsub" x="431" y="118" font-size="13" text-anchor="middle">entrada original</text><text class="dsub" x="431" y="136" font-size="13" text-anchor="middle">junto al resultado</text>
+        <line class="darrow" x1="506" y1="100" x2="532" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="534" y="40" width="150" height="120" rx="2"/><text class="dtext" x="609" y="92" font-size="17" text-anchor="middle">PAQUETERÍA</text><text class="dsub" x="609" y="118" font-size="13" text-anchor="middle">¿llega a esta</text><text class="dsub" x="609" y="136" font-size="13" text-anchor="middle">dirección a este precio?</text>
+        <line class="darrow" x1="684" y1="100" x2="710" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox" x="712" y="40" width="150" height="120" rx="2"/><text class="dtext" x="787" y="92" font-size="17" text-anchor="middle">PAGO</text><text class="dsub" x="787" y="118" font-size="13" text-anchor="middle">pendiente no</text><text class="dsub" x="787" y="136" font-size="13" text-anchor="middle">es fallido</text>
+        <line class="darrow" x1="862" y1="100" x2="888" y2="100" marker-end="url(#arrow5b)"/><rect class="dbox strong" x="890" y="40" width="150" height="120" rx="2"/><text class="dtext on" x="965" y="92" font-size="17" text-anchor="middle">PEDIDO</text><text class="dsub on" x="965" y="118" font-size="13" text-anchor="middle">cada estado</text><text class="dsub on" x="965" y="136" font-size="13" text-anchor="middle">rastreable</text>
+      </svg>
+    </div>
+    <figcaption>Figura 5.2 — Una compra, seis materiales. Cada caja lleva una propiedad de la que depende la promesa: una unidad verificada, una ventana de frescura, la dirección tal como se capturó, la cobertura de la paquetería, los estados pendiente y fallido, y un registro de pedido rastreable.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="framework">
+  <div class="wrap">
+    <h2>Mapear los Materiales Digitales</h2>
+    <p class="lede">Cuatro etapas conectan una promesa al cliente con los servicios, la información y las condiciones que la hacen posible.</p>
+    <div class="steps">
+      <div class="step"><p class="n">01</p><h3>Definir</h3><p>Establece en qué debe poder confiar el cliente, en términos que se puedan probar.</p></div>
+      <div class="step"><p class="n">02</p><h3>Rastrear</h3><p>Vincula cada promesa con los servicios y los datos que la producen.</p></div>
+      <div class="step"><p class="n">03</p><h3>Probar</h3><p>Reúne evidencia regional: muestras, fallas y casos del ciclo de vida.</p></div>
+      <div class="step"><p class="n">04</p><h3>Decidir</h3><p>Lanza, adapta o pospón, con un responsable y un disparador de revisión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>De la Promesa a la Decisión</h2>
+    <div class="prose">
+        <p>Podemos reunir estas preguntas en un <b>Mapa de Materiales Digitales</b> de cuatro etapas: definir, rastrear, probar y decidir. Es un método de trabajo propuesto para este capítulo, y no un estándar de certificación formal. Su propósito es conectar una promesa al cliente con los servicios, la información y las condiciones que la hacen posible, para que producto, ingeniería, operaciones y las funciones de control puedan examinar la misma decisión.</p>
+        <p><b>Definir la promesa.</b> Empieza con un recorrido lo bastante acotado para examinarlo: un cliente compra el termo cobalto para entregarlo en una dirección específica. Define qué pretende afirmar la plataforma sobre la capacidad, el inventario, el pago y la entrega. “Apoyar el comercio internacional” es demasiado amplio para probarse. “Aceptar un pedido elegible, confirmar el pago sin cobro duplicado y cotizar una opción de entrega que la paquetería soporte” le da al equipo estados y dependencias identificables.</p>
+        <p>Fija los criterios de aceptación antes de comparar proveedores. A modo de ilustración, el equipo podría exigir que las unidades de capacidad sean explícitas, que el inventario se reserve antes de confirmar definitivamente un pedido y que las direcciones ambiguas reciban confirmación del cliente. Una meta de latencia propuesta debe indicar dónde se mide, con qué carga y con qué percentil. Son metas de diseño por validar, no referencias de toda la industria.</p>
+        <p><b>Rastrear los materiales.</b> Crea una ficha por cada API y conjunto de datos relevante. Incluye su responsable, su fuente o proveedor, los mercados soportados, las operaciones, el esquema, el significado de negocio, la autenticación, la sensibilidad, las ubicaciones de procesamiento, los usos permitidos, la retención, las cuotas, los factores de costo, el comportamiento ante fallas y las condiciones de salida. Adjunta evidencia y una fecha de revisión. Las propiedades desconocidas deben quedar marcadas como desconocidas, y no sustituirse por supuestos optimistas.</p>
+        <p>Rastrea el recorrido a través de esas fichas. La capacidad se origina con el proveedor; la normalización del catálogo crea una cantidad canónica; el inventario sustenta la disponibilidad; la interpretación de direcciones sugiere una ubicación; la cobertura de las paqueterías establece si hay servicio; los servicios de pago y de pedidos establecen los estados financieros y comerciales. Dibuja por separado los destinatarios de los datos donde haga falta. Un mapa de dependencias técnicas y un mapa de flujos de datos personales se traslapan, pero ninguno sustituye del todo al otro.</p>
+        <p><b>Probar las propiedades.</b> Prueba los servicios candidatos con muestras regionales representativas y casos de ciclo de vida. En los datos, revisa unidades faltantes, descripciones contradictorias entre vendedores, inventario desactualizado e identificadores duplicados. En las APIs, prueba tiempos de espera, límites de tasa, fallas de autenticación, notificaciones duplicadas y recuperación. Mide el comportamiento de punta a punta y también el de cada servicio, porque un endpoint rápido puede contribuir a un recorrido lento o poco confiable.</p>
+        <p>Por ejemplo, supongamos que un piloto de geocodificación usa 200 direcciones de prueba manejadas con el debido cuidado en una zona de entrega objetivo. Si 164 se resuelven correctamente sin intervención del cliente, la tasa de resolución sin asistencia observada es de 82%. Ese resultado es inventado, un ejemplo didáctico y no la evaluación de un proveedor. Segmenta las fallas por las características relevantes de las direcciones y compáralas con la aceptación de las paqueterías; el promedio por sí solo no nos dice si el material sostiene el mercado previsto.</p>
+        <p><b>Decidir con condiciones.</b> Usa filtros obligatorios antes de una comparación ponderada. Si un proveedor de pagos no puede soportar contractualmente el modelo de vendedores requerido, una alta calificación de usabilidad no lo vuelve elegible. Si un uso de datos no está permitido, un costo bajo no lo compensa. Una vez que los candidatos pasan los filtros necesarios, compara calidad, confiabilidad, ajuste regional, economía y esfuerzo de cambio con ponderaciones acordadas para el recorrido.</p>
+        <p>Una calificación ilustrativa puede usar puntajes del uno al cinco y ponderaciones que sumen uno: calidad 0.30, confiabilidad 0.25, ajuste regional 0.20, economía 0.15 y esfuerzo de cambio 0.10, donde un puntaje más alto de esfuerzo de cambio significa una salida más fácil. Registra la evidencia detrás de cada calificación y verifica si cambios razonables en las ponderaciones invierten la elección. La calificación respalda una decisión; no elimina la incertidumbre ni anula un filtro reprobado.</p>
+    </div>
+    
+  </div>
+</section>
+<section class="facts" aria-label="Cifras de un piloto de geocodificación ilustrativo, inventadas con fines didácticos">
+  <div class="wrap">
+    <div><b>200</b><span>DIRECCIONES DE PRUEBA EN EL<br/>PILOTO ILUSTRATIVO</span></div>
+    <div><b>164</b><span>RESUELTAS SIN<br/>AYUDA DEL CLIENTE</span></div>
+    <div><b>82%</b><span>RESOLUCIÓN SIN ASISTENCIA<br/>(UN EJEMPLO INVENTADO)</span></div>
+    </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Medir la Promesa Ensamblada</h2>
+    <div class="prose">
+        <p>El mapa resultante debe sustentar un conjunto breve de medidas que operaciones pueda mantener. El porcentaje de disponibilidad de un proveedor es útil, pero el cliente depende de que un recorrido se complete con éxito. Del mismo modo, contar respuestas de geocodificación dice poco sobre las entregas correctas. El denominador debe representar la decisión que estamos evaluando, y las exclusiones deben ser visibles.</p>
+        <p>Supongamos que el servicio de mapas más barato exige más correcciones del cliente y produce más intentos de entrega fallidos. Su precio por solicitud es menor, pero su contribución al costo por pedido surtido puede ser mayor. La misma lógica aplica a un proveedor de pagos con cargos exitosos baratos pero excepciones costosas, o a un feed de inventario barato de ingerir pero caro de corregir después de vender de más.</p>
+        <p>Mide estos resultados por mercado y por segmento significativo. Un lanzamiento limitado a una zona de entrega no debe presentarse como prueba de cobertura nacional. Un piloto realizado con registros de vendedores cuidadosamente curados no debe sustentar una afirmación de calidad para un alta de vendedores sin restricciones. La evidencia define el límite de la decisión, igual que una prueba térmica define las condiciones en las que se demostró la retención del termo.</p>
+    </div>
+    <div class="datawrap"><p class="tlabel">Tabla 5.3 — Cinco medidas para la promesa ensamblada</p><table><thead><tr><th class="">Medida</th><th class="">Definición práctica</th><th class="">Consecuencia de diseño</th></tr></thead><tbody><tr><td class="" data-label="Medida">Completitud de unidades del catálogo</td><td class="" data-label="Definición práctica">Registros de capacidad en alcance con unidades explícitas y reconocidas / todos los registros de capacidad en alcance</td><td class="" data-label="Consecuencia de diseño">Retener los listados ambiguos hasta corregirlos</td></tr><tr><td class="" data-label="Medida">Cumplimiento de frescura del inventario</td><td class="" data-label="Definición práctica">Registros de inventario requeridos dentro del límite de frescura acordado / registros evaluados</td><td class="" data-label="Consecuencia de diseño">Restringir las promesas de disponibilidad inmediata</td></tr><tr><td class="" data-label="Medida">Resolución de direcciones sin asistencia</td><td class="" data-label="Definición práctica">Direcciones resueltas correctamente sin corrección del cliente / direcciones representativas probadas</td><td class="" data-label="Consecuencia de diseño">Introducir confirmación o alternativas manuales</td></tr><tr><td class="" data-label="Medida">Cobertura de conciliación de pagos</td><td class="" data-label="Definición práctica">Intentos de pago ligados a un estado autoritativo explicado / intentos en la ventana de conciliación</td><td class="" data-label="Consecuencia de diseño">Investigar los estados sin resolver antes de surtir</td></tr><tr><td class="" data-label="Medida">Costo por pedido surtido</td><td class="" data-label="Definición práctica">Costos de servicio atribuibles, incluidos intentos fallidos y reintentos / pedidos surtidos</td><td class="" data-label="Consecuencia de diseño">Comparar proveedores contra el resultado de negocio logrado</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="quote-essay">
+  <div class="wrap">
+    <h2>Deja que la Evidencia Cambie el Diseño</h2>
+    <div class="grid">
+      <div><blockquote>Una promesa bloqueada por una dependencia desconocida es distinta de una función pospuesta por falta de capacidad.</blockquote></div>
+      <div class="essay">
+        <p>Imaginemos que nuestro primer piloto revela buena calidad de catálogo pero poca puntualidad en el inventario de varios vendedores. El diseño podría permitir que esos vendedores publiquen productos y retener las promesas de disponibilidad inmediata, o exigir una integración de inventario más sólida antes de habilitar esa promesa. La respuesta adecuada depende del modelo de negocio, pero cualquiera de las dos decisiones reconoce las propiedades reales del material.</p>
+        <p>Supongamos ahora que las pruebas de direcciones muestran que el autocompletado funciona bien en la zona de entrega inicial, pero no maneja de forma confiable otra zona prevista. El marketplace puede conservar la captura manual, validar con las paqueterías la cobertura del servicio y acotar su perímetro de lanzamiento mientras investiga alternativas. Una interacción de mapa pulida no debe obligar al negocio a aceptar direcciones que no puede atender con fiabilidad.</p>
+        <p>La expansión a Portugal también podría revelar arreglos de pago, requisitos de alta de vendedores y flujos de datos personales distintos. El equipo puede conservar definiciones comunes para los pedidos, las cantidades y las transiciones de estado, mientras varía los proveedores y los arreglos de procesamiento aprobados. La arquitectura compartida debe preservar un significado coherente; no necesita imponer una red de abasto idéntica a cada región.</p>
+        <p>Esas decisiones pertenecen a la hoja de ruta, con responsables y condiciones. Una promesa bloqueada por una dependencia desconocida es distinta de una función pospuesta por falta de capacidad. Mostrar esa diferencia ayuda a los líderes a invertir en la evidencia, el arreglo contractual o la capacidad de servicio que falta. El diseño de producto evoluciona entonces mediante decisiones informadas sobre los materiales, y no a través de sorpresas repetidas durante la implementación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <h2>Lo que Nos Enseña el Termo</h2>
+    <div class="grid">
+      <figure class="figwrap">
+        <div class="figure">
+          <span>[ retrato 4:5 — Un termo cobalto y un teléfono con una forma cobalto abstracta en su pantalla de bloqueo, lado a lado sobre una misma superficie. ]</span>
+          <img src="chapter-05-flask-and-phone.jpg" alt="Un termo cobalto y un teléfono con una forma cobalto abstracta en su pantalla de bloqueo, lado a lado sobre una misma superficie." width="2400" height="3000" loading="lazy" onerror="this.remove()" />
+        </div>
+        <figcaption>Figura 5.13 — La misma pregunta, en dos materiales.</figcaption>
+      </figure>
+      <div class="textcol">
+        <p>Volvamos al termo cobalto. Su simplicidad visible es el resultado de muchas decisiones coordinadas: un propósito, una especificación de material, una ruta de producción, un cierre, un acabado, una convención de capacidad y un arreglo de abasto. Cuando esas decisiones encajan, el comprador puede usar el objeto sin conocer sus detalles. Cuando no encajan, el comprador vive la decisión sin resolver como fuga, incomodidad, desgaste o decepción.</p>
+        <p>El marketplace logra una simplicidad similar solo cuando los servicios y la información de fondo sostienen la experiencia ofrecida. El cliente no debería necesitar entender la expiración de una reserva, las notificaciones del proveedor, la normalización de direcciones ni los arreglos de transferencia internacional. El equipo debe entenderlos lo suficiente como para que la compra sea confiable.</p>
+        <p>Por eso las APIs y los datos pertenecen al descubrimiento de producto. Determinan qué promesas se pueden hacer, dónde se pueden hacer y qué exigirá mantenerlas. Las restricciones regionales son parte de ese espacio de diseño, junto con la capacidad comercial, la seguridad, el costo de operación y la aceptación del mercado. Mapear esas condiciones desde temprano permite dar forma a un producto que pueda sobrevivir más allá de su demostración.</p>
+        <p>Si el comportamiento de un producto depende de las propiedades de sus materiales, y esas propiedades cambian con la fuente, el proceso y la región, entonces su diseño debe empezar por esas condiciones. La interfaz es donde el cliente se encuentra con la decisión. No es donde la decisión empieza.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+{/* 11 — REFERENCES */}
+<section class="refs">
+  <div class="wrap">
+    <h2>Referencias</h2>
+    <p class="note">Fuentes consultadas el 5 de octubre de 2026. Los ejemplos, las cifras del piloto y las ponderaciones de evaluación son ilustrativos. El análisis regional identifica preguntas de diseño; las obligaciones aplicables dependen de las entidades, actividades, contratos y flujos de datos reales.</p>
+    <ol>
+      <li id="ref-1"><b>NIST — Conversiones de medidas.</b> <a href="https://www.nist.gov/pml/owm/metric-si/unit-conversion/approximate-conversions-us-customary-measures-metric" rel="noopener">Conversiones aproximadas de medidas habituales de EE. UU. a métricas</a> y <a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9" rel="noopener">Guía del SI, Apéndice B.9</a>. Conversiones de la onza líquida de EE. UU. y la imperial.</li>
+      <li id="ref-2"><b>OpenAPI Initiative — <a href="https://spec.openapis.org/oas/" rel="noopener">OpenAPI Specification</a>.</b> Descripciones estándar de interfaces HTTP de APIs; las fichas de materiales de este capítulo añaden contexto de producto y de operación.</li>
+      <li id="ref-3"><b>PCI Security Standards Council — <a href="https://www.pcisecuritystandards.org/faqs/does-pci-dss-apply-to-merchants-who-outsource-all-payment-processing-operations-and-never-store-process-or-transmit-cardholder-data/" rel="noopener">¿Aplica PCI DSS a los comercios que tercerizan todo el procesamiento de pagos?</a>.</b> Tercerización, alcance reducido y responsabilidades que conserva el comercio. Ver también <a href="https://www.pcisecuritystandards.org/standards/pci-dss/" rel="noopener">PCI DSS</a>.</li>
+      <li id="ref-4"><b>Google Maps Platform — <a href="https://developers.google.com/maps/documentation/geocoding/policies" rel="noopener">Políticas y atribuciones de la API de Geocodificación</a>.</b> Condiciones de uso, almacenamiento y atribución; revisar el acuerdo aplicable a la implementación prevista.</li>
+      <li id="ref-5"><b>Comité Europeo de Protección de Datos — <a href="https://www.edpb.europa.eu/sme/be-compliant/international-data-transfers_en" rel="noopener">Transferencias internacionales de datos</a>.</b> Mecanismos y garantías de transferencia en el marco del RGPD.</li>
+      <li id="ref-6"><b>Cámara de Diputados — <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" rel="noopener">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</a>.</b> Texto vigente con la reforma del 14 de noviembre de 2025; en especial las disposiciones sobre principios, derechos, seguridad y transferencias.</li>
+      <li id="ref-7"><b>Departamento de Justicia de California — <a href="https://www.oag.ca.gov/privacy/ccpa" rel="noopener">Ley de Privacidad del Consumidor de California (CCPA)</a>.</b> Derechos y aplicabilidad de la CCPA según sus reformas; es un ejemplo de California, no un resumen de todos los requisitos de privacidad de EE. UU.</li>
+      <li id="ref-8"><b>Creel — <a href="https://www.creel.mx/publicaciones/alertas-clientes/federal-law-for-the-protection-of-personal-data-in-the-possession-of-private-parties/" rel="noopener">Federal Law for the Protection of Personal Data in the Possession of Private Parties</a>.</b> Alerta para clientes sobre el decreto del 20 de marzo de 2025: nueva ley en vigor el 21 de marzo de 2025, abrogación de la ley de 2010 y traslado de las funciones de supervisión del INAI a la Secretaría Anticorrupción y Buen Gobierno.</li>
+    </ol>
+  </div>
+</section>
+
+{/* COLOPHON */}
+<section class="colophon">
+  <div class="wrap">
+    <h2>Historial de ediciones — Capítulo 05</h2>
+    <table>
+      <thead><tr><th>Versión</th><th>Fecha</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td class="v">v0.1</td><td class="d">5 oct 2026</td><td class="n">Primer borrador — el termo como lección de diseño, las APIs y los datos como materiales digitales, pagos, entrega, procedencia de los datos, reglas regionales, seguridad y el Mapa de Materiales Digitales.</td></tr>
+        <tr><td class="v">v0.2</td><td class="d">5 oct 2026</td><td class="n">Revisión editorial: introducción en tres columnas y datos de capacidad añadidos, referencia de protección de datos de México actualizada a la ley vigente desde marzo de 2025, diseño de revista con 13 fotografías y dos diagramas.</td></tr>
+        <tr><td class="v">v0.3</td><td class="d">5 oct 2026</td><td class="n">Tipografía alineada al design system: texto de lectura de 18–21 px con interlineado 1.66 y medida de 62ch, pesos serif 400/500/600 cargados, escala de h2 y datos según la especificación, texto serif secundario a 16 px. Edición en español publicada con selector EN/ES.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{/* CHAPTER NAVIGATION */}
+<nav class="chapternav" aria-label="Chapter navigation">
+  <div class="wrap">
+    <a class="prev" href="es-ebook-chapter-04.html">
+      <p class="dir">← Capítulo 04</p>
+      <p class="ctitle">El Producto Nunca es Solo el Objeto</p>
+    </a>
+    <a class="next locked" href="#" aria-disabled="true">
+      <p class="dir">Capítulo 06 — próximamente →</p>
+      <p class="ctitle">Siguiente en la Parte II</p>
+    </a>
+  </div>
+</nav>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <span>J. Angel Sosa — Pensar en Productos, Construir Sistemas</span>
+    <span><a href="es-ebook.html">Todos los capítulos</a> · <a href="#rss">RSS</a> · <a href="#privacy">Privacidad</a></span>
+  </div>
+</footer>
+
+
