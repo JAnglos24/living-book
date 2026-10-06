@@ -1,9 +1,144 @@
 ---
-// Layout or custom Astro logic here if needed
+import Layout from '../../../../layouts/Layout.astro';
 const chapter = 5;
-const title = "Materiales Digitales: APIs, Datos y Restricciones";
+const title = "Capítulo 5 — Materiales Digitales: APIs, Datos y Restricciones | Thinking in Products, Building Systems";
 const summary = "Un termo revela cómo los materiales, el abasto regional y los procesos de manufactura dan forma a un producto.";
 ---
+<Layout 
+  title={title}
+  description={summary}
+  ogImage="/assets/chapter-05-cobalt-flask-table.jpg"
+  ogType="article"
+  ogUrl="https://www.jasosal.com/es/ebook/05-digital-materials-apis-data-and-constraints/"
+>
+<style is:inline>
+    :root{
+      --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
+      --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
+      --grot:"Archivo",system-ui,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+      --margin:clamp(24px,4vw,72px); --gutter:clamp(20px,2.4vw,42px); --max:1600px;
+      --ease:cubic-bezier(.65,0,.35,1);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--graphite);font-family:var(--grot);font-size:clamp(16px,.35vw + 14px,20px);line-height:1.55;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,p,blockquote,figure{margin:0} a{color:inherit} img{max-width:100%;display:block}
+    figure{margin:0} figcaption{font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.5}
+    .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--margin)}
+    .eyebrow{font-size:13px;letter-spacing:.14em;font-weight:600;text-transform:uppercase}
+
+    .topbar{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;padding-block:16px;gap:20px}
+    .topbar a.home{font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em;flex:0 0 auto}
+    .topbar .chapmeta{display:flex;align-items:baseline;gap:10px;font-size:13px;color:var(--ink2);overflow:hidden}
+    .topbar .chapmeta b{color:var(--graphite);font-weight:700;white-space:nowrap}
+    .topbar .chapmeta span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar nav{display:flex;align-items:center;gap:22px;font-size:14px;flex:0 0 auto}
+    .topbar nav a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);flex:0 0 auto}
+    .topbar .lang a{text-decoration:none;color:var(--ink2)}
+    .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+    .topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:8px 18px;cursor:pointer;flex:0 0 auto}
+    .progress{height:2px;background:var(--grid-blue)}
+    .progress i{display:block;height:100%;width:var(--p,0%);background:var(--cobalt)}
+
+    .opener{position:relative;background:var(--cobalt);color:#fff;overflow:hidden}
+    .opener .num{position:absolute;right:calc(var(--margin) * -0.3);top:50%;transform:translateY(-50%);font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 112;font-size:clamp(160px,26vw,420px);line-height:1;color:#fff;opacity:.12;letter-spacing:-.04em;pointer-events:none;user-select:none}
+    .opener .wrap{position:relative;z-index:1;padding-block:clamp(52px,9vh,96px) clamp(44px,7vh,80px)}
+    .opener .eyebrow{color:#fff;display:flex;align-items:center;gap:14px}
+    .opener .eyebrow::after{content:"";flex:0 0 40px;height:1px;background:rgba(255,255,255,.55)}
+    .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,4.4vw,74px);line-height:.98;letter-spacing:-.03em;margin:22px 0 20px;max-width:17ch}
+    .opener .dek{font-family:var(--serif);font-size:clamp(19px,1.5vw,23px);line-height:1.42;max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:30px}
+    .opener .meta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13px;color:rgba(255,255,255,.78);border-top:1px solid rgba(255,255,255,.28);padding-top:18px}
+
+    .intro{background:var(--white)}
+    .intro .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);padding-block:clamp(48px,7vh,80px)}
+    .intro p{font-family:var(--serif);font-size:17px;line-height:1.62;color:#242A31}
+    @media (max-width:860px){.intro .cols{grid-template-columns:1fr;gap:22px}}
+
+    .facts{background:var(--white);border-top:1px solid var(--line)}
+    .facts .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}
+    .facts div{border-left:1px solid var(--line);padding-left:20px}
+    .facts b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(64px,7vw,118px);line-height:.92;letter-spacing:-.01em;margin-bottom:10px;color:var(--graphite)}
+    .facts span{font-size:13px;letter-spacing:.04em;color:var(--ink2);line-height:1.5}
+    @media (max-width:700px){.facts .wrap{grid-template-columns:1fr}}
+
+    .longform{background:var(--white);border-top:1px solid var(--line)}
+    .longform .wrap{padding-block:clamp(56px,8vh,96px)}
+    .longform h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(28px,2.8vw,42px);line-height:1.06;letter-spacing:-.02em;max-width:18ch;margin-bottom:clamp(28px,4vh,40px)}
+    .longform .grid{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--gutter);align-items:start}
+    .longform .figcol figure{aspect-ratio:4/5;overflow:hidden}
+    .longform .textcol p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:760px){.longform .grid{grid-template-columns:1fr}}
+
+    .longform .poster{margin-bottom:clamp(32px,4.5vh,48px)}
+    .longform .poster .frame{width:100%;aspect-ratio:16/9;overflow:hidden}
+    .longform .poster .frame img{width:100%;height:100%;object-fit:cover;display:block}
+    .longform .poster .platecap{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+    .longform .poster .platecap b{font-family:var(--grot);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt);white-space:nowrap}
+    .longform .poster .platecap span{font-size:13px;color:var(--ink2);line-height:1.5}
+
+    .longform .prose{columns:2;column-gap:var(--gutter)}
+    .longform .prose p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;break-inside:avoid-column}
+    @media (max-width:760px){.longform .prose{columns:1}}
+
+    .diagram{background:var(--paper);border-top:1px solid var(--line)}
+    .diagram .wrap{padding-block:clamp(48px,7vh,80px)}
+    .diagram .kicker{font-size:13px;color:var(--cobalt);font-weight:700;letter-spacing:.04em;margin-bottom:18px}
+    .diagram .frame{background:var(--white);border:1px solid var(--line);padding:clamp(22px,3.4vw,44px);display:flex;align-items:center;justify-content:center;overflow-x:auto}
+    .diagram svg{width:100%;height:auto;display:block;max-height:82svh}
+    .diagram figcaption{margin-top:18px;font-size:14px;line-height:1.55;color:var(--ink2);max-width:80ch}
+    @media (max-width:700px){.diagram .frame{justify-content:flex-start}.diagram svg{min-width:640px;width:640px;flex:0 0 auto}}
+
+    .quote-essay{background:var(--white);border-top:1px solid var(--line)}
+    .quote-essay .wrap{padding-block:clamp(56px,8vh,96px)}
+    .quote-essay .grid{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gutter);align-items:start}
+    .quote-essay blockquote{font-family:var(--serif);font-weight:500;font-size:clamp(26px,2.8vw,40px);line-height:1.16;color:var(--cobalt);max-width:16ch}
+    .quote-essay cite{display:block;margin-top:20px;font-size:14px;font-style:normal;color:var(--ink2)}
+    .quote-essay .essay p{font-family:var(--serif);font-size:16px;line-height:1.62;color:#242A31;margin-bottom:1.15em;max-width:60ch}
+    @media (max-width:900px){.quote-essay .grid{grid-template-columns:1fr;gap:28px}}
+
+    .framework{background:var(--white);border-top:1px solid var(--line)}
+    .framework .wrap{padding-block:clamp(48px,7vh,80px)}
+    .framework h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.02em;max-width:22ch}
+    .framework .lede{font-family:var(--serif);color:var(--ink2);font-size:15px;max-width:56ch;margin-top:10px}
+    .framework .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-top:clamp(28px,4vh,40px)}
+    .framework .step{border-top:3px solid var(--cobalt);padding-top:18px}
+    .framework .step .n{font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px}
+    .framework .step h3{font-weight:700;font-size:18px;max-width:16ch;letter-spacing:-.01em;margin-bottom:8px}
+    .framework .step p{font-family:var(--serif);font-size:14px;line-height:1.4;color:var(--ink2);max-width:20ch}
+    @media (max-width:860px){.framework .steps{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.framework .steps{grid-template-columns:1fr}}
+
+    .colophon{background:var(--paper);border-top:1px solid var(--line)}
+    .colophon .wrap{padding-block:clamp(36px,5vh,56px)}
+    .colophon h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);margin-bottom:18px;font-weight:700}
+    .colophon table{width:100%;border-collapse:collapse;font-size:13px;max-width:90ch}
+    .colophon th,.colophon td{text-align:left;padding:9px 16px 9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+    .colophon th{font-family:var(--grot);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+    .colophon td.v{font-family:var(--serif);font-weight:600;color:var(--cobalt);white-space:nowrap}
+    .colophon td.d{color:var(--ink2);white-space:nowrap}
+    .colophon td.n{color:#242A31}
+
+    .refs{background:var(--white);border-top:1px solid var(--line)}
+    .refs .wrap{padding-block:clamp(40px,6vh,64px)}
+    .refs h2{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);margin-bottom:22px;font-weight:700}
+    .refs ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink2);line-height:2;max-width:80ch}
+    .refs ol b{color:var(--graphite);font-weight:600}
+
+    .chapternav{background:var(--cobalt);color:#fff}
+    .chapternav .wrap{padding-block:clamp(32px,5vh,48px);display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+    .chapternav a{text-decoration:none;color:#fff;display:block}
+    .chapternav .next{text-align:right}
+    .chapternav .dir{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.72;margin-bottom:10px}
+    .chapternav .ctitle{font-weight:700;font-size:clamp(18px,2vw,26px);letter-spacing:-.01em;line-height:1.15;max-width:24ch}
+    .chapternav .next .ctitle{margin-left:auto}
+    .chapternav .locked{opacity:.55;cursor:default;pointer-events:none}
+    @media (max-width:700px){.chapternav .wrap{grid-template-columns:1fr;gap:26px}.chapternav .next{text-align:left}.chapternav .next .ctitle{margin-left:0}}
+
+    footer.sitefoot{background:var(--white);border-top:1px solid var(--line)}
+    footer.sitefoot .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
+    footer.sitefoot a{text-decoration:none}
+  </style>
 
 <div class="topbar">
   <div class="wrap row">
@@ -541,3 +676,5 @@ const summary = "Un termo revela cómo los materiales, el abasto regional y los 
 </footer>
 
 
+
+</Layout>
