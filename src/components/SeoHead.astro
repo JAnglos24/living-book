@@ -1,0 +1,28 @@
+---
+// Shared SEO tags for standalone pages that define their own <head>.
+const site = 'https://www.jasosal.com';
+const path = Astro.url.pathname;
+const isEs = path.startsWith('/es');
+const canonical = new URL(path, site).href;
+const image = `${site}/assets/jas-warm.jpg`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site}/#person`,
+  name: 'José Ángel Sosa López',
+  alternateName: ['J. Angel Sosa', 'José Ángel Sosa'],
+  jobTitle: 'Portfolio Manager · Product Management Leader',
+  url: `${site}/`,
+  image,
+  sameAs: ['https://www.linkedin.com/in/jasosal/', 'https://github.com/jasosal'],
+};
+---
+<link rel="canonical" href={canonical} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content={isEs ? 'es_MX' : 'en_US'} />
+<meta property="og:site_name" content="J. Angel Sosa" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content={image} />
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />

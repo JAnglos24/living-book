@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /print/
+Disallow: /es/print/
 
-Sitemap: https://www.jasosal.com/sitemap.xml
+Sitemap: https://www.jasosal.com/sitemap-index.xml

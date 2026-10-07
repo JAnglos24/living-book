@@ -4,10 +4,12 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
 import cloudflare from '@astrojs/cloudflare';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx()],
+  site: 'https://www.jasosal.com',
+  integrations: [mdx(), sitemap({ filter: (p) => !/\/(admin|print)\//.test(p) })],
   adapter: cloudflare(),
   redirects: {
     '/es-home.html': '/es/',

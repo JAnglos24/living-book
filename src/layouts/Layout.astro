@@ -4,9 +4,11 @@ import '../styles/global.css';
 
 const image = ogImage || "https://www.jasosal.com/assets/jas-warm.jpg";
 const fullImageUrl = image.startsWith('http') ? image : `https://www.jasosal.com${image}`;
+const isEs = Astro.url.pathname.startsWith('/es');
+const canonical = new URL(Astro.url.pathname, 'https://www.jasosal.com').href;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={isEs ? 'es' : 'en'}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,10 +16,13 @@ const fullImageUrl = image.startsWith('http') ? image : `https://www.jasosal.com
 <meta name="description" content={description || "José Ángel Sosa López — Senior Portfolio Manager, Product Manager Leadership, Product Management & PMO Director. Experto en arquitectura y gestión de productos tecnológicos, Retail POS y gobernanza."}>
 <meta name="keywords" content="Portfolio Manager, Product Manager Leadership, Product Management, Gestión de Producto, Líder de Gestión de Producto, Product Manager Lead, PMO Director, Agile Coach, Retail POS, IT Portfolio Governance, José Ángel Sosa López, J. Angel Sosa">
 <meta name="author" content="José Ángel Sosa López">
+<link rel="canonical" href={canonical}>
+<link rel="sitemap" href="/sitemap-index.xml">
+<meta property="og:locale" content={isEs ? 'es_MX' : 'en_US'}>
 <meta property="og:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
 <meta property="og:description" content={description || "Liderazgo en Gestión de Producto, Portfolio Management, PMO y Agile Coaching."}>
 <meta property="og:type" content={ogType || "profile"}>
-<meta property="og:url" content={ogUrl || "https://www.jasosal.com/"}>
+<meta property="og:url" content={ogUrl || canonical}>
 <meta property="og:image" content={fullImageUrl}>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={title || "José Ángel Sosa — Portfolio Manager"}>
