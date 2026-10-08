@@ -6,8 +6,8 @@ import SeoHead from '../../components/SeoHead.astro';
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>J. Angel Sosa — Portafolio de Transformación / Gestión de Producto y Proyectos</title>
-<meta name="description" content="Liderazgo de Portafolios de TI — Perspectiva de Producto y Proyecto. Ideas, marcos de trabajo y experiencia de campo en la intersección entre productos físicos, plataformas digitales, proyectos y portafolios empresariales.">
+<title>J. Angel Sosa â€” Portafolio de TransformaciÃ³n / GestiÃ³n de Producto y Proyectos</title>
+<meta name="description" content="Liderazgo de Portafolios de TI â€” Perspectiva de Producto y Proyecto. Ideas, marcos de trabajo y experiencia de campo en la intersecciÃ³n entre productos fÃ­sicos, plataformas digitales, proyectos y portafolios empresariales.">
 <link rel="preload" as="image" href="/assets/jas-warm.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -29,14 +29,14 @@ h1,h2,h3,p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (max-width:800px){:root{--m:22px}}
 
-/* ============ SCENE 00 — HERO ============ */
+/* ============ SCENE 00 â€” HERO ============ */
 .hero{position:relative;height:190svh;background:var(--black)}
 .hero .stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--black)}
 .hero .stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(7,8,9,.42),rgba(7,8,9,0) 30%,rgba(7,8,9,0) 66%,rgba(7,8,9,.6))}
 /* photo: taller than the stage so translating it actually pans across new pixels */
 .hero .photo{position:absolute;left:0;right:0;top:-2svh;height:118svh;z-index:0;overflow:hidden;will-change:transform}
 .hero .photo img{width:100%;height:100%;object-fit:cover;object-position:68% 24%;transform:scale(1.10);transform-origin:center center}
-/* typographic knockout mask — black plane, transparent letters revealing the moving wallpaper */
+/* typographic knockout mask â€” black plane, transparent letters revealing the moving wallpaper */
 .hero .maskwrap{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform,opacity;opacity:0;transform:scale(.985);animation:reveal 1.15s var(--ease) .2s forwards}
 .hero .name-mask{width:100%;height:100%;display:block}
 .hero .name-mask.mobile{display:none}
@@ -64,7 +64,7 @@ h1,h2,h3,p{margin:0}
   .hero .name-mask.desktop{display:none}
   .hero .name-mask.mobile{display:block}
 }
-/* ============ SCENE 01 — LIVING BOOK ============ */
+/* ============ SCENE 01 â€” LIVING BOOK ============ */
 .book{position:relative;z-index:2;background:var(--paper);display:grid;grid-template-columns:55% 45%;min-height:100svh;align-items:stretch;box-shadow:0 -40px 90px rgba(0,0,0,.28)}
 .book .text{padding:clamp(4.2rem,8vh,7rem) clamp(2rem,3vw,4rem) clamp(3rem,6vh,4.5rem) var(--m);display:flex;flex-direction:column;justify-content:center}
 .book .eyebrow{color:var(--graphite)}
@@ -121,7 +121,7 @@ h1,h2,h3,p{margin:0}
   .book-metrics .label{font-size:.62rem;letter-spacing:.11em;line-height:1.35}
 }
 
-/* ============ SCENE 02 — CINEMATIC STRIP ============ */
+/* ============ SCENE 02 â€” CINEMATIC STRIP ============ */
 .strip{position:relative;z-index:2;height:135svh;background:var(--black)}
 .strip .scene{position:sticky;top:calc((100svh - 86svh)/2);height:86svh;overflow:hidden}
 .strip .bg{position:absolute;inset:-6%;z-index:0;will-change:transform}
@@ -137,7 +137,7 @@ h1,h2,h3,p{margin:0}
   .strip .fig{left:74%;bottom:8%;height:44%}.strip .shadow{left:74%;bottom:8%}
   .strip .say{max-width:11ch;font-size:clamp(1.2rem,5vw,1.7rem);top:32%}
 }
-/* ============ SCENE 04 — NAV ============ */
+/* ============ SCENE 04 â€” NAV ============ */
 .nav{position:relative;z-index:2;background:var(--paper);display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
 .nav a{display:block;padding:clamp(2rem,4vh,3.2rem) var(--m) clamp(2rem,4vh,3.2rem) 1.6rem;text-decoration:none;border-right:1px solid var(--line);position:relative;overflow:hidden;transition:background .35s var(--ease)}
 .nav a:first-child{padding-left:var(--m)}
@@ -172,7 +172,7 @@ footer nav{display:flex;gap:2rem}
 <!-- ========== 00 HERO ========== -->
 <section class="hero" id="hero" aria-label="Introduction">
   <div class="stage" id="stage">
-    <div class="photo" id="photo"><img src="/assets/jas-warm.jpg" alt="José Ángel Sosa seated on an illuminated cube in a dark interior" fetchpriority="high"></div>
+    <div class="photo" id="photo"><img src="/assets/jas-warm.jpg" alt="JosÃ© Ãngel Sosa seated on an illuminated cube in a dark interior" fetchpriority="high"></div>
     <div class="maskwrap" id="maskwrap" aria-hidden="true">
       <svg class="name-mask desktop" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -196,14 +196,14 @@ footer nav{display:flex;gap:2rem}
       </svg>
     </div>
     <div class="ui">
-      <h1 class="sr">J. Angel Sosa — Portafolio de Transformación / Gestión de Producto y Proyectos</h1>
+      <h1 class="sr">J. Angel Sosa â€” Portafolio de TransformaciÃ³n / GestiÃ³n de Producto y Proyectos</h1>
       <a class="mark" href="/es/">JAS</a>
       <div class="topright">
         <div class="lang" role="group" aria-label="Idioma"><a href="/">EN</a><span aria-hidden="true">/</span><a href="/es/" aria-current="page">ES</a></div>
         <a class="menu" href="#nav">MENU <i></i></a>
       </div>
-      <p class="role">Portafolio de Transformación / Gestión de Producto y Proyectos</p>
-      <p class="quote">“Los productos cobran sentido cuando responden tanto a tus necesidades como a tu espíritu.”</p>
+      <p class="role">Portafolio de TransformaciÃ³n / GestiÃ³n de Producto y Proyectos</p>
+      <p class="quote">â€œLos productos cobran sentido cuando responden tanto a tus necesidades como a tu espÃ­ritu.â€</p>
       <div class="cue"></div>
     </div>
   </div>
@@ -214,23 +214,23 @@ footer nav{display:flex;gap:2rem}
   <div class="text">
     <p class="eyebrow reveal">El libro vivo</p>
     <h2 id="bt" class="reveal" style="transition-delay:.08s">Thinking in Products, Building Systems</h2>
-    <p class="sub reveal" style="transition-delay:.16s">Del diseño físico a los productos digitales, los proyectos y los portafolios empresariales.</p>
-    <p class="sum reveal" style="transition-delay:.22s">Ideas, marcos de trabajo y experiencia de campo que conectan productos físicos, plataformas digitales, proyectos y portafolios empresariales.</p>
+    <p class="sub reveal" style="transition-delay:.16s">Del diseÃ±o fÃ­sico a los productos digitales, los proyectos y los portafolios empresariales.</p>
+    <p class="sum reveal" style="transition-delay:.22s">Ideas, marcos de trabajo y experiencia de campo que conectan productos fÃ­sicos, plataformas digitales, proyectos y portafolios empresariales.</p>
     <div class="cta-row reveal" style="transition-delay:.3s">
       <a class="cta" href="/es/ebook/">Explorar el libro vivo <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
-      <a class="cta ghost" href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">Leer el último capítulo <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+      <a class="cta ghost" href="/es/ebook/03-what-a-production-line-teaches-about-architecture/">Leer el Ãºltimo capÃ­tulo <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
     </div>
     <div class="book-metrics" id="bookMetrics" aria-label="In brief">
-      <div class="metric"><b><span class="clip">16+</span></b><span class="label">Años de<br>experiencia</span></div>
+      <div class="metric"><b><span class="clip">16+</span></b><span class="label">AÃ±os de<br>experiencia</span></div>
       <div class="metric"><b><span class="clip" style="transition-delay:.08s">50+</span></b><span class="label">Proyectos en<br>distintas industrias</span></div>
-      <div class="metric infinity"><b><span class="clip" style="transition-delay:.16s">∞</span></b><span class="label">Ideas aún<br>en desarrollo</span></div>
+      <div class="metric infinity"><b><span class="clip" style="transition-delay:.16s">âˆž</span></b><span class="label">Ideas aÃºn<br>en desarrollo</span></div>
       <div class="metric"><b><span class="clip" style="transition-delay:.24s">10+</span></b><span class="label">Productos a<br>nivel mundial</span></div>
     </div>
   </div>
   <div class="object" id="object">
-    <p class="note n1">Idea<br>Diseño<br>Desarrollo<br>Escala</p>
+    <p class="note n1">Idea<br>DiseÃ±o<br>Desarrollo<br>Escala</p>
     <p class="note n2">Personas<br>Productos<br>Proyectos<br>Sistemas</p>
-    <p class="note n3">Función<br>Impacto<br>Personas</p>
+    <p class="note n3">FunciÃ³n<br>Impacto<br>Personas</p>
     <div class="layer blueprint" id="bp"><img src="/assets/chair-blueprint.png" alt="Technical drawing of a moulded chair with dimensions and radii" loading="lazy"></div>
   </div>
 </section>
@@ -242,22 +242,22 @@ footer nav{display:flex;gap:2rem}
     <div class="bg" id="sbg"><img src="/assets/cinematic-bg.jpg" alt="" loading="lazy"></div>
     <div class="shadow" id="sshadow"></div>
     <div class="fig" id="sfig"><img src="/assets/jas-figure.png" alt="Graphic illustration of a standing figure seen from behind" loading="lazy"></div>
-    <p class="say reveal" id="ssay">“Un mundo construido de forma más humana y reflexiva es posible.”<small>J. A. Sosa</small></p>
+    <p class="say reveal" id="ssay">â€œUn mundo construido de forma mÃ¡s humana y reflexiva es posible.â€<small>J. A. Sosa</small></p>
   </div>
 </section>
 
 <!-- ========== 04 NAVIGATION ========== -->
 <nav class="nav" id="nav" aria-label="Sections">
-  <a href="/es/ebook/"><b>Libro</b><span>Thinking in Products, Building Systems</span><em>→</em><i></i></a>
-  <a href="/es/ideas/"><b>Ideas</b><span>Conceptos, experimentos y modelos reutilizables</span><em>→</em><i></i></a>
-  <a href="/es/articles/"><b>Artículos</b><span>Ensayos y reflexiones largas</span><em>→</em><i></i></a>
-  <a href="/es/author/"><b>Autor</b><span>Trayectoria, experiencia seleccionada y enlaces</span><em>→</em><i></i></a>
-  <a href="/es/author/#contact"><b>Contacto</b><span>LinkedIn, GitHub y contacto profesional</span><em>→</em><i></i></a>
+  <a href="/es/ebook/"><b>Libro</b><span>Thinking in Products, Building Systems</span><em>â†’</em><i></i></a>
+  <a href="/es/ideas/"><b>Ideas</b><span>Conceptos, experimentos y modelos reutilizables</span><em>â†’</em><i></i></a>
+  <a href="/es/articles/"><b>ArtÃ­culos</b><span>Ensayos y reflexiones largas</span><em>â†’</em><i></i></a>
+  <a href="/es/author/"><b>Autor</b><span>Trayectoria, experiencia seleccionada y enlaces</span><em>â†’</em><i></i></a>
+  <a href="/es/author/#contact"><b>Contacto</b><span>LinkedIn, GitHub y contacto profesional</span><em>â†’</em><i></i></a>
 </nav>
 
 <footer>
-  <span>J. Angel Sosa — México, 2026</span>
-  <span style="opacity:.55">Diseño por Tecronomic, SAPI de CV</span>
+  <span>J. Angel Sosa â€” MÃ©xico, 2026</span>
+  <span style="opacity:.55">DiseÃ±o por Tecronomic, SAPI de CV</span>
   <nav aria-label="Enlaces"><a href="https://www.linkedin.com/" rel="me">LinkedIn</a><a href="https://github.com/" rel="me">GitHub</a><a href="/es/privacidad/">Privacidad</a></nav>
 </footer>
 
