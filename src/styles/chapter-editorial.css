@@ -159,3 +159,21 @@ sup a:hover{text-decoration:underline}
 footer.sitefoot{background:var(--white);border-top:1px solid var(--line)}
 footer.sitefoot .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
 footer.sitefoot a{text-decoration:none}
+
+/* ===== FORMULA & MATH ===== */
+sub{font-size:.7em;line-height:0}
+.formula{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.5vw,22px);text-align:center;background:var(--paper);border:1px solid var(--line);padding:22px 18px;margin:8px 0 26px;color:var(--graphite);overflow-x:auto}
+
+/* ===== OBJECT FIGURE (TRANSPARENT) ===== */
+.object-figure{background:var(--paper);border-top:1px solid var(--line)}
+.object-figure .wrap{padding-block:clamp(40px,7vh,64px)}
+.object-figure .frame{background:repeating-conic-gradient(#fff 0 25%, var(--white) 0 50%) 0 0/24px 24px, var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:280px;padding:32px;text-align:center}
+.object-figure .frame img{max-height:340px;object-fit:contain}
+.object-figure .frame span{font-family:var(--serif);font-style:italic;color:var(--ink2);font-size:clamp(15px,1.4vw,18px);line-height:1.5;max-width:56ch}
+.object-figure figcaption{margin-top:14px;font-size:13px;line-height:1.55;color:var(--ink2);max-width:80ch}
+
+/* ===== FIGURE FIG BOX (CHAPTER 6 PLACEHOLDERS & PLATES) ===== */
+.longform figure.fig{margin:0}
+.longform figure.fig .box{aspect-ratio:4/5;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(22px,3vw,40px);overflow:hidden}
+.longform figure.fig .box span{font-family:var(--serif);font-style:italic;color:var(--ink2);font-size:clamp(15px,1.4vw,18px);line-height:1.5}
+.longform figure.fig .box img{width:100%;height:100%;object-fit:cover}
