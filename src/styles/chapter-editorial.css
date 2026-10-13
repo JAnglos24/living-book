@@ -46,6 +46,8 @@ sup a:hover{text-decoration:underline}
 .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(44px,4.4vw,74px);line-height:.98;letter-spacing:-.03em;margin:22px 0 20px;max-width:17ch}
 .opener .dek{font-family:var(--serif);font-size:clamp(19px,1.5vw,23px);line-height:1.42;max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:30px}
 .opener .meta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:13px;color:rgba(255,255,255,.78);border-top:1px solid rgba(255,255,255,.28);padding-top:18px}
+.opener .chapter-download{color:#fff;font-weight:700;text-underline-offset:4px}
+@media print{.chapter-download{display:none}}
 
 /* ===== 2 — INTRO ===== */
 .intro{background:var(--white)}
@@ -111,6 +113,8 @@ sup a:hover{text-decoration:underline}
 
 .longform .prose{columns:2;column-gap:var(--gutter)}
 .longform .prose p{font-family:var(--serif);font-size:clamp(18px,1.08vw,21px);line-height:1.66;color:#242A31;margin-bottom:1.25em;break-inside:avoid-column}
+.longform.calculation-flow .prose{columns:1;max-width:78ch}
+.longform.calculation-flow h3{font-size:22px;line-height:1.3;margin:32px 0 18px}
 @media (max-width:760px){.longform .prose{columns:1}}
 
 /* ===== 6 — QUOTE + ESSAY ===== */

@@ -9,6 +9,8 @@ import Layout from '../../../../layouts/Layout.astro';
   ogUrl="https://www.jasosal.com/es/ebook/04-the-product-is-never-just-the-object/"
 >
   <style is:inline>
+    .opener .chapter-download{color:#fff;font-weight:700;text-underline-offset:4px}
+    @media print{.chapter-download{display:none}}
     :root{
       --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
       --paper:#F7F8FA; --white:#FFFFFF; --graphite:#111418; --ink2:#5C6673; --line:#C9D0D8; --grid-blue:rgba(0,87,217,.12);
@@ -160,12 +162,13 @@ import Layout from '../../../../layouts/Layout.astro';
       <p class="eyebrow">Parte I — Entender el Producto · Capítulo 04</p>
       <h1>El Producto Nunca es Solo el Objeto</h1>
       <p class="dek">Un refrigerador no vende frío: vende estatus. Una cajetilla no vende tabaco: vende una promesa visual. Detrás de cada objeto, sistema o servicio hay una necesidad cubierta y un deseo satisfecho.</p>
-      <div class="meta">
+<div class="meta">
         <span>28 sep 2026</span>
         <span>19 min de lectura</span>
         <span>Edición viva 0.3</span>
         <span>Estado: en desarrollo</span>
-      </div>
+      <a class="chapter-download" href="/downloads/chapter-04-the-product-is-never-just-the-object-es.pdf" download>Descargar PDF del capítulo</a>
+    </div>
     </div>
   </header>
 

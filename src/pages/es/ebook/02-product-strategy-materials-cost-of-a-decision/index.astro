@@ -9,6 +9,8 @@ import Layout from '../../../../layouts/Layout.astro';
   ogUrl="https://www.jasosal.com/es/ebook/02-product-strategy-materials-cost-of-a-decision/"
 >
   <style is:inline>
+    .opener .chapter-download{color:#fff;font-weight:700;text-underline-offset:4px}
+    @media print{.chapter-download{display:none}}
     /* Copied from original chapter head */
     figure{margin:0}
     figcaption{font-size:13px;color:var(--ink2);margin-top:10px;max-width:60ch}
@@ -171,12 +173,13 @@ import Layout from '../../../../layouts/Layout.astro';
       <p class="eyebrow">PARTE I — ENTENDER EL PRODUCTO · CAPÍTULO 02</p>
       <h1>Estrategia de Producto, Materiales y el Costo de una Decisión</h1>
       <p class="dek">Todo producto comienza como una promesa hecha antes de saber lo suficiente. Este capítulo trata sobre lo que cuesta cumplir esa promesa.</p>
-      <p class="meta">
+<p class="meta">
         <span>Publicado 16 sep 2026</span>
         <span>14 min de lectura</span>
         <span>Edición 0.2</span>
         <span>Estado: Publicado</span>
-      </p>
+      <a class="chapter-download" href="/downloads/chapter-02-product-strategy-materials-cost-of-a-decision-es.pdf" download>Descargar PDF del capítulo</a>
+    </p>
     </div>
   </header>
 

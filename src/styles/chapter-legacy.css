@@ -22,6 +22,8 @@ figcaption{font-size:13px;color:var(--ink2);margin-top:10px;max-width:60ch}
 .opener h1{font-weight:800;font-variation-settings:"wdth" 100;font-size:clamp(54px,7.5vw,132px);line-height:.98;letter-spacing:-.035em;max-width:16ch;margin-bottom:16px}
 .opener .dek{font-size:clamp(17px,1.5vw,21px);max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:22px}
 .opener .meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:rgba(255,255,255,.78)}
+.opener .chapter-download{color:#fff;font-weight:700;text-underline-offset:4px}
+@media print{.chapter-download{display:none}}
 
 .intro{background:var(--white)}
 .intro .wrap{padding-block:clamp(40px,7vh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter)}

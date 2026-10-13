@@ -3,7 +3,7 @@
 // chapter, printed with a real headless browser and merged into one file.
 // Runs automatically after `npm run build` via the "postbuild" script.
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
@@ -76,7 +76,8 @@ async function compressImages(page) {
 }
 
 async function printPage(page, url) {
-  await page.goto(url, { waitUntil: 'networkidle0' });
+  const response = await page.goto(url, { waitUntil: 'networkidle0' });
+  if (!response.ok()) throw new Error(`PDF source returned ${response.status()}: ${url}`);
   await compressImages(page);
   return page.pdf({ printBackground: true, format: 'A4' });
 }
@@ -117,6 +118,8 @@ async function main() {
 
   const downloadsDir = path.join(ROOT, 'downloads');
   mkdirSync(downloadsDir, { recursive: true });
+  const publicDownloadsDir = path.resolve(import.meta.dirname, '..', 'public', 'downloads');
+  mkdirSync(publicDownloadsDir, { recursive: true });
 
   const server = await startServer();
   const browser = await puppeteer.launch({
@@ -131,11 +134,19 @@ async function main() {
       const buffers = [];
       for (const route of edition.routes) {
         const url = `http://localhost:${PORT}${route}`;
-        buffers.push(await printPage(page, url));
+        const buffer = await printPage(page, url);
+        buffers.push(buffer);
+        const chapterSlug = route.match(/\/ebook\/([^/]+)\/$/)?.[1];
+        if (chapterSlug) {
+          const filename = `chapter-${chapterSlug}-${edition.lang}.pdf`;
+          await writeFile(path.join(downloadsDir, filename), buffer);
+          await writeFile(path.join(publicDownloadsDir, filename), buffer);
+          console.log(`[generate-pdf] wrote ${filename} (${(buffer.length / 1024).toFixed(0)} KB)`);
+        }
       }
       const merged = await mergePdfs(buffers);
       const outPath = path.join(downloadsDir, edition.outFile);
-      await (await import('node:fs/promises')).writeFile(outPath, merged);
+      await writeFile(outPath, merged);
       console.log(`[generate-pdf] wrote ${outPath} (${(merged.length / 1024).toFixed(0)} KB, ${edition.routes.length} source pages)`);
     }
   } finally {

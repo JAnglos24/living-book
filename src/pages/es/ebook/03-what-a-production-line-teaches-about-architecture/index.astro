@@ -9,6 +9,8 @@ import Layout from '../../../../layouts/Layout.astro';
   ogUrl="https://www.jasosal.com/es/ebook/03-what-a-production-line-teaches-about-architecture/"
 >
   <style is:inline>
+    .opener .chapter-download{color:#fff;font-weight:700;text-underline-offset:4px}
+    @media print{.chapter-download{display:none}}
     /* Copied styles from chapter 3 */
     :root{
       --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
@@ -156,11 +158,12 @@ import Layout from '../../../../layouts/Layout.astro';
     <p class="eyebrow">Parte I — Entender el Producto · Capítulo 03</p>
     <h1>Lo Que una Línea de Producción Enseña Sobre Arquitectura</h1>
     <p class="dek">Una silla cruza una frontera antes de sentar a alguien. Un crédito cruza un banco entero antes de aprobar a alguien. Ambos cruces obedecen la misma disciplina de flujo.</p>
-    <div class="meta">
+<div class="meta">
       <span>21 sep 2026</span>
       <span>17 min de lectura</span>
       <span>Edición viva 0.3</span>
       <span>Estado: en desarrollo</span>
+      <a class="chapter-download" href="/downloads/chapter-03-what-a-production-line-teaches-about-architecture-es.pdf" download>Descargar PDF del capítulo</a>
     </div>
   </div>
 </header>
