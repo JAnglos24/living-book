@@ -57,7 +57,7 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
 <section class="longform" id="sec-01">
   <div class="wrap">
     <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 01 Material and process</p>
-    <h2>What a Toothbrush Allows</h2>
+    <h2>What a toothbrush allows</h2>
     <div class="grid">
       <figure class="figwrap">
         <div class="figure">
@@ -116,7 +116,7 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
   <div class="wrap">
     <div class="grid">
       <div>
-        <blockquote>Being able to make a toothbrush with metal bristles does not show that the combination is appropriate for the intended contact.</blockquote>
+        <blockquote>Tolerance is not what the machine is capable of extruding, but the margin within which the human body can safely and reliably interact.</blockquote>
         <cite>&mdash; Chapter 07 &middot; 01</cite>
       </div>
       <div class="essay">
@@ -130,7 +130,7 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
 <section class="longform" id="sec-02">
   <div class="wrap">
     <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 02 Device and context</p>
-    <h2>One Route, Three Interfaces</h2>
+    <h2>One route, three interfaces</h2>
 
     <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-bottom:2.5rem">
       <figure class="figwrap">
@@ -166,102 +166,114 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
         <thead>
           <tr>
             <th>Scenario</th>
-            <th>Primary constraint</th>
-            <th>What the interface adjusts</th>
-            <th>Risk if it ignores the context</th>
+            <th>Interaction conditions</th>
+            <th>Decisions it raises</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><b>Car</b></td>
-            <td>Divided attention and limited glance duration</td>
-            <td>Voice prompts, large targets, essential route guidance only</td>
-            <td>Driver distraction, delayed reactions, road danger</td>
+            <td><b>Car in motion</b></td>
+            <td>Attention shared with driving, reach of controls and brief reading</td>
+            <td>Prioritize directions, reduce steps and make use of voice and audio</td>
           </tr>
           <tr>
-            <td><b>Phone on foot</b></td>
-            <td>Single-hand operation and direct sunlight</td>
-            <td>High contrast, immediate next-turn cards, haptic feedback</td>
-            <td>Stops on crowded sidewalks, disorientation, missed turns</td>
+            <td><b>Phone during a walk</b></td>
+            <td>Occupied hand, outdoor light, battery and attention to the surroundings</td>
+            <td>Make browsing and one-handed use easy; make the next action recognizable</td>
           </tr>
           <tr>
-            <td><b>Tablet at desk</b></td>
-            <td>Exploration and side-by-side comparison</td>
-            <td>Dense overview, alternate routes, rich venue metadata</td>
-            <td>Cluttered cognitive load if carried into mobile contexts</td>
+            <td><b>Tablet when planning a trip</b></td>
+            <td>Larger surface and room for unhurried browsing</td>
+            <td>Compare alternatives and show more context without assuming every tablet has the same sensors</td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <div class="prose" style="margin-top:2.5rem">
+      <p>That is why reducing the difference between these three scenarios to screen inches is a simplification. The device changes the available channels and also the effort that can be asked of the person; at bottom, it changes their acceptance threshold. And the interface is transformed even more when the interaction occupies the whole body.</p>
+    </div>
   </div>
 </section>
 
-{/* 03 — SENSORY AND COGNITIVE LIMITS */}
+{/* 03 — BODY AND SENSES */}
 <section class="longform" id="sec-03">
   <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 03 Sensory and cognitive limits</p>
-    <h2>What People Can Absorb</h2>
-    <div class="prose">
-      <p>When an interface demands more than the human senses can process, the person begins to make mistakes. This is not carelessness; it is biology. Visual acuity drops under poor lighting, auditory discrimination degrades in noisy environments, and working memory holds only a few chunks of volatile information at once.</p>
-      <p>Industrial design learned this lesson through physical switchboards and aircraft cockpits: grouping related controls, providing distinct tactile profiles, and establishing unambiguous confirmation signals prevented catastrophic operator error. Digital interfaces inherit the exact same human receiver.</p>
-      <p>In aesthetic and perceptual studies, the concept of MAYA ("Most Advanced, Yet Acceptable") studied by Paul Hekkert and colleagues demonstrates that human preference balances on an edge between novelty and typicality.<sup><a id="r3" href="#ref-3">3</a></sup> Push an interface too far into unfamiliar interaction metaphors, and users abandon it; keep it purely conventional, and it fails to leverage new technical capabilities. The tolerance band is narrow and measurable.</p>
-      <p>Consider audio feedback. Consumer products such as Marshall headphones rely on a distinctive guitar-riff cue to confirm Bluetooth pairing.<sup><a id="r4" href="#ref-4">4</a></sup> The sound is brief, instantly distinguishable from speech or notification chimes, and unmistakable in its meaning. It respects the ear's tolerance for interruption while providing definitive confirmation.</p>
-    </div>
-
-    {/* Signals 2x2 grid */}
-    <div class="catgrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gutter);margin-top:2.5rem;margin-bottom:2.5rem">
-      <figure class="figwrap">
-        <div class="figure" style="aspect-ratio:4/3">
-          <img src="/assets/chapter-07-signal-confirmation.jpg" alt="Clear confirmation checkmark on a handheld mobile display" width="1600" height="1200" loading="lazy" />
-        </div>
-        <figcaption>Figure 7.7 — Immediate confirmation: unambiguous feedback acknowledges task completion without cognitive hesitation.</figcaption>
-      </figure>
-      <figure class="figwrap">
-        <div class="figure" style="aspect-ratio:4/3">
-          <img src="/assets/chapter-07-signal-repetition.jpg" alt="Status badge repeating across multiple rows of a dense operational table" width="1600" height="1200" loading="lazy" />
-        </div>
-        <figcaption>Figure 7.8 — Controlled repetition: consistent cues allow rapid scanning without re-interpreting syntax.</figcaption>
-      </figure>
-      <figure class="figwrap">
-        <div class="figure" style="aspect-ratio:4/3">
-          <img src="/assets/chapter-07-signal-grouping.jpg" alt="Operational dashboard grouping related metrics into distinct cards" width="1600" height="1200" loading="lazy" />
-        </div>
-        <figcaption>Figure 7.9 — Functional grouping: spatial proximity binds related controls, reducing eye saccades.</figcaption>
-      </figure>
-      <figure class="figwrap">
-        <div class="figure" style="aspect-ratio:4/3">
-          <img src="/assets/chapter-07-signal-control.jpg" alt="Dial and switch panel with distinct tactile textures for emergency shutdown" width="1600" height="1200" loading="lazy" />
-        </div>
-        <figcaption>Figure 7.10 — Physical control differentiation: distinct geometries prevent accidental actuation under stress.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-{/* 04 — SPACE AND OPERATION */}
-<section class="longform" id="sec-04">
-  <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 04 Space and operation</p>
-    <h2>The Envelope of Movement</h2>
-    <div class="prose">
-      <p>An interface does not float in a vacuum. It lives in physical rooms, vehicle cabins, warehouse aisles, or hospital wards. Every physical object claims an envelope of movement — the spatial volume required not just to place the object, but to enter it, adjust it, clean it, and safely exit.</p>
-      <p>Consider an aircraft passenger seat or high-density auditorium chair. The seat itself occupies a fixed rectangular footprint. But the operational envelope includes the recline angle, leg clearance, tray table deployment, and aisle egress.</p>
-    </div>
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 03 Body and senses</p>
+    <h2>The body occupies the interface</h2>
 
     <div class="object-figure" style="margin:2.5rem 0">
       <div class="frame">
-        <img src="/assets/chapter-07-seat-exploded-transparent.png" alt="Exploded view of a modular seat showing mechanical articulation and clearances" width="1800" height="1200" loading="lazy" />
+        <img src="/assets/chapter-07-seat-exploded-transparent.png" alt="Exploded view of a conceptual multisensory seat: seat and backrest, base and actuators, supports, vibration and sound, optional thermal system, and covers" width="1800" height="1200" loading="lazy" />
       </div>
-      <figcaption>Figure 7.5 — Exploded view of a modular seat: the mechanical tolerances between chassis, pivot hinges and cushioning dictate the user's envelope of movement.</figcaption>
+      <figcaption>Figure 7.5 — Conceptual multisensory seat for a 4D theater, exploded view. The six points correspond to Table 7.3.</figcaption>
     </div>
 
     <div class="prose">
-      <p>When interior planners configure a room, they face an unavoidable trade-off between nominal capacity and operational tolerance. Cramming maximum seats into a hall (Layout A) reduces aisle clearance to the bare legal minimum, creating bottlenecks during ingress and making cleaning tedious. Providing generous margins (Layout B) lowers nominal capacity but preserves rapid circulation and dignity of movement.</p>
+      <p>To see this same problem in a physical object, I propose a conceptual multisensory seat for a 4D theater. It is a working example, not a portrait of a commercial installation: it lets us analyze movement, vibration, thermal effects and coupling with sound without attributing this whole configuration to every theater that exists, or assuming that each effect originates inside the seat. Part of the sound, the air or the heat may come from the room.</p>
+      <p>Taken apart, the seat shows that each part carries a design decision and that each decision has an aspect someone must evaluate.</p>
+    </div>
+
+    <div class="datawrap" style="overflow-x:auto">
+      <p class="tlabel">Table 7.3 — A seat broken down into decisions</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Part or system</th>
+            <th>Design decision</th>
+            <th>Aspect to evaluate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Seat and backrest</b></td>
+            <td>Geometry, support and padding</td>
+            <td>Fit to different bodies and comfort throughout the show</td>
+          </tr>
+          <tr>
+            <td><b>Base and actuators</b></td>
+            <td>Travel, speed and acceleration</td>
+            <td>Controlled movement and clear space required</td>
+          </tr>
+          <tr>
+            <td><b>Contacts and supports</b></td>
+            <td>Position of arms, feet and hands</td>
+            <td>Stability, access and the possibility of changing posture</td>
+          </tr>
+          <tr>
+            <td><b>Vibration and sound</b></td>
+            <td>Intensity, duration and synchronization</td>
+            <td>Clarity of the effect and accumulated sensory load</td>
+          </tr>
+          <tr>
+            <td><b>Thermal system, if any</b></td>
+            <td>Location, control and exposure time</td>
+            <td>Contact, regulation and safe conditions of use</td>
+          </tr>
+          <tr>
+            <td><b>Covers and joints</b></td>
+            <td>Materials, cleaning and access to components</td>
+            <td>How the experience holds up during operation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose" style="margin-top:2.5rem">
+      <p>All these variables need specification, testing and acceptance criteria. An intention of immersion does not by itself guarantee an experience that suits everyone: the backrest that supports one body well can leave another without support, a travel one person enjoys can bother another, and a vibration that is clear at the start of the show can turn into accumulated sensory load by the end. Here the idea of tolerance returns. The point is not that the seat works on average, but knowing within which variations it still works and for whom.</p>
+      <p>But the seat still has to be installed in a room, and there limits appear that the design of the seat alone cannot resolve.</p>
     </div>
   </div>
 </section>
 
-{/* DIAGRAM 7.6 — ROOM LAYOUT SVG INLINE */}
+{/* 04 — SPACE AND CAPACITY */}
+<section class="longform" id="sec-04">
+  <div class="wrap">
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 04 Space and capacity</p>
+    <h2>The room designs too</h2>
+  </div>
+</section>
+
 <section class="diagram">
   <div class="wrap">
     <div class="kicker">Figure 7.6 — Spatial layout</div>
@@ -269,116 +281,147 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
       <div class="frame">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" role="img" aria-label="Two hypothetical configurations of the same room"><title>Two hypothetical configurations of the same room</title><g transform="translate(30,70)"><rect x="0" y="0" width="360" height="240" fill="none" stroke="#1a1a1a" stroke-width="2"/><rect x="60" y="8" width="240" height="14" fill="#1a1a1a"/><text x="180" y="19" font-size="9" fill="#fff" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" letter-spacing="1">SCREEN</text><rect x="50.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="45.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="98.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="93.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="146.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="141.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="194.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="189.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="242.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="237.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="290.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="285.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="50.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="45.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="98.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="93.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="146.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="141.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="194.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="189.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="242.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="237.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="290.0" y="86" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="285.0" y="82" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="50.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="45.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="98.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="93.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="146.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="141.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="194.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="189.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="242.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="237.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="290.0" y="126" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="285.0" y="122" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="50.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="45.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="98.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="93.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="146.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="141.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="194.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="189.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="242.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="237.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="290.0" y="166" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="285.0" y="162" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><path d="M10 230 H350" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="6 4"/><text x="180" y="224" font-size="9" fill="#1a1a1a" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">Circulation and access</text></g><text x="30" y="55" font-size="13" font-weight="700" fill="#1a1a1a" font-family="Helvetica,Arial,sans-serif">Layout A — more seats</text><text x="30" y="335" font-size="11" fill="#555" font-family="Helvetica,Arial,sans-serif">Higher capacity · rows closer together</text><g transform="translate(490,70)"><rect x="0" y="0" width="360" height="240" fill="none" stroke="#1a1a1a" stroke-width="2"/><rect x="60" y="8" width="240" height="14" fill="#1a1a1a"/><text x="180" y="19" font-size="9" fill="#fff" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" letter-spacing="1">SCREEN</text><rect x="74.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="69.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="138.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="133.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="202.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="197.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="266.0" y="46" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="261.0" y="42" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="74.0" y="104" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="69.0" y="100" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="138.0" y="104" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="133.0" y="100" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="202.0" y="104" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="197.0" y="100" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="266.0" y="104" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="261.0" y="100" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="74.0" y="162" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="69.0" y="158" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="138.0" y="162" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="133.0" y="158" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="202.0" y="162" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="197.0" y="158" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><rect x="266.0" y="162" width="20" height="20" rx="3" fill="#1d3fd8"/><rect x="261.0" y="158" width="30" height="28" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/><path d="M10 230 H350" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="6 4"/><text x="180" y="224" font-size="9" fill="#1a1a1a" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">Circulation and access</text></g><text x="490" y="55" font-size="13" font-weight="700" fill="#1a1a1a" font-family="Helvetica,Arial,sans-serif">Layout B — fewer seats, more space</text><text x="490" y="335" font-size="11" fill="#555" font-family="Helvetica,Arial,sans-serif">Lower capacity · more access and maintenance margin</text><rect x="30" y="365" width="14" height="14" rx="3" fill="#1d3fd8"/><text x="50" y="376" font-size="11" fill="#1a1a1a" font-family="Helvetica,Arial,sans-serif">Seat</text><rect x="130" y="362" width="22" height="20" rx="6" fill="none" stroke="#1d3fd8" stroke-width="1" stroke-dasharray="3 2"/><text x="160" y="376" font-size="11" fill="#1a1a1a" font-family="Helvetica,Arial,sans-serif">Motion envelope</text><text x="850" y="376" font-size="10" fill="#777" text-anchor="end" font-family="Helvetica,Arial,sans-serif">Illustrative sketch, no calculated dimensions</text></svg>
       </div>
-      <figcaption>Figure 7.6 — Two room configurations: Layout A prioritizes nominal seat capacity at the expense of circulation; Layout B sacrifices row density to preserve maintenance clearance and swift egress.</figcaption>
+      <figcaption>Figure 7.6 — Two hypothetical configurations of the same room. Illustrative sketch: it does not represent calculated dimensions or a specification.</figcaption>
     </figure>
   </div>
 </section>
 
-{/* 05 — PHYSICAL ERGONOMICS AND HEALTH */}
+<section class="longform">
+  <div class="wrap">
+    <div class="prose">
+      <p>Suppose the commercial goal is to have a certain number of seats. That number translates into a conversation with the available floor area, the spacing between rows, the motion envelope of each seat, the access routes and the space for maintenance. Accessibility and evacuation have to be considered from the outset and not at the end; the applicable dimensions depend on the project and its location, so I do not propose any here.</p>
+      <p>A seat that works well as a prototype can take up too much space, or cost too much, once many units are installed. The consequences chain together. Changing the width alters the capacity. Changing the base alters the movement and the maintenance. Reducing the space between rows changes access and the experience of the person seated. Each adjustment that resolves one limit pushes the problem toward another.</p>
+      <p>It helps to distinguish two volumes that are easily confused. Units manufactured affect the investment in tooling and the cost per part. Seats installed affect the capacity and revenue of the service. Whoever produces the seat thinks about the first; whoever operates the room, about the second; and the design has to speak to both.</p>
+      <p>Nor is the profitability of a room explained by counting seats. It depends on occupancy, price and operation. More seats do not mean more revenue if the experience forces occupancy down or makes maintenance more expensive.</p>
+      <p>In digital products, costs are also spread over an expected capacity of use. That capacity must be analyzed per platform and per function.</p>
+    </div>
+  </div>
+</section>
+
+{/* 05 — ECONOMICS */}
 <section class="longform" id="sec-05">
   <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 05 Physical ergonomics and health</p>
-    <h2>The Cost of Cumulative Repetition</h2>
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 05 Economics</p>
+    <h2>Every platform has its own math</h2>
+    <div class="prose">
+      <p>Back to the screens: mobile, tablet, television, smartwatch. A function can be technically feasible and still not add enough incremental value to sustain its development, its testing and its maintenance on a given platform. These are two different questions and it pays to ask them separately: what does the hardware allow, and what does the economics justify.</p>
+      <p>The watch serves for the first: brief interaction, small controls, limited battery and capabilities that vary between models. On television, reading distance, the remote control and the diversity of devices all count. Those are constraints of hardware and context. That a function is not built there for reasons of cost is another kind of constraint, and mixing them leads us to justify with technology what is really an economic decision, or the reverse.</p>
+      <p>The audience that matters is that of this product and this function on that device, not that of the platform in general. It is not correct to say that watches or televisions always have insufficient critical mass: a small audience can justify a high-value solution, and a large audience may not use the function.</p>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="Hypothetical economic calculation">
+  <div class="wrap">
+    <div><b>600,000</b><span>EQUIVALENT ANNUAL COST IN MXN,<br/>ANNUALIZED DEVELOPMENT AND SUPPORT · HYPOTHETICAL</span></div>
+    <div><b>120</b><span>MXN NET INCREMENTAL CONTRIBUTION<br/>PER YEAR PER USER OF THE FUNCTION · HYPOTHETICAL</span></div>
+    <div><b>5,000</b><span>FUNCTION USERS NEEDED<br/>TO COVER THE COST · HYPOTHETICAL</span></div>
+  </div>
+</section>
+
+<section class="longform">
+  <div class="wrap">
+    <div class="prose">
+      <p>With those assumptions the calculation is a division: 600,000 divided by 120 is 5,000. What matters is what gets counted. It is the users who use the function, not downloads or total users, which neither substitute for effective adoption nor demonstrate that contribution.</p>
+      <p>When the value of the function is an operating saving, retention or a service obligation, the case is built with that evidence and not with a per-user calculation. And there is a limit no calculation moves: the necessary safety and accessibility are not removed by a popularity calculation.<sup><a id="r7" href="#ref-7">7</a></sup></p>
+      <p>Beyond being able to build and sustain the function, we need to understand how much change the person receiving it will accept.</p>
+    </div>
+  </div>
+</section>
+
+{/* 06 — ACCEPTANCE */}
+<section class="longform" id="sec-06">
+  <div class="wrap">
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 06 Acceptance</p>
+    <h2>Pushing as far as acceptance allows</h2>
+    <div class="prose">
+      <p>That question has a name in industrial design: MAYA, for <em>Most Advanced Yet Acceptable</em>, a phrase associated with Raymond Loewy. I use it as a guideline to balance novelty and familiarity, not as a mathematical formula. The study by Hekkert, Snelders and van Wieringen examines how typicality and novelty contribute together to aesthetic preference for industrial products.<sup><a id="r3" href="#ref-3">3</a></sup> Its scope is aesthetic preference; it does not warrant concluding that MAYA by itself predicts adoption, health or financial return.</p>
+      <p>What I propose is applying it to features. Keep the core benefit of a feature and adapt its complexity to the device, to the task and to what the user can recognize and learn. A smartwatch can offer a brief action and offload extensive setup to the phone, provided the continuity between them is clear and useful. If it is not, the watch merely added a step.</p>
+      <p>The decision to include, simplify, transfer or discard a feature combines four questions. Is it safe and accessible for the intended use? Does the device sustain it? Does the user understand and accept the interaction? Does the value justify sustaining it? MAYA contributes to the third question, and only to that one. That combination is the method this chapter proposes; it is not an extension attributed to Loewy.</p>
+      <p>That acceptance also depends on small decisions that repeat, such as a connection chime.</p>
+    </div>
+  </div>
+</section>
+
+{/* 07 — SOUND AND REPETITION */}
+<section class="longform" id="sec-07">
+  <div class="wrap">
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 07 Sound and repetition</p>
+    <h2>Sound occupies space too</h2>
+    <div class="prose">
+      <p>A concrete example of a branded audio signal appears in Marshall's Major IV headphones. Its support page, explaining how to pair via Bluetooth, notes that the brand's pairing sound should be heard.<sup><a id="r4" href="#ref-4">4</a></sup> From that fact, and only from that fact, we can examine the function of recognizable confirmation: it communicates a state ("connected") and builds identity. I do not extend that behavior to other models, to a wired connection or to other events without verifying it.</p>
+      <p>The difference matters between an occasional alert and repetition throughout a working day. Hearing a signal once, when unboxing a device, is one thing; hearing it dozens of times a day is another. Intensity, duration, frequency, context and user control are all part of the design decision. Whether a sound pleases or annoys is not a universal constant: it is a response that requires research with diverse users across representative situations.</p>
+    </div>
+
+    {/* Signals 2x2 GalleryGrid */}
+    <div class="catgrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gutter);margin-top:2.5rem;margin-bottom:2.5rem">
+      <figure class="figwrap">
+        <div class="figure" style="aspect-ratio:16/9">
+          <img src="/assets/chapter-07-signal-confirmation.jpg" alt="Unbranded over-ear headphones next to a phone with a small blue status LED lit" width="1600" height="1200" loading="lazy" />
+        </div>
+        <figcaption>Figure 7.7 — Confirmation: a useful signal communicates state.</figcaption>
+      </figure>
+      <figure class="figwrap">
+        <div class="figure" style="aspect-ratio:3/2">
+          <img src="/assets/chapter-07-signal-repetition.jpg" alt="Unbranded smartwatch photographed with long exposure, screen waking multiple times in a single night" width="1600" height="1200" loading="lazy" />
+        </div>
+        <figcaption>Figure 7.8 — Repetition: the same signal, many times over a single day.</figcaption>
+      </figure>
+      <figure class="figwrap">
+        <div class="figure" style="aspect-ratio:3/2">
+          <img src="/assets/chapter-07-signal-grouping.jpg" alt="Three sorted paper trays with blank slips, one flagged with a blue marker" width="1600" height="1200" loading="lazy" />
+        </div>
+        <figcaption>Figure 7.9 — Grouping: not every alert carries the same weight.</figcaption>
+      </figure>
+      <figure class="figwrap">
+        <div class="figure" style="aspect-ratio:1/1">
+          <img src="/assets/chapter-07-signal-control.jpg" alt="Close-up of a volume dial and toggle switch on an unbranded device with a blue accent mark" width="1600" height="1200" loading="lazy" />
+        </div>
+        <figcaption>Figure 7.10 — Control: the person decides what sounds, when, and how loud.</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p>The same applies to notifications, sounds and vibrations in software applications. Choosing categories, timing, frequency and delivery channels, grouping messages and distinguishing between confirmations, marketing promotions and critical alerts are decisions that distribute effort: either the product absorbs it by filtering and prioritizing, or the user absorbs it by dismissing and silencing. Personalization is, at bottom, the control a user holds over their experience.</p>
+      <p>That control includes exit routes. Deleting personal data and closing an account belong to the same relationship and demand clear consequences and understandable interactions: anyone deciding to leave should know what is retained, what is purged, and when. It also pays to distinguish between system errors, task recovery and user frustration, because they are not identical: an error corrected in a single step does not weigh the same as one that forces starting over from scratch.</p>
+      <p>And there is a trap in product metrics. Tracking who abandons, who silences and who continues using the product despite frustration reveals far more than counting aggregate sessions. High frequency of use, by itself, does not demonstrate acceptance: people often continue using what irritates them simply because they have no viable alternative.</p>
+      <p>In enterprise tools and workplace hardware, the operator may have even less latitude to choose whether to keep using it.</p>
+    </div>
+  </div>
+</section>
+
+{/* 08 — WORK AND HEALTH */}
+<section class="longform" id="sec-08">
+  <div class="wrap">
+    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 08 Work and health</p>
+    <h2>Scanning through the working day</h2>
     <div class="grid">
       <figure class="figwrap">
         <div class="figure">
-          <img src="/assets/chapter-07-scanning-grips.jpg" alt="Industrial handheld barcode scanner in pistol grip and top-down holster grip" width="1600" height="1800" loading="lazy" />
+          <img src="/assets/chapter-07-scanning-grips.jpg" alt="Three unbranded barcode scanners with distinct grip configurations on a workbench next to work gloves" width="1600" height="1800" loading="lazy" />
         </div>
-        <figcaption>Figure 7.11 — Handheld barcode scanner: pistol grip vs. top-down grasp. The angle of actuation dictates cumulative strain across thousands of cycles.</figcaption>
+        <figcaption>Figure 7.11 — Grip alternatives and data capture: comparison begins with the task, not the catalog.</figcaption>
       </figure>
       <div class="textcol">
-        <p>In logistics facilities, retail fulfillment hubs, and hospital pharmacies, warehouse workers and operators scan hundreds of packages every hour. A handheld scanner weighing 450 grams might seem trivial during a ten-minute executive demo. But repeat that scanning motion 2,000 times across an eight-hour shift, and that weight becomes an ergonomic hazard.</p>
-        <p>The Occupational Safety and Health Administration (OSHA) notes that awkward postures, repetitive motions, and forceful exertions are primary risk factors for musculoskeletal disorders in warehousing.<sup><a id="r5" href="#ref-5">5</a></sup> When an interface forces excessive wrist flexion or thumb hyperextension to reach an "Enter" touch-target, the product is directly offloading engineering shortcuts onto the biological joints of the worker.</p>
-        <p>Ergonomics is not an aesthetic preference; it is a structural tolerance. If our software flows require three confirmation taps instead of one automated trigger, we are multiplying mechanical joint cycles by thousands each working day.</p>
+        <p>Take an operational scenario. A manufacturing logistics hub equips its floor staff with smartphone-style handheld terminals to scan QR and barcodes: across inbound receiving of raw supplies, outbound shipping of finished inventory, and tracking on the line. The convergence of screen, connectivity and optical scan engine into a single pocketable unit offers real commercial appeal. For any given deployment, one must verify why that specific hardware was chosen; I assume no prior virtue here.</p>
+        <p>Now compare that phone-style unit with a traditional pistol-grip scanner, evaluated strictly through the work itself rather than product spec sheets: grip balance, center of gravity, trigger actuation, optical scan angle, scan confirmation haptics, compatibility with thick work gloves, and whether the worker must continually refocus on the display. The question to examine is this: by concentrating multiple functions into a consumer-like chassis, do we also alter the physical toll demanded of the operator?</p>
+        <p>We do not start in the dark. OSHA identifies awkward postures and sustained repetitive motions as primary risk factors for musculoskeletal disorders in warehouse environments.<sup><a id="r5" href="#ref-5">5</a></sup> That evidence warrants evaluating exposure. It does not prove that every phone-style terminal causes injury, nor that pistol grips are universally superior; the official guidance evaluates factors, not commercial SKUs.</p>
+        <p>How then should a team evaluate it? Through testing under representative operating conditions, involving both frontline operators and certified ergonomic specialists. Observers record scan cycles, error recovery, sustained grasp duration, wrist postures, hand swaps, repetitive joint strain, and subjective fatigue reported by workers. Crucially, the protocol evaluates alternatives tailored to each flow: ergonomic sleds, holsters, vehicle mounts, or wearable ring scanners that free both hands. One inviolable condition: initial testing must never demand that workers endure physical strain merely to yield research data.</p>
+        <p>Software architecture plays an equal role. Redundant confirmation modals, barcode decoding delays, dropped wireless packets, or extraneous screen taps prolong the physical cycle and force awkward hold angles. It pays to separate the split-second saved on a single scan from the compounding effect of repeating that motion 2,000 times during a shift: what looks like a minor software quirk in a ten-minute sprint demo becomes an unbearable physical burden across a forty-hour work week.</p>
+        <p>There is a final organizational imperative. Teams rolling out operational hardware often treat ergonomic risk as something to investigate only after workers file formal injury claims. Responsible engineering demands the opposite posture: <b>we do not need to wait for a disability claim to eliminate an avoidable physical burden.</b></p>
       </div>
     </div>
   </div>
 </section>
 
-{/* 06 — BALANCING CONSTRAINTS */}
-<section class="longform" id="sec-06">
-  <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 06 Balancing constraints</p>
-    <h2>When System Limits Collide</h2>
-    <div class="prose">
-      <p>Product leaders rarely get the luxury of optimizing a single tolerance in isolation. Industrial engineering is the discipline of negotiating conflicting constraints: weight versus battery longevity, tactile feedback versus waterproof sealing, visual richness versus rendering latency.</p>
-      <p>In software interfaces, the tension between screen real estate and cognitive clarity follows the same law. Packing an enterprise dashboard with sixty live data widgets satisfies an executive's desire for comprehensive visibility, but it overwhelms the operator's visual field, increasing error rates during critical incidents.</p>
-      <p>Establishing deliberate tolerances means drawing boundary lines: what is the maximum number of actionable alerts allowed per hour? What is the maximum acceptable latency between physical barcode scan and server confirmation? When these thresholds are defined as hard contractual constraints rather than aspirational guidelines, product teams design defensively.</p>
-    </div>
-  </div>
-</section>
-
-{/* 07 — FAILURE MODES */}
-<section class="longform" id="sec-07">
-  <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 07 Failure modes</p>
-    <h2>How Interfaces Break Down Under Stress</h2>
-    <div class="prose">
-      <p>A bridge does not fail on a calm, sunny day under nominal traffic. It fails when heavy winds, thermal expansion, and peak resonant loads align. Similarly, digital interfaces do not fail during rehearsed sales demonstrations; they collapse when network latency spikes, sunlight washes out the display, and an exhausted user is rushing to meet a deadline.</p>
-      <p>When an interface exceeds its tolerance band, it enters one of three distinct failure modes: silent error, user adaptation fatigue, or catastrophic system rejection. In silent error, the user believes an action succeeded when it actually failed silently in the background. In adaptation fatigue, the human compensates for poor ergonomics until chronic strain forces sick leave. In system rejection, operators actively bypass the application using unauthorized shadow tools.</p>
-    </div>
-
-    <div class="datawrap" style="overflow-x:auto">
-      <p class="tlabel">Table 7.3 — Four operational failure modes</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Failure Mode</th>
-            <th>Underlying Tolerance Exceeded</th>
-            <th>Observable Symptom</th>
-            <th>Root Remediation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b>Silent Dropped Input</b></td>
-            <td>Touch sampling rate &amp; network debounce threshold</td>
-            <td>Operator taps submit twice; duplicate orders or inventory discrepancies</td>
-            <td>Hardware haptic confirmation and deterministic client-side queuing</td>
-          </tr>
-          <tr>
-            <td><b>Alert Desensitization</b></td>
-            <td>Auditory &amp; cognitive alarm threshold</td>
-            <td>High-priority alarms ignored alongside mundane system notifications</td>
-            <td>Strict hierarchical triage; cap non-actionable warnings</td>
-          </tr>
-          <tr>
-            <td><b>Physical Fatigue Bypass</b></td>
-            <td>Repetitive wrist torque &amp; device mass threshold</td>
-            <td>Workers set scanner down on cart and enter 12-digit barcodes manually</td>
-            <td>Switch to wearable ring scanner or optical fixed-mount reading</td>
-          </tr>
-          <tr>
-            <td><b>Glance Latency Distraction</b></td>
-            <td>Visual glance duration threshold (&gt; 2 seconds)</td>
-            <td>Drivers miss exits or swerve while attempting to navigate complex menu trees</td>
-            <td>Flatten visual architecture; enforce voice-driven execution</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-{/* 08 — THE ECONOMIC COST */}
-<section class="longform" id="sec-08">
-  <div class="wrap">
-    <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 08 The economic cost</p>
-    <h2>What Exceeding the Margin Costs the Business</h2>
-    <div class="prose">
-      <p>Bad interface design is often dismissed as a cosmetic defect or a matter of user preference. In high-volume operations, however, fractional ergonomic friction translates into massive corporate liability.</p>
-      <p>Consider an enterprise distribution network with 250 warehouse picking operators. In a typical month, the team executes 600,000 package barcode scans (hypothetical model). If poor scanner weight balance and ambiguous on-screen confirmation generate a 0.02% error rate — equivalent to 120 misdirected packages per month — and each misrouted parcel costs an average of $42 USD to locate, restock and reship, that tiny interface imperfection extracts over $5,000 USD in monthly waste, or $60,000 USD annually.<sup><a id="r7" href="#ref-7">7</a></sup></p>
-      <p>Add to that the unseen costs of worker turnover, musculoskeletal compensation claims, and productivity loss, and the true price of "tolerating bad tolerances" dwarfs the engineering investment required to fix it.</p>
-    </div>
-  </div>
-</section>
-
-{/* 09 — METHOD (FRAMEWORK) */}
-<section class="framework" id="sec-09">
+{/* 09 — METHOD */}
+<section class="longform" id="sec-09">
   <div class="wrap">
     <p class="eyebrow">Part II — From Physical to Digital · Chapter 07 · 09 Method</p>
-    <h2>Measure Before Asking People to Adapt</h2>
-    <p class="lede">Identify, measure, decide, validate: a four-stage method that repeats every time the hardware, the flow or the pace of work changes.</p>
+    <h2>Measure before asking people to adapt</h2>
+    <div class="prose">
+      <p>This entire progression yields an actionable engineering method. I propose maintaining a Map of Limits for every critical interaction. The map documents the task and its environmental context, the observed variable, the explicit acceptance threshold, the empirical evidence available, who validates that criterion, and what remedial action triggers if the threshold is breached. When no validated limit exists, teams must not fabricate one: they document the uncertainty and commission the necessary study.</p>
+    </div>
 
     <div class="datawrap" style="margin-bottom:2.5rem;overflow-x:auto">
       <p class="tlabel">Table 7.4 — Six layers of the map of limits</p>
@@ -386,6 +429,7 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
         <thead>
           <tr>
             <th>Layer</th>
+            <th>Tolerance Classification</th>
             <th>Example variable</th>
             <th>Evidence needed to decide</th>
           </tr>
@@ -393,31 +437,37 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
         <tbody>
           <tr>
             <td><b>Material and process</b></td>
+            <td>Technical tolerance</td>
             <td>Variation in a part or grip response</td>
             <td>Specification and manufacturing tests</td>
           </tr>
           <tr>
             <td><b>Device and context</b></td>
+            <td>Constraint</td>
             <td>Actuation, reading and steps during the task</td>
             <td>Tests on the intended device and in the intended situation</td>
           </tr>
           <tr>
             <td><b>Sensory and cognitive</b></td>
+            <td>Acceptance threshold</td>
             <td>Alert frequency, errors and recovery</td>
             <td>Research with diverse users and representative exposure</td>
           </tr>
           <tr>
             <td><b>Space and operation</b></td>
+            <td>Constraint &amp; Technical tolerance</td>
             <td>Spacing, movement and access</td>
             <td>Validation of the installed whole</td>
           </tr>
           <tr>
             <td><b>Economics</b></td>
+            <td>Constraint</td>
             <td>Effective use, cost and incremental value</td>
             <td>Scenarios and adoption tracking</td>
           </tr>
           <tr>
             <td><b>Health</b></td>
+            <td>Acceptance threshold</td>
             <td>Postures, force, repetition and duration</td>
             <td>Competent ergonomic evaluation and response to reported discomfort</td>
           </tr>
@@ -425,26 +475,26 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
       </table>
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h3>Identify</h3>
-        <p>Recognize the exposure before measuring: which gestures repeat, for how long, in what posture and at what pace.</p>
+    <div class="steps" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-top:2.5rem">
+      <div class="step" style="border-top:3px solid var(--cobalt);padding-top:18px">
+        <div class="n" style="font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px">01</div>
+        <h3 style="font-weight:700;font-size:18px;margin-bottom:8px">Identify</h3>
+        <p style="font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink2)">Recognize the exposure before measuring: which gestures repeat, for how long, in what posture and at what pace.</p>
       </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h3>Measure</h3>
-        <p>Measure in representative conditions with diverse bodies and experience, looking at spread and not only average.</p>
+      <div class="step" style="border-top:3px solid var(--cobalt);padding-top:18px">
+        <div class="n" style="font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px">02</div>
+        <h3 style="font-weight:700;font-size:18px;margin-bottom:8px">Measure</h3>
+        <p style="font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink2)">Measure in representative conditions with diverse bodies and experience, looking at spread and not only average.</p>
       </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h3>Decide</h3>
-        <p>Decide the adaptation based on verifiable requirements; never pass the adaptation on to the worker.</p>
+      <div class="step" style="border-top:3px solid var(--cobalt);padding-top:18px">
+        <div class="n" style="font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px">03</div>
+        <h3 style="font-weight:700;font-size:18px;margin-bottom:8px">Decide</h3>
+        <p style="font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink2)">Decide the adaptation based on verifiable requirements; never pass the adaptation on to the worker.</p>
       </div>
-      <div class="step">
-        <div class="n">04</div>
-        <h3>Validate</h3>
-        <p>Validate real sustained use week after week, evaluating again after changes in flow or pace.</p>
+      <div class="step" style="border-top:3px solid var(--cobalt);padding-top:18px">
+        <div class="n" style="font-family:var(--serif);color:var(--ink2);font-size:13px;margin-bottom:12px">04</div>
+        <h3 style="font-weight:700;font-size:18px;margin-bottom:8px">Validate</h3>
+        <p style="font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink2)">Validate real sustained use week after week, evaluating again after changes in flow or pace.</p>
       </div>
     </div>
   </div>
@@ -454,10 +504,10 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
 <section class="quote-essay" id="sec-10">
   <div class="wrap">
     <p class="eyebrow" style="margin-bottom:1rem">Part II — From Physical to Digital · Chapter 07 · 10 Responsibility</p>
-    <h2 style="margin-bottom:2rem">What the User Ends Up Paying</h2>
+    <h2 style="margin-bottom:2rem">What the user ends up paying</h2>
     <div class="grid">
       <div>
-        <blockquote>That person's health must have an explicit place in the requirements, in the tests and in our product decisions.</blockquote>
+        <blockquote>The physical and cognitive health of the person using the system must hold an explicit, non-negotiable place in product requirements and acceptance gates.</blockquote>
         <cite>&mdash; Chapter 07 &middot; 10</cite>
       </div>
       <div class="essay">
@@ -513,16 +563,16 @@ keywords: "interface design, tolerances, design constraints, industrial design, 
   <div style="margin-top:20px">
     <p class="eyebrow" style="color:var(--cobalt)">CHAPTER 07 SECTIONS</p>
     <ul class="chlist" style="margin-top:16px">
-      <li><a href="#sec-01"><span class="n">01</span><span class="t">What a Toothbrush Allows</span></a></li>
-      <li><a href="#sec-02"><span class="n">02</span><span class="t">One Route, Three Interfaces</span></a></li>
-      <li><a href="#sec-03"><span class="n">03</span><span class="t">What People Can Absorb</span></a></li>
-      <li><a href="#sec-04"><span class="n">04</span><span class="t">The Envelope of Movement</span></a></li>
-      <li><a href="#sec-05"><span class="n">05</span><span class="t">The Cost of Cumulative Repetition</span></a></li>
-      <li><a href="#sec-06"><span class="n">06</span><span class="t">When System Limits Collide</span></a></li>
-      <li><a href="#sec-07"><span class="n">07</span><span class="t">How Interfaces Break Down Under Stress</span></a></li>
-      <li><a href="#sec-08"><span class="n">08</span><span class="t">What Exceeding the Margin Costs the Business</span></a></li>
-      <li><a href="#sec-09"><span class="n">09</span><span class="t">Measure Before Asking People to Adapt</span></a></li>
-      <li><a href="#sec-10"><span class="n">10</span><span class="t">What the User Ends Up Paying</span></a></li>
+      <li><a href="#sec-01"><span class="n">01</span><span class="t">What a toothbrush allows</span></a></li>
+      <li><a href="#sec-02"><span class="n">02</span><span class="t">One route, three interfaces</span></a></li>
+      <li><a href="#sec-03"><span class="n">03</span><span class="t">The body occupies the interface</span></a></li>
+      <li><a href="#sec-04"><span class="n">04</span><span class="t">The room designs too</span></a></li>
+      <li><a href="#sec-05"><span class="n">05</span><span class="t">Every platform has its own math</span></a></li>
+      <li><a href="#sec-06"><span class="n">06</span><span class="t">Pushing as far as acceptance allows</span></a></li>
+      <li><a href="#sec-07"><span class="n">07</span><span class="t">Sound occupies space too</span></a></li>
+      <li><a href="#sec-08"><span class="n">08</span><span class="t">Scanning through the working day</span></a></li>
+      <li><a href="#sec-09"><span class="n">09</span><span class="t">Measure before asking people to adapt</span></a></li>
+      <li><a href="#sec-10"><span class="n">10</span><span class="t">What the user ends up paying</span></a></li>
     </ul>
     <p class="eyebrow" style="color:var(--cobalt);margin-top:24px">OTHER CHAPTERS</p>
     <ul class="chlist" style="margin-top:12px">
