@@ -24,6 +24,7 @@ const editorial = entry.data.chapter >= 5;
   ogImage={chapterImage}
   ogType="article"
   ogUrl={`https://www.jasosal.com/ebook/${chapterSlug}/`}
+  keywords={entry.data.keywords}
 >
   {/* Ch 1-4 keep their original stylesheet; ch >= 5 use the approved editorial system (Living book/Chapter5/ebook-chapter-05.html). */}
   <Fragment set:html={`<style>${editorial ? editorialCss : legacyCss}</style>`} />

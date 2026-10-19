@@ -1,11 +1,23 @@
 ---
-const { title, description, isHome = false, ogImage, ogType, ogUrl } = Astro.props;
+const { title, description, isHome = false, ogImage, ogType, ogUrl, keywords, alternateEn, alternateEs } = Astro.props;
 import '../styles/global.css';
 
 const image = ogImage || "https://www.jasosal.com/assets/jas-warm.jpg";
 const fullImageUrl = image.startsWith('http') ? image : `https://www.jasosal.com${image}`;
 const isEs = Astro.url.pathname.startsWith('/es');
 const canonical = new URL(Astro.url.pathname, 'https://www.jasosal.com').href;
+
+let enUrl = alternateEn;
+let esUrl = alternateEs;
+if (!enUrl && !esUrl) {
+  if (isEs) {
+    esUrl = canonical;
+    enUrl = new URL(Astro.url.pathname.replace(/^\/es(\/|$)/, '/'), 'https://www.jasosal.com').href;
+  } else {
+    enUrl = canonical;
+    esUrl = new URL('/es' + Astro.url.pathname, 'https://www.jasosal.com').href;
+  }
+}
 ---
 <!doctype html>
 <html lang={isEs ? 'es' : 'en'}>
@@ -14,9 +26,12 @@ const canonical = new URL(Astro.url.pathname, 'https://www.jasosal.com').href;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}</title>
 <meta name="description" content={description || "José Ángel Sosa López — Senior Portfolio Manager, Product Manager Leadership, Product Management & PMO Director. Experto en arquitectura y gestión de productos tecnológicos, Retail POS y gobernanza."}>
-<meta name="keywords" content="Portfolio Manager, Product Manager Leadership, Product Management, Gestión de Producto, Líder de Gestión de Producto, Product Manager Lead, PMO Director, Agile Coach, Retail POS, IT Portfolio Governance, José Ángel Sosa López, J. Angel Sosa">
+<meta name="keywords" content={keywords || "Portfolio Manager, Product Manager Leadership, Product Management, Gestión de Producto, Líder de Gestión de Producto, Product Manager Lead, PMO Director, Agile Coach, Retail POS, IT Portfolio Governance, José Ángel Sosa López, J. Angel Sosa"}>
 <meta name="author" content="José Ángel Sosa López">
 <link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="en" href={enUrl}>
+<link rel="alternate" hreflang="es" href={esUrl}>
+<link rel="alternate" hreflang="x-default" href={enUrl}>
 <link rel="sitemap" href="/sitemap-index.xml">
 <meta property="og:locale" content={isEs ? 'es_MX' : 'en_US'}>
 <meta property="og:title" content={title || "José Ángel Sosa — Portfolio Manager | Product Manager Leadership | Product Management"}>
