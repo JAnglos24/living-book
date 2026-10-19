@@ -1,411 +1,551 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import editorialCss from '../../../../styles/chapter-editorial.css?raw';
-const title = "Capítulo 7 — Interfaces como tolerancias · Pensar en Productos, Construir Sistemas";
-const summary = "Capítulo 7 del Libro Vivo: la interfaz toma forma dentro de los límites de materiales, procesos, dispositivo, contexto, negocio y persona. Diseñar exige reconocerlos, medirlos y decidir quién absorbe el esfuerzo cuando los sobrepasamos.";
 ---
 <Layout
-  title={title}
-  description={summary}
-  ogImage="/assets/chapter-07-room-layout-es.svg"
+  title="Capítulo 7 — Interfaces como tolerancias · Pensar en Productos, Construir Sistemas"
+  description="Capítulo 7 del Libro Vivo: la interfaz toma forma dentro de los límites de materiales, procesos, dispositivo, contexto, negocio y persona. Diseñar exige reconocerlos, medirlos y decidir quién absorbe el esfuerzo cuando los sobrepasamos."
+  ogImage="/assets/chapter-07-hero.jpg"
   ogType="article"
   ogUrl="https://www.jasosal.com/es/ebook/07-interfaces-as-tolerances/"
 >
-<Fragment set:html={`<style>${editorialCss}</style>`} />
+  <Fragment set:html={`<style>${editorialCss}</style>`} />
 
-<div class="topbar">
-  <div class="wrap row">
-    <a class="home" href="/es/">JAS</a>
-    <div class="chapmeta"><b>Capítulo 07</b><span>Interfaces como tolerancias</span></div>
-    <nav aria-label="Libro">
-      <a href="/es/ebook/">Contenido</a>
-      <a href="/es/author/">Autor</a>
-    </nav>
-    <div class="lang" role="group" aria-label="Idioma"><a href="/ebook/07-interfaces-as-tolerances/" hreflang="en">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/07-interfaces-as-tolerances/" aria-current="page">ES</a></div>
-    <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
-  </div>
-  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
-</div>
-
-<header class="opener">
-  <span class="num" aria-hidden="true">07</span>
-  <div class="wrap">
-    <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07</p>
-    <h1>Interfaces como tolerancias</h1>
-    <p class="dek">Los límites que dan forma a la interacción</p>
-    <div class="meta">
-      <span>19 oct 2026</span>
-      <span>22 min de lectura</span>
-      <span>Edición viva 0.7</span>
-      <span>Estado: en progreso</span>
-      <a class="chapter-download" href="/downloads/chapter-07-interfaces-as-tolerances-es.pdf" download>Descargar PDF del capítulo</a>
+  <div class="topbar">
+    <div class="wrap row">
+      <a class="home" href="/es/">JAS</a>
+      <div class="chapmeta"><b>Capítulo 07</b><span>Interfaces como tolerancias</span></div>
+      <nav aria-label="Libro">
+        <a href="/es/ebook/">Contenido</a>
+        <a href="/es/author/">Autor</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma"><a href="/ebook/07-interfaces-as-tolerances/" hreflang="en">EN</a><span aria-hidden="true">/</span><a href="/es/ebook/07-interfaces-as-tolerances/" aria-current="page">ES</a></div>
+      <button class="toc-btn" id="tocBtn" aria-haspopup="dialog" aria-controls="tocPanel">Contenido</button>
     </div>
-  </div>
-</header>
-
-<div class="chapter-content">
-
-
-<section class="intro">
-  <div class="wrap cols">
-    <p>Cuando uno trabaja en diseño industrial, pronto descubre que la interacción con el usuario empieza antes de que exista el objeto. Empieza al conocer los materiales que puede conseguir, la máquina con la que va a producir y el molde que puede pagar. Ahí comienzan a decidirse muchas de las sensaciones que después atribuimos al diseño: lo firme o lo blando que se siente un agarre, dónde termina una pieza y empieza otra, cuánto cuesta repetir el objeto diez mil veces.</p>
-    <p>Un cepillo de dientes sirve para ver ese recorrido completo, porque es un contacto cotidiano entre la mano, el material y el cuerpo. Casi nadie piensa en su molde, y sin embargo cada decisión de fabricación llega hasta la boca de quien lo usa. Lo tomo como ejemplo de algo que cualquiera puede comprobar con el objeto que tiene en el baño.</p>
-    <p>La pregunta que quiero llevar de ahí a lo digital es sencilla. Primero: ¿qué podemos fabricar? Después: ¿cómo puede utilizarlo alguien? Y al final, la que más pesa cuando el producto ya está en manos de una persona: ¿qué le estamos exigiendo cuando lo utiliza todos los días? El capítulo 5 presentó los materiales digitales y el 6, su conservación durante la vida del producto; este examina cómo esas decisiones llegan a la persona a través de la interfaz.</p>
-  </div>
-</section>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 01 Material y proceso</p>
-
-## Lo que permite un cepillo
-
-<figure class="fig">
-  <div class="box"><span>[ 4/5 format — Cepillo de dientes sin marca con cuerpo rígido, zonas de agarre blandas y filamentos, sobre una superficie neutra ]</span></div>
-  <figcaption>Figura 7.1 — Cuerpo rígido, zona de agarre blanda y filamentos: tres decisiones que el usuario siente como una sola.</figcaption>
-</figure>
-
-<div class="prose">
-    <p>Pensemos en un cepillo de dientes compuesto por un cuerpo rígido y zonas de agarre más blandas. Esa combinación no se decide únicamente en el dibujo. La inyección de varios componentes, el molde y la compatibilidad entre los materiales condicionan su geometría, sus uniones y su superficie: dónde puede terminar la parte blanda, qué espesor admite, cómo se adhiere al cuerpo y qué textura queda a la vista. La máquina delimita las posibilidades; el equipo de diseño sigue tomando decisiones dentro de ellas.</p>
-    <p>Conviene separar ese cuerpo de lo que ocurre con los filamentos. La documentación de ZAHORANSKY, un fabricante de maquinaria para cepillos, distingue la inyección de piezas de uno o varios componentes de la colocación de los filamentos y de su acabado, que incluye el recorte y el redondeado de los extremos.<sup><a id="r1" href="#ref-1">1</a></sup> Son procesos distintos y cada uno entrega decisiones distintas: el primero define el agarre y la forma; los otros definen lo que toca la encía y el esmalte. Saber a cuál pertenece cada decisión evita atribuirle al molde lo que es del filamento, y al filamento lo que es del molde.</p>
-    <p>Lo mismo ocurre con las cerdas duras, medias y blandas. Las categorías comerciales sirven para hablar de percepción, pero la respuesta real depende de una combinación de material, diámetro, longitud y disposición de los filamentos. Dos cepillos que dicen «medio» pueden sentirse distintos. No comparo aquí cepillos concretos; uso las categorías solo para mostrar que una sensación es la consecuencia de varias variables a la vez.</p>
-    <p>Para seguir el argumento conviene fijar tres palabras con un sentido sencillo. Se parecen, y por eso se confunden.</p>
+    <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
   </div>
 
-<div class="datawrap"><p class="tlabel">Tabla 7.1 — Tres términos que no son sinónimos</p><table><thead><tr><th>Término</th><th>Qué significa en este capítulo</th><th>En el cepillo</th></tr></thead><tbody></tbody></table></div>---|---|
-| Restricción | Condición que delimita una decisión, como el proceso disponible, el espacio de una sala o el presupuesto | El molde que se puede pagar y los materiales compatibles entre sí |
-| Tolerancia técnica | Variación permitida respecto de una especificación, por ejemplo en una dimensión o en el ajuste entre piezas | La variación admisible en el espesor de una pared o en el ajuste entre el cuerpo y la zona blanda |
-| Umbral de aceptación | Límite de una respuesta admisible, como el esfuerzo de accionamiento, la intensidad de un aviso o el tiempo de una tarea | Cuánta firmeza tolera quien lo usa antes de que moleste |
-
-<div class="prose">
-    <p>El capítulo toma prestada la idea de tolerancia de la manufactura y la extiende al diseño de la interacción. La disponibilidad de un material es una restricción; sus propiedades y las variaciones admisibles ayudan a establecer su margen de funcionamiento. Las personas también presentan diferencias y límites que deben estudiarse. Esa extensión es una propuesta editorial de este capítulo: no son sinónimos técnicos y no los uso como si lo fueran.</p>
-    <p>Llevemos la lógica al extremo. Con la maquinaria y los materiales adecuados es posible fabricar un cepillo con cerdas metálicas. Nada en el proceso lo impide. Y sin embargo, poder fabricarlo no demuestra que esa combinación sea apropiada para el contacto previsto: que exista una forma de producir algo no responde si debería existir. Es el punto en que la posibilidad de producción deja de ser suficiente para justificar un diseño.</p>
-    <p>El usuario siente la consecuencia de estas decisiones cada vez que toma el objeto y lo utiliza. En una aplicación ocurre algo semejante, aunque sus materiales sean menos visibles.</p>
-  </div>
-
-<blockquote class="pullquote"><p>Poder fabricar un cepillo con cerdas metálicas no demuestra que esa combinación sea apropiada para el contacto previsto.</p></blockquote>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 02 Dispositivo y contexto</p>
-
-## Una ruta, tres interfaces
-
-<div class="grid strip">
-  <figure class="fig">
-  <div class="box"><span>[ 3/2 format — Tablero de un automóvil con una pantalla que muestra una ruta esquemática ]</span></div>
-  <figcaption>Figura 7.2 — Automóvil: la atención se comparte con la conducción.</figcaption>
-</figure>
-  <figure class="fig">
-  <div class="box"><span>[ 3/2 format — Una mano sostiene un teléfono con una ruta esquemática mientras se camina por una calle ]</span></div>
-  <figcaption>Figura 7.3 — Teléfono: una mano ocupada y luz exterior.</figcaption>
-</figure>
-  <figure class="fig">
-  <div class="box"><span>[ 3/2 format — Tableta sobre una mesa con una ruta esquemática, junto a una libreta ]</span></div>
-  <figcaption>Figura 7.4 — Tableta: consulta detenida para preparar un viaje.</figcaption>
-</figure>
-</div>
-
-<div class="prose">
-    <p>Tomemos una necesidad que cualquiera reconoce: orientarse y llegar. Un servicio de navegación como Google Maps la atiende en un automóvil, en un teléfono y en una tableta, y la necesidad es la misma en los tres casos. Lo que cambia es todo lo que rodea a quien la tiene. No prometo que cada versión actual del servicio ofrezca exactamente las mismas funciones en todos los dispositivos; uso el ejemplo para comparar escenarios, no para describir un producto.</p>
-    <p>En el automóvil, la atención se comparte con la conducción. La guía de diseño para conducción que publica Google establece que las tareas vinculadas al manejo tienen prioridad sobre cualquier otra, que la información debe poder leerse de un vistazo —propone un máximo de dos segundos para leer un contenido y volver a la vía— y que ninguna operación debe exigir soltar el volante con ambas manos.<sup><a id="r2" href="#ref-2">2</a></sup> Son límites de contexto, no de pantalla: la misma ruta pide menos pasos, indicaciones más breves y voz.</p>
-    <p>En el teléfono, durante un recorrido a pie, la mano está ocupada, la luz exterior compite con la pantalla, la batería importa y la atención se reparte con el entorno: la calle, las otras personas, el siguiente cruce. Lo que debe lograr la interfaz es que la siguiente acción sea reconocible y que se pueda manejar con una mano.</p>
-    <p>La tableta, en cambio, suele aparecer cuando alguien prepara un viaje. Hay más superficie y posibilidad de una consulta detenida: comparar alternativas, ver más contexto. Pero conviene no suponer que toda tableta tiene los mismos sensores ni que sirva para lo mismo que otra.</p>
-  </div>
-
-<div class="datawrap"><p class="tlabel">Tabla 7.2 — La misma necesidad en tres situaciones</p><table><thead><tr><th>Escenario</th><th>Condiciones de interacción</th><th>Decisiones que plantea</th></tr></thead><tbody></tbody></table></div>---|---|
-| Automóvil en movimiento | Atención compartida con la conducción, alcance de controles y lectura breve | Priorizar indicaciones, reducir pasos y aprovechar voz y audio |
-| Teléfono durante un recorrido a pie | Mano ocupada, luz exterior, batería y atención al entorno | Facilitar la consulta y el manejo con una mano; hacer reconocible la siguiente acción |
-| Tableta al preparar un viaje | Mayor superficie y posibilidad de consulta detenida | Comparar alternativas y mostrar más contexto sin asumir que toda tableta tiene los mismos sensores |
-
-<div class="prose">
-    <p>Por eso reducir la diferencia entre estos tres escenarios a pulgadas de pantalla es una simplificación. El dispositivo cambia los canales disponibles y también el esfuerzo que se le puede pedir a la persona; cambia, en el fondo, su umbral de aceptación. Y la interfaz se transforma todavía más cuando la interacción ocupa el cuerpo entero.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 03 Cuerpo y sentidos</p>
-
-## El cuerpo ocupa la interfaz
-
-<div class="object-figure">
-  <div class="frame"><span>[ transparent object — Vista despiezada de una butaca multisensorial conceptual: asiento y respaldo, base y actuadores, apoyos, vibración y sonido, sistema térmico opcional y cubiertas ]</span></div>
-  <figcaption>Figura 7.5 — Butaca multisensorial conceptual para una sala 4D, en vista despiezada. Los seis puntos corresponden a la Tabla 7.3.</figcaption>
-</div>
-
-<div class="prose">
-    <p>Para ver este mismo problema en un objeto físico propongo una butaca multisensorial conceptual para una sala 4D. Es un ejemplo de trabajo, no el retrato de una instalación comercial: permite analizar movimiento, vibración, efectos térmicos y acoplamiento con el sonido sin atribuir esta configuración completa a todas las salas que existen, ni dar por hecho que cada efecto se origina dentro del asiento. Parte del sonido, del aire o del calor puede venir de la sala.</p>
-    <p>Descompuesta, la butaca muestra que cada parte trae consigo una decisión de diseño y que cada decisión tiene un aspecto que alguien debe evaluar.</p>
-  </div>
-
-<div class="datawrap"><p class="tlabel">Tabla 7.3 — Una butaca descompuesta en decisiones</p><table><thead><tr><th>Parte o sistema</th><th>Decisión de diseño</th><th>Aspecto que debe evaluarse</th></tr></thead><tbody></tbody></table></div>---|---|
-| Asiento y respaldo | Geometría, soporte y acolchado | Ajuste a distintos cuerpos y comodidad durante la función |
-| Base y actuadores | Recorrido, velocidad y aceleración | Movimiento controlado y espacio libre necesario |
-| Contactos y apoyos | Posición de brazos, pies y manos | Estabilidad, acceso y posibilidad de cambiar de postura |
-| Vibración y sonido | Intensidad, duración y sincronización | Claridad del efecto y carga sensorial acumulada |
-| Sistema térmico, si existe | Ubicación, control y tiempo de exposición | Contacto, regulación y condiciones seguras de uso |
-| Cubiertas y uniones | Materiales, limpieza y acceso a componentes | Conservación de la experiencia durante la operación |
-
-<div class="prose">
-    <p>Todas estas variables necesitan especificación, pruebas y criterios de aceptación. Una intención de inmersión no garantiza por sí misma una experiencia adecuada para todas las personas: el respaldo que sostiene bien a un cuerpo puede dejar a otro sin apoyo, un recorrido que una persona disfruta puede incomodar a otra, y una vibración clara al inicio de la función puede convertirse en carga sensorial acumulada hacia el final. Aquí vuelve la idea de tolerancia. No se trata de que el asiento funcione en promedio, sino de saber dentro de qué variaciones sigue funcionando y para quién.</p>
-    <p>Pero la butaca todavía tiene que instalarse en una sala, y ahí aparecen límites que el diseño aislado del asiento no puede resolver.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 04 Espacio y capacidad</p>
-
-## La sala también diseña
-
-<div class="diagram frame">
-  <img src="/ebook/chapter-07/chapter-07-room-layout-es.svg" alt="Esquema en planta de dos configuraciones hipotéticas de una misma sala: una con más butacas y filas más juntas, otra con menos butacas y más espacio, con la envolvente de movimiento y la circulación señaladas" loading="lazy" />
-</div>
-<figcaption>Figura 7.6 — Dos configuraciones hipotéticas de una misma sala. Esquema ilustrativo: no representa dimensiones calculadas ni una especificación.</figcaption>
-
-<div class="prose">
-    <p>Supongamos que el objetivo comercial es disponer de cierto número de asientos. Ese número se traduce en una conversación con la superficie disponible, la separación entre filas, la envolvente del movimiento de cada butaca, los accesos y el espacio para darles mantenimiento. La accesibilidad y la evacuación tienen que considerarse desde el planteamiento y no al final; las dimensiones aplicables dependen del proyecto y de su ubicación, así que aquí no propongo ninguna.</p>
-    <p>Una butaca que funciona bien como prototipo puede ocupar demasiado espacio, o costar demasiado, cuando se instalan muchas unidades. Las consecuencias se encadenan. Cambiar el ancho altera la capacidad. Cambiar la base altera el movimiento y el mantenimiento. Reducir el espacio entre filas modifica el acceso y la experiencia de quien está sentado. Cada ajuste que resuelve un límite empuja el problema hacia otro.</p>
-    <p>Conviene distinguir dos volúmenes que se confunden con facilidad. Las unidades fabricadas afectan la inversión en herramientas y el costo por pieza. Los asientos instalados afectan la capacidad y los ingresos del servicio. Quien produce la butaca piensa en lo primero; quien opera la sala, en lo segundo; y el diseño tiene que hablar con ambos.</p>
-    <p>Tampoco la rentabilidad de la sala se explica contando asientos. Depende de la ocupación, del precio y de la operación. Más butacas no significan más ingresos si la experiencia obliga a reducir la ocupación o a encarecer el mantenimiento.</p>
-    <p>En digital también se reparten costos sobre una capacidad de uso esperada. Esa capacidad debe analizarse por plataforma y por función.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 05 Economía</p>
-
-## Cada plataforma tiene su cuenta
-
-<div class="prose">
-    <p>Volvamos a las pantallas: móvil, tableta, televisión, smartwatch. Una función puede ser técnicamente realizable y, aun así, no aportar suficiente valor incremental para sostener su desarrollo, sus pruebas y su mantenimiento en una plataforma determinada. Son dos preguntas distintas y conviene hacerlas por separado: qué permite el hardware y qué justifica la economía.</p>
-    <p>El reloj sirve para la primera: interacción breve, controles pequeños, batería limitada y capacidades que varían entre modelos. En la televisión cuentan la distancia de lectura, el control remoto y la diversidad de equipos. Esas son restricciones del hardware y del contexto. Que una función no se construya allí por razones de costo es otra clase de restricción, y mezclarlas lleva a justificar con la técnica lo que en realidad es una decisión económica, o al revés.</p>
-    <p>La audiencia que importa es la de ese producto y la de esa función en ese dispositivo, no la de la plataforma en general. No es correcto decir que los relojes o las televisiones tienen siempre una masa crítica insuficiente: una audiencia pequeña puede justificar una solución de alto valor, y una audiencia grande puede no usar la función.</p>
-  </div>
-
-<section class="facts"><div class="wrap">
-  <div><b>600,000</b><span>COSTO ANUAL EQUIVALENTE EN MXN,<br />DESARROLLO ANUALIZADO Y SOPORTE · HIPOTÉTICO</span></div>
-  <div><b>120</b><span>MXN DE CONTRIBUCIÓN INCREMENTAL NETA<br />AL AÑO POR USUARIO QUE LA USA · HIPOTÉTICO</span></div>
-  <div><b>5,000</b><span>USUARIOS DE LA FUNCIÓN NECESARIOS<br />PARA CUBRIR EL COSTO · HIPOTÉTICO</span></div>
-</div></section>
-
-<div class="prose">
-    <p>Con esos supuestos la cuenta es una división: 600,000 entre 120 da 5,000. Lo que importa es qué se cuenta. Son los usuarios que usan la función, no las descargas ni los usuarios totales, que no sustituyen la adopción efectiva ni demuestran esa contribución.</p>
-    <p>Cuando el valor de la función es un ahorro operativo, la retención o una obligación de servicio, el caso se construye con esa evidencia y no con un cálculo por usuario. Y hay un límite que ninguna cuenta mueve: la seguridad y la accesibilidad necesarias no se eliminan mediante un cálculo de popularidad.</p>
-    <p>Además de poder construir y sostener la función, hace falta comprender cuánto cambio acepta la persona que la recibe.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 06 Aceptación</p>
-
-## Avanzar hasta donde se acepta
-
-<div class="prose">
-    <p>Esa pregunta tiene un nombre en el diseño industrial: MAYA, por *Most Advanced Yet Acceptable*, «lo más avanzado que todavía resulte aceptable», una frase asociada a Raymond Loewy. La uso como una orientación para equilibrar novedad y familiaridad, no como una fórmula. El estudio de Hekkert, Snelders y van Wieringen examina cómo la tipicidad y la novedad contribuyen juntas a la preferencia estética por productos industriales.<sup><a id="r3" href="#ref-3">3</a></sup> Su alcance es ese: preferencia estética. No permite concluir que MAYA, por sí mismo, prediga adopción, salud o retorno económico.</p>
-    <p>Lo que propongo es aplicarlo a las funciones. Conservar el beneficio principal de una función y adaptar su complejidad al dispositivo, a la tarea y a lo que el usuario puede reconocer y aprender. Un reloj puede ofrecer una acción breve y transferir la configuración extensa al teléfono, si la continuidad entre ambos resulta comprensible y útil. Si no lo resulta, el reloj solo agregó un paso.</p>
-    <p>La decisión de incluir, simplificar, transferir o descartar una función combina cuatro preguntas. ¿Es segura y accesible para el uso previsto? ¿El dispositivo la sostiene? ¿El usuario entiende y acepta la interacción? ¿El valor justifica sostenerla? MAYA contribuye a la tercera, y solo a ella. Esa combinación es el método que propone este capítulo; no es una ampliación atribuida a Loewy.</p>
-    <p>Esa aceptación también depende de decisiones pequeñas que se repiten, como un sonido de conexión.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 07 Sonido y repetición</p>
-
-## El sonido también ocupa espacio
-
-<div class="prose">
-    <p>Un ejemplo concreto de señal sonora de marca está en los audífonos Major IV de Marshall. Su página de soporte, al describir cómo emparejarlos por Bluetooth, indica que debería escucharse el sonido de emparejamiento de la marca.<sup><a id="r4" href="#ref-4">4</a></sup> A partir de ese dato, y solo de él, podemos analizar la función de una confirmación reconocible: comunica un estado («ya se conectó») y construye identidad. No extiendo ese comportamiento a cualquier otro modelo, a una conexión por cable ni a otros eventos sin verificarlo.</p>
-    <p>La diferencia importa entre un aviso ocasional y la repetición durante una jornada. Escuchar una señal una vez, al estrenar un equipo, es una cosa; escucharla decenas de veces al día es otra. Intensidad, duración, frecuencia, contexto y control del usuario forman parte de la decisión de diseño. Que un sonido agrade o moleste no es una característica universal: es una respuesta que necesita investigación, con personas distintas y en situaciones distintas.</p>
-  </div>
-
-<div class="grid gallery">
-  <figure class="fig">
-  <div class="box"><span>[ 16/9 format — Audífonos de diadema sin marca junto a un teléfono, con un pequeño indicador luminoso azul encendido ]</span></div>
-  <figcaption>Figura 7.7 — Confirmación: una señal útil comunica un estado.</figcaption>
-</figure>
-  <figure class="fig">
-  <div class="box"><span>[ 3/2 format — Un reloj inteligente sin marca fotografiado con larga exposición, con su pantalla encendida varias veces en una misma noche ]</span></div>
-  <figcaption>Figura 7.8 — Repetición: la misma señal, muchas veces durante una jornada.</figcaption>
-</figure>
-  <figure class="fig">
-  <div class="box"><span>[ 3/2 format — Tres bandejas con papeletas en blanco clasificadas, una de ellas con un marcador azul ]</span></div>
-  <figcaption>Figura 7.9 — Agrupación: no todo aviso pesa lo mismo.</figcaption>
-</figure>
-  <figure class="fig">
-  <div class="box"><span>[ 1/1 format — Primer plano de una perilla de volumen y un interruptor en un aparato sin marca, con una marca azul ]</span></div>
-  <figcaption>Figura 7.10 — Control: la persona decide qué suena, cuándo y con qué intensidad.</figcaption>
-</figure>
-</div>
-
-<div class="prose">
-    <p>Lo mismo vale para las notificaciones, los sonidos y las vibraciones de una aplicación. Elegir categorías, horarios, frecuencia y canales, agrupar mensajes y distinguir entre confirmaciones, promociones y alertas críticas son decisiones que reparten esfuerzo: o lo asume el producto, que ordena y filtra, o lo asume la persona, que silencia y descarta. La personalización es, en el fondo, el control que el usuario tiene sobre su experiencia.</p>
-    <p>Ese control incluye las salidas. Eliminar datos y cerrar una cuenta forman parte de la misma relación y exigen consecuencias claras y una interacción comprensible: quien decide irse debería saber qué se conserva, qué se borra y cuándo. También conviene diferenciar errores, recuperación de tareas y frustración, porque no son lo mismo: un error que se corrige en un paso no pesa como uno que obliga a empezar de nuevo.</p>
-    <p>Y hay una trampa en las métricas. Estudiar quién abandona, quién silencia y quién sigue utilizando el producto pese a la molestia da más información que contar usos. El uso frecuente, por sí solo, no demuestra aceptación: hay personas que siguen usando lo que les molesta porque no tienen alternativa.</p>
-    <p>En un producto de trabajo, la persona puede tener todavía menos capacidad de decidir si continúa utilizándolo.</p>
-  </div>
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 08 Trabajo y salud</p>
-
-## Escanear durante toda la jornada
-
-<figure class="fig">
-  <div class="box"><span>[ 4/5 format — Tres lectores de códigos sin marca, con distintos agarres, sobre una mesa de trabajo junto a un par de guantes ]</span></div>
-  <figcaption>Figura 7.11 — Alternativas de agarre y captura: la comparación empieza por la tarea, no por el catálogo.</figcaption>
-</figure>
-
-<div class="prose">
-    <p>Planteo un caso. Una operación logística de manufactura equipa a su personal con terminales de captura con apariencia de teléfono para leer códigos QR y de barras: en la recepción de materias primas, en la salida de producto terminado y en el seguimiento logístico. La convergencia de pantalla, conectividad y captura en un solo aparato puede aportar valor real. Para un proyecto concreto habrá que verificar por qué se seleccionó ese equipo y no otro; aquí no doy por hecha ninguna razón.</p>
-    <p>Comparemos ese equipo con una pistola de escaneo tradicional, pero a partir de la tarea y no del catálogo: el agarre, la distribución del peso, la activación, la orientación del lector, la confirmación de que la captura ocurrió, el uso con guantes y la necesidad de mirar la pantalla. La pregunta que quiero dejar abierta es esta: al concentrar funciones en el aparato, ¿cambiamos también el esfuerzo que le pedimos al usuario?</p>
-    <p>No parto de cero. La OSHA, la agencia de seguridad y salud ocupacional de Estados Unidos, identifica entre los factores de riesgo ergonómico del trabajo en almacenes las posturas forzadas y la repetición de las mismas tareas, y señala que la exposición a esos factores aumenta el riesgo de trastornos musculoesqueléticos.<sup><a id="r5" href="#ref-5">5</a></sup> Esa evidencia justifica evaluar la exposición. No demuestra que toda terminal con forma de teléfono provoque lesiones ni que cualquier pistola sea superior; la guía no compara esos equipos.</p>
-    <p>¿Cómo se evalúa, entonces? Con una comparación en condiciones representativas, con participación de trabajadores y de especialistas en ergonomía. Se observan las tareas de captura y de corrección, la duración del agarre, las posturas, los cambios de mano, la repetición, los errores y las molestias que las personas reportan. Y se incluyen alternativas según la operación: empuñaduras, soportes o lectores que dejen las manos libres. Una condición: las primeras pruebas no deben exigirle a nadie que soporte molestias para conseguir datos.</p>
-    <p>El software también interviene. Confirmaciones adicionales, errores de lectura, pérdida de conexión o pantallas innecesarias pueden alargar la tarea y cambiar la forma de sostener el equipo. Conviene separar el tiempo que se ahorra en una captura del efecto de repetir el ciclo a lo largo del turno: lo que en una prueba corta parece un detalle puede ser lo que más pesa al cabo de una jornada completa.</p>
-    <p>Queda una advertencia. Quien implementa tecnología en una operación suele pensar en posibles reclamaciones solo cuando aparecen. No predigo litigios ni afirmo que un equipo que no se ha estudiado cause daños. Lo que sostengo es una exigencia de anticipación responsable: **no hace falta esperar a una reclamación para investigar una exposición evitable.**</p>
-  </div>
-
-
-
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 09 Método</p>
-
-## Medir antes de pedir adaptación
-
-<div class="prose">
-    <p>Este recorrido se puede convertir en un método. Propongo un mapa de límites para cada interacción relevante. El mapa registra la tarea y su contexto, la variable que se observa, el criterio de aceptación, la evidencia disponible, quién valida ese criterio y la acción que se tomará si no se cumple. Cuando no existe un límite respaldado, no se inventa uno: se registra la incertidumbre y cómo se va a investigar.</p>
-  </div>
-
-<div class="datawrap"><p class="tlabel">Tabla 7.4 — Seis capas del mapa de límites</p><table><thead><tr><th>Capa</th><th>Ejemplo de variable</th><th>Evidencia necesaria para decidir</th></tr></thead><tbody></tbody></table></div>---|---|
-| Material y proceso | Variación de una pieza o respuesta del agarre | Especificación y pruebas de fabricación |
-| Dispositivo y contexto | Accionamiento, lectura y pasos durante la tarea | Pruebas en el equipo y en la situación previstos |
-| Sensorial y cognitiva | Frecuencia de avisos, errores y recuperación | Investigación con diversidad de usuarios y exposición representativa |
-| Espacio y operación | Separación, movimiento y acceso | Validación del conjunto instalado |
-| Economía | Uso efectivo, costo y valor incremental | Escenarios y seguimiento de adopción |
-| Salud | Posturas, fuerza, repetición y duración | Evaluación ergonómica competente y respuesta a molestias |
-
-<section class="framework">
-  <div class="wrap">
-    <h2>Identificar, medir, decidir, validar</h2>
-    <p class="lede">El método se repite cada vez que cambia el hardware, el flujo o el ritmo de trabajo.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="n">01</span>
-        <h3>Identificar</h3>
-        <p>Reconocer la exposición.</p>
-      </div>
-      <div class="step">
-        <span class="n">02</span>
-        <h3>Medir</h3>
-        <p>Medir la respuesta.</p>
-      </div>
-      <div class="step">
-        <span class="n">03</span>
-        <h3>Decidir</h3>
-        <p>Decidir la adaptación.</p>
-      </div>
-      <div class="step">
-        <span class="n">04</span>
-        <h3>Validar</h3>
-        <p>Validar el uso sostenido.</p>
+  <!-- 1 — OPENER -->
+  <header class="opener">
+    <span class="num" aria-hidden="true">07</span>
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07</p>
+      <h1>Interfaces como tolerancias</h1>
+      <p class="dek">La interfaz toma forma dentro de lo que permiten materiales, procesos, dispositivo, contexto, negocio y persona. Diseñar exige reconocer esos límites, medirlos y decidir quién absorbe el esfuerzo cuando los sobrepasamos.</p>
+      <div class="meta">
+        <span>19 oct 2026</span>
+        <span>22 min de lectura</span>
+        <span>Edición viva 0.7</span>
+        <span>Estado: en progreso</span>
+        <a class="chapter-download" href="/downloads/chapter-07-interfaces-as-tolerances-es.pdf" download>Descargar PDF del capítulo</a>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<div class="prose">
-    <p>**Identificar** la exposición. Antes de medir hay que saber a qué está expuesta la persona: qué gestos repite, durante cuánto tiempo, con qué postura y con qué ritmo. Es el paso que más se omite, porque parece obvio en la demostración y deja de serlo en el turno.</p>
-    <p>**Medir** la respuesta. Se mide en condiciones representativas y con las personas que lo van a usar, con diversidad de cuerpos y de experiencia. Un promedio favorable puede ocultar diferencias relevantes entre personas, y por eso conviene mirar la dispersión y no solo el centro.</p>
-    <p>**Decidir** la adaptación. La decisión se apoya en requisitos verificables y en evidencia. Puede consistir en cambiar el objeto, el flujo o la operación; lo que no puede ser es trasladar sin más la adaptación a quien lo usa. Una mejora comercial tampoco compensa automáticamente un criterio de salud incumplido.</p>
-    <p>**Validar** el uso sostenido. El uso real, semana tras semana, es la prueba que una demostración no da. Quedan definidas las condiciones para modificar o detener una implementación y se vuelve a evaluar después de cambios de hardware, flujo o ritmo de trabajo.</p>
-  </div>
+  <!-- 2 — INTRO -->
+  <section class="intro">
+    <div class="wrap cols">
+      <p>Cuando uno trabaja en diseño industrial, pronto descubre que la interacción con el usuario empieza antes de que exista el objeto. Empieza al conocer los materiales que puede conseguir, la máquina con la que va a producir y el molde que puede pagar. Ahí comienzan a decidirse muchas de las sensaciones que después atribuimos al diseño: lo firme o lo blando que se siente un agarre, dónde termina una pieza y empieza otra, cuánto cuesta repetir el objeto diez mil veces.</p>
+      <p>Un cepillo de dientes sirve para ver ese recorrido completo, porque es un contacto cotidiano entre la mano, el material y el cuerpo. Casi nadie piensa en su molde, y sin embargo cada decisión de fabricación llega hasta la boca de quien lo usa. Lo tomo como ejemplo de algo que cualquiera puede comprobar con el objeto que tiene en el baño.</p>
+      <p>La pregunta que quiero llevar de ahí a lo digital es sencilla. Primero: ¿qué podemos fabricar? Después: ¿cómo puede utilizarlo alguien? Y al final, la que más pesa cuando el producto ya está en manos de una persona: ¿qué le estamos exigiendo cuando lo utiliza todos los días? El capítulo 5 presentó los materiales digitales y el 6, su conservación durante la vida del producto; este examina cómo esas decisiones llegan a la persona a través de la interfaz.</p>
+    </div>
+  </section>
 
-<p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 10 Responsabilidad</p>
-
-## Lo que el usuario termina pagando
-
-<section class="quote-essay">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <blockquote>La salud de esa persona debe tener un lugar explícito en los requisitos, en las pruebas y en nuestras decisiones de producto.</blockquote>
-        <cite>— Cierre del capítulo</cite>
+  <!-- 01 — MATERIAL Y PROCESO -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 01 Material y proceso</p>
+      <h2>Lo que permite un cepillo</h2>
+      <div class="grid">
+        <figure class="figwrap">
+          <div class="figure">
+            <img src="/assets/chapter-07-toothbrush-anatomy.jpg" alt="Cepillo de dientes sin marca con cuerpo rígido, zonas de agarre blandas y filamentos, sobre una superficie neutra" width="1600" height="2000" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.1 — Cuerpo rígido, zona de agarre blanda y filamentos: tres decisiones que el usuario siente como una sola.</figcaption>
+        </figure>
+        <div class="textcol">
+          <p>Pensemos en un cepillo de dientes compuesto por un cuerpo rígido y zonas de agarre más blandas. Esa combinación no se decide únicamente en el dibujo. La inyección de varios componentes, el molde y la compatibilidad entre los materiales condicionan su geometría, sus uniones y su superficie: dónde puede terminar la parte blanda, qué espesor admite, cómo se adhiere al cuerpo y qué textura queda a la vista. La máquina delimita las posibilidades; el equipo de diseño sigue tomando decisiones dentro de ellas.</p>
+          <p>Conviene separar ese cuerpo de lo que ocurre con los filamentos. La documentación de ZAHORANSKY, un fabricante de maquinaria para cepillos, distingue la inyección de piezas de uno o varios componentes de la colocación de los filamentos y de su acabado, que incluye el recorte y el redondeado de los extremos.<sup><a id="r1" href="#ref-1">1</a></sup> Son procesos distintos y cada uno entrega decisiones distintas: el primero define el agarre y la forma; los otros definen lo que toca la encía y el esmalte. Saber a cuál pertenece cada decisión evita atribuirle al molde lo que es del filamento, y al filamento lo que es del molde.</p>
+          <p>Lo mismo ocurre con las cerdas duras, medias y blandas. Las categorías comerciales sirven para hablar de percepción, pero la respuesta real depende de una combinación de material, diámetro, longitud y disposición de los filamentos. Dos cepillos que dicen «medio» pueden sentirse distintos. No comparo aquí cepillos concretos; uso las categorías solo para mostrar que una sensación es la consecuencia de varias variables a la vez.</p>
+          <p>Para seguir el argumento conviene fijar tres palabras con un sentido sencillo. Se parecen, y por eso se confunden.</p>
+        </div>
       </div>
-      <div class="essay">
-        <p>Regreso al cepillo. Las cerdas metálicas hacían visible una decisión inadecuada: nadie necesita un estudio para ver que no deberían tocar una encía. En el producto digital o híbrido el esfuerzo no se ve tan fácilmente, porque está repartido entre avisos, gestos, agarres, esperas y correcciones, cada uno pequeño y todos repetidos.</p><p>La responsabilidad es de producto. Incorporar la salud y la exposición cotidiana a la selección del dispositivo, a la definición de requisitos y a la aceptación de la implementación. Una demostración exitosa necesita complementarse con evidencia de uso representativo. Y cuando las pruebas revelan una carga evitable, lo que corresponde es revisar el objeto, el flujo o la operación antes de trasladar a la persona la obligación de adaptarse.</p><p>Como product managers, tenemos que mirar lo que ocurre después de la primera interacción. Ese equipo seguirá en la mano de alguien durante su jornada, con los mismos gestos y las mismas exigencias que definimos al implementarlo. El capítulo 8 sigue esa pista: se dedica a lo que cambia cuando un producto escala.</p>
+
+      <div class="datawrap">
+        <p class="tlabel">Tabla 7.1 — Tres términos que no son sinónimos</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Término</th>
+              <th>Qué significa en este capítulo</th>
+              <th>En el cepillo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Restricción</b></td>
+              <td>Condición que delimita una decisión, como el proceso disponible, el espacio de una sala o el presupuesto</td>
+              <td>El molde que se puede pagar y los materiales compatibles entre sí</td>
+            </tr>
+            <tr>
+              <td><b>Tolerancia técnica</b></td>
+              <td>Variación permitida respecto de una especificación, por ejemplo en una dimensión o en el ajuste entre piezas</td>
+              <td>La variación admisible en el espesor de una pared o en el ajuste entre el cuerpo y la zona blanda</td>
+            </tr>
+            <tr>
+              <td><b>Umbral de aceptación</b></td>
+              <td>Límite de una respuesta admisible, como el esfuerzo de accionamiento, la intensidad de un aviso o el tiempo de una tarea</td>
+              <td>Cuánta firmeza tolera quien lo usa antes de que moleste</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem">
+        <p>El capítulo toma prestada la idea de tolerancia de la manufactura y la extiende al diseño de la interacción. La disponibilidad de un material es una restricción; sus propiedades y las variaciones admisibles ayudan a establecer su margen de funcionamiento. Las personas también presentan diferencias y límites que deben estudiarse. Esa extensión es una propuesta editorial de este capítulo: no son sinónimos técnicos y no los uso como si lo fueran.</p>
+        <p>Llevemos la lógica al extremo. Con la maquinaria y los materiales adecuados es posible fabricar un cepillo con cerdas metálicas. Nada en el proceso lo impide. Y sin embargo, poder fabricarlo no demuestra que esa combinación sea apropiada para el contacto previsto: que exista una forma de producir algo no responde si debería existir. Es el punto en que la posibilidad de producción deja de ser suficiente para justificar un diseño.</p>
+        <p>El usuario siente la consecuencia de estas decisiones cada vez que toma el objeto y lo utiliza. En una aplicación ocurre algo semejante, aunque sus materiales sean menos visibles.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="refs">
-  <div class="wrap">
-    <h2>Referencias</h2>
-    <ol>
-      <li><a id="ref-1"></a>**ZAHORANSKY** — [Personal Care](https://www.zahoransky.com/personal-care). Documentación del fabricante que distingue la inyección de piezas de uno o varios componentes, la colocación de los filamentos y su acabado (recorte y redondeado de extremos); fuente del fabricante, no prueba superioridad ergonómica. [↩](#r1)</li>
-      <li><a id="ref-2"></a>**Google for Developers** — [Interaction principles, Design for Driving](https://developers.google.com/cars/design/design-foundations/interaction-principles). Última actualización de la página: 23 de julio de 2024. Google indica que, desde el 11 de marzo de 2026, las actualizaciones se publican en docs.partner.android.com/drivingux. [↩](#r2)</li>
-      <li><a id="ref-3"></a>**Hekkert, P.; Snelders, D.; van Wieringen, P. C. W. (2003)** — «“Most advanced, yet acceptable”: typicality and novelty as joint predictors of aesthetic preference in industrial design», *British Journal of Psychology*, 94(1), 111–124. [Registro en PubMed](https://pubmed.ncbi.nlm.nih.gov/12648393/). El estudio aborda preferencia estética; no establece rentabilidad ni umbrales de salud. [↩](#r3)</li>
-      <li><a id="ref-4"></a>**Marshall** — [Major IV, Troubleshooting: Can’t connect or pair](https://www.marshall.com/nz/en/support/headphones/support-for-major-iv/troubleshooting-cannot-connect-or-pair). Soporte oficial que menciona el sonido de emparejamiento Bluetooth del modelo; fuente del fabricante. [↩](#r4)</li>
-      <li><a id="ref-5"></a>**Occupational Safety and Health Administration (OSHA)** — [Warehousing, Hazards and Solutions](https://www.osha.gov/warehousing/hazards-solutions). Orientación oficial sobre factores de riesgo ergonómico en almacenes; sustenta la necesidad de evaluar, no compara los dispositivos planteados. [↩](#r5)</li>
-      <li>**Este libro** — capítulos 5 (materiales digitales: APIs, datos y restricciones) y 6 (diseñar para el mantenimiento, no solo para el lanzamiento).</li>
-      <li>**Nota editorial** — la propuesta de estructura, los escenarios, la butaca conceptual, la sala y el ejemplo económico son elaboración del autor y no representan resultados de proyectos reales. Las cifras del ejemplo económico son hipotéticas.</li>
-    </ol>
-  </div>
-</section>
-## Historial de edición — Capítulo 07
+  <!-- PULLQUOTE -->
+  <section class="quote-essay">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <blockquote>Poder fabricar un cepillo con cerdas metálicas no demuestra que esa combinación sea apropiada para el contacto previsto.</blockquote>
+          <cite>— Sobre posibilidad técnica vs. propósito de diseño</cite>
+        </div>
+        <div class="essay">
+          <p>El usuario siente la consecuencia de estas decisiones cada vez que toma el objeto y lo utiliza. En una aplicación ocurre algo semejante, aunque sus materiales sean menos visibles.</p>
+          <p>La interfaz toma forma dentro de lo que permiten la técnica y la biología humana. Diseñar con rigor no es ignorar los límites, sino definir los márgenes exactos dentro de los cuales la experiencia se mantiene humana, fiable y sostenible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-| Versión | Fecha | Nota |
-|---|---|---|
-| v0.1 | 19 oct 2026 | Primer borrador bilingüe (ES/EN): del cepillo a la interfaz, una ruta en tres dispositivos, butaca multisensorial conceptual, capacidad de una sala, cuenta por plataforma (ejemplo hipotético), MAYA, sonido y notificaciones, terminales de escaneo, mapa de límites y cierre de responsabilidad de producto. |
+  <!-- 02 — DISPOSITIVO Y CONTEXTO -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 02 Dispositivo y contexto</p>
+      <h2>Una ruta, tres interfaces</h2>
 
-</div>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-bottom:2.5rem">
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:3/2">
+            <img src="/assets/chapter-07-route-car.jpg" alt="Tablero de un automóvil con una pantalla que muestra una ruta esquemática" width="1800" height="1200" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.2 — Automóvil: la atención se comparte con la conducción.</figcaption>
+        </figure>
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:3/2">
+            <img src="/assets/chapter-07-route-phone.jpg" alt="Una mano sostiene un teléfono con una ruta esquemática mientras se camina por una calle" width="1800" height="1200" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.3 — Teléfono: una mano ocupada y luz exterior en la pantalla.</figcaption>
+        </figure>
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:3/2">
+            <img src="/assets/chapter-07-route-tablet.jpg" alt="Tableta sobre una mesa con una ruta esquemática, junto a una libreta" width="1800" height="1200" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.4 — Tableta: consulta detenida para planear un viaje.</figcaption>
+        </figure>
+      </div>
 
-<nav class="chapternav" aria-label="Navegación del capítulo">
-  <div class="wrap">
-    <a class="prev" href="/es/ebook/06-designing-for-maintenance-not-just-launch/">
-      <p class="dir">← Capítulo 06</p>
-      <p class="ctitle">Diseñar para el mantenimiento, no solo para el lanzamiento</p>
-    </a>
-    <a class="next locked" href="#" aria-disabled="true">
-      <p class="dir">Capítulo 08 — próximamente →</p>
-      <p class="ctitle">Continúa la Parte II</p>
-    </a>
-  </div>
-</nav>
+      <div class="prose">
+        <p>Tomemos una necesidad que cualquiera reconoce: orientarse y llegar a un sitio. Un servicio de navegación como Google Maps la atiende en un automóvil, en un teléfono y en una tableta, y la necesidad es la misma en los tres casos. Lo que cambia es todo lo que rodea a la persona que la tiene. No prometo que cada versión actual del servicio ofrezca exactamente las mismas funciones en cada dispositivo; uso el ejemplo para comparar escenarios, no para describir un producto.</p>
+        <p>En el automóvil la atención se comparte con la conducción. La guía de diseño de Google para automóviles establece que las tareas vinculadas al manejo tienen prioridad sobre cualquier otra, que la información debe leerse de un vistazo —propone un máximo de dos segundos para consultar un contenido y volver a la vía— y que ninguna operación debería exigir apartar las dos manos del volante.<sup><a id="r2" href="#ref-2">2</a></sup> Son límites de contexto, no de pantalla: la misma ruta pide menos pasos, indicaciones más breves y voz.</p>
+        <p>En el teléfono, durante una caminata, la mano está ocupada, la luz exterior compite con la pantalla, la batería importa y la atención se divide con el entorno: la calle, otras personas, el siguiente cruce. Lo que la interfaz debe lograr es que la siguiente acción sea reconocible y se pueda resolver con una mano.</p>
+        <p>La tableta, en cambio, suele aparecer cuando alguien prepara un viaje. Hay más superficie y espacio para una consulta detenida: comparar alternativas, ver más contexto. Pero conviene no dar por hecho que toda tableta tiene los mismos sensores o sirve para lo mismo que otra.</p>
+      </div>
 
-<footer class="sitefoot">
-  <div class="wrap">
-    <span>J. Angel Sosa — Pensar en Productos, Construir Sistemas</span>
-    <span><a href="/es/ebook/">Todos los capítulos</a> · <a href="#rss">RSS</a> · <a href="#privacidad">Privacidad</a></span>
-  </div>
-</footer>
+      <div class="datawrap">
+        <p class="tlabel">Tabla 7.2 — La misma necesidad en tres situaciones</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Escenario</th>
+              <th>Condiciones de interacción</th>
+              <th>Decisiones que plantea</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Automóvil en movimiento</b></td>
+              <td>Atención compartida con la conducción, alcance de controles y lectura breve</td>
+              <td>Priorizar indicaciones, reducir pasos y aprovechar voz y audio</td>
+            </tr>
+            <tr>
+              <td><b>Teléfono durante un recorrido a pie</b></td>
+              <td>Mano ocupada, luz exterior, batería y atención al entorno</td>
+              <td>Facilitar consulta y manejo con una mano; hacer reconocible la siguiente acción</td>
+            </tr>
+            <tr>
+              <td><b>Tableta al preparar un viaje</b></td>
+              <td>Mayor superficie y posibilidad de consulta detenida</td>
+              <td>Comparar alternativas y mostrar más contexto sin asumir que toda tableta tiene los mismos sensores</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-<div class="toc-overlay" id="tocOverlay" aria-hidden="true"></div>
-<aside class="toc-panel" id="tocPanel" role="dialog" aria-modal="true" aria-label="Contenido del libro">
-  <div class="head">
-    <b>Pensar en Productos, Construir Sistemas</b>
-    <button class="close" id="tocClose" aria-label="Cerrar contenido">✕</button>
-  </div>
-  <div class="body">
-    <p class="section-label">Parte I — Fundamentos</p>
-    <ol>
-      <li><a href="/es/ebook/01-what-can-industrial-design-teach/"><span class="num">01</span><span>¿Qué puede enseñar el diseño industrial?</span></a></li>
-      <li><a href="/es/ebook/02-product-strategy-materials-cost-of-a-decision/"><span class="num">02</span><span>Estrategia de producto: materiales y costo de una decisión</span></a></li>
-      <li><a href="/es/ebook/03-what-a-production-line-teaches-about-architecture/"><span class="num">03</span><span>Lo que una línea de producción enseña sobre arquitectura</span></a></li>
-      <li><a href="/es/ebook/04-the-product-is-never-just-the-object/"><span class="num">04</span><span>El producto nunca es solo el objeto</span></a></li>
-    </ol>
-    <p class="section-label">Parte II — De lo Físico a lo Digital</p>
-    <ol start="5">
-      <li><a href="/es/ebook/05-digital-materials-apis-data-and-constraints/"><span class="num">05</span><span>Materiales digitales: APIs, datos y restricciones</span></a></li>
-      <li><a href="/es/ebook/06-designing-for-maintenance-not-just-launch/"><span class="num">06</span><span>Diseñar para el mantenimiento, no solo para el lanzamiento</span></a></li>
-      <li class="active"><a href="/es/ebook/07-interfaces-as-tolerances/"><span class="num">07</span><span>Interfaces como tolerancias</span></a></li>
-      <li class="locked"><span class="num">08</span><span>Capítulo 08 — próximamente</span></li>
-    </ol>
-  </div>
-</aside>
+      <div class="prose" style="margin-top:2.5rem">
+        <p>Por eso reducir la diferencia entre estos tres escenarios a pulgadas de pantalla es una simplificación. El dispositivo cambia los canales disponibles y también el esfuerzo que se le puede pedir a la persona; en el fondo, cambia su umbral de aceptación. Y la interfaz se transforma todavía más cuando la interacción abarca el cuerpo entero.</p>
+      </div>
+    </div>
+  </section>
 
-<script is:inline>
-(function(){
-  var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
-      overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
-  function open(){ panel.classList.add('open'); overlay.classList.add('open'); close.focus(); document.addEventListener('keydown', onKey); }
-  function shut(){ panel.classList.remove('open'); overlay.classList.remove('open'); btn.focus(); document.removeEventListener('keydown', onKey); }
-  function onKey(e){
-    if(e.key==='Escape') shut();
-  }
-  if(btn) btn.addEventListener('click', function(){ if(panel){ open(); } else { window.location.href='/es/ebook/#toc'; } });
-  if(close) close.addEventListener('click', shut);
-  if(overlay) overlay.addEventListener('click', shut);
-  panel?.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  <!-- 03 — CUERPO Y SENTIDOS -->
+  <section class="object-figure">
+    <div class="wrap">
+      <p class="eyebrow" style="margin-bottom:1rem">Parte II — De lo Físico a lo Digital · Capítulo 07 · 03 Cuerpo y sentidos</p>
+      <h2 style="font-size:clamp(34px,3vw,56px);margin-bottom:1.5rem">El cuerpo ocupa la interfaz</h2>
+      <figure>
+        <div class="frame">
+          <img src="/assets/chapter-07-seat-exploded-transparent.png" alt="Vista despiezada de una butaca multisensorial conceptual: asiento y respaldo, base y actuadores, apoyos, vibración y sonido, sistema térmico opcional y cubiertas" width="2400" height="2400" loading="lazy" />
+        </div>
+        <figcaption>Figura 7.5 — Butaca multisensorial conceptual para sala 4D, vista despiezada. Los seis subsistemas corresponden a la Tabla 7.3.</figcaption>
+      </figure>
 
-  var bar=document.getElementById('progressBar');
-  function onScroll(){
-    var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-    if(bar) bar.style.setProperty('--p', p+'%');
-  }
-  document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-})();
-</script>
+      <div class="prose" style="margin-top:2.5rem">
+        <p>Para ver este mismo problema en un objeto físico propongo una butaca multisensorial conceptual para una sala 4D. Es un ejemplo de trabajo, no el retrato de una instalación comercial: permite analizar movimiento, vibración, efectos térmicos y acoplamiento con el sonido sin atribuir esta configuración completa a todas las salas que existen, ni dar por hecho que cada efecto se origina dentro del asiento. Parte del sonido, del aire o del calor puede provenir de la sala.</p>
+        <p>Descompuesta en partes, la butaca muestra que cada una lleva una decisión de diseño y que cada decisión tiene un aspecto que alguien debe evaluar.</p>
+      </div>
+
+      <div class="datawrap">
+        <p class="tlabel">Tabla 7.3 — Una butaca descompuesta en decisiones</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Parte o sistema</th>
+              <th>Decisión de diseño</th>
+              <th>Aspecto que debe evaluarse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Asiento y respaldo</b></td>
+              <td>Geometría, soporte y acolchado</td>
+              <td>Ajuste a distintos cuerpos y comodidad durante la función</td>
+            </tr>
+            <tr>
+              <td><b>Base y actuadores</b></td>
+              <td>Recorrido, velocidad y aceleración</td>
+              <td>Movimiento controlado y espacio libre necesario</td>
+            </tr>
+            <tr>
+              <td><b>Contactos y apoyos</b></td>
+              <td>Posición de brazos, pies y manos</td>
+              <td>Estabilidad, acceso y posibilidad de cambiar de postura</td>
+            </tr>
+            <tr>
+              <td><b>Vibración y sonido</b></td>
+              <td>Intensidad, duración y sincronización</td>
+              <td>Claridad del efecto y carga sensorial acumulada</td>
+            </tr>
+            <tr>
+              <td><b>Sistema térmico, si existe</b></td>
+              <td>Ubicación, control y tiempo de exposición</td>
+              <td>Contacto, regulación y condiciones seguras de uso</td>
+            </tr>
+            <tr>
+              <td><b>Cubiertas y uniones</b></td>
+              <td>Materiales, limpieza y acceso a componentes</td>
+              <td>Conservación de la experiencia durante la operación</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem">
+        <p>Todas estas variables necesitan especificación, pruebas y criterios de aceptación. Una intención de inmersión no garantiza por sí misma una experiencia adecuada para todas las personas: el respaldo que sujeta bien a un cuerpo puede dejar sin apoyo a otro, un recorrido que divierte a alguien puede marear a otra persona, y una vibración que resulta clara al empezar la función puede convertirse en carga sensorial acumulada al terminar. Aquí vuelve la idea de tolerancia. Lo importante no es que la butaca funcione en promedio, sino saber dentro de qué variaciones sigue funcionando y para quién.</p>
+        <p>Pero la butaca todavía tiene que instalarse en una sala, y ahí aparecen límites que el diseño aislado del asiento no puede resolver.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — ESPACIO Y CAPACIDAD -->
+  <section class="diagram">
+    <div class="wrap">
+      <p class="eyebrow" style="margin-bottom:1rem">Parte II — De lo Físico a lo Digital · Capítulo 07 · 04 Espacio y capacidad</p>
+      <h2 style="font-size:clamp(34px,3vw,56px);margin-bottom:1.5rem">La sala también diseña</h2>
+      <figure>
+        <div class="frame">
+          <img src="/assets/chapter-07-room-layout-es.svg" alt="Esquema en planta de dos configuraciones hipotéticas de una misma sala: una con más butacas y filas más juntas, otra con menos butacas y más espacio, con la envolvente de movimiento y la circulación señaladas" width="880" height="400" loading="lazy" />
+        </div>
+        <figcaption>Figura 7.6 — Dos configuraciones hipotéticas de una misma sala. Esquema ilustrativo: no representa dimensiones calculadas ni una especificación.</figcaption>
+      </figure>
+
+      <div class="prose" style="margin-top:2.5rem">
+        <p>Supongamos que el objetivo comercial es disponer de cierto número de asientos. Ese número se traduce en una conversación con la superficie disponible, la separación entre filas, la envolvente de movimiento de cada butaca, las rutas de acceso y el espacio de mantenimiento. La accesibilidad y la evacuación tienen que considerarse desde el planteamiento y no al final; las dimensiones aplicables dependerán del proyecto y de su ubicación, por lo que no propongo ninguna aquí.</p>
+        <p>La butaca que funciona bien en un prototipo puede ocupar demasiado espacio, o resultar demasiado costosa, al instalar muchas unidades. Las consecuencias se encadenan. Cambiar el ancho altera la capacidad. Cambiar la base altera el movimiento y el mantenimiento. Reducir el espacio entre filas modifica el acceso y la experiencia de quien está sentado. Cada ajuste que resuelve un límite empuja el problema hacia otro.</p>
+        <p>Conviene distinguir dos volúmenes que se confunden fácilmente. Las unidades fabricadas inciden en la inversión en herramientas y en el costo por pieza. Los asientos instalados inciden en la capacidad y en los ingresos del servicio. Quien produce la butaca piensa en lo primero; quien opera la sala, en lo segundo; y el diseño tiene que hablar con los dos.</p>
+        <p>Tampoco la rentabilidad de una sala se explica contando asientos. Depende de la ocupación, del precio y de la operación. Más butacas no significan más ingresos si la experiencia reduce la ocupación o encarece el mantenimiento.</p>
+        <p>En digital también se distribuyen costos sobre una capacidad de uso esperada. Esa capacidad debe analizarse por plataforma y por función.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — ECONOMÍA -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 05 Economía</p>
+      <h2>Cada plataforma tiene su cuenta</h2>
+      <div class="prose">
+        <p>Volvamos a las pantallas: móvil, tableta, televisión, reloj inteligente. Una función puede ser técnicamente viable y no aportar suficiente valor incremental para sostener su desarrollo, sus pruebas y su mantenimiento en una plataforma determinada. Son dos preguntas distintas y conviene hacerlas por separado: qué permite el hardware y qué justifica la economía.</p>
+        <p>El reloj sirve para lo primero: interacción breve, controles pequeños, batería reducida y capacidades que varían entre modelos. En la televisión cuentan la distancia de lectura, el control remoto y la diversidad de aparatos. Son restricciones del hardware y del contexto. Que una función no se construya ahí por razones de costo es otra clase de restricción, y mezclarlas lleva a justificar con la tecnología lo que en realidad es una decisión económica, o lo contrario.</p>
+        <p>El público que importa es el de este producto y esta función en ese dispositivo, no el de la plataforma en general. No es correcto afirmar que los relojes o las televisiones siempre carecen de masa crítica: una audiencia pequeña puede justificar una solución de alto valor, y una audiencia grande puede no utilizar la función.</p>
+      </div>
+
+      <div class="facts" style="border:1px solid var(--line);margin-block:2.5rem">
+        <div class="wrap" style="padding-block:clamp(32px,5vh,48px)">
+          <div><b>600,000</b><span>COSTO ANUAL EQUIVALENTE EN MXN,<br />DESARROLLO Y SOPORTE ANUALIZADOS · HIPOTÉTICO</span></div>
+          <div><b>120</b><span>MXN CONTRIBUCIÓN NETA INCREMENTAL<br />AL AÑO POR USUARIO DE LA FUNCIÓN · HIPOTÉTICO</span></div>
+          <div><b>5,000</b><span>USUARIOS DE LA FUNCIÓN NECESARIOS<br />PARA CUBRIR EL COSTO · HIPOTÉTICO</span></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Con esos supuestos el cálculo es una división: 600,000 entre 120 da 5,000. Lo que importa es qué se cuenta. Son los usuarios que utilizan la función, no las descargas ni los usuarios totales, que ni sustituyen la adopción efectiva ni demuestran esa contribución.</p>
+        <p>Cuando el valor de la función es un ahorro operativo, una retención o una obligación del servicio, el caso se arma con esa evidencia y no con un cálculo por usuario. Y hay un límite que ninguna cuenta mueve: la seguridad y la accesibilidad necesarias no se eliminan con un cálculo de popularidad.</p>
+        <p>Más allá de poder construir y sostener la función, falta entender cuánto cambio acepta la persona que la recibe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — ACEPTACIÓN (MAYA) -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 06 Aceptación</p>
+      <h2>Avanzar hasta donde la gente acepta</h2>
+      <div class="prose">
+        <p>Esa pregunta tiene un nombre en diseño industrial: MAYA, por <em>Most Advanced Yet Acceptable</em>, una expresión asociada a Raymond Loewy. La uso como una orientación para balancear novedad y familiaridad, no como una fórmula. El estudio de Hekkert, Snelders y van Wieringen examina cómo la tipicidad y la novedad contribuyen conjuntamente a la preferencia estética por productos industriales.<sup><a id="r3" href="#ref-3">3</a></sup> Su alcance es ese: preferencia estética. No permite concluir que MAYA, por sí solo, anticipe adopción, salud o rendimiento económico.</p>
+        <p>Lo que propongo es aplicarlo a las funciones. Conservar el beneficio principal de una función y adaptar su complejidad al dispositivo, a la tarea y a lo que el usuario puede reconocer y aprender. Un reloj puede ofrecer una acción breve y trasladar la configuración extendida al teléfono, si la continuidad entre los dos es comprensible y útil. Si no lo es, el reloj solo ha agregado un paso.</p>
+        <p>La decisión de incluir, simplificar, trasladar o descartar una función combina cuatro preguntas. ¿Es segura y accesible para el uso previsto? ¿Puede el dispositivo sostenerla? ¿Comprende y acepta el usuario la interacción? ¿Justifica el valor sostenerla? MAYA aporta a la tercera, y solo a ella. Esa combinación es el método que propone este capítulo; no es una extensión atribuida a Loewy.</p>
+        <p>Esa aceptación depende también de pequeñas decisiones que se repiten, como el sonido de una conexión.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — SONIDO Y REPETICIÓN -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 07 Sonido y repetición</p>
+      <h2>El sonido también ocupa espacio</h2>
+      <div class="prose" style="margin-bottom:2.5rem">
+        <p>Un ejemplo concreto de señal sonora de marca se encuentra en los audífonos Marshall Major IV. Su página de soporte, al describir cómo emparejarlos por Bluetooth, indica que debe escucharse el sonido de emparejamiento propio de la marca.<sup><a id="r4" href="#ref-4">4</a></sup> A partir de ese dato, y solo de él, se puede analizar la función de una confirmación reconocible: comunica un estado («está conectado») y construye identidad. No extiendo ese comportamiento a ningún otro modelo, a una conexión por cable o a otros eventos sin verificarlo.</p>
+        <p>Importa la diferencia entre un aviso ocasional y la repetición a lo largo de una jornada. Escuchar una señal una vez, al estrenar un aparato, es una cosa; escucharla decenas de veces al día es otra. La intensidad, la duración, la frecuencia, el contexto y el control del usuario forman parte de la decisión de diseño. Que un sonido agrade o moleste no es una característica universal: es una respuesta que necesita investigación, con distintas personas en distintas situaciones.</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:var(--gutter);margin-bottom:2.5rem">
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:16/9">
+            <img src="/assets/chapter-07-signal-confirmation.jpg" alt="Audífonos de diadema sin marca junto a un teléfono, con un pequeño indicador luminoso azul encendido" width="2000" height="1125" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.7 — Confirmación: una señal útil comunica un estado.</figcaption>
+        </figure>
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:3/2">
+            <img src="/assets/chapter-07-signal-repetition.jpg" alt="Un reloj inteligente sin marca fotografiado con larga exposición, con su pantalla encendida varias veces en una misma noche" width="1800" height="1200" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.8 — Repetición: la misma señal, muchas veces en un día.</figcaption>
+        </figure>
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:3/2">
+            <img src="/assets/chapter-07-signal-grouping.jpg" alt="Tres bandejas con papeletas en blanco clasificadas, una de ellas con un marcador azul" width="1800" height="1200" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.9 — Agrupación: no todos los avisos pesan igual.</figcaption>
+        </figure>
+        <figure class="figwrap">
+          <div class="figure" style="aspect-ratio:1/1">
+            <img src="/assets/chapter-07-signal-control.jpg" alt="Primer plano de una perilla de volumen y un interruptor en un aparato sin marca, con una marca azul" width="1600" height="1600" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.10 — Control: la persona decide qué suena, cuándo y con qué volumen.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <p>Lo mismo vale para las notificaciones, sonidos y vibraciones de una aplicación. Elegir categorías, horarios, frecuencia y canales, agrupar mensajes y distinguir confirmaciones, promociones y avisos críticos son decisiones que reparten el esfuerzo: o lo asume el producto, ordenando y filtrando, o lo asume la persona, silenciando y descartando. La personalización es, en el fondo, el control que el usuario tiene sobre su propia experiencia.</p>
+        <p>Ese control incluye las salidas. Eliminar datos y cerrar una cuenta forman parte de la misma relación y piden consecuencias claras y una interacción comprensible: quien decide marcharse debería saber qué se conserva, qué se borra y cuándo. También conviene distinguir el error, la recuperación de la tarea y la frustración, porque no son lo mismo: un error que se corrige en un paso no pesa igual que uno que obliga a comenzar de nuevo.</p>
+        <p>Y hay una trampa en las métricas. Estudiar quién se va, quién silencia y quién sigue usando el producto a pesar de la molestia enseña más que contar usos. El uso frecuente, por sí solo, no demuestra aceptación: hay quien sigue usando lo que le incomoda porque no tiene alternativa.</p>
+        <p>En un producto de trabajo la persona puede tener todavía menos capacidad de decidir si sigue utilizándolo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 — TRABAJO Y SALUD -->
+  <section class="longform">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 08 Trabajo y salud</p>
+      <h2>Escanear durante toda la jornada</h2>
+      <div class="grid">
+        <figure class="figwrap">
+          <div class="figure">
+            <img src="/assets/chapter-07-scanning-grips.jpg" alt="Tres lectores de códigos sin marca, con distintos agarres, sobre una mesa de trabajo junto a un par de guantes" width="1600" height="2000" loading="lazy" />
+          </div>
+          <figcaption>Figura 7.11 — Alternativas de agarre y captura: la comparación parte de la tarea, no del catálogo comercial.</figcaption>
+        </figure>
+        <div class="textcol">
+          <p>Planteo un caso. Una operación logística de manufactura equipa a su personal con terminales de captura tipo teléfono para leer códigos QR y de barras: en recepción de materia prima, en surtido de producto terminado y en control logístico. La convergencia de pantalla, conectividad y captura en un solo aparato puede aportar valor real. Para un proyecto específico habrá que verificar por qué se seleccionó ese dispositivo y no otro; no doy por hecho ningún motivo aquí.</p>
+          <p>Comparemos ese dispositivo con una pistola tradicional de escaneo, pero a partir de la tarea y no del catálogo: el agarre, la distribución del peso, el accionamiento, la orientación del lector, la confirmación de que la captura ocurrió, el uso con guantes y la necesidad de mirar la pantalla. La pregunta que quiero dejar abierta es esta: al concentrar funciones en el dispositivo, ¿cambiamos también el esfuerzo que le pedimos a la persona?</p>
+          <p>No parto de cero. OSHA, la agencia de seguridad y salud en el trabajo de Estados Unidos, identifica entre los factores de riesgo ergonómico del trabajo en almacenes las posturas incómodas y la repetición de las mismas tareas, y señala que la exposición a esos factores incrementa el riesgo de trastornos musculoesqueléticos.<sup><a id="r5" href="#ref-5">5</a></sup> Esa evidencia justifica evaluar la exposición. No demuestra que cualquier terminal con forma de teléfono cause lesiones, ni que cualquier pistola sea superior; la guía no compara esos dispositivos.</p>
+          <p>¿Cómo evaluarlo, entonces? Con una comparación en condiciones representativas, con la participación de trabajadores y de especialistas en ergonomía. Se observan las tareas de captura y corrección, la duración del agarre, posturas, cambios de mano, repetición, errores y la molestia que las personas reportan. Y se incorporan alternativas según la operación: empuñaduras, soportes o lectores que dejan las manos libres. Una condición: las pruebas tempranas no deben exigir a nadie soportar molestias para obtener datos.</p>
+          <p>El software interviene también. Confirmaciones adicionales, errores de lectura, pérdidas de conexión o pantallas innecesarias alargan la tarea y cambian cómo se sostiene el dispositivo. Conviene separar el tiempo que se ahorra en una captura del efecto de repetir el ciclo a lo largo del turno: lo que parece un detalle en una prueba corta puede ser lo que más pesa al terminar una jornada completa.</p>
+          <p>Queda una advertencia: <b>no necesitamos esperar una reclamación para investigar una exposición evitable.</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — MÉTODO (FRAMEWORK) -->
+  <section class="framework">
+    <div class="wrap">
+      <p class="eyebrow">Parte II — De lo Físico a lo Digital · Capítulo 07 · 09 Método</p>
+      <h2>Medir antes de pedir a la gente que se adapte</h2>
+      <p class="lede">Identificar, medir, decidir, validar: un método en cuatro etapas que se repite cada vez que cambia el hardware, el flujo o el ritmo de trabajo.</p>
+
+      <div class="datawrap" style="margin-bottom:2.5rem">
+        <p class="tlabel">Tabla 7.4 — Seis capas del mapa de límites</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Capa</th>
+              <th>Variable de ejemplo</th>
+              <th>Evidencia necesaria para decidir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Material y proceso</b></td>
+              <td>Variación de una pieza o respuesta del agarre</td>
+              <td>Especificación y pruebas de manufactura</td>
+            </tr>
+            <tr>
+              <td><b>Dispositivo y contexto</b></td>
+              <td>Accionamiento, lectura y pasos durante la tarea</td>
+              <td>Pruebas en el dispositivo previsto y en la situación prevista</td>
+            </tr>
+            <tr>
+              <td><b>Sensorial y cognitiva</b></td>
+              <td>Frecuencia de avisos, errores y recuperación</td>
+              <td>Investigación con personas diversas y exposición representativa</td>
+            </tr>
+            <tr>
+              <td><b>Espacio y operación</b></td>
+              <td>Separación, movimiento y accesos</td>
+              <td>Validación del conjunto instalado</td>
+            </tr>
+            <tr>
+              <td><b>Económica</b></td>
+              <td>Uso efectivo, costo y valor incremental</td>
+              <td>Escenarios y seguimiento de adopción</td>
+            </tr>
+            <tr>
+              <td><b>Salud</b></td>
+              <td>Posturas, fuerza, repetición y duración</td>
+              <td>Evaluación ergonómica competente y atención a molestias reportadas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h3>Identificar</h3>
+          <p>Reconocer la exposición antes de medir: qué gestos se repiten, durante cuánto tiempo, en qué postura y a qué ritmo.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h3>Medir</h3>
+          <p>Medir en condiciones representativas con personas diversas, examinando la dispersión y no solo el promedio.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h3>Decidir</h3>
+          <p>Decidir la adaptación a partir de requisitos verificables; nunca trasladar la adaptación a quien trabaja.</p>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <h3>Validar</h3>
+          <p>Validar el uso real sostenido semana a semana, evaluando de nuevo ante cambios de flujo o ritmo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — RESPONSABILIDAD -->
+  <section class="quote-essay">
+    <div class="wrap">
+      <p class="eyebrow" style="margin-bottom:1rem">Parte II — De lo Físico a lo Digital · Capítulo 07 · 10 Responsabilidad</p>
+      <div class="grid">
+        <div>
+          <blockquote>La salud de esa persona tiene que tener un lugar explícito en los requisitos, en las pruebas y en nuestras decisiones de producto.</blockquote>
+          <cite>— Cierre del Capítulo 07</cite>
+        </div>
+        <div class="essay">
+          <p>Volvamos al cepillo de dientes. Las cerdas metálicas hicieron visible una decisión inadecuada: nadie necesita un estudio para entender que no deberían tocar una encía. En un producto digital o híbrido el esfuerzo no es tan fácil de ver, porque está repartido entre avisos, gestos, agarres, esperas y correcciones, cada uno pequeño y todos repetidos.</p>
+          <p>La responsabilidad pertenece al producto. Significa incorporar la salud y la exposición cotidiana en la selección de dispositivos, en la definición de requisitos y en la aceptación de la implementación. Un demo exitoso necesita complementarse con evidencia de uso representativo. Y cuando las pruebas revelan una carga evitable, lo que corresponde es revisar el objeto, el flujo o la operación antes de trasladar a la persona la obligación de adaptarse.</p>
+          <p>Como líderes de producto, nos toca mirar lo que ocurre después de la primera interacción. Ese aparato va a quedarse en la mano de alguien durante toda su jornada, con los mismos gestos y las mismas exigencias que definimos cuando lo implementamos. El capítulo 8 sigue esa pista: está dedicado a lo que cambia cuando un producto escala.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 — REFS -->
+  <section class="refs">
+    <div class="wrap">
+      <h2>Referencias y notas</h2>
+      <ol>
+        <li><a id="ref-1"></a><b>ZAHORANSKY</b> — <a href="https://www.zahoransky.com/personal-care" target="_blank" rel="noopener">Personal Care</a>. Documentación del fabricante que distingue la inyección de piezas de uno o varios componentes, la colocación de filamentos y su acabado (recorte y redondeado de puntas). <a href="#r1">↩</a></li>
+        <li><a id="ref-2"></a><b>Google for Developers</b> — <a href="https://developers.google.com/cars/design/design-foundations/interaction-principles" target="_blank" rel="noopener">Interaction principles, Design for Driving</a>. Las tareas de conducción tienen prioridad absoluta sobre cualquier otra. <a href="#r2">↩</a></li>
+        <li><a id="ref-3"></a><b>Hekkert, P.; Snelders, D.; van Wieringen, P. C. W. (2003)</b> — <a href="https://pubmed.ncbi.nlm.nih.gov/12648393/" target="_blank" rel="noopener">«Most advanced, yet acceptable»: typicality and novelty as joint predictors of aesthetic preference in industrial design</a>, <em>British Journal of Psychology</em>, 94(1), 111–124. <a href="#r3">↩</a></li>
+        <li><a id="ref-4"></a><b>Marshall</b> — <a href="https://www.marshall.com/nz/en/support/headphones/support-for-major-iv/troubleshooting-cannot-connect-or-pair" target="_blank" rel="noopener">Major IV, Troubleshooting: Can't connect or pair</a>. Página oficial de soporte que menciona el sonido de emparejamiento propio de la marca. <a href="#r4">↩</a></li>
+        <li><a id="ref-5"></a><b>Occupational Safety and Health Administration (OSHA)</b> — <a href="https://www.osha.gov/warehousing/hazards-solutions" target="_blank" rel="noopener">Warehousing, Hazards and Solutions</a>. Guía oficial sobre factores de riesgo ergonómico en almacenes. <a href="#r5">↩</a></li>
+        <li><b>Este libro</b> — Capítulos 5 (materiales digitales: APIs, datos y restricciones) y 6 (diseñar para el mantenimiento, no solo para el lanzamiento).</li>
+        <li><b>Nota editorial</b> — La estructura propuesta, los escenarios, la butaca conceptual, la sala y el ejemplo económico son elaboración del autor. Las cifras son hipotéticas.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- NAVEGACIÓN ENTRE CAPÍTULOS -->
+  <nav class="chapternav" aria-label="Navegación entre capítulos">
+    <div class="wrap">
+      <a class="prev" href="/es/ebook/06-designing-for-maintenance-not-just-launch/">
+        <div class="dir">&larr; Capítulo anterior</div>
+        <div class="ctitle">06 — Diseñar para el mantenimiento, no solo para el lanzamiento</div>
+      </a>
+      <a class="next locked" href="#" aria-disabled="true">
+        <div class="dir">Siguiente capítulo &rarr;</div>
+        <div class="ctitle">08 — Escalar el sistema &mdash; próximamente</div>
+      </a>
+    </div>
+  </nav>
+
+  <footer class="sitefoot">
+    <div class="wrap">
+      <div>&copy; 2026 J. Angel Sosa. <em>Pensar en Productos, Construir Sistemas</em>.</div>
+      <div><a href="/es/privacidad/">Privacidad</a> &middot; <a href="/es/contacto/">Contacto</a></div>
+    </div>
+  </footer>
+
+  <script is:inline>
+  (function(){
+    var btn=document.getElementById('tocBtn'), panel=document.getElementById('tocPanel'),
+        overlay=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
+    function open(){ panel?.classList.add('open'); overlay?.classList.add('open'); close?.focus(); }
+    function shut(){ panel?.classList.remove('open'); overlay?.classList.remove('open'); btn?.focus(); }
+    if(btn) btn.addEventListener('click', function(){ if(panel){ open(); } else { window.location.href='/es/ebook/#toc'; } });
+    if(close) close.addEventListener('click', shut);
+    if(overlay) overlay.addEventListener('click', shut);
+    panel?.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+
+    var bar=document.getElementById('progressBar');
+    function onScroll(){
+      var h=document.documentElement, p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+      if(bar) bar.style.setProperty('--p', p+'%');
+    }
+    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  })();
+  </script>
 </Layout>
