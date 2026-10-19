@@ -96,12 +96,12 @@ const EDITIONS = [
   {
     lang: 'en',
     outFile: 'thinking-in-products-building-systems-current.pdf',
-    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/', '/ebook/03-what-a-production-line-teaches-about-architecture/', '/ebook/04-the-product-is-never-just-the-object/', '/ebook/05-digital-materials-apis-data-and-constraints/', '/ebook/06-designing-for-maintenance-not-just-launch/'],
+    routes: ['/print/cover/', '/ebook/01-what-can-industrial-design-teach/', '/ebook/02-product-strategy-materials-cost-of-a-decision/', '/ebook/03-what-a-production-line-teaches-about-architecture/', '/ebook/04-the-product-is-never-just-the-object/', '/ebook/05-digital-materials-apis-data-and-constraints/', '/ebook/06-designing-for-maintenance-not-just-launch/', '/ebook/07-interfaces-as-tolerances/'],
   },
   {
     lang: 'es',
     outFile: 'pensar-en-productos-construir-sistemas-actual.pdf',
-    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/', '/es/ebook/03-what-a-production-line-teaches-about-architecture/', '/es/ebook/04-the-product-is-never-just-the-object/', '/es/ebook/05-digital-materials-apis-data-and-constraints/', '/es/ebook/06-designing-for-maintenance-not-just-launch/'],
+    routes: ['/es/print/portada/', '/es/ebook/01-what-can-industrial-design-teach/', '/es/ebook/02-product-strategy-materials-cost-of-a-decision/', '/es/ebook/03-what-a-production-line-teaches-about-architecture/', '/es/ebook/04-the-product-is-never-just-the-object/', '/es/ebook/05-digital-materials-apis-data-and-constraints/', '/es/ebook/06-designing-for-maintenance-not-just-launch/', '/es/ebook/07-interfaces-as-tolerances/'],
   },
 ];
 
