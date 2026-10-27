@@ -1,0 +1,86 @@
+/* Film de apertura J. Angel Sosa — fuente única para el hero y para el render MP4.
+   Todo se dimensiona con unidades de contenedor (cqw/cqh): funciona igual en 16:9, 4:3 y vertical. */
+.film{position:absolute;inset:0;container-type:size;background:#070809;color:#F7F8FA;overflow:hidden;
+  font-family:"Archivo",Helvetica,Arial,sans-serif;--cb:#0057D9;--cl:#2E7CFF;--pp:#F7F8FA;--ln:rgba(247,248,250,.28)}
+.film *{box-sizing:border-box}
+.film .sc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 8cqw;visibility:hidden}
+.film .kick{margin:0 0 4cqh;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.28em;text-transform:uppercase;font-weight:500;color:rgba(247,248,250,.62);display:flex;align-items:center;gap:1.4em}
+.film .kick::before{content:"";width:3.2em;height:1px;background:currentColor;transform-origin:left;transform:scaleX(var(--kx,1))}
+.film .big{margin:0;font-weight:900;font-variation-settings:"wdth" 118;font-size:min(7.6cqw,13.5cqh);line-height:1;letter-spacing:-.03em}
+.film .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.film .wd{display:inline-block;will-change:transform}
+.film .hot{color:var(--cl)}
+.film .stk{position:relative;display:inline-block}
+.film .stk i{position:absolute;left:-.03em;right:-.03em;top:56%;height:.075em;background:var(--cl);transform-origin:left;transform:scaleX(0)}
+.film .serif{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400;font-variation-settings:normal;letter-spacing:-.015em}
+
+/* escena 3: panel cobalto + palabra gigante */
+.film .s3{padding:0}
+.film .pan{position:absolute;inset:0;background:var(--cb);transform-origin:left;transform:scaleX(0)}
+.film .cyc{position:absolute;left:8cqw;right:8cqw;top:50%;height:0}
+.film .cy{position:absolute;left:0;right:0;top:0;transform:translateY(-50%)}
+.film .cy .ln{padding-bottom:.16em;margin-bottom:-.16em}
+.film .cy b{display:block;font-weight:900;font-variation-settings:"wdth" 122;font-size:min(11.5cqw,21cqh);line-height:.9;letter-spacing:-.045em;color:#fff}
+.film .cy span.sub{display:block;margin-top:3.2cqh;font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:min(3.1cqw,5.6cqh);color:rgba(255,255,255,.88)}
+.film .idx{position:absolute;left:8cqw;bottom:7cqh;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.28em;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,.8)}
+
+/* escena 4: árbol horizontal */
+.film .s4 .head{margin:0 0 4cqh;font-size:min(5.8cqw,10.5cqh)}
+.film .tree{width:min(84cqw,150cqh);height:auto;overflow:visible;align-self:flex-start}
+.film .tree path.tr{fill:none;stroke:var(--pp);stroke-width:2.4;stroke-linecap:round}
+.film .tree path.cr{fill:none;stroke:var(--cl);stroke-width:2.4;stroke-dasharray:3 9;stroke-linecap:round}
+.film .tree circle{fill:#070809;stroke:var(--pp);stroke-width:2.6}
+.film .tree circle.root{fill:var(--cb);stroke:var(--cb)}
+.film .cap{margin:3cqh 0 0;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.28em;text-transform:uppercase;color:rgba(247,248,250,.62)}
+
+/* escena 5: cifras */
+.film .met{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2cqw;margin-top:5cqh;padding-top:4cqh;border-top:1px solid var(--ln)}
+.film .met b{display:block;font-weight:800;font-variation-settings:"wdth" 110;font-size:min(9.6cqw,17cqh);line-height:.9;letter-spacing:-.06em}
+.film .met span{display:block;margin-top:1.6cqh;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.16em;text-transform:uppercase;color:rgba(247,248,250,.7);line-height:1.25}
+@container (max-aspect-ratio:1/1){
+  .film .met{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:5cqh}
+  .film .met b{font-size:min(15cqw,9cqh)}
+  .film .cy b{font-size:min(16cqw,12cqh)}
+  .film .cy span.sub{font-size:min(5.4cqw,3.2cqh)}
+  .film .big{font-size:min(9cqw,8cqh)}
+  .film .s4 .head{font-size:min(8.2cqw,7cqh)}
+}
+
+/* escena 6: cierre */
+.film .s6 .big.serif{font-size:min(7.4cqw,13cqh);line-height:1.04}
+.film .lock{margin-top:7cqh;display:flex;flex-direction:column;gap:1.4cqh}
+.film .lock strong{font-weight:900;font-variation-settings:"wdth" 118;font-size:min(2.6cqw,4.6cqh);letter-spacing:-.01em}
+.film .lock small{font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.22em;text-transform:uppercase;color:rgba(247,248,250,.62)}
+.film .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--cl);transform-origin:left;transform:scaleX(0);z-index:5}
+@container (max-aspect-ratio:1/1){ .film .s6 .big.serif{font-size:min(9.6cqw,8cqh)} }
+
+/* escena 0: nombre */
+.film .s0 .nm{font-size:min(13.5cqw,24cqh);line-height:.95;letter-spacing:-.04em;font-variation-settings:"wdth" 122}
+.film .s0 .role{margin:5cqh 0 0}
+.film .s0 .role::before{display:none}
+@container (max-aspect-ratio:1/1){ .film .s0 .nm{font-size:min(20cqw,12cqh)} }
+
+.film .s7 .big{font-size:min(11cqw,19cqh)}
+@container (max-aspect-ratio:1/1){ .film .s7 .big{font-size:min(15cqw,10cqh)} }
+
+/* horizontal: cada línea del guion cabe completa, sin partirse */
+@container (min-aspect-ratio:1/1){
+  .film .ln{white-space:nowrap}
+  .film .big{font-size:min(6.3cqw,11.5cqh)}
+  .film .s5 .big{font-size:min(5.7cqw,10.5cqh)}
+  .film .s7 .big{font-size:min(11cqw,19cqh)}
+  .film .s6 .big.serif{font-size:min(7cqw,12.5cqh)}
+}
+
+/* ajustes: palabra de cobalto en vertical y contador sobre los botones de la página */
+.film .idx{bottom:15cqh}
+@container (max-aspect-ratio:1/1){ .film .cy b{font-size:min(13.2cqw,12cqh)} }
+@container (max-aspect-ratio:1/1){ .film .s7 .big{font-size:min(12.2cqw,9cqh)} }
+
+/* cierre: Conoce + */
+.film .s7 .cta{font-size:min(14cqw,24cqh);line-height:1}
+.film .s7 .plus{display:inline-block;color:var(--cl);font-weight:900;margin-left:.06em}
+@container (max-aspect-ratio:1/1){ .film .s7 .cta{font-size:min(19cqw,12cqh)} }
+
+/* etiqueta de idioma (EN / ES) */
+.film .ltag{position:absolute;z-index:4;right:4cqw;top:5cqh;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.3em;font-weight:600;color:rgba(247,248,250,.7);opacity:0;padding:.7em 1em;border:1px solid var(--ln)}

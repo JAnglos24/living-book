@@ -8,8 +8,8 @@ import SeoHead from '../../components/SeoHead.astro';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thinking in Products, Building Systems — The Living Book</title>
 <meta name="description" content="A living digital book on physical design, digital products, projects and enterprise portfolios, published one chapter a week.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/Archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
@@ -34,6 +34,7 @@ h1,h2,h3,p{margin:0} a{color:inherit} img{max-width:100%;display:block}
 .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
 .topbar .lang a{text-decoration:none;color:var(--ink2)}
 .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+@media (max-width:640px){.topbar{position:static}.topbar .row{flex-wrap:wrap;row-gap:0}.topbar nav{order:3;width:100%;gap:0;justify-content:space-between}.topbar a.home,.topbar nav a,.topbar .lang a{display:inline-flex;align-items:center;min-height:44px;padding-inline:6px}}
 .topbar button.toc-btn{font:inherit;font-size:14px;font-weight:600;color:var(--cobalt);background:none;border:1.5px solid var(--cobalt);border-radius:999px;padding:8px 18px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
 .topbar button.toc-btn:hover{background:var(--cobalt);color:#fff}
 .progress{height:2px;background:var(--grid-blue)}
@@ -257,12 +258,12 @@ footer a{text-decoration:none}
 <!-- ===== COVER ===== -->
 <header class="cover">
   <img class="bg-img" src="/assets/ebook-hero.png" alt="Chair rendering process" fetchpriority="high">
-  <span class="num" aria-hidden="true">0.7</span>
+  <span class="num" aria-hidden="true">0.8</span>
   <div class="wrap">
     <p class="eyebrow">THE LIVING BOOK</p>
     <h1>Thinking in Products, Building Systems</h1>
     <p class="sub">From physical design to digital products, projects and enterprise portfolios.</p>
-    <p class="meta">Living edition 0.7 — 7 of ~20 chapters published — updated weekly</p>
+    <p class="meta">Living edition 0.8 — 8 of ~20 chapters published — updated weekly</p>
     <div class="cta-row">
       <a class="btn solid" href="#continue">Continue reading</a>
       <a class="btn outline" href="/downloads/thinking-in-products-building-systems-current.pdf">Download current PDF</a>
@@ -295,16 +296,16 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="head">
       <h2>Continue reading</h2>
-      <a href="/ebook/07-interfaces-as-tolerances/">Chapter 7 of 20 (planned) &rarr;</a>
+      <a href="/ebook/08-what-breaks-when-you-scale-a-product/">Chapter 8 of 20 (planned) &rarr;</a>
     </div>
     <article class="chapcard">
-      <img class="bg-img" src="/assets/chapter-07-hero.jpg" alt="Chapter 7 hero">
-      <span class="ch-num" aria-hidden="true">07</span>
+      <img class="bg-img" src="/assets/chapter-08-promise-short-series.jpg" alt="Chapter 8 hero">
+      <span class="ch-num" aria-hidden="true">08</span>
       <div class="body">
-        <p class="kicker">Part II &middot; From Physical to Digital &mdash; Chapter 7</p>
-        <h3><a href="/ebook/07-interfaces-as-tolerances/">Interfaces as Tolerances</a></h3>
-        <p class="dek">An interface takes shape within the limits of materials, processes, device, context, business and person. Designing means recognizing those limits, measuring them, and deciding who absorbs the effort when we exceed them.</p>
-        <a class="link" href="/ebook/07-interfaces-as-tolerances/">Read chapter 7 &rarr;</a>
+        <p class="kicker">Part II &middot; From Physical to Digital &mdash; Chapter 8</p>
+        <h3><a href="/ebook/08-what-breaks-when-you-scale-a-product/">What Breaks When You Scale a Product</a></h3>
+        <p class="dek">Growth changes the conditions under which a product creates value. The product owner&#x27;s job is to recognize what must be transformed and what deserves to remain.</p>
+        <a class="link" href="/ebook/08-what-breaks-when-you-scale-a-product/">Read chapter 8 &rarr;</a>
       </div>
     </article>
   </div>
@@ -326,12 +327,12 @@ footer a{text-decoration:none}
     </div>
 
     <div class="part">
-      <div class="partmeta"><b>Part II — From Physical to Digital</b><span>3 of 4 published</span></div>
+      <div class="partmeta"><b>Part II — From Physical to Digital</b><span>4 of 4 published</span></div>
       <ul class="chlist">
         <li class="published"><a href="/ebook/05-digital-materials-apis-data-and-constraints/"><span class="n">05</span><span class="t">Digital Materials: APIs, Data and Constraints</span><span class="st">Published</span></a></li>
         <li class="published"><a href="/ebook/06-designing-for-maintenance-not-just-launch/"><span class="n">06</span><span class="t">Designing for Maintenance, Not Just Launch</span><span class="st">Published</span></a></li>
         <li class="published"><a href="/ebook/07-interfaces-as-tolerances/"><span class="n">07</span><span class="t">Interfaces as Tolerances</span><span class="st">Published</span></a></li>
-        <li><span class="n">08</span><span class="t locked">What Breaks When You Scale a Product</span><span class="st">Upcoming</span></li>
+        <li class="published"><a href="/ebook/08-what-breaks-when-you-scale-a-product/"><span class="n">08</span><span class="t">What Breaks When You Scale a Product</span><span class="st">Published</span></a></li>
       </ul>
     </div>
 
@@ -373,6 +374,7 @@ footer a{text-decoration:none}
     <div>
       <h2>Edition history</h2>
       <ul>
+        <li><b>Edition 0.8</b> Chapter 8 published — 27 Oct 2026</li>
         <li><b>Edition 0.7</b> Chapter 7 published — 19 Oct 2026</li>
         <li><b>Edition 0.6</b> Chapter 6 published — 12 Oct 2026</li>
         <li><b>Edition 0.5</b> Chapter 5 published — 05 Oct 2026</li>
@@ -386,7 +388,7 @@ footer a{text-decoration:none}
     <div class="pdfcard">
       <b>Download the current edition</b>
       <span>A single PDF snapshot of every chapter published so far, generated at build time from the same source as the web edition.</span>
-      <a class="btn solid" style="background:var(--cobalt);color:#fff" href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF &mdash; Edition 0.7</a>
+      <a class="btn solid" style="background:var(--cobalt);color:#fff" href="/downloads/thinking-in-products-building-systems-current.pdf">Download PDF &mdash; Edition 0.8</a>
     </div>
   </div>
 </section>

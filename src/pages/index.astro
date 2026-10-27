@@ -8,9 +8,9 @@ import SeoHead from '../components/SeoHead.astro';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>José Ángel Sosa López (J. Angel Sosa) — Senior Portfolio Manager & Product Management Director</title>
 <meta name="description" content="IT Portfolio Leadership — Product & Project Perspective. Ideas, frameworks and field experience at the intersection of physical products, digital platforms, projects and enterprise portfolios.">
-<link rel="preload" as="image" href="/assets/jas-warm.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/jas-warm.webp" type="image/webp">
+<link rel="preload" href="/fonts/Archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --black:#070809; --graphite:#111418; --paper:#F7F8FA; --gray:#C9D0D8; --line:#AEB8C4; --ink2:#5C6673;
@@ -40,16 +40,17 @@ h1,h2,h3,p{margin:0}
 .hero .maskwrap{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform,opacity;opacity:0;transform:scale(.985);animation:reveal 1.15s var(--ease) .2s forwards}
 .hero .name-mask{width:100%;height:100%;display:block}
 .hero .name-mask.mobile{display:none}
+.hero .name-mask.desktop{overflow:visible}
 .hero .name-mask text{font-family:var(--grot);font-weight:900;font-variation-settings:"wdth" 118;letter-spacing:-.025em}
 @keyframes reveal{to{opacity:1;transform:scale(1)}}
 .hero .ui{position:absolute;inset:0;z-index:3;pointer-events:none;color:var(--paper)}
 .hero .ui>*{pointer-events:auto}
 .hero .mark{position:absolute;top:1.4rem;left:var(--m);font-weight:600;letter-spacing:.06em;font-size:1.05rem;text-decoration:none;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
 .hero .topright{position:absolute;top:1.5rem;right:var(--m);display:flex;align-items:center;gap:1.6rem;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
-.hero .topright .lang{display:flex;align-items:center;gap:6px;font-size:.68rem;letter-spacing:.16em}
+.hero .topright .lang{display:flex;align-items:center;gap:6px;font-size:max(11px,.68rem);letter-spacing:.16em}
 .hero .topright .lang a{text-decoration:none;color:rgba(247,248,250,.6)}
 .hero .topright .lang a[aria-current]{color:var(--paper);font-weight:700}
-.hero .menu{display:flex;align-items:center;gap:.9rem;font-size:.68rem;letter-spacing:.24em;text-decoration:none}
+.hero .menu{display:flex;align-items:center;gap:.9rem;font-size:max(11px,.68rem);letter-spacing:.24em;text-decoration:none}
 .hero .menu i{width:36px;height:10px;border-top:1px solid;border-bottom:1px solid}
 .hero .role{position:absolute;left:var(--m);bottom:2.2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;opacity:0;animation:fade .9s var(--ease) 1.2s forwards}
 .hero .quote{position:absolute;right:var(--m);bottom:6.5rem;font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.4vw,1.4rem);line-height:1.35;max-width:16ch;text-align:right;opacity:0;animation:fade .9s var(--ease) 1.7s forwards}
@@ -83,7 +84,7 @@ h1,h2,h3,p{margin:0}
 .book .object .blueprint{width:92%;max-width:720px;opacity:.70;z-index:1;mix-blend-mode:multiply}
 .book .object .chair{width:68%;max-width:560px;z-index:2;filter:drop-shadow(0 28px 38px rgba(17,20,24,.12))}
 .book .object img{width:100%;height:auto;display:block}
-.book .note{position:absolute;z-index:3;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;line-height:1.9;color:var(--ink2)}
+.book .note{position:absolute;z-index:3;font-size:max(11px,.6rem);letter-spacing:.2em;text-transform:uppercase;line-height:1.9;color:var(--ink2)}
 .book .note::after{content:"";display:block;width:1.8rem;height:1px;background:var(--line);margin-top:.5rem}
 .book .n1{top:clamp(2rem,7vh,4.5rem);left:8%}.book .n2{top:clamp(2rem,7vh,4.5rem);right:var(--m);text-align:right}.book .n3{bottom:clamp(2rem,7vh,4.5rem);right:var(--m);text-align:right}
 
@@ -118,7 +119,7 @@ h1,h2,h3,p{margin:0}
   .book-metrics .metric{padding-right:.7rem}
   .book-metrics b{font-size:clamp(36px,9.5vw,54px)}
   .book-metrics .metric.infinity b{font-size:clamp(41px,10.5vw,59px)}
-  .book-metrics .label{font-size:.62rem;letter-spacing:.11em;line-height:1.35}
+  .book-metrics .label{font-size:max(11px,.62rem);letter-spacing:.11em;line-height:1.35}
 }
 
 /* ============ SCENE 02 — CINEMATIC STRIP ============ */
@@ -130,7 +131,7 @@ h1,h2,h3,p{margin:0}
 .strip .fig img{height:100%;width:auto;display:block}
 .strip .shadow{position:absolute;left:60%;bottom:11%;z-index:1;width:clamp(120px,12vw,220px);height:12px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),transparent 70%);transform-origin:50% 0;translate:-50% 0;will-change:transform,opacity}
 .strip .say{position:absolute;z-index:3;left:var(--m);top:50%;transform:translateY(-50%);color:var(--paper);font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,1rem+1.7vw,2.6rem);line-height:1.28;max-width:14ch;letter-spacing:-.01em;will-change:transform}
-.strip .say small{display:block;font-family:var(--grot);font-style:normal;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;margin-top:1.6rem}
+.strip .say small{display:block;font-family:var(--grot);font-style:normal;font-size:max(11px,.62rem);letter-spacing:.28em;text-transform:uppercase;margin-top:1.6rem}
 .strip .say small::after{content:"";display:inline-block;width:2.4rem;height:1px;background:var(--paper);vertical-align:middle;margin-left:1rem}
 @media (max-width:800px){
   .strip{height:120svh}.strip .scene{height:80svh;top:10svh}
@@ -152,7 +153,7 @@ h1,h2,h3,p{margin:0}
 .nav a:hover em,.nav a:focus-visible em{transform:translate(0,-50%);opacity:1}
 @media (max-width:900px){.nav{grid-template-columns:1fr}.nav a{border-right:0;border-bottom:1px solid var(--line);padding:1.5rem var(--m)}.nav a:last-child{border-bottom:0}}
 
-footer{position:relative;z-index:2;background:var(--paper);padding:1.6rem var(--m) 2.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 2rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+footer{position:relative;z-index:2;background:var(--paper);padding:1.6rem var(--m) 2.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 2rem;font-size:max(11px,.62rem);letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
 footer a{text-decoration:none}
 footer nav{display:flex;gap:2rem}
 
@@ -172,24 +173,24 @@ footer nav{display:flex;gap:2rem}
 <!-- ========== 00 HERO ========== -->
 <section class="hero" id="hero" aria-label="Introduction">
   <div class="stage" id="stage">
-    <div class="photo" id="photo"><img src="/assets/jas-warm.jpg" alt="José Ángel Sosa seated on an illuminated cube in a dark interior" fetchpriority="high"></div>
+    <div class="photo" id="photo"><img src="/assets/jas-warm.webp" width="1672" height="649" alt="José Ángel Sosa seated on an illuminated cube in a dark interior" fetchpriority="high"></div>
     <div class="maskwrap" id="maskwrap" aria-hidden="true">
       <svg class="name-mask desktop" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <defs>
-          <mask id="heroMaskDesktop" maskUnits="userSpaceOnUse">
-            <rect width="1600" height="900" fill="#fff"/>
+          <mask id="heroMaskDesktop" maskUnits="userSpaceOnUse" x="-3000" y="-3000" width="7600" height="6900">
+            <rect x="-3000" y="-3000" width="7600" height="6900" fill="#fff"/>
             <text id="heroL1D" x="808" y="408" text-anchor="middle" font-size="338" textLength="1430" lengthAdjust="spacingAndGlyphs" fill="#000">J.ANGEL</text>
             <text id="heroL2D" x="675" y="726" text-anchor="middle" font-size="372" textLength="1245" lengthAdjust="spacingAndGlyphs" fill="#000">SOSA</text>
           </mask>
         </defs>
-        <rect width="1600" height="900" fill="#070809" mask="url(#heroMaskDesktop)"/>
+        <rect x="-3000" y="-3000" width="7600" height="6900" fill="#070809" mask="url(#heroMaskDesktop)"/>
       </svg>
       <svg class="name-mask mobile" viewBox="0 0 420 800" preserveAspectRatio="xMidYMid slice">
         <defs>
           <mask id="heroMaskMobile" maskUnits="userSpaceOnUse">
             <rect width="420" height="800" fill="#fff"/>
-            <text id="heroL1M" x="210" y="325" text-anchor="middle" font-size="145" textLength="400" lengthAdjust="spacingAndGlyphs" fill="#000">J.ANGEL</text>
-            <text id="heroL2M" x="210" y="505" text-anchor="middle" font-size="190" textLength="400" lengthAdjust="spacingAndGlyphs" fill="#000">SOSA</text>
+            <text id="heroL1M" x="210" y="325" text-anchor="middle" font-size="123" textLength="340" lengthAdjust="spacingAndGlyphs" fill="#000">J.ANGEL</text>
+            <text id="heroL2M" x="210" y="505" text-anchor="middle" font-size="161" textLength="340" lengthAdjust="spacingAndGlyphs" fill="#000">SOSA</text>
           </mask>
         </defs>
         <rect width="420" height="800" fill="#070809" mask="url(#heroMaskMobile)"/>
@@ -218,7 +219,7 @@ footer nav{display:flex;gap:2rem}
     <p class="sum reveal" style="transition-delay:.22s">Ideas, frameworks and field experience connecting physical products, digital platforms, projects and enterprise portfolios.</p>
     <div class="cta-row reveal" style="transition-delay:.3s">
       <a class="cta" href="/ebook/">Explore the living book <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
-      <a class="cta ghost" href="/ebook/07-interfaces-as-tolerances/">Read the latest chapter <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+      <a class="cta ghost" href="/ebook/08-what-breaks-when-you-scale-a-product/">Read the latest chapter <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
     </div>
     <div class="book-metrics" id="bookMetrics" aria-label="In brief">
       <div class="metric"><b><span class="clip">16+</span></b><span class="label">Years of<br>experience</span></div>
@@ -231,7 +232,7 @@ footer nav{display:flex;gap:2rem}
     <p class="note n1">Idea<br>Design<br>Develop<br>Scale</p>
     <p class="note n2">People<br>Products<br>Projects<br>Systems</p>
     <p class="note n3">Function<br>Impact<br>People</p>
-    <div class="layer blueprint" id="bp"><img src="/assets/chair-blueprint.png" alt="Technical drawing of a moulded chair with dimensions and radii" loading="lazy"></div>
+    <div class="layer blueprint" id="bp"><img src="/assets/chair-blueprint.webp" width="1034" height="1199" alt="Technical drawing of a moulded chair with dimensions and radii" loading="lazy"></div>
   </div>
 </section>
 
@@ -239,9 +240,9 @@ footer nav{display:flex;gap:2rem}
 <!-- ========== 02 CINEMATIC STRIP ========== -->
 <section class="strip" id="strip" aria-label="Editorial statement">
   <div class="scene">
-    <div class="bg" id="sbg"><img src="/assets/cinematic-bg.jpg" alt="" loading="lazy"></div>
+    <div class="bg" id="sbg"><img src="/assets/cinematic-bg.webp" width="2172" height="724" alt="" loading="lazy"></div>
     <div class="shadow" id="sshadow"></div>
-    <div class="fig" id="sfig"><img src="/assets/jas-figure.png" alt="Graphic illustration of a standing figure seen from behind" loading="lazy"></div>
+    <div class="fig" id="sfig"><img src="/assets/jas-figure.webp" width="485" height="1335" alt="Graphic illustration of a standing figure seen from behind" loading="lazy"></div>
     <p class="say reveal" id="ssay">“A more human and thoughtful built world is possible.”<small>J. A. Sosa</small></p>
   </div>
 </section>
@@ -275,6 +276,9 @@ footer nav{display:flex;gap:2rem}
 
   var hero=E('hero'), photo=E('photo'), maskwrap=E('maskwrap');
   var heroL1D=E('heroL1D'), heroL2D=E('heroL2D'), heroL1M=E('heroL1M'), heroL2M=E('heroL2M');
+  var dsvg=document.querySelector('.name-mask.desktop');
+  function fitMask(){ if(dsvg) dsvg.setAttribute('preserveAspectRatio', innerWidth/innerHeight<1.7?'xMidYMid meet':'xMidYMid slice'); }
+  fitMask(); addEventListener('resize',fitMask,{passive:true});
   var book=E('book'), obj=E('object'), bp=E('bp'), chair=E('chair');
   var strip=E('strip'), sbg=E('sbg'), sfig=E('sfig'), ssay=E('ssay'), sshadow=E('sshadow');
   var pointer={x:0,y:0}, fine=matchMedia('(pointer:fine)').matches, ticking=false;

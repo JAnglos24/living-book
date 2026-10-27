@@ -1,15 +1,16 @@
 ---
 import SeoHead from '../../components/SeoHead.astro';
+import articles from '../../data/articles.json';
 ---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Artículos — J. Angel Sosa</title>
-<meta name="description" content="Artículos de José Ángel Sosa López, en espejo desde LinkedIn — priorización de producto, práctica de PMO, gestión y contratación.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<meta name="description" content="Artículos de José Ángel Sosa López, en espejo desde LinkedIn — producto, gobernanza de portafolios, transformación, PMO, gestión y contratación.">
+<link rel="preload" href="/fonts/Archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
@@ -31,6 +32,7 @@ h1,h2,h3,p{margin:0} a{color:inherit}
 .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
 .topbar .lang a{text-decoration:none;color:var(--ink2)}
 .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+@media (max-width:640px){.topbar{position:static}.topbar .row{flex-wrap:wrap;row-gap:0}.topbar nav{order:3;width:100%;gap:0;justify-content:space-between}.topbar a.home,.topbar nav a,.topbar .lang a{display:inline-flex;align-items:center;min-height:44px;padding-inline:6px}}
 
 .hero{background:var(--cobalt);color:#fff}
 .hero .wrap{padding-block:clamp(56px,10vh,96px)}
@@ -60,6 +62,7 @@ h1,h2,h3,p{margin:0} a{color:inherit}
 footer{background:var(--white);border-top:1px solid var(--line)}
 footer .wrap{padding-block:24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink2)}
 footer a{text-decoration:none}
+.orig{font-style:normal;opacity:.6;font-size:.9em}
 </style>
 <SeoHead />
 </head>
@@ -83,92 +86,29 @@ footer a{text-decoration:none}
   <div class="wrap">
     <p class="eyebrow">ARTÍCULOS</p>
     <h1>Textos largos</h1>
-    <p>Seis artículos publicados en LinkedIn entre 2022 y 2023, sobre priorización de producto, práctica de PMO, contratación y gestión. Esta página es un espejo — el texto completo vive en LinkedIn.</p>
+    <p>{articles.length} artículos en LinkedIn desde 2022, sobre priorización de producto, gobernanza de portafolios, transformación, práctica de PMO, seguridad y UX, contratación y gestión. Esta página es un espejo — el texto completo vive en LinkedIn.</p>
     <a class="src" href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">Ver toda la actividad en LinkedIn ↗</a>
   </div>
 </header>
 
 <section class="list">
   <div class="wrap">
-
+    {articles.map((a) => (
     <article class="article">
-      <span class="date">25 Sep 2026</span>
+      <span class="date">{a.date_es ?? `${a.min} min de lectura`}</span>
       <div>
-        <h2><a href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">Transformando la Arquitectura: Lecciones del Capítulo 3 de "The Living Book"</a></h2>
-        <p>¿Cómo los principios de una línea de producción pueden alterar la forma en que diseñamos y construimos? El Capítulo 3 ofrece una conexión innovadora entre manufactura y diseño arquitectónico.</p>
+        <h2><a href={a.url}>{a.title_es}</a></h2>
+        <p>{a.sum_es}{a.orig === 'en' && <em class="orig"> (Original en inglés)</em>}</p>
       </div>
-      <a class="go" href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">Leer en LinkedIn ↗</a>
+      <a class="go" href={a.url}>Leer en LinkedIn ↗</a>
     </article>
-
-    <article class="article">
-      <span class="date">24 Sep 2026</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">Dominando SAFe y Lean Portfolio Management: Un Enfoque Estratégico</a></h2>
-        <p>Las empresas enfrentan grandes desafíos en su transformación digital. Exploremos cómo los marcos SAFe y LPM pueden conectar la estrategia empresarial con la ejecución tecnológica.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/in/jos%C3%A9-angel-sosa-l%C3%B3pez-2568683a/recent-activity/articles/">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">Jun 7, 2023</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/building-pmo-agile-practices-5-key-recommendations-sosa-l%C3%B3pez">Construir una PMO con prácticas ágiles: 5 recomendaciones clave</a></h2>
-        <p>Por qué una PMO moderna necesita un marco abierto en vez de un flujo único y fijo — dejando que cada equipo diseñe sus propias fases y seguimiento sin que el portafolio pierda cohesión.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/building-pmo-agile-practices-5-key-recommendations-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">May 23, 2023</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/destructive-impact-gaslighting-workplace-jos%C3%A9-angel-sosa-l%C3%B3pez">El impacto destructivo del gaslighting en el trabajo</a></h2>
-        <p>Cómo un patrón manipulador que distorsiona la percepción de la realidad aparece en los equipos, qué le cuesta a la productividad y la salud mental, y cómo reconocer el lenguaje detrás de él.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/destructive-impact-gaslighting-workplace-jos%C3%A9-angel-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">Apr 21, 2023</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/human-centric-management-jos%C3%A9-angel-sosa-l%C3%B3pez">Gestión centrada en las personas</a></h2>
-        <p>Dejar atrás el lenguaje de "gestión de recursos" de los años noventa para tratar a las personas como algo más que un insumo intercambiable de un plan de proyecto.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/human-centric-management-jos%C3%A9-angel-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">Aug 11, 2022</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/inputs-product-priorization-jos%C3%A9-angel-sosa-l%C3%B3pez">Insumos para priorizar producto</a></h2>
-        <p>El trabajo de un portfolio manager incluye darle a la dirección las piezas que le faltan — dependencias, impacto de negocio — para priorizar un backlog con certeza real, no a ojo.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/inputs-product-priorization-jos%C3%A9-angel-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">Jul 29, 2022</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/good-practice-have-blacklist-candidates-jos%C3%A9-angel-sosa-l%C3%B3pez">¿Es buena práctica tener una lista negra de candidatos?</a></h2>
-        <p>Una reflexión que surgió de una pregunta de entrevista sobre elección de herramientas y proceso — y lo que revela sobre cómo se evalúa realmente a un candidato.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/good-practice-have-blacklist-candidates-jos%C3%A9-angel-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
-    <article class="article">
-      <span class="date">Jun 22, 2022</span>
-      <div>
-        <h2><a href="https://www.linkedin.com/pulse/how-does-your-shopping-car-its-behavior-impact-churn-rate-sosa-l%C3%B3pez">¿Cómo impacta tu carrito de compra en tu tasa de abandono?</a></h2>
-        <p>Qué le pasa a la confianza del cliente cuando un carrito de compra muestra artículos que el sistema de gestión de pedidos o un proveedor externo ya no puede surtir.</p>
-      </div>
-      <a class="go" href="https://www.linkedin.com/pulse/how-does-your-shopping-car-its-behavior-impact-churn-rate-sosa-l%C3%B3pez">Leer en LinkedIn ↗</a>
-    </article>
-
+    ))}
   </div>
 </section>
 
 <section class="note">
   <div class="wrap">
-    <p>Esta página es un espejo, no una copia — títulos, fechas y un resumen breve en mis palabras, cada uno enlazado al original en LinkedIn donde vive el artículo completo. Los textos nuevos se agregan aquí después de publicarse allá.</p>
+    <p>Esta página es un espejo, no una copia — títulos, fechas o tiempo de lectura, y un resumen breve o las primeras líneas, cada uno enlazado al original en LinkedIn donde vive el artículo completo. Los textos nuevos se agregan aquí después de publicarse allá.</p>
   </div>
 </section>
 

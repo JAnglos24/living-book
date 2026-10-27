@@ -1,0 +1,227 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 936 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540 
+L 936 540 
+L 936 0 
+L 0 0 
+L 0 540 
+z
+" style="fill: none; opacity: 0"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 93.6 421.2 
+L 898.56 421.2 
+L 898.56 129.6 
+L 93.6 129.6 
+L 93.6 421.2 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m35c9b890ed" d="M 0 0 
+L 0 4 
+" style="stroke: #c9d0d8; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m35c9b890ed" x="93.6" y="421.2" style="fill: #c9d0d8; stroke: #c9d0d8; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start; fill: #5c6673" x="93.6" y="437.058281" transform="rotate(-0 93.6 437.058281)">Inicio</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m35c9b890ed" x="898.56" y="421.2" style="fill: #c9d0d8; stroke: #c9d0d8; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: end; fill: #5c6673" x="898.56" y="437.498281" transform="rotate(-0 898.56 437.498281)">Después</text>
+     </g>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 12px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: middle; fill: #5c6673" x="496.08" y="457.738984" transform="rotate(-0 496.08 457.738984)">Práctica y tiempo →</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_4">
+     <text style="font-size: 12px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: middle; fill: #5c6673" x="86.717188" y="275.4" transform="rotate(-90 86.717188 275.4)">Desempeño relativo</text>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <path d="M 93.6 290.482759 
+L 898.56 290.482759 
+" clip-path="url(#p17beb0aca1)" style="fill: none; stroke-dasharray: 6,3; stroke-dashoffset: 0; stroke: #5c6673; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 93.6 290.247558 
+L 151.615135 290.145238 
+L 165.313153 290.355982 
+L 175.788108 290.734879 
+L 183.845766 291.233964 
+L 191.097658 291.900771 
+L 197.543784 292.718147 
+L 203.184144 293.647003 
+L 208.824505 294.812547 
+L 213.659099 296.028002 
+L 218.493694 297.467808 
+L 223.328288 299.154313 
+L 228.162883 301.107932 
+L 232.997477 303.346004 
+L 237.026306 305.437918 
+L 241.055135 307.741151 
+L 245.88973 310.785706 
+L 250.724324 314.131687 
+L 255.558919 317.765555 
+L 260.393514 321.664009 
+L 266.033874 326.501041 
+L 273.285766 333.06308 
+L 292.624144 350.842225 
+L 297.458739 354.913379 
+L 301.487568 358.059439 
+L 305.516396 360.92581 
+L 308.739459 362.983745 
+L 311.962523 364.806223 
+L 315.185586 366.37058 
+L 318.408649 367.656153 
+L 321.631712 368.644622 
+L 324.049009 369.181462 
+L 326.466306 369.536751 
+L 328.883604 369.70591 
+L 331.300901 369.685374 
+L 333.718198 369.472626 
+L 336.135495 369.066221 
+L 338.552793 368.465794 
+L 340.97009 367.67207 
+L 343.387387 366.686845 
+L 345.804685 365.512972 
+L 349.027748 363.661205 
+L 352.250811 361.492973 
+L 355.473874 359.023071 
+L 358.696937 356.268935 
+L 361.92 353.250334 
+L 365.948829 349.138512 
+L 369.977658 344.693641 
+L 374.812252 338.98914 
+L 380.452613 331.933573 
+L 387.704505 322.443032 
+L 408.654414 294.714494 
+L 415.100541 286.662819 
+L 420.740901 279.948698 
+L 426.381261 273.583973 
+L 432.021622 267.590105 
+L 436.856216 262.753411 
+L 441.690811 258.192051 
+L 446.525405 253.898292 
+L 452.165766 249.21138 
+L 457.806126 244.849512 
+L 463.446486 240.786606 
+L 469.086847 236.995604 
+L 474.727207 233.449998 
+L 481.173333 229.666613 
+L 487.619459 226.13825 
+L 494.871351 222.438652 
+L 502.123243 218.993445 
+L 509.375135 215.777359 
+L 517.432793 212.449802 
+L 525.49045 209.362994 
+L 533.548108 206.503354 
+L 542.411532 203.607846 
+L 551.274955 200.963153 
+L 560.138378 198.558281 
+L 569.001802 196.381759 
+L 577.865225 194.421173 
+L 587.534414 192.512854 
+L 597.203604 190.827091 
+L 607.678559 189.229869 
+L 618.959279 187.748962 
+L 631.045766 186.40479 
+L 643.938018 185.209897 
+L 657.636036 184.169142 
+L 672.945586 183.236719 
+L 689.866667 182.434233 
+L 709.205045 181.744874 
+L 731.766486 181.168889 
+L 759.162523 180.700734 
+L 793.81045 180.342047 
+L 841.350631 180.088465 
+L 898.56 179.958378 
+L 898.56 179.958378 
+" clip-path="url(#p17beb0aca1)" style="fill: none; stroke: #0057d9; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 93.6 421.2 
+L 93.6 129.6 
+" style="fill: none; stroke: #c9d0d8; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 93.6 421.2 
+L 898.56 421.2 
+" style="fill: none; stroke: #c9d0d8; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 406.194088 377.634089 
+Q 368.938662 373.780313 331.683236 369.926538 
+" style="fill: none; stroke: #5c6673; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; fill: #111418" transform="translate(410.185369 380.209694)">Posible caída</text>
+    <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; fill: #111418" transform="translate(410.185369 393.852702)">durante la transición</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: end; fill: #111418" x="475.956" y="218.085517" transform="rotate(-0 475.956 218.085517)">Recuperación</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; fill: #111418" transform="translate(737.568 140.807823)">Capacidad nueva</text>
+    <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; fill: #111418" transform="translate(737.568 154.01083)">por demostrar</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_5">
+     <path d="M 103.5 144.008281 
+L 114.5 144.008281 
+L 125.5 144.008281 
+" style="fill: none; stroke-dasharray: 6,3; stroke-dashoffset: 0; stroke: #5c6673; stroke-width: 1.5"/>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start" x="134.3" y="147.858281" transform="rotate(-0 134.3 147.858281)">Referencia anterior</text>
+    </g>
+    <g id="line2d_6">
+     <path d="M 103.5 160.949141 
+L 114.5 160.949141 
+L 125.5 160.949141 
+" style="fill: none; stroke: #0057d9; stroke-width: 3; stroke-linecap: square"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start" x="134.3" y="164.799141" transform="rotate(-0 134.3 164.799141)">Trayectoria hipotética</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_10">
+   <text style="font-weight: 700; font-size: 21px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start; fill: #0057d9" x="56.16" y="53.756719" transform="rotate(-0 56.16 53.756719)">Figura 8.8 · Adoptar y aprender son procesos distintos</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 12px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start; fill: #5c6673" x="56.16" y="82.498125" transform="rotate(-0 56.16 82.498125)">Una trayectoria posible de desempeño durante una transición · esquema, no pronóstico</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 12px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start; fill: #5c6673" x="56.16" y="494.1" transform="rotate(-0 56.16 494.1)">La caída no es obligatoria. La recuperación tampoco está garantizada.</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 11px; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; text-anchor: start; fill: #5c6673" x="56.16" y="521.1" transform="rotate(-0 56.16 521.1)">Si persisten el retrabajo o el deterioro del servicio, revisar el método, la carga y el apoyo.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p17beb0aca1">
+   <rect x="93.6" y="129.6" width="804.96" height="291.6"/>
+  </clipPath>
+ </defs>
+</svg>

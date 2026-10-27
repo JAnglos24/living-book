@@ -8,8 +8,8 @@ import SeoHead from '../components/SeoHead.astro';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — J. Angel Sosa</title>
 <meta name="description" content="Get in touch with José Ángel Sosa López by email or WhatsApp.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/Archivo-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
   --cobalt:#0057D9; --cobalt-deep:#003F9E; --cobalt-light:#2E7CFF;
@@ -31,8 +31,9 @@ h1,h2,p{margin:0} a{color:inherit}
 .topbar .lang{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
 .topbar .lang a{text-decoration:none;color:var(--ink2)}
 .topbar .lang a[aria-current]{color:var(--graphite);font-weight:700}
+@media (max-width:640px){.topbar{position:static}.topbar .row{flex-wrap:wrap;row-gap:0}.topbar nav{order:3;width:100%;gap:0;justify-content:space-between}.topbar a.home,.topbar nav a,.topbar .lang a{display:inline-flex;align-items:center;min-height:44px;padding-inline:6px}}
 
-.banner{width:100%;aspect-ratio:21/8;overflow:hidden;background:var(--paper)}
+.banner{margin:0;width:100%;aspect-ratio:21/8;overflow:hidden;background:var(--paper)}
 .banner img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
 @media (max-width:700px){.banner{aspect-ratio:4/3}}
 
