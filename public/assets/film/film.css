@@ -84,3 +84,7 @@
 
 /* etiqueta de idioma (EN / ES) */
 .film .ltag{position:absolute;z-index:4;right:4cqw;top:5cqh;font-size:max(11px,min(1.05cqw,1.9cqh));letter-spacing:.3em;font-weight:600;color:rgba(247,248,250,.7);opacity:0;padding:.7em 1em;border:1px solid var(--ln)}
+
+/* cierre: la palabra más larga ("Discover") debe caber completa en el ancho del film */
+.film .s7 .cta{font-size:min(11cqw,20cqh)}
+@container (max-aspect-ratio:1/1){ .film .s7 .cta{font-size:min(14.5cqw,12cqh)} }

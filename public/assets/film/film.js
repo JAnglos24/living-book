@@ -1,4 +1,4 @@
-/* Film de apertura v3 — primero en inglés, luego en español, cierre "Conoce +".
+/* Film de apertura v4 — un solo idioma por reproducción (buildFilm(root, 'en'|'es')), cierre "Conoce +" / "Discover +".
    Guion base del agente copywriter de Symbios, curado por Claude (primera persona, sin inventar nada).
    Cifras = las de su home. Uso: const tl = buildFilm(rootEl); tl.play()  |  render determinista: tl.seek(t) */
 (function(){
@@ -9,7 +9,7 @@
 
   var COPY = {
     en: {
-      tag:'EN',
+      tag:'EN', cta:'Discover',
       role:'Transformation Portfolio / Product & Project Management',
       ts:[
         { id:'t1', kick:'From the living book · chapter 4', a:['A refrigerator','doesn’t sell ~a cold box~.'], strike:true, dur:2.9 },
@@ -26,7 +26,7 @@
       h6a:['What’s done well','is felt.'], h6b:'With heart.'
     },
     es: {
-      tag:'ES',
+      tag:'ES', cta:'Conoce',
       role:'Portafolio de Transformación / Gestión de Producto y Proyectos',
       ts:[
         { id:'t1', kick:'Del libro vivo · capítulo 4', a:['Un refrigerador','no vende ~una caja fría~.'], strike:true, dur:2.9 },
@@ -71,19 +71,21 @@
     '</div>';
   }
 
-  var HTML =
-    '<div class="ltag" aria-hidden="true"></div>'+
-    '<section class="sc s0"><h2 class="big nm">'+L('J. ANGEL')+L('SOSA')+'</h2><p class="kick role">'+COPY.en.role+'</p></section>'+
-    blockHtml('en')+blockHtml('es')+
-    '<section class="sc s7"><h2 class="big cta">'+L('Conoce <span class="plus">+</span>')+'</h2>'+
-      '<div class="lock"><strong>J. ANGEL SOSA</strong><small>'+COPY.es.role+'</small></div></section>'+
+  var htmlFor = function(lang){
+    return ''+
+    '<section class="sc s0"><h2 class="big nm">'+L('J. ANGEL')+L('SOSA')+'</h2><p class="kick role">'+COPY[lang].role+'</p></section>'+
+    blockHtml(lang)+
+    '<section class="sc s7"><h2 class="big cta">'+L(COPY[lang].cta+' <span class="plus">+</span>')+'</h2>'+
+      '<div class="lock"><strong>J. ANGEL SOSA</strong><small>'+COPY[lang].role+'</small></div></section>'+
     '<div class="bar"></div>';
+  };
 
   var INTRO = 3.2;
   window.FILM_DURATION = 67.9; /* se recalcula al construir la timeline */
 
-  window.buildFilm = function(root){
-    root.innerHTML = HTML;
+  window.buildFilm = function(root, lang){
+    lang = COPY[lang] ? lang : 'en';
+    root.innerHTML = htmlFor(lang);
     var $$ = function(s){ return Array.prototype.slice.call(root.querySelectorAll(s)); };
     var m = gsap.timeline({ paused:true, defaults:{ ease:'power3.out' } });
     var OUT = { yPercent:-112, duration:.5, ease:'power3.in', stagger:.04 };
@@ -100,13 +102,9 @@
     hide('.s0', INTRO);
 
     var t = INTRO;
-    ['en','es'].forEach(function(p){
+    [lang].forEach(function(p){
       var C = COPY[p], B = '.blk-'+p+' ';
       var q = function(s){ return s.split(',').map(function(x){ return B + x.trim(); }).join(', '); };
-      var langStart = t;
-      m.call(function(){ var el = root.querySelector('.ltag'); el.textContent = C.tag; }, null, langStart);
-      m.fromTo('.ltag', { opacity:0 }, { opacity:1, duration:.5 }, langStart + .1);
-
       /* escenas de texto */
       C.ts.forEach(function(s){
         var sc = B + '.' + s.id, end = t + s.dur;
@@ -181,7 +179,6 @@
       var s6e = s6 + 4.1;
       m.to(S6+' .wd', OUT, s6e - .65); hide(S6, s6e); t = s6e;
     });
-    m.to('.ltag', { opacity:0, duration:.4 }, t - .5);
 
     /* S7 · cierre: Conoce + */
     var s7 = t; show('.s7', s7);
