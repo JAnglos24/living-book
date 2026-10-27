@@ -189,3 +189,8 @@ sub{font-size:.7em;line-height:0}
 .longform .step p{font-family:var(--serif);font-size:16px;line-height:1.5;color:var(--ink2);max-width:26ch}
 @media (max-width:860px){.longform .steps{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.longform .steps{grid-template-columns:1fr}}
+
+/* texto a todo ancho (cap. 8): ocupa el grid completo y se parte en 2 columnas legibles en escritorio */
+.longform .grid>.textcol.full{grid-column:1/-1}
+.longform .textcol.full p{hyphens:auto;max-width:none}
+@media (min-width:900px){.longform .textcol.full{column-count:2;column-gap:clamp(32px,4vw,64px)}.longform .textcol.full p{break-inside:avoid-column}}

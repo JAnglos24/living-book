@@ -157,6 +157,60 @@ footer{position:relative;z-index:2;background:var(--paper);padding:1.6rem var(--
 footer a{text-decoration:none}
 footer nav{display:flex;gap:2rem}
 
+/* ============ SCENE 02 — LO QUE HAGO (propuesta) ============ */
+.does{position:relative;z-index:2;background:var(--paper);display:grid;grid-template-columns:55% 45%;border-top:1px solid var(--line)}
+.does .steps{padding:0 clamp(2rem,3vw,4rem) 0 var(--m)}
+.does .intro{min-height:78svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(4rem,8vh,7rem) 0 2rem}
+.does .intro .eyebrow{color:var(--graphite)}
+.does h2{font-weight:700;font-variation-settings:"wdth" 96;font-size:clamp(50px,6.2vw,116px);line-height:.88;letter-spacing:-.055em;margin:1.8rem 0 1.4rem;max-width:9ch}
+.does .intro p.sub{font-size:clamp(19px,1.55vw,28px);line-height:1.25;color:var(--ink2);letter-spacing:-.015em;max-width:30ch}
+.does .step{min-height:84svh;display:flex;flex-direction:column;justify-content:center;border-top:1px solid var(--line);padding:clamp(2.4rem,6vh,4rem) 0;opacity:.34;transition:opacity .6s var(--ease)}
+.does .step.on{opacity:1}
+.does .step .kw{display:none}
+.does .step h3{font-weight:700;font-variation-settings:"wdth" 100;font-size:clamp(34px,3.6vw,64px);line-height:.96;letter-spacing:-.04em;margin-bottom:1.2rem;max-width:12ch}
+.does .step p{font-family:var(--serif);font-size:clamp(18px,1.2vw,23px);line-height:1.55;color:#2B323A;max-width:38ch;margin-bottom:1.6rem}
+.does .step a.go{display:inline-flex;align-items:center;gap:1rem;font-size:.92rem;font-weight:500;text-decoration:none;color:var(--cobalt);border-bottom:1.5px solid var(--cobalt);padding-bottom:.35rem;min-height:44px;align-self:flex-start;transition:color .35s var(--ease),border-color .35s var(--ease)}
+.does .step a.go svg{width:22px;height:12px;transition:transform .35s var(--ease)}
+.does .step a.go:hover,.does .step a.go:focus-visible{color:var(--cobalt-deep);border-color:var(--cobalt-deep)}
+.does .step a.go:hover svg,.does .step a.go:focus-visible svg{transform:translateX(8px)}
+.does .plate{position:sticky;top:0;height:100svh;background:var(--cobalt);color:#fff;overflow:hidden}
+.does .plate .pi{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);pointer-events:none}
+.does .plate .pi.on{opacity:1;transform:none}
+.does .plate .word{position:absolute;left:clamp(1.6rem,3vw,3.4rem);bottom:clamp(2.4rem,9vh,6rem);font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(50px,6.3vw,128px);line-height:.8;letter-spacing:-.05em}
+.does .plate .nt{position:absolute;top:clamp(2rem,7vh,4.5rem);right:var(--m);text-align:right;font-size:max(11px,.6rem);letter-spacing:.2em;text-transform:uppercase;line-height:1.9;color:#DCE8FF}
+.does .plate .nt::after{content:"";display:block;width:1.8rem;height:1px;background:#DCE8FF;margin:.5rem 0 0 auto}
+.does .plate .pull{position:absolute;left:clamp(1.6rem,3vw,3.4rem);top:clamp(2rem,7vh,4.5rem);max-width:19ch;font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,1.5vw,1.6rem);line-height:1.35}
+.does .plate .pull small{display:block;margin-top:1rem;font-family:var(--grot);font-style:normal;font-size:max(11px,.6rem);letter-spacing:.22em;text-transform:uppercase;color:#DCE8FF}
+.does .plate svg.tree{position:absolute;left:6%;top:14%;width:88%;height:62%}
+.does .plate svg.tree path{fill:none;stroke:#fff;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s var(--ease)}
+.does .plate svg.tree path.mx{stroke:#9CC0FF;stroke-dasharray:5 6;stroke-dashoffset:0;opacity:0;transition:opacity .8s var(--ease) .7s}
+.does .plate .pi.on svg.tree path{stroke-dashoffset:0}
+.does .plate .pi.on svg.tree path.mx{opacity:1}
+.does .plate svg.tree text{font:700 13px var(--grot);fill:#fff;letter-spacing:.04em}
+.does .plate svg.tree rect{fill:var(--cobalt);stroke:#fff;stroke-width:1.5}
+@media (max-width:900px){
+  .does{grid-template-columns:1fr}
+  .does .steps{padding:0 var(--m)}
+  .does .intro{min-height:0;padding:clamp(3.5rem,8vh,5rem) 0 2rem}
+  .does .plate{display:none}
+  .does .step{min-height:0;opacity:1;padding:2.2rem 0 2.6rem}
+  .does .step .kw{display:block;font-family:var(--grot);max-width:none;font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(52px,15vw,84px);line-height:.85;letter-spacing:-.05em;color:var(--cobalt);margin-bottom:1.2rem}
+}
+
+/* ============ SCENE 03 — CARTA DEL AUTOR (propuesta) ============ */
+.letter{position:relative;z-index:2;background:var(--paper);border-top:1px solid var(--line);padding:clamp(5rem,12vh,9rem) var(--m) clamp(5rem,12vh,9rem);display:grid;grid-template-columns:minmax(0,28%) minmax(0,1fr);gap:clamp(2rem,5vw,6rem)}
+.letter .side{align-self:start;position:sticky;top:clamp(2rem,10vh,6rem)}
+.letter .side .eyebrow{color:var(--graphite);margin-bottom:1.4rem}
+.letter .side p{font-size:max(11px,.66rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);line-height:1.9}
+.letter .body{font-family:var(--serif);font-size:clamp(26px,3.1vw,56px);line-height:1.22;letter-spacing:-.015em;max-width:26ch}
+.letter .body .w{opacity:.2;transition:opacity .35s var(--ease)}
+.letter .body .w.on{opacity:1}
+.letter .body em{font-style:italic;color:var(--cobalt)}
+.letter .sign{margin-top:clamp(2rem,5vh,3.4rem);font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,1.5vw,1.5rem);color:var(--graphite)}
+.letter .sign small{display:block;margin-top:.5rem;font-family:var(--grot);font-style:normal;font-size:max(11px,.62rem);letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
+@media (max-width:900px){.letter{grid-template-columns:1fr}.letter .side{position:static}}
+@media (prefers-reduced-motion:reduce){.does .step{opacity:1}.does .plate .pi{transition:none}.letter .body .w{opacity:1}}
+
 @media (prefers-reduced-motion:reduce){
   .hero{height:100svh}.hero .stage{position:relative}
   .hero .maskwrap{animation:none;opacity:1;transform:none}
@@ -165,7 +219,24 @@ footer nav{display:flex;gap:2rem}
   .strip{height:auto}.strip .scene{position:relative;top:0;height:86svh}
   .book .object .layer{transition:none}
 }
+
+/* --- film de apertura: pausa la animación de la portada hasta que termina --- */
+.hero .film{z-index:6;transition:opacity .9s var(--ease)}
+.hero.filming .maskwrap,.hero.filming .mark,.hero.filming .topright,.hero.filming .role,.hero.filming .quote,.hero.filming .cue,.hero.filming .read{animation-play-state:paused}
+.hero .film.done{opacity:0;pointer-events:none}
+.hero .skip,.hero .replay{position:absolute;z-index:7;border:1px solid rgba(247,248,250,.45);background:rgba(7,8,9,.35);color:var(--paper);font:500 max(11px,.66rem)/1 var(--grot);letter-spacing:.24em;text-transform:uppercase;padding:.95rem 1.2rem;min-height:44px;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
+.hero .skip:hover,.hero .skip:focus-visible,.hero .replay:hover,.hero .replay:focus-visible{background:var(--cobalt);border-color:var(--cobalt)}
+.hero .read{position:absolute;right:var(--m);bottom:2rem;display:inline-flex;align-items:center;gap:1rem;background:var(--cobalt);color:#fff;text-decoration:none;font-weight:500;font-size:.92rem;padding:1.05rem 1.45rem;min-height:44px;opacity:0;animation:fade .8s var(--ease) 2.1s forwards;transition:background .35s var(--ease)}
+.hero .read:hover,.hero .read:focus-visible{background:var(--cobalt-deep)}
+.hero .skip{right:var(--m);bottom:1.6rem}
+.hero .snd{position:absolute;z-index:7;left:var(--m);top:1.2rem;border:1px solid rgba(247,248,250,.45);background:rgba(7,8,9,.35);color:var(--paper);font:500 max(11px,.66rem)/1 var(--grot);letter-spacing:.24em;text-transform:uppercase;padding:.95rem 1.2rem;min-height:44px;cursor:pointer;transition:background .3s var(--ease)}
+.hero .snd:hover,.hero .snd:focus-visible,.hero .snd[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)}
+.hero .snd[hidden]{display:none}
+.hero .skip[hidden],.hero .replay[hidden]{display:none}
+.hero .replay{left:var(--m);top:4.2rem;z-index:4}
+@media (prefers-reduced-motion:reduce){.hero .film,.hero .skip,.hero .snd{display:none}}
 </style>
+<link rel="stylesheet" href="/assets/film/film.css">
 <SeoHead />
 </head>
 <body>
@@ -206,7 +277,13 @@ footer nav{display:flex;gap:2rem}
       <p class="role">Transformation Portfolio / Product & Project Management</p>
       <p class="quote">“Products become meaningful when they fit both your needs and your spirit.”</p>
       <div class="cue"></div>
+      <a class="read" href="#book">Discover + <svg width="22" height="12" viewBox="0 0 22 12" fill="none" aria-hidden="true"><path d="M0 6h20M15 1l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      <button class="replay" id="replay" type="button" hidden>↻ Watch the film</button>
     </div>
+    <div class="film" id="film" aria-hidden="true"></div>
+    <audio id="fa" src="/assets/film/film_audio.m4a" preload="auto"></audio>
+    <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Turn the film sound on">Sound: off</button>
+    <button class="skip" id="skip" type="button" aria-label="Skip the opening animation">Skip ▸</button>
   </div>
 </section>
 
@@ -237,6 +314,72 @@ footer nav{display:flex;gap:2rem}
 </section>
 
 
+
+<!-- ========== 02 WHAT I DO ========== -->
+<section class="does" id="does" aria-labelledby="dt">
+  <div class="steps">
+    <div class="intro">
+      <p class="eyebrow reveal">What I do</p>
+      <h2 id="dt" class="reveal" style="transition-delay:.08s">Four ways to make something matter.</h2>
+      <p class="sub reveal" style="transition-delay:.16s">I lead portfolios and design product around one question: what does the person on the other side feel?</p>
+    </div>
+    <article class="step on" data-i="0">
+      <p class="kw" aria-hidden="true">Portfolio</p>
+      <h3>Leading portfolios</h3>
+      <p>I turn a list of initiatives into a portfolio that can be understood, prioritized and defended before any committee.</p>
+      <a class="go" href="/ebook/03-what-a-production-line-teaches-about-architecture/">Read chapter 3 <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+    </article>
+    <article class="step" data-i="1">
+      <p class="kw" aria-hidden="true">Product</p>
+      <h3>Designing product</h3>
+      <p>I accompany an idea from the first sketch until it scales, with the discipline of industrial design applied to the digital.</p>
+      <a class="go" href="/ebook/01-what-can-industrial-design-teach/">Read chapter 1 <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+    </article>
+    <article class="step" data-i="2">
+      <p class="kw" aria-hidden="true">Feel</p>
+      <h3>Making it felt</h3>
+      <p>Brand, user experience and marketing in service of what nobody sees on a spec sheet: what it feels like to touch it.</p>
+      <a class="go" href="/ebook/04-the-product-is-never-just-the-object/">Read chapter 4 <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+    </article>
+    <article class="step" data-i="3">
+      <p class="kw" aria-hidden="true">Influence</p>
+      <h3>Leading without imposing</h3>
+      <p>Horizontal tree teams with matrix crossings: every branch has an owner and the best happens where they meet.</p>
+      <a class="go" href="/author/">Learn about my path <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 6h20M15 1l5 5-5 5"/></svg></a>
+    </article>
+  </div>
+  <div class="plate" aria-hidden="true">
+    <div class="pi on" data-i="0"><p class="nt">Prioritize<br>Balance<br>Defend</p><p class="word">Portfolio</p></div>
+    <div class="pi" data-i="1"><p class="nt">Idea<br>Design<br>Development<br>Scale</p><p class="word">Product</p></div>
+    <div class="pi" data-i="2"><p class="pull">“Loewy wasn't selling steel, glass, or paper.”<small>Chapter 4 · The living book</small></p><p class="nt">Brand<br>Experience<br>Marketing</p><p class="word">Feel</p></div>
+    <div class="pi" data-i="3">
+      <svg class="tree" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet">
+        <path pathLength="1" d="M60 180H150V50H250M150 180V130H250M150 180V230H250M150 180V310H250"/>
+        <path class="mx" d="M360 50V130M360 130V230M360 230V310M310 50V230M310 130V310"/>
+        <rect x="20" y="164" width="80" height="32"/><text x="60" y="185" text-anchor="middle">J. Angel</text>
+        <rect x="250" y="34" width="110" height="32"/><text x="305" y="55" text-anchor="middle">Product</text>
+        <rect x="250" y="114" width="110" height="32"/><text x="305" y="135" text-anchor="middle">Design</text>
+        <rect x="250" y="214" width="110" height="32"/><text x="305" y="235" text-anchor="middle">Marketing</text>
+        <rect x="250" y="294" width="110" height="32"/><text x="305" y="315" text-anchor="middle">People</text>
+      </svg>
+      <p class="nt">Persuade<br>Invite<br>Care</p><p class="word">Influence</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 03 AUTHOR'S LETTER ========== -->
+<section class="letter" id="letter" aria-labelledby="lt">
+  <div class="side">
+    <p class="eyebrow">Author's letter</p>
+    <p>Mexico<br>October 2026</p>
+  </div>
+  <div>
+    <h2 id="lt" class="sr">Author's letter</h2>
+    <p class="body" id="letterBody">My title says I administer. What moves me is something else: design, the experience of whoever uses what we make, the way a well-told idea changes a person. I don't command: I invite. If something is done well, <em>it is felt</em>.</p>
+    <p class="sign">— J. Angel<small>Senior Portfolio Manager · Product Management Director</small></p>
+  </div>
+</section>
+
 <!-- ========== 02 CINEMATIC STRIP ========== -->
 <section class="strip" id="strip" aria-label="Editorial statement">
   <div class="scene">
@@ -262,7 +405,40 @@ footer nav{display:flex;gap:2rem}
   <nav aria-label="Links"><a href="https://www.linkedin.com/" rel="me">LinkedIn</a><a href="https://github.com/" rel="me">GitHub</a><a href="/privacy/">Privacy</a></nav>
 </footer>
 
-<script>
+<script is:inline src="/assets/film/gsap.min.js"></script>
+<script is:inline src="/assets/film/film.js"></script>
+<script is:inline>
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap) return;
+  var hero=document.getElementById('hero'), film=document.getElementById('film'),
+      skip=document.getElementById('skip'), snd=document.getElementById('snd'), au=document.getElementById('fa'), want=false, replay=document.getElementById('replay'), tl=null, ended=false;
+  hero.classList.add('filming');
+  function setSnd(on){ want=on; snd.setAttribute('aria-pressed',on); snd.textContent=on?'Sound: on':'Sound: off';
+    snd.setAttribute('aria-label',on?'Mute the film':'Turn the film sound on'); }
+  function startAudio(){ if(!want||ended) return; au.volume=1; au.currentTime=tl?tl.time():0; var pr=au.play(); if(pr&&pr.catch) pr.catch(function(){ setSnd(false); }); }
+  function fadeOut(){ var v={x:au.volume}; gsap.to(v,{x:0,duration:.8,onUpdate:function(){ au.volume=Math.max(0,v.x); },onComplete:function(){ au.pause(); }}); }
+  snd.addEventListener('click',function(){ if(want){ setSnd(false); au.pause(); } else { setSnd(true); startAudio(); } });
+  function finish(){
+    if (ended) return; ended=true;
+    if (tl) tl.pause();
+    fadeOut(); snd.hidden=true;
+    film.classList.add('done'); skip.hidden=true; replay.hidden=false;
+    hero.classList.remove('filming');
+    removeEventListener('wheel',bail); removeEventListener('touchmove',bail); removeEventListener('keydown',bail);
+  }
+  function bail(e){ if(e.type==='keydown' && ['ArrowDown','PageDown','Space',' ','End'].indexOf(e.key)<0 && e.code!=='Space') return; finish(); }
+  function play(){
+    ended=false; hero.classList.add('filming'); film.classList.remove('done'); skip.hidden=false; snd.hidden=false; replay.hidden=true; au.pause(); au.currentTime=0;
+    scrollTo(0,0);
+    tl = buildFilm(film); tl.eventCallback('onComplete', function(){ setTimeout(finish,500); }); tl.play(0); startAudio();
+    addEventListener('wheel',bail,{passive:true}); addEventListener('touchmove',bail,{passive:true}); addEventListener('keydown',bail);
+  }
+  skip.addEventListener('click',finish);
+  replay.addEventListener('click',function(){ hero.classList.add('filming'); play(); });
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(play);
+})();
+</script>
+<script is:inline>
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var E = function(id){ return document.getElementById(id); };
@@ -331,6 +507,36 @@ footer nav{display:flex;gap:2rem}
     obj.addEventListener('pointerleave',function(){ pointer.x=0; pointer.y=0; frame(); });
   }
   frame();
+})();
+</script>
+
+<script is:inline>
+(function(){
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* plate: la lamina azul cambia segun el paso que esta en el centro de la pantalla */
+  var steps=[].slice.call(document.querySelectorAll('.does .step')), plates=[].slice.call(document.querySelectorAll('.does .pi'));
+  function setOn(i){steps.forEach(function(s,k){s.classList.toggle('on',k===i)});plates.forEach(function(p,k){p.classList.toggle('on',k===i)})}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setOn(+e.target.dataset.i)})},{rootMargin:'-45% 0px -45% 0px',threshold:0});
+    steps.forEach(function(s){io.observe(s)});
+  }
+  /* carta: cada palabra se enciende al leerla */
+  var body=document.getElementById('letterBody'); if(!body)return;
+  var words=[];
+  (function split(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){var f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{var s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s);words.push(s)}});node.replaceChild(f,n)}
+      else if(n.nodeType===1)split(n);
+    });
+  })(body);
+  function paint(){
+    if(RM){words.forEach(function(w){w.classList.add('on')});return}
+    var r=body.getBoundingClientRect(), h=innerHeight;
+    var p=Math.min(1,Math.max(0,(h*.85-r.top)/(r.height+h*.25)));
+    var n=Math.round(p*words.length);
+    words.forEach(function(w,i){w.classList.toggle('on',i<n)});
+  }
+  addEventListener('scroll',paint,{passive:true});addEventListener('resize',paint,{passive:true});paint();
 })();
 </script>
 </body>

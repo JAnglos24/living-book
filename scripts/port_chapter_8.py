@@ -24,6 +24,12 @@ PHOTOS = {
     "chapter-08-promise-volume-line": "Ceramic Rows Along a Blue Line-7.png",
     "chapter-08-pressure-casting-mold": "Porcelain bowl beside casting mold-2.png",
     "chapter-08-hand-finishing": "Cobalt rim on handmade porcelain-4.png",
+    "chapter-08-exceptions-bench": "Nueve formas, un hilo azul-1.png",
+    "chapter-08-inspection-bench": "Medición de precisión en cerámica-2.png",
+    "chapter-08-shadow-board": "Dos ausencias azules en el tablero-3.png",
+    "chapter-08-packing-returns": "Plato blanco y cerámica rota-4.png",
+    "chapter-08-two-benches": "Dos mesas, dos momentos-5.png",
+    "chapter-08-robot-arm-demold": "Robot y manos en el taller cerámico-6.png",
 }
 DIMS = {}
 for name, fn in PHOTOS.items():
