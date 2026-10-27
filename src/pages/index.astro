@@ -48,7 +48,9 @@ h1,h2,h3,p{margin:0}
 .hero .mark{position:absolute;top:1.4rem;left:var(--m);font-weight:600;letter-spacing:.06em;font-size:1.05rem;text-decoration:none;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
 .hero .topright{position:absolute;top:1.5rem;right:var(--m);display:flex;align-items:center;gap:1.6rem;opacity:0;animation:fade .8s var(--ease) 1.5s forwards}
 .hero .topright .lang{display:flex;align-items:center;gap:6px;font-size:max(11px,.68rem);letter-spacing:.16em}
+.hero .topright .lang a,.hero .topright .lang [aria-current]{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 .hero .topright .lang a{text-decoration:none;color:rgba(247,248,250,.6)}
+.hero.filming .topright{visibility:hidden}
 .hero .topright .lang a[aria-current]{color:var(--paper);font-weight:700}
 .hero .menu{display:flex;align-items:center;gap:.9rem;font-size:max(11px,.68rem);letter-spacing:.24em;text-decoration:none}
 .hero .menu i{width:36px;height:10px;border-top:1px solid;border-bottom:1px solid}
@@ -276,7 +278,7 @@ footer nav{display:flex;gap:2rem}
       <h1 class="sr">J. Angel Sosa — Transformation Portfolio / Product & Project Management</h1>
       <a class="mark" href="/">JAS</a>
       <div class="topright">
-        <div class="lang" role="group" aria-label="Language"><a href="/" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/">ES</a></div>
+        <div class="lang" role="group" aria-label="Language"><span aria-current="page">EN</span><span aria-hidden="true">/</span><a href="/es/">ES</a></div>
         <a class="menu" href="#nav">MENU <i></i></a>
       </div>
       <p class="role">Transformation Portfolio / Product & Project Management</p>
@@ -381,7 +383,7 @@ footer nav{display:flex;gap:2rem}
   </div>
   <div>
     <h2 id="lt" class="sr">Author's letter</h2>
-    <p class="body" id="letterBody">My title says I administer. What moves me is something else: design, the experience of whoever uses what we make, the way a well-told idea changes a person. I don't command: I invite. If something is done well, <em>it is felt</em>.</p>
+    <p class="body" id="letterBody">My title says I administer, but my way of doing it is born from understanding each person's experiences, memories and needs. That empathy guides how I design, how I invite others to take part and how we turn an idea into something that matters. Because there is no management without empathy, and when something is done well, <em>it is felt in the heart</em>.</p>
     <p class="sign">— J. Angel<small>Senior Portfolio Manager · Product Management Director</small></p>
   </div>
 </section>
@@ -444,7 +446,7 @@ footer nav{display:flex;gap:2rem}
     hero.classList.remove('filming');
     removeEventListener('wheel',bail); removeEventListener('touchmove',bail); removeEventListener('keydown',bail);
   }
-  function bail(e){ if(e.type==='keydown' && ['ArrowDown','PageDown','Space',' ','End'].indexOf(e.key)<0 && e.code!=='Space') return; finish(); }
+  function bail(e){ if(e.target&&e.target.closest&&e.target.closest('.flang,.snd,.skip,.replay')) return; if(e.type==='keydown' && ['ArrowDown','PageDown','Space',' ','End'].indexOf(e.key)<0 && e.code!=='Space') return; finish(); }
   function play(){
     ended=false; hero.classList.add('filming'); film.classList.remove('done'); skip.hidden=false; snd.hidden=false; flang.hidden=false; replay.hidden=true; au.pause(); au.currentTime=0;
     scrollTo(0,0); paintLang();
