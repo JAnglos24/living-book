@@ -72,3 +72,4 @@ def update_file_dims(file_path):
 update_file_dims(EN_MDX)
 update_file_dims(ES_ASTRO)
 print("\nSincronización completa con éxito.")
+

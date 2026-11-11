@@ -33,3 +33,4 @@ if push_res.returncode == 0:
 else:
     err = push_res.stderr.replace(token, "***TOKEN***")
     print("Git push failed:", err)
+
