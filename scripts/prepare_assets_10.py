@@ -44,3 +44,4 @@ for dst_name, src_file in sources.items():
     print(f"Saved {dst_name}: {im.size}")
 
 print("All 15 images processed successfully!")
+

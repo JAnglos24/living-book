@@ -127,3 +127,4 @@ edit(os.path.join(B, "scripts", "generate-pdf.mjs"), [
 ])
 
 print("ALL INDEXES, NAVIGATION, HOME AND PDF ROUTES SUCCESSFULLY UPDATED FOR CHAPTER 10!")
+
